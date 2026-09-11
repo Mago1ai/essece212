@@ -27,8 +27,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A sensação purificante e relaxante de um banho com pétalas e água morna.',
     longevity: 'Fragrância suave de pele limpa e hidratada',
     sillage: 'Aura íntima e acolhedora',
-    image: '/assets/maximo-sabonete-liquido.svg',
-    secondaryImage: 'https://pngimg.com/d/cosmetics_PNG8052.png',
+    image: '/images/products/maximo-sabonete-crop.jpg',
+    secondaryImage: '/images/photo_4978966337568837228_y.jpg',
   },
   {
     id: 'maximo-body-splash',
@@ -55,8 +55,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O frescor floral e aveludado de uma manhã iluminada em um jardim de rosas.',
     longevity: '6 a 8 horas com sensação de frescor contínuo',
     sillage: 'Aura suave, agradável e convidativa',
-    image: '/assets/maximo-body-splash.svg',
-    secondaryImage: 'https://pngimg.com/d/perfume_PNG10283.png',
+    image: '/images/products/maximo-bodysplash-crop.jpg',
+    secondaryImage: '/images/photo_4978966337568837233_y.jpg',
   },
   {
     id: 'maximo-creme-acetinado',
@@ -83,8 +83,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O carinho reconfortante de um manto de seda perfumado sobre a pele.',
     longevity: 'Hidratação ativa por até 24 horas',
     sillage: 'Perfume íntimo de pele hidratada',
-    image: '/assets/maximo-creme-acetinado.svg',
-    secondaryImage: 'https://pngimg.com/d/cosmetics_PNG8052.png',
+    image: '/images/products/maximo-creme-crop.jpg',
+    secondaryImage: '/images/photo_4978966337568837233_y.jpg',
   },
   {
     id: 'maximo-perfume-capilar',
@@ -111,7 +111,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A brisa leve que faz os cabelos dançarem e perfumarem o ar.',
     longevity: 'Perfume ativo nos fios durante todo o dia',
     sillage: 'Rastro etéreo e marcante no movimento',
-    image: '/assets/maximo-perfume-capilar.svg',
+    image: '/images/products/maximo-perfume-capilar.jpg',
+    secondaryImage: '/images/photo_4978966337568837231_y.jpg',
   },
   {
     id: 'maximo-kit-completo',
@@ -138,7 +139,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um santuário de bem-estar e sofisticação no conforto do seu dia a dia.',
     longevity: 'Duração prolongada por sobreposição de camadas aromáticas',
     sillage: 'Presença elegante, limpa e refinada',
-    image: '/assets/maximo-kit-ritual.svg',
+    image: '/images/photo_4978966337568837228_y.jpg',
+    secondaryImage: '/images/photo_4978966337568837233_y.jpg',
   },
 
   // --- ALTA PERFUMARIA NICHO & DESIGNER DO CATÁLOGO REAL ---
@@ -636,7 +638,7 @@ export const DISCOVERY_SET_DETAILS = {
     'Creme Acetinado Corporal Toque de Seda (200 g)',
     'Perfume Capilar Brilho Tridimensional (45 ml)',
   ],
-  image: '/assets/maximo-kit-ritual.svg',
+  image: '/images/photo_4978966337568837228_y.jpg',
 };
 
 export function getPerfumeTactileSensation(perfume: Perfume): string {

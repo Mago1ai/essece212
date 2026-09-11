@@ -16,16 +16,15 @@ export const Hero: React.FC<HeroProps> = ({
       id="hero"
       className="relative w-full min-h-[88vh] md:min-h-[92vh] flex items-center bg-[#1A1816] text-[#F4F0E9] overflow-hidden select-none"
     >
-      {/* Background Editorial Image - Neutral Fine Fragrance & Travertine Stone */}
+      {/* Background Editorial Image - Kit Máximo Real Photo */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=2200&q=85"
-          alt="Frasco de alta perfumaria autoral em vidro âmbar sobre pedra de travertino e linho marfim"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-[70%_center] sm:object-[65%_center] md:object-center brightness-[0.85] contrast-[1.05]"
+          src="/images/photo_4978966337568837231_y.jpg"
+          alt="Perfume Capilar Máximo em ambiente editorial com pérolas e tecidos de seda"
+          className="w-full h-full object-cover object-[50%_30%] brightness-[0.8] contrast-[1.05]"
         />
         {/* Subtle Dark Vignette & Left Gradient for Maximum Typographic Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#141210]/95 via-[#141210]/75 to-black/30 sm:via-[#141210]/55 md:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141210]/95 via-[#141210]/75 to-black/20 sm:via-[#141210]/55 md:to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#141210]/90 via-transparent to-black/40" />
       </div>
 
