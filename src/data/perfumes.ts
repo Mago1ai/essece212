@@ -167,7 +167,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A imponência e a determinação de um conquistador contemporâneo.',
     longevity: '10 a 12 horas na pele',
     sillage: 'Projeção imponente e rastro inconfundível',
-    image: 'https://pngimg.com/d/perfume_PNG10292.png',
+    image: '/assets/aventus-creed.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10292.png',
   },
   {
     id: '1-million-rabanne',
@@ -194,7 +195,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O magnetismo e a energia vibrante de uma noite de celebração.',
     longevity: '8 a 10 horas na pele',
     sillage: 'Marcante, quente e envolvente',
-    image: 'https://pngimg.com/d/perfume_PNG10287.png',
+    image: '/assets/1-million-rabanne.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10287.png',
   },
   {
     id: 'althair-parfums-de-marly',
@@ -221,7 +223,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O requinte de salões da corte francesa aquecidos por madeiras raras e confeitos nobres.',
     longevity: '12 a 14 horas na pele',
     sillage: 'Aura aveludada, rica e magnética',
-    image: 'https://pngimg.com/d/perfume_PNG10284.png',
+    image: '/assets/althair-parfums-de-marly.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10284.png',
   },
   {
     id: 'good-girl-carolina-herrera',
@@ -248,7 +251,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A intensidade hipnótica de passos confiantes na noite cosmopolita.',
     longevity: '9 a 11 horas na pele',
     sillage: 'Sedutor, potente e inesquecível',
-    image: 'https://pngimg.com/d/perfume_PNG10313.png',
+    image: '/assets/good-girl-carolina-herrera.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10313.png',
   },
   {
     id: '212-men-carolina-herrera',
@@ -274,7 +278,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O ar puro de um amanhecer no Central Park cercado pela arquitetura de aço e vidro.',
     longevity: '7 a 9 horas na pele',
     sillage: 'Fresco, limpo e contemporâneo',
-    image: 'https://pngimg.com/d/perfume_PNG10291.png',
+    image: '/assets/212-men-carolina-herrera.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10291.png',
   },
   {
     id: 'bvlgari-man-in-black',
@@ -301,7 +306,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O ambiente intimista de um clube de cavalheiros com poltronas de couro capitonê.',
     longevity: '9 a 11 horas na pele',
     sillage: 'Envolvente, austero e refinado',
-    image: 'https://pngimg.com/d/perfume_PNG10280.png',
+    image: '/assets/bvlgari-man-in-black.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10280.png',
   },
   {
     id: 'angel-mugler',
@@ -327,7 +333,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um céu noturno pontilhado de estrelas azuis e memórias açucaradas.',
     longevity: '12 a 16 horas na pele',
     sillage: 'Ultra potente e inconfundível',
-    image: 'https://pngimg.com/d/perfume_PNG10300.png',
+    image: '/assets/angel-mugler.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10300.png',
   },
   {
     id: 'scandal-jean-paul-gaultier',
@@ -353,7 +360,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A audácia e o charme irreverente de um cabaré parisiense à meia-noite.',
     longevity: '10 a 12 horas na pele',
     sillage: 'Viciante, doce e sedutor',
-    image: 'https://pngimg.com/d/perfume_PNG10297.png',
+    image: '/assets/scandal-jean-paul-gaultier.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10297.png',
   },
   {
     id: 'libre-yves-saint-laurent',
@@ -380,7 +388,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A elegância de um smoking feminino sob as luzes da alta costura em Paris.',
     longevity: '9 a 11 horas na pele',
     sillage: 'Radiante, sofisticado e marcante',
-    image: 'https://pngimg.com/d/perfume_PNG10303.png',
+    image: '/assets/libre-yves-saint-laurent.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10303.png',
   },
   {
     id: 'delina-parfums-de-marly',
@@ -407,7 +416,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O esplendor dos jardins reais de Marly na primavera dourada.',
     longevity: '12 a 14 horas na pele',
     sillage: 'Projeção estelar e inesquecível',
-    image: 'https://pngimg.com/d/perfume_PNG10286.png',
+    image: '/assets/delina-parfums-de-marly.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10286.png',
   },
   {
     id: 'la-vie-est-belle-rose-lancome',
@@ -433,7 +443,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um raio de sol iluminando uma rosa orvalhada recém-aberta.',
     longevity: '8 a 10 horas na pele',
     sillage: 'Alegre, luminoso e floral nobre',
-    image: 'https://pngimg.com/d/perfume_PNG10306.png',
+    image: '/assets/la-vie-est-belle-rose-lancome.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10306.png',
   },
   {
     id: 'la-bomba-carolina-herrera',
@@ -460,7 +471,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A celebração exuberante de uma noite tropical sob palmeiras iluminadas.',
     longevity: '9 a 11 horas na pele',
     sillage: 'Frutado floral deslumbrante',
-    image: 'https://pngimg.com/d/perfume_PNG10318.png',
+    image: '/assets/la-bomba-carolina-herrera.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10318.png',
   },
   {
     id: 'cheirosa-68-sol-de-janeiro',
@@ -487,7 +499,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O calor dourado do sol carioca sobre a pele após um mergulho no mar.',
     longevity: '6 a 8 horas na pele e cabelos',
     sillage: 'Alegre, solar e irresistível',
-    image: 'https://pngimg.com/d/perfume_PNG10325.png',
+    image: '/assets/cheirosa-68-sol-de-janeiro.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10325.png',
   },
   {
     id: 'bare-vanilla-victorias-secret',
@@ -514,7 +527,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O abraço macio de um suéter de cashmere em um entardecer acolhedor.',
     longevity: '5 a 7 horas no corpo',
     sillage: 'Confortável, doce e intimista',
-    image: 'https://pngimg.com/d/perfume_PNG10289.png',
+    image: '/assets/bare-vanilla-victorias-secret.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10289.png',
   },
   {
     id: 'love-spell-victorias-secret',
@@ -540,7 +554,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um piquenique ensolarado rodeado de flores de cerejeira em flor.',
     longevity: '5 a 7 horas',
     sillage: 'Fresco, frutado e romântico',
-    image: 'https://pngimg.com/d/perfume_PNG10312.png',
+    image: '/assets/love-spell-victorias-secret.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10312.png',
   },
   {
     id: '212-vip-rose-carolina-herrera',
@@ -566,7 +581,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um brinde com taças de cristal no rooftop mais disputado da cidade.',
     longevity: '8 a 10 horas na pele',
     sillage: 'Chic, efervescente e vibrante',
-    image: 'https://pngimg.com/d/perfume_PNG10288.png',
+    image: '/assets/212-vip-rose-carolina-herrera.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10288.png',
   },
   {
     id: 'fantasy-britney-spears',
@@ -593,7 +609,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um conto de fadas moderno e doce com toques de mistério.',
     longevity: '8 a 10 horas na pele',
     sillage: 'Doce, marcante e jovial',
-    image: 'https://pngimg.com/d/perfume_PNG10298.png',
+    image: '/assets/fantasy-britney-spears.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10298.png',
   },
   {
     id: 'glamour-o-boticario',
@@ -619,7 +636,8 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A sofisticação natural de quem caminha com leveza e presença.',
     longevity: '7 a 8 horas na pele',
     sillage: 'Elegante, equilibrado e agradável',
-    image: 'https://pngimg.com/d/perfume_PNG10308.png',
+    image: '/assets/glamour-o-boticario.svg',
+    secondaryImage: 'https://pngimg.com/d/perfume_PNG10308.png',
   },
 ];
 

@@ -134,6 +134,40 @@
   animation: mistFloat 5s ease-in-out infinite;
 }
 
+/* Continuous slow marquee for mobile perfume reel - Luxurious, ultra-smooth & gentle pacing */
+@keyframes slowMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  animation: slowMarquee 110s linear infinite;
+}
+
+.animate-marquee-slow:hover,
+.animate-marquee-slow:active,
+.animate-marquee-slow:focus-within {
+  animation-play-state: paused;
+}
+
+/* Smooth horizontal scrollbar hiding */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Subtle paper/velvet texture overlay */
 .bg-noise {
   background-image: radial-gradient(rgba(36, 34, 31, 0.04) 1px, transparent 0);

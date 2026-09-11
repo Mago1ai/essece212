@@ -3,6 +3,7 @@ import { PERFUMES as INITIAL_PERFUMES, BRAND_INFO } from './data/perfumes';
 import { Perfume, OlfactoryFamily, CartItem } from './types';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { BottleSlowReel } from './components/BottleSlowReel';
 import { HouseSection } from './components/HouseSection';
 import { CollectionSection } from './components/CollectionSection';
 import { ManifestoSection } from './components/ManifestoSection';
@@ -45,19 +46,28 @@ export default function App() {
     return 'light';
   });
 
+  // Favorites state: initialized strictly to empty [] if nothing was explicitly saved
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
-      const saved = localStorage.getItem('maximo_favorites') || localStorage.getItem('materia_elementar_favorites');
-      return saved ? JSON.parse(saved) : ['maximo-signature'];
+      const saved = localStorage.getItem('maximo_favorites');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      }
+      return [];
     } catch {
-      return ['maximo-signature'];
+      return [];
     }
   });
 
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     try {
-      const saved = localStorage.getItem('maximo_cart') || localStorage.getItem('materia_elementar_cart');
-      return saved ? JSON.parse(saved) : [];
+      const saved = localStorage.getItem('maximo_cart');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      }
+      return [];
     } catch {
       return [];
     }
@@ -134,6 +144,10 @@ export default function App() {
     setFavorites((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
+  };
+
+  const handleClearAllFavorites = () => {
+    setFavorites([]);
   };
 
   const handleAddToCart = (perfume: Perfume) => {
@@ -214,6 +228,14 @@ export default function App() {
           onSelectPerfume={setSelectedPerfume}
         />
 
+        {/* 1.1 Mobile & Desktop Continuous Slow Bottle Reel */}
+        <BottleSlowReel
+          perfumes={perfumesList}
+          onSelectPerfume={setSelectedPerfume}
+          favorites={favorites}
+          onToggleFavorite={handleToggleFavorite}
+        />
+
         {/* 2. House Section (01 — A CASA) */}
         <HouseSection
           onOpenStoryModal={() => setIsStoryOpen(true)}
@@ -284,7 +306,9 @@ export default function App() {
         isOpen={isFavoritesOpen}
         onClose={() => setIsFavoritesOpen(false)}
         favorites={favorites}
+        perfumes={perfumesList}
         onToggleFavorite={handleToggleFavorite}
+        onClearAllFavorites={handleClearAllFavorites}
         onAddToCart={handleAddToCart}
         onSelectPerfume={setSelectedPerfume}
       />

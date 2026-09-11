@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="om-gold-front" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF4C2"/>
+      <stop offset="25%" stop-color="#E5B942"/>
+      <stop offset="50%" stop-color="#FDE882"/>
+      <stop offset="75%" stop-color="#C2921D"/>
+      <stop offset="100%" stop-color="#F2D16B"/>
+    </linearGradient>
+    <linearGradient id="om-gold-side" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8C630D"/>
+      <stop offset="50%" stop-color="#B88A22"/>
+      <stop offset="100%" stop-color="#6E4D06"/>
+    </linearGradient>
+    <filter id="om-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#om-shadow)">
+    <!-- Gold Ingot Bar Silhouette -->
+    <!-- Top Chamfered Face -->
+    <path d="M 140 60 L 260 60 L 275 90 L 125 90 Z" fill="#FDE882" stroke="#B88A22" stroke-width="1.5"/>
+
+    <!-- Main Front Beveled Ingot Surface -->
+    <path d="M 125 90 L 275 90 L 265 430 L 135 430 Z" fill="url(#om-gold-front)" stroke="#9E7314" stroke-width="2"/>
+
+    <!-- Left Chamfer Ridge -->
+    <path d="M 125 90 L 135 430 L 128 430 L 118 90 Z" fill="url(#om-gold-side)"/>
+    <!-- Right Chamfer Ridge -->
+    <path d="M 275 90 L 282 90 L 272 430 L 265 430 Z" fill="url(#om-gold-side)"/>
+
+    <!-- Integrated Spray Button at Top -->
+    <rect x="180" y="105" width="40" height="24" rx="4" fill="#9E7314" stroke="#FFE98A" stroke-width="1"/>
+    <circle cx="200" cy="117" r="4" fill="#1C1405"/>
+
+    <!-- Engraved 1 MILLION Typography -->
+    <text x="200" y="240" font-family="'Impact', 'Arial Black', sans-serif" font-size="52" font-weight="900" fill="#7A5308" text-anchor="middle" letter-spacing="1">1</text>
+    <text x="200" y="280" font-family="'Cinzel', 'Playfair Display', serif" font-size="20" font-weight="bold" fill="#7A5308" text-anchor="middle" letter-spacing="6">MILLION</text>
+
+    <!-- Sub-engraving -->
+    <text x="200" y="325" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#8C630D" text-anchor="middle" letter-spacing="3">PACO RABANNE</text>
+    <text x="200" y="345" font-family="'Inter', sans-serif" font-size="8" fill="#8C630D" text-anchor="middle" letter-spacing="2">EAU DE PARFUM · 100 ML</text>
+
+    <!-- Gloss Light Gleam -->
+    <line x1="145" y1="100" x2="160" y2="420" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.6"/>
+    <line x1="150" y1="100" x2="165" y2="420" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8"/>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="sdj-pink-mist" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#FFF1F2"/>
+      <stop offset="35%" stop-color="#F472B6"/>
+      <stop offset="70%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#BE185D"/>
+    </radialGradient>
+    <linearGradient id="sdj-white-cap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="35%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <filter id="sdj-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#EC4899" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sdj-shadow)">
+    <!-- Iconic White Cylindrical Tall Cap with Fluted Top -->
+    <rect x="150" y="45" width="100" height="90" rx="14" fill="url(#sdj-white-cap)" stroke="#CBD5E1" stroke-width="1.5"/>
+    <!-- Vertical Cap Grooves -->
+    <line x1="165" y1="50" x2="165" y2="130" stroke="#F1F5F9" stroke-width="2"/>
+    <line x1="235" y1="50" x2="235" y2="130" stroke="#F1F5F9" stroke-width="2"/>
+
+    <!-- Clear Translucent Body Mist Bottle -->
+    <rect x="145" y="140" width="110" height="280" rx="18" fill="url(#sdj-pink-mist)" stroke="#F472B6" stroke-width="2"/>
+
+    <!-- Large Iconic White Round Number Badge '68' -->
+    <circle cx="200" cy="240" r="44" fill="#FFFFFF" stroke="#FBCFE8" stroke-width="2"/>
+    <text x="200" y="258" font-family="'Impact', 'Arial Black', sans-serif" font-size="46" font-weight="900" fill="#BE185D" text-anchor="middle" letter-spacing="-1">68</text>
+
+    <!-- Portuguese Branding Text -->
+    <text x="200" y="315" font-family="'Inter', sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">CHEIROSA</text>
+    <text x="200" y="332" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#FCE7F3" text-anchor="middle" letter-spacing="2">BEIJA FLOR</text>
+    <text x="200" y="358" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">SOL DE JANEIRO</text>
+    <text x="200" y="375" font-family="'Inter', sans-serif" font-size="7" fill="#FCE7F3" text-anchor="middle" letter-spacing="1">PERFUME MIST · 90 ML</text>
+  </g>
+</svg>
