@@ -20,6 +20,8 @@ import { DiscoverySetModal } from './components/DiscoverySetModal';
 import { InfoModals } from './components/InfoModals';
 import { MasterAuthModal } from './components/MasterAuthModal';
 import { MasterAdminModal } from './components/MasterAdminModal';
+import { PWAInstallButton } from './components/PWAInstallButton';
+import { OfflineIndicator } from './components/OfflineIndicator';
 
 export default function App() {
   const [perfumesList, setPerfumesList] = useState<Perfume[]>(() => {
@@ -251,6 +253,12 @@ export default function App() {
         onOpenContactModal={() => setInfoModalType('contact')}
         onTriggerEasterEgg={handleEasterEggTrigger}
       />
+
+      {/* Floating PWA Install Button for easy access */}
+      <PWAInstallButton variant="floating" />
+
+      {/* Offline Status Badge */}
+      <OfflineIndicator />
 
       {/* Product Details Modal */}
       <ProductModal

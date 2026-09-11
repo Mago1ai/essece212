@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { BRAND_INFO } from '../data/perfumes';
 import { MaximoLogo } from './MaximoLogo';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface FooterProps {
   onOpenSearch: () => void;
@@ -60,6 +61,11 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="font-mono-subtle text-sm text-[#24221F]/70 dark:text-[#F5F2EB]/70">
               {BRAND_INFO.origin} · Atendimento exclusivo via WhatsApp
             </p>
+
+            {/* PWA Direct Link in Brand Column */}
+            <div className="pt-2">
+              <PWAInstallButton variant="footer" />
+            </div>
           </div>
 
           {/* Navigation Links Column */}
@@ -154,12 +160,14 @@ export const Footer: React.FC<FooterProps> = ({
             <span>·</span>
             <span>Edições Numeradas</span>
             <span>·</span>
+            <span>App PWA Integrado</span>
+            <span>·</span>
             <button
               onClick={handleVersionClick}
               title="Versão do Sistema"
               className="text-[#24221F]/60 dark:text-[#F5F2EB]/60 hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors cursor-default select-none focus:outline-none"
             >
-              v2.4.0 · AF MKT
+              v2.5.0 · AF MKT
             </button>
           </div>
         </div>

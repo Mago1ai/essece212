@@ -50,3 +50,14 @@ export interface DiscoverySelection {
   mood: string;
   familyFilter: OlfactoryFamily;
 }
+
+export interface StoreSettings {
+  phoneWhatsApp: string;
+  phoneDisplay: string;
+  storeName: string;
+  tagline: string;
+  instagram: string;
+  email: string;
+  orderMessagePrefix: string;
+  adminPassword?: string;
+}

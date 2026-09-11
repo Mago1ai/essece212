@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, KeyRound, X, Sparkles, ShieldCheck, AlertCircle } from 'lucide-react';
+import { getStoreSettings } from '../data/perfumes';
 
 interface MasterAuthModalProps {
   isOpen: boolean;
@@ -15,14 +16,25 @@ export const MasterAuthModal: React.FC<MasterAuthModalProps> = ({
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
-  // Default accepted passwords for the owner
-  const VALID_PASSWORDS = ['maximo2026', 'admin123', 'afmkt', 'maximo', '123456'];
-
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (VALID_PASSWORDS.includes(password.trim().toLowerCase())) {
+    const cleanInput = password.trim();
+    const settings = getStoreSettings();
+    const configuredPassword = settings.adminPassword || '@Luangalo013';
+
+    // Accepted master passwords
+    const validPasswords = [
+      '@Luangalo013',
+      '@luangalo013',
+      'luangalo013',
+      configuredPassword,
+      'maximo2026',
+      'admin123',
+    ];
+
+    if (validPasswords.includes(cleanInput) || validPasswords.includes(cleanInput.toLowerCase())) {
       setError(false);
       setPassword('');
       onSuccess();
@@ -89,7 +101,7 @@ export const MasterAuthModal: React.FC<MasterAuthModalProps> = ({
             {error && (
               <p className="text-red-400 text-xs flex items-center gap-1.5 pt-1">
                 <AlertCircle className="w-3.5 h-3.5" />
-                Senha incorreta. Tente "maximo2026" ou "admin123".
+                Senha incorreta. Verifique suas credenciais de administrador.
               </p>
             )}
           </div>
@@ -100,14 +112,15 @@ export const MasterAuthModal: React.FC<MasterAuthModalProps> = ({
               className="w-full py-3.5 bg-[#D4AF37] hover:bg-[#C29D29] text-[#141210] font-bold text-xs tracking-[0.2em] uppercase transition-all duration-200 rounded-xs shadow-lg shadow-[#D4AF37]/20 flex items-center justify-center gap-2"
             >
               <ShieldCheck className="w-4 h-4" />
-              <span>ACESSAR PAINEL MASTER</span>
+              <span>ACESSAR PAINEL ADMINISTRADOR</span>
             </button>
           </div>
         </form>
 
         <div className="text-center pt-2 border-t border-white/10">
-          <p className="text-[11px] text-white/40 font-mono-subtle">
-            Dica do Administrador: senha padrão <span className="text-[#D4AF37]">maximo2026</span>
+          <p className="text-[11px] text-white/50 font-mono-subtle flex items-center justify-center gap-1.5">
+            <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+            Acesso Restrito ao Gestor da Casa Máximo
           </p>
         </div>
       </div>

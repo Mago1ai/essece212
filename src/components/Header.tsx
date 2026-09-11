@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, ShoppingBag, Menu, X, Heart, Moon, Sun, Sparkles } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X, Heart, Moon, Sun, Sparkles, Smartphone } from 'lucide-react';
 import { BRAND_INFO } from '../data/perfumes';
 import { MaximoLogo } from './MaximoLogo';
+import { PWAInstallButton } from './PWAInstallButton';
+import { PWAInstallModal } from './PWAInstallModal';
 
 interface HeaderProps {
   cartCount: number;
@@ -28,6 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [pwaModalOpen, setPwaModalOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
   const logoClickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -127,8 +130,13 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </nav>
 
-          {/* Actions: Theme Atmosphere Toggle, Search, Wishlist, Bag, Mobile Toggle */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
+          {/* Actions: PWA Install, Theme Toggle, Search, Wishlist, Bag, Mobile Toggle */}
+          <div className="flex items-center space-x-2 sm:space-x-3.5">
+            {/* PWA Install Button (Desktop/Tablet) */}
+            <div className="hidden sm:block">
+              <PWAInstallButton variant="header" />
+            </div>
+
             {/* Dark / Light Atmosphere Toggle (Sensorial) */}
             <button
               id="theme-atmosphere-toggle-btn"
@@ -223,7 +231,7 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div
           id="mobile-nav-overlay"
-          className="fixed inset-0 z-50 bg-[#F4F0E9] dark:bg-[#121110] text-[#24221F] dark:text-[#F5F2EB] flex flex-col justify-between p-8 pt-24 animate-in fade-in duration-300 md:hidden"
+          className="fixed inset-0 z-50 bg-[#F4F0E9] dark:bg-[#121110] text-[#24221F] dark:text-[#F5F2EB] flex flex-col justify-between p-8 pt-24 animate-in fade-in duration-300 md:hidden overflow-y-auto"
         >
           <button
             id="close-mobile-menu-btn"
@@ -236,7 +244,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <div className="space-y-4">
             {/* Mobile Atmosphere Selector */}
-            <div className="flex items-center justify-between p-3.5 bg-[#EAE3D9] dark:bg-[#1A1816] border border-[#24221F]/10 dark:border-white/10 mb-6">
+            <div className="flex items-center justify-between p-3.5 bg-[#EAE3D9] dark:bg-[#1A1816] border border-[#24221F]/10 dark:border-white/10 mb-4 rounded-lg">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#A96227] dark:text-[#D4AF37]" />
                 <span className="font-mono-subtle text-xs tracking-wider uppercase font-medium">
@@ -245,7 +253,7 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
               <button
                 onClick={onToggleTheme}
-                className="px-3 py-1.5 bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-[#121110] font-mono-subtle text-[10px] tracking-wider uppercase flex items-center gap-1.5"
+                className="px-3 py-1.5 bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-[#121110] font-mono-subtle text-[10px] tracking-wider uppercase flex items-center gap-1.5 rounded"
               >
                 {theme === 'dark' ? (
                   <>
@@ -261,44 +269,68 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             </div>
 
-            <span className="font-mono-subtle text-[10px] tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase block mb-4">
+            {/* PWA Direct Mobile Banner in Mobile Menu */}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setPwaModalOpen(true);
+              }}
+              className="w-full flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#1E1B17] to-[#2D2821] text-[#F4F0E9] border border-[#D4AF37]/40 shadow-lg text-left mb-6"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#141210] p-1 border border-[#D4AF37]/50 flex items-center justify-center">
+                  <img src="/icon.svg" alt="App Icon" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-wider text-[#D4AF37] font-semibold">
+                    App Máximo PWA
+                  </div>
+                  <div className="text-xs text-[#F4F0E9] font-medium">
+                    Adicionar à Tela de Início
+                  </div>
+                </div>
+              </div>
+              <Smartphone className="w-4 h-4 text-[#D4AF37]" />
+            </button>
+
+            <span className="font-mono-subtle text-[10px] tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase block mb-3">
               NAVEGAÇÃO EDITORIAL
             </span>
-            <nav className="flex flex-col space-y-5">
+            <nav className="flex flex-col space-y-4">
               <button
                 onClick={() => handleNavClick('colecao')}
-                className="text-left font-serif-editorial text-3xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
+                className="text-left font-serif-editorial text-2xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
               >
                 01 — A Coleção
               </button>
               <button
                 onClick={() => handleNavClick('casa')}
-                className="text-left font-serif-editorial text-3xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
+                className="text-left font-serif-editorial text-2xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
               >
                 02 — A Casa
               </button>
               <button
                 onClick={() => handleNavClick('descoberta')}
-                className="text-left font-serif-editorial text-3xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
+                className="text-left font-serif-editorial text-2xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
               >
                 03 — Descoberta Olfativa
               </button>
               <button
                 onClick={() => handleNavClick('manifesto')}
-                className="text-left font-serif-editorial text-3xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
+                className="text-left font-serif-editorial text-2xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
               >
                 04 — O Manifesto
               </button>
               <button
                 onClick={() => handleNavClick('discovery-set')}
-                className="text-left font-serif-editorial text-3xl text-[#A96227] dark:text-[#D4AF37] transition-colors"
+                className="text-left font-serif-editorial text-2xl text-[#A96227] dark:text-[#D4AF37] transition-colors"
               >
                 05 — Discovery Set
               </button>
             </nav>
           </div>
 
-          <div className="pt-8 border-t border-[#24221F]/10 dark:border-white/10 space-y-2 font-mono-subtle text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70">
+          <div className="pt-6 border-t border-[#24221F]/10 dark:border-white/10 space-y-2 font-mono-subtle text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70">
             <p className="text-[11px] uppercase tracking-wider text-[#24221F] dark:text-[#F5F2EB]">
               {BRAND_INFO.origin}
             </p>
@@ -308,6 +340,9 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       )}
+
+      {/* PWA Modal Triggered from Mobile Menu */}
+      <PWAInstallModal isOpen={pwaModalOpen} onClose={() => setPwaModalOpen(false)} />
     </>
   );
 };

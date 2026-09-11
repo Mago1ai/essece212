@@ -1,4 +1,4 @@
-import { Perfume } from '../types';
+import { Perfume, StoreSettings } from '../types';
 
 export const PERFUMES: Perfume[] = [
   // --- LINHA MÁXIMO EAU DE PARFUM & COSMÉTICOS (LINHA PRÓPRIA AUTORAL) ---
@@ -661,6 +661,38 @@ export function getPerfumeTactileSensation(perfume: Perfume): string {
   }
 }
 
+export const DEFAULT_STORE_SETTINGS: StoreSettings = {
+  phoneWhatsApp: '5531975394776',
+  phoneDisplay: '(31) 97539-4776',
+  storeName: 'Máximo Eau de Parfum',
+  tagline: 'A arte da alta perfumaria e do autocuidado refinado.',
+  instagram: '@maximoeaudeparfum',
+  email: 'contato@maximoperfumes.com.br',
+  orderMessagePrefix: 'Olá! Gostaria de fazer o pedido de',
+  adminPassword: '@Luangalo013',
+};
+
+export function getStoreSettings(): StoreSettings {
+  try {
+    const saved = localStorage.getItem('maximo_store_settings');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      return { ...DEFAULT_STORE_SETTINGS, ...parsed };
+    }
+  } catch {
+    // Fallback
+  }
+  return DEFAULT_STORE_SETTINGS;
+}
+
+export function saveStoreSettings(settings: StoreSettings): void {
+  try {
+    localStorage.setItem('maximo_store_settings', JSON.stringify(settings));
+  } catch {
+    // Fallback
+  }
+}
+
 export const BRAND_INFO = {
   name: 'Máximo',
   fullName: 'Máximo Eau de Parfum',
@@ -678,8 +710,11 @@ export const BRAND_INFO = {
   atelierAddress: 'Atendimento Exclusivo e Entregas para Todo o Brasil',
 };
 
-export function createWhatsAppLink(message: string, phone: string = BRAND_INFO.phoneWhatsApp): string {
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+export function createWhatsAppLink(message: string, phone?: string): string {
+  const currentPhone = phone || getStoreSettings().phoneWhatsApp || BRAND_INFO.phoneWhatsApp;
+  // Clean phone string to digits only
+  const cleanPhone = currentPhone.replace(/\D/g, '');
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 }
 
 export function createProductWhatsAppLink(
@@ -688,9 +723,11 @@ export function createProductWhatsAppLink(
   size: string = '',
   price: string = ''
 ): string {
+  const settings = getStoreSettings();
   const sizeText = size ? ` (${size})` : '';
   const priceText = price ? ` no valor de ${price}` : '';
   const brandText = brand && brand !== 'Máximo' ? ` da marca ${brand}` : '';
-  const text = `Olá! Gostaria de fazer o pedido de ${perfumeName}${brandText}${sizeText}${priceText} visto no site Máximo Eau de Parfum.`;
-  return createWhatsAppLink(text);
+  const prefix = settings.orderMessagePrefix || 'Olá! Gostaria de fazer o pedido de';
+  const text = `${prefix} ${perfumeName}${brandText}${sizeText}${priceText} visto no site ${settings.storeName}.`;
+  return createWhatsAppLink(text, settings.phoneWhatsApp);
 }
