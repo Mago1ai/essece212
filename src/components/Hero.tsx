@@ -146,6 +146,7 @@ export const Hero: React.FC<HeroProps> = ({
                   <div className="relative aspect-[3/4] w-full flex items-center justify-center animate-float">
                     <EditorialImage
                       src={activePerfume.image}
+                      fallbackSrc={activePerfume.secondaryImage}
                       alt={activePerfume.name}
                       brand={activePerfume.brand}
                       name={activePerfume.name}

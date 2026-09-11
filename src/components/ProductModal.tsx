@@ -142,6 +142,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           <div className="md:col-span-5 relative flex flex-col items-center justify-between">
             <InteractiveBottleShowcase
               src={perfume.image}
+              fallbackSrc={perfume.secondaryImage}
               alt={`Frasco de ${perfume.name} - ${perfume.brand}`}
               brand={perfume.brand}
               name={perfume.name}

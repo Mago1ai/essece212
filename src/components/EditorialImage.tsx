@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 interface EditorialImageProps {
   src: string;
   alt: string;
+  fallbackSrc?: string;
   className?: string;
   containerClassName?: string;
   aspectRatio?: string; // e.g. 'aspect-[3/4]', 'aspect-square', 'h-full'
@@ -17,21 +18,37 @@ interface EditorialImageProps {
 export const EditorialImage: React.FC<EditorialImageProps> = ({
   src,
   alt,
+  fallbackSrc,
   className = '',
   containerClassName = '',
-  aspectRatio = 'aspect-[3/4]',
-  padding = 'p-5 sm:p-6 md:p-7',
+  aspectRatio = 'aspect-[4/4.2] sm:aspect-[4/4.3]',
+  padding = 'p-2 sm:p-2.5',
   showContactShadow = true,
   brand = 'Máximo',
   name = 'Perfume',
   enableTilt = true,
   showMistParticles = true,
 }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [imageError, setImageError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [tilt, setTilt] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setImageError(false);
+    setIsLoaded(false);
+  }, [src]);
+
+  const handleImageError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setImageError(true);
+    }
+  };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!enableTilt || !containerRef.current) return;
@@ -88,7 +105,7 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
       }}
     >
       {/* Subtle Studio Ambient Highlight with Breathing Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(169,98,39,0.08),transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_35%,rgba(212,175,55,0.12),transparent_75%)] pointer-events-none animate-pulse-glow" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(169,98,39,0.08),transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.12),transparent_75%)] pointer-events-none animate-pulse-glow" />
 
       {/* Atmospheric Mist Particles on Hover */}
       {showMistParticles && isHovered && (
@@ -105,7 +122,7 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
           style={{
             transform: `translateX(calc(-50% + ${tilt.y * 1.2}px)) scale(${isHovered ? 1.08 : 0.95})`,
           }}
-          className="absolute bottom-4 sm:bottom-5 left-1/2 w-1/2 max-w-[150px] h-3 bg-black/20 dark:bg-black/60 rounded-full blur-[9px] transition-all duration-300 pointer-events-none z-0"
+          className="absolute bottom-3 sm:bottom-4 left-1/2 w-3/5 max-w-[170px] h-3.5 bg-black/25 dark:bg-black/65 rounded-full blur-[10px] transition-all duration-300 pointer-events-none z-0"
         />
       )}
 
@@ -131,19 +148,19 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
           className="relative z-10 w-full h-full flex items-center justify-center transition-transform duration-200 ease-out"
           style={{
             transform: enableTilt && isHovered
-              ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-6px) scale(1.055)`
+              ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-4px) scale(1.06)`
               : 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)',
             transformStyle: 'preserve-3d',
           }}
         >
           <img
-            src={src}
+            src={currentSrc}
             alt={alt}
             referrerPolicy="no-referrer"
             loading="lazy"
             onLoad={() => setIsLoaded(true)}
-            onError={() => setImageError(true)}
-            className={`max-h-[290px] sm:max-h-[320px] w-auto max-w-full h-full object-contain ${padding} transition-all duration-500 drop-shadow-[0_16px_22px_rgba(0,0,0,0.22)] dark:drop-shadow-[0_20px_28px_rgba(0,0,0,0.75)] ${
+            onError={handleImageError}
+            className={`w-full h-full max-h-[340px] sm:max-h-[370px] object-contain ${padding} transition-all duration-500 drop-shadow-[0_16px_24px_rgba(0,0,0,0.22)] dark:drop-shadow-[0_20px_30px_rgba(0,0,0,0.75)] ${
               isLoaded ? 'opacity-100' : 'opacity-85'
             } ${isHovered ? 'brightness-105 contrast-105' : ''} ${className}`}
           />

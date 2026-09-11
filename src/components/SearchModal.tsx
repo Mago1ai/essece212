@@ -151,6 +151,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                           src={perfume.image}
                           alt={perfume.name}
                           referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            if (perfume.secondaryImage && (e.currentTarget.src !== perfume.secondaryImage)) {
+                              e.currentTarget.src = perfume.secondaryImage;
+                            }
+                          }}
                           className="w-full h-full object-contain"
                         />
                       </div>

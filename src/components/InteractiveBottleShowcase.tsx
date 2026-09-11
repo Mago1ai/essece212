@@ -4,6 +4,7 @@ import { Droplets, Sparkles } from 'lucide-react';
 interface InteractiveBottleShowcaseProps {
   src: string;
   alt: string;
+  fallbackSrc?: string;
   brand: string;
   name: string;
   badge?: string;
@@ -13,14 +14,30 @@ interface InteractiveBottleShowcaseProps {
 export const InteractiveBottleShowcase: React.FC<InteractiveBottleShowcaseProps> = ({
   src,
   alt,
+  fallbackSrc,
   brand,
   name,
   badge,
   tactileDescription,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [isLoaded, setIsLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setImageError(false);
+    setIsLoaded(false);
+  }, [src]);
+
+  const handleImageError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setImageError(true);
+    }
+  };
 
   // Smooth tilt & translation state (subtle, elegant range)
   const [tilt, setTilt] = useState({
@@ -143,7 +160,7 @@ export const InteractiveBottleShowcase: React.FC<InteractiveBottleShowcaseProps>
             transformStyle: 'preserve-3d',
             transition: isInteracting ? 'transform 0.08s ease-out' : 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)',
           }}
-          className="relative flex items-center justify-center w-full max-w-[320px] sm:max-w-[360px] md:max-w-[420px] h-[310px] sm:h-[370px] md:h-[420px]"
+          className="relative flex items-center justify-center w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] h-[340px] sm:h-[400px] md:h-[460px]"
         >
           {/* Elegant Specular Glass Highlight */}
           <div
@@ -168,13 +185,13 @@ export const InteractiveBottleShowcase: React.FC<InteractiveBottleShowcaseProps>
             </div>
           ) : (
             <img
-              src={src}
+              src={currentSrc}
               alt={alt}
               referrerPolicy="no-referrer"
               loading="eager"
               onLoad={() => setIsLoaded(true)}
-              onError={() => setImageError(true)}
-              className={`w-auto h-full max-h-[310px] sm:max-h-[370px] md:max-h-[410px] object-contain transition-all duration-300 drop-shadow-[0_22px_32px_rgba(0,0,0,0.28)] dark:drop-shadow-[0_28px_40px_rgba(0,0,0,0.85)] ${
+              onError={handleImageError}
+              className={`w-full h-full max-h-[340px] sm:max-h-[400px] md:max-h-[460px] object-contain transition-all duration-300 drop-shadow-[0_22px_36px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_28px_44px_rgba(0,0,0,0.9)] p-2 ${
                 isLoaded ? 'opacity-100' : 'opacity-80'
               }`}
               draggable={false}

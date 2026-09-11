@@ -300,16 +300,17 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                 >
                   {/* Image Container with Studio Pedestal */}
                   <div
-                    className="relative aspect-[3/4] w-full overflow-hidden cursor-pointer bg-gradient-to-b from-[#F2ECE2]/50 via-[#EAE3D7]/20 to-transparent dark:from-[#1A1816]/60 dark:via-[#141210]/30 dark:to-transparent"
+                    className="relative aspect-[4/4.3] sm:aspect-[4/4.4] w-full overflow-hidden cursor-pointer bg-gradient-to-b from-[#F2ECE2]/50 via-[#EAE3D7]/20 to-transparent dark:from-[#1A1816]/60 dark:via-[#141210]/30 dark:to-transparent flex items-center justify-center"
                     onClick={() => onSelectPerfume(perfume)}
                   >
                     <EditorialImage
                       src={perfume.image}
+                      fallbackSrc={perfume.secondaryImage}
                       alt={`Frasco de ${perfume.name} - ${perfume.brand}`}
                       brand={perfume.brand}
                       name={perfume.name}
-                      aspectRatio="aspect-[3/4]"
-                      padding="p-4 sm:p-5"
+                      aspectRatio="w-full h-full"
+                      padding="p-2 sm:p-2.5"
                       showContactShadow={true}
                       enableTilt={true}
                       showMistParticles={true}

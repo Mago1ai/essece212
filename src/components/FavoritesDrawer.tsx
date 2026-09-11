@@ -128,6 +128,11 @@ export const FavoritesDrawer: React.FC<FavoritesDrawerProps> = ({
                           src={perfume.image}
                           alt={perfume.name}
                           referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            if (perfume.secondaryImage && (e.currentTarget.src !== perfume.secondaryImage)) {
+                              e.currentTarget.src = perfume.secondaryImage;
+                            }
+                          }}
                           className="w-full h-full object-contain drop-shadow-sm group-hover:scale-105 transition-transform"
                         />
                       </div>

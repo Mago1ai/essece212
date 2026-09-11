@@ -169,6 +169,11 @@ Por favor, confirmem a disponibilidade dos itens e as orientações para envio.`
                         src={item.perfume.image}
                         alt={item.perfume.name}
                         referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          if (item.perfume.secondaryImage && (e.currentTarget.src !== item.perfume.secondaryImage)) {
+                            e.currentTarget.src = item.perfume.secondaryImage;
+                          }
+                        }}
                         className="w-full h-full object-contain drop-shadow-sm"
                       />
                     </div>
