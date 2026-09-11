@@ -87,17 +87,25 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
         perspective: '900px',
       }}
     >
-      {/* Subtle Studio Ambient Highlight */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(169,98,39,0.04),transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_35%,rgba(201,125,62,0.06),transparent_75%)] pointer-events-none" />
+      {/* Subtle Studio Ambient Highlight with Breathing Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(169,98,39,0.08),transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_35%,rgba(212,175,55,0.12),transparent_75%)] pointer-events-none animate-pulse-glow" />
+
+      {/* Atmospheric Mist Particles on Hover */}
+      {showMistParticles && isHovered && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+          <div className="absolute bottom-1/4 left-1/3 w-16 h-16 bg-white/20 dark:bg-[#D4AF37]/15 rounded-full blur-xl animate-mist" />
+          <div className="absolute bottom-1/3 right-1/4 w-20 h-20 bg-[#A96227]/15 dark:bg-[#D4AF37]/20 rounded-full blur-2xl animate-mist" style={{ animationDelay: '1.5s' }} />
+        </div>
+      )}
 
       {/* Subtle Soft Diffused Ground Shadow under the bottle silhouette */}
       {showContactShadow && (
         <div
           aria-hidden="true"
           style={{
-            transform: `translateX(calc(-50% + ${tilt.y * 1.2}px)) scale(${isHovered ? 1.05 : 1})`,
+            transform: `translateX(calc(-50% + ${tilt.y * 1.2}px)) scale(${isHovered ? 1.08 : 0.95})`,
           }}
-          className="absolute bottom-5 sm:bottom-6 left-1/2 w-1/2 max-w-[140px] h-2.5 bg-black/15 dark:bg-black/50 rounded-full blur-[8px] transition-all duration-300 pointer-events-none z-0"
+          className="absolute bottom-4 sm:bottom-5 left-1/2 w-1/2 max-w-[150px] h-3 bg-black/20 dark:bg-black/60 rounded-full blur-[9px] transition-all duration-300 pointer-events-none z-0"
         />
       )}
 
@@ -123,7 +131,7 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
           className="relative z-10 w-full h-full flex items-center justify-center transition-transform duration-200 ease-out"
           style={{
             transform: enableTilt && isHovered
-              ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.045)`
+              ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-6px) scale(1.055)`
               : 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)',
             transformStyle: 'preserve-3d',
           }}
@@ -135,9 +143,9 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
             loading="lazy"
             onLoad={() => setIsLoaded(true)}
             onError={() => setImageError(true)}
-            className={`max-h-[260px] w-auto max-w-full h-full object-contain ${padding} transition-all duration-300 drop-shadow-[0_16px_20px_rgba(0,0,0,0.20)] dark:drop-shadow-[0_20px_25px_rgba(0,0,0,0.65)] ${
+            className={`max-h-[290px] sm:max-h-[320px] w-auto max-w-full h-full object-contain ${padding} transition-all duration-500 drop-shadow-[0_16px_22px_rgba(0,0,0,0.22)] dark:drop-shadow-[0_20px_28px_rgba(0,0,0,0.75)] ${
               isLoaded ? 'opacity-100' : 'opacity-85'
-            } ${className}`}
+            } ${isHovered ? 'brightness-105 contrast-105' : ''} ${className}`}
           />
         </div>
       )}

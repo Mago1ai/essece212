@@ -96,7 +96,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="text-[11px] sm:text-xs tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
-                02 — O CATÁLOGO EXCLUSIVO
+                02 — CURADORIA & CATÁLOGO
               </span>
               <div className="w-12 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40" />
             </div>
@@ -108,10 +108,10 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
 
           <div className="max-w-md text-xs sm:text-[13px] text-[#24221F]/75 dark:text-[#F5F2EB]/75 space-y-1.5 border-l-2 border-[#A96227]/30 dark:border-[#D4AF37]/40 pl-4">
             <p className="uppercase tracking-[0.16em] text-[#24221F] dark:text-[#F5F2EB] font-semibold text-[11px]">
-              Máximo Eau de Parfum & Importados
+              Linha Autoral Máximo & Inspirações
             </p>
             <p className="tracking-normal font-light">
-              Consultoria olfativa, pedidos diretos e curadoria sob medida.
+              Selecione qualquer frasco para interagir em 3D, consultar notas e pedir via WhatsApp.
             </p>
           </div>
         </div>
@@ -152,10 +152,10 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                       // maintain or reset sub-filter
                     }
                   }}
-                  className={`px-3.5 sm:px-4 py-2 text-[11px] sm:text-xs tracking-[0.16em] uppercase transition-all duration-300 border active:scale-[0.98] ${
+                  className={`px-4 sm:px-5 py-2.5 text-xs sm:text-sm tracking-[0.16em] uppercase transition-all duration-300 border active:scale-[0.98] ${
                     isActive
                       ? 'bg-[#A96227] dark:bg-[#C97D3E] text-white border-[#A96227] dark:border-[#C97D3E] font-semibold shadow-xs'
-                      : 'bg-transparent text-[#24221F]/70 dark:text-[#F5F2EB]/70 border-[#24221F]/15 dark:border-white/10 hover:border-[#A96227] dark:hover:border-[#D4AF37] hover:text-[#A96227] dark:hover:text-[#D4AF37]'
+                      : 'bg-transparent text-[#24221F]/80 dark:text-[#F5F2EB]/80 border-[#24221F]/15 dark:border-white/10 hover:border-[#A96227] dark:hover:border-[#D4AF37] hover:text-[#A96227] dark:hover:text-[#D4AF37]'
                   }`}
                   aria-pressed={isActive}
                 >
@@ -168,18 +168,18 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
 
         {/* Gender / Sub-filter Pill Row */}
         <div className="flex items-center justify-between mb-12 flex-wrap gap-4 border-b border-[#24221F]/10 dark:border-white/10 pb-4">
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] uppercase tracking-[0.2em] text-[#24221F]/60 dark:text-[#F5F2EB]/60 mr-2 font-medium">
+          <div className="flex items-center gap-2.5">
+            <span className="text-xs sm:text-sm uppercase tracking-[0.18em] text-[#24221F]/70 dark:text-[#F5F2EB]/70 mr-2 font-medium">
               Público:
             </span>
             {(['Todos', 'Feminino', 'Masculino'] as const).map((g) => (
               <button
                 key={g}
                 onClick={() => setSelectedGender(g)}
-                className={`px-3.5 py-1.5 text-[11px] uppercase tracking-[0.16em] transition-all duration-200 border rounded-xs active:scale-95 ${
+                className={`px-4 py-2 text-xs sm:text-sm uppercase tracking-[0.14em] transition-all duration-200 border rounded-xs active:scale-95 ${
                   selectedGender === g
                     ? 'bg-[#A96227] dark:bg-[#D4AF37] text-white dark:text-[#121110] border-transparent font-semibold shadow-xs'
-                    : 'bg-transparent border-[#24221F]/15 dark:border-white/10 text-[#24221F]/70 dark:text-[#F5F2EB]/70 hover:border-[#A96227] dark:hover:border-[#D4AF37] hover:text-[#A96227] dark:hover:text-[#D4AF37]'
+                    : 'bg-transparent border-[#24221F]/15 dark:border-white/10 text-[#24221F]/80 dark:text-[#F5F2EB]/80 hover:border-[#A96227] dark:hover:border-[#D4AF37] hover:text-[#A96227] dark:hover:text-[#D4AF37]'
                 }`}
               >
                 {g}
@@ -187,7 +187,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
             ))}
           </div>
 
-          <div className="text-[11px] text-[#24221F]/60 dark:text-[#F5F2EB]/60 font-medium tracking-[0.18em] uppercase">
+          <div className="text-xs sm:text-sm text-[#24221F]/70 dark:text-[#F5F2EB]/70 font-medium tracking-[0.16em] uppercase">
             Mostrando <span className="text-[#A96227] dark:text-[#D4AF37] font-semibold">{filteredPerfumes.length}</span> produtos
           </div>
         </div>
@@ -215,7 +215,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                     brand={perfume.brand}
                     name={perfume.name}
                     aspectRatio="aspect-[3/4]"
-                    padding="p-6 sm:p-7 md:p-8"
+                    padding="p-4 sm:p-5"
                     showContactShadow={true}
                     enableTilt={true}
                     showMistParticles={true}
@@ -223,11 +223,11 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
 
                   {/* Top Badges */}
                   <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-20 pointer-events-none">
-                    <span className="bg-[#24221F]/90 dark:bg-[#201E1B]/95 text-[#F4F0E9] dark:text-[#D4AF37] text-[9px] sm:text-[10px] tracking-[0.22em] px-2.5 py-1 uppercase font-semibold border border-[#24221F]/20 dark:border-[#D4AF37]/30 shadow-xs">
+                    <span className="bg-[#24221F]/90 dark:bg-[#201E1B]/95 text-[#F4F0E9] dark:text-[#D4AF37] text-[11px] tracking-[0.2em] px-3 py-1 uppercase font-semibold border border-[#24221F]/20 dark:border-[#D4AF37]/30 shadow-xs">
                       {perfume.brand}
                     </span>
                     {perfume.badge && (
-                      <span className="bg-[#A96227] dark:bg-[#C97D3E] text-white text-[8px] sm:text-[9px] tracking-[0.2em] px-2.5 py-0.5 uppercase font-semibold shadow-xs">
+                      <span className="bg-[#A96227] dark:bg-[#C97D3E] text-white text-[10px] tracking-[0.18em] px-2.5 py-0.5 uppercase font-semibold shadow-xs">
                         {perfume.badge}
                       </span>
                     )}
@@ -258,7 +258,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                       {perfume.accords.slice(0, 3).map((acc, idx) => (
                         <span
                           key={idx}
-                          className="bg-[#24221F]/80 dark:bg-black/80 backdrop-blur-md text-[#F4F0E9] text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-xs border border-white/15 font-medium"
+                          className="bg-[#24221F]/80 dark:bg-black/80 backdrop-blur-md text-[#F4F0E9] text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-xs border border-white/15 font-medium"
                         >
                           {acc}
                         </span>
@@ -270,7 +270,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                 {/* Tactile Sensory Highlight Ribbon on Card */}
                 <div className="px-6 py-2.5 bg-[#F0EBE2]/70 dark:bg-[#1A1816] border-b border-[#24221F]/8 dark:border-white/8 flex items-center gap-2 text-[#A96227] dark:text-[#D4AF37] transition-colors group-hover:bg-[#EAE3D9] dark:group-hover:bg-[#201D1A]">
                   <Droplets className="w-3.5 h-3.5 shrink-0" />
-                  <span className="text-[10px] tracking-wide font-medium truncate">
+                  <span className="text-xs tracking-wide font-medium truncate">
                     {tactilePhrase}
                   </span>
                 </div>
@@ -279,9 +279,9 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                 <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between space-y-4">
                   <div>
                     {/* Header info */}
-                    <div className="flex items-center justify-between text-[11px] tracking-[0.2em] text-[#A96227] dark:text-[#D4AF37] uppercase mb-1.5 font-semibold">
+                    <div className="flex items-center justify-between text-xs tracking-[0.2em] text-[#A96227] dark:text-[#D4AF37] uppercase mb-1.5 font-semibold">
                       <span>{perfume.family}</span>
-                      <span className="text-[#24221F]/60 dark:text-[#F5F2EB]/60 font-medium">{perfume.size}</span>
+                      <span className="text-[#24221F]/70 dark:text-[#F5F2EB]/70 font-medium">{perfume.size}</span>
                     </div>
 
                     {/* Perfume Title & Brand */}
@@ -293,7 +293,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                     </h3>
 
                     {/* Olfactory Notes */}
-                    <p className="font-sans-clean text-xs sm:text-[13px] text-[#24221F]/75 dark:text-[#F5F2EB]/75 font-light mt-2 leading-relaxed line-clamp-2">
+                    <p className="font-sans-clean text-sm text-[#24221F]/80 dark:text-[#F5F2EB]/80 font-light mt-2 leading-relaxed line-clamp-2">
                       {perfume.shortNotes}
                     </p>
                   </div>
@@ -302,10 +302,10 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                   <div className="pt-4 border-t border-[#24221F]/10 dark:border-white/10 space-y-3">
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-xl sm:text-2xl text-[#24221F] dark:text-[#F5F2EB] font-serif font-medium tracking-tight">
+                        <span className="text-2xl text-[#24221F] dark:text-[#F5F2EB] font-serif font-medium tracking-tight">
                           {perfume.price}
                         </span>
-                        <span className="block text-[10px] text-[#24221F]/55 dark:text-[#F5F2EB]/55 uppercase tracking-wider font-medium">
+                        <span className="block text-xs text-[#24221F]/60 dark:text-[#F5F2EB]/60 uppercase tracking-wider font-medium">
                           {perfume.concentration}
                         </span>
                       </div>
@@ -313,7 +313,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                       <button
                         id={`card-view-details-${perfume.id}`}
                         onClick={() => onSelectPerfume(perfume)}
-                        className="group/btn inline-flex items-center gap-1.5 text-xs tracking-[0.2em] text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] uppercase transition-colors font-medium py-1"
+                        className="group/btn inline-flex items-center gap-1.5 text-xs sm:text-sm tracking-[0.18em] text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] uppercase transition-colors font-medium py-1"
                       >
                         <span>DETALHES</span>
                         <ArrowRight className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] transition-transform group-hover/btn:translate-x-1" />
@@ -332,16 +332,16 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/wa flex items-center justify-center gap-2 py-3 px-3 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-[#F4F0E9] dark:text-[#121110] text-[11px] tracking-[0.16em] uppercase transition-all duration-300 active:scale-[0.97] text-center font-bold shadow-xs hover:shadow-md"
+                        className="group/wa flex items-center justify-center gap-2 py-3 px-3 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-[#F4F0E9] dark:text-[#121110] text-xs tracking-[0.16em] uppercase transition-all duration-300 active:scale-[0.97] text-center font-bold shadow-xs hover:shadow-md"
                       >
-                        <MessageCircle className="w-3.5 h-3.5 transition-transform group-hover/wa:scale-110" />
+                        <MessageCircle className="w-4 h-4 transition-transform group-hover/wa:scale-110" />
                         <span>WHATSAPP</span>
                       </a>
 
                       <button
                         id={`add-to-bag-${perfume.id}`}
                         onClick={() => onAddToCart(perfume)}
-                        className="py-3 px-3 border border-[#24221F]/20 dark:border-white/20 hover:border-[#24221F] dark:hover:border-white hover:bg-[#24221F] hover:text-[#F4F0E9] dark:hover:bg-white dark:hover:text-[#121110] text-[#24221F] dark:text-[#F5F2EB] text-[11px] tracking-[0.16em] uppercase transition-all duration-300 active:scale-[0.97] text-center font-semibold"
+                        className="py-3 px-3 border border-[#24221F]/20 dark:border-white/20 hover:border-[#24221F] dark:hover:border-white hover:bg-[#24221F] hover:text-[#F4F0E9] dark:hover:bg-white dark:hover:text-[#121110] text-[#24221F] dark:text-[#F5F2EB] text-xs tracking-[0.16em] uppercase transition-all duration-300 active:scale-[0.97] text-center font-semibold"
                       >
                         + SACOLA
                       </button>

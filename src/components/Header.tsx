@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, ShoppingBag, Menu, X, Heart, Moon, Sun, Sparkles } from 'lucide-react';
 import { BRAND_INFO } from '../data/perfumes';
 import { MaximoLogo } from './MaximoLogo';
@@ -12,6 +12,7 @@ interface HeaderProps {
   onNavigateSection: (sectionId: string) => void;
   theme: 'light' | 'dark';
   onToggleTheme: () => void;
+  onTriggerEasterEgg?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -23,9 +24,12 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigateSection,
   theme,
   onToggleTheme,
+  onTriggerEasterEgg,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
+  const logoClickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +45,25 @@ export const Header: React.FC<HeaderProps> = ({
     onNavigateSection(id);
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    handleNavClick('hero');
+
+    if (logoClickTimeoutRef.current) {
+      clearTimeout(logoClickTimeoutRef.current);
+    }
+
+    const nextCount = logoClicks + 1;
+    if (nextCount >= 7) {
+      setLogoClicks(0);
+      onTriggerEasterEgg?.();
+    } else {
+      setLogoClicks(nextCount);
+      logoClickTimeoutRef.current = setTimeout(() => {
+        setLogoClicks(0);
+      }, 3500);
+    }
+  };
+
   return (
     <>
       <header
@@ -48,21 +71,22 @@ export const Header: React.FC<HeaderProps> = ({
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           isScrolled
             ? 'bg-[#F4F0E9]/95 dark:bg-[#121110]/95 backdrop-blur-md border-b border-[#24221F]/10 dark:border-white/10 text-[#24221F] dark:text-[#F5F2EB] py-3.5 sm:py-4 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.7)]'
-            : 'bg-gradient-to-b from-black/65 via-black/30 to-transparent text-[#F4F0E9] py-5 sm:py-6'
+            : 'bg-[#F4F0E9]/80 dark:bg-black/60 backdrop-blur-xs border-b border-[#24221F]/5 dark:border-white/5 text-[#24221F] dark:text-[#F4F0E9] py-4 sm:py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between">
-          {/* Brand Logo with Dynamic Transitions */}
+          {/* Brand Logo with Easter Egg Trigger (7 Clicks) */}
           <button
             id="brand-logo-btn"
-            onClick={() => handleNavClick('hero')}
+            onClick={handleLogoClick}
             className={`group text-left focus:outline-none transition-all duration-300 py-1 ${
               isScrolled ? 'scale-95' : 'scale-100'
             }`}
             aria-label="Máximo Eau de Parfum Home"
+            title="Máximo Eau de Parfum"
           >
             <MaximoLogo
-              variant={theme === 'dark' ? 'light' : (isScrolled ? 'dark' : 'light')}
+              variant={theme === 'dark' ? 'light' : 'dark'}
               size="md"
               className="transition-all duration-300 group-hover:scale-[1.02]"
             />
@@ -71,65 +95,45 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Desktop Navigation Links */}
           <nav
             aria-label="Navegação Principal"
-            className="hidden md:flex items-center space-x-9 lg:space-x-11"
+            className="hidden md:flex items-center space-x-8 lg:space-x-10"
           >
             <button
               id="nav-link-colecao"
               onClick={() => handleNavClick('colecao')}
-              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
+              className="text-[13px] tracking-[0.2em] uppercase font-semibold transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-current hover:text-[#A96227] dark:hover:text-[#D4AF37]"
             >
               A Coleção
             </button>
             <button
               id="nav-link-casa"
               onClick={() => handleNavClick('casa')}
-              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
+              className="text-[13px] tracking-[0.2em] uppercase font-semibold transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-current hover:text-[#A96227] dark:hover:text-[#D4AF37]"
             >
               A Casa
             </button>
             <button
               id="nav-link-descoberta"
               onClick={() => handleNavClick('descoberta')}
-              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
+              className="text-[13px] tracking-[0.2em] uppercase font-semibold transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-current hover:text-[#A96227] dark:hover:text-[#D4AF37]"
             >
               Descoberta
             </button>
             <button
               id="nav-link-manifesto"
               onClick={() => handleNavClick('manifesto')}
-              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
+              className="text-[13px] tracking-[0.2em] uppercase font-semibold transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-current hover:text-[#A96227] dark:hover:text-[#D4AF37]"
             >
               Manifesto
             </button>
           </nav>
 
           {/* Actions: Theme Atmosphere Toggle, Search, Wishlist, Bag, Mobile Toggle */}
-          <div className="flex items-center space-x-3 sm:space-x-5">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             {/* Dark / Light Atmosphere Toggle (Sensorial) */}
             <button
               id="theme-atmosphere-toggle-btn"
               onClick={onToggleTheme}
-              className={`p-2 transition-all duration-300 rounded-full flex items-center justify-center focus:outline-none focus:ring-1 focus:ring-[#A96227] dark:focus:ring-[#D4AF37] ${
-                isScrolled
-                  ? 'bg-[#24221F]/5 dark:bg-white/10 hover:bg-[#24221F]/10 dark:hover:bg-white/15 text-[#24221F] dark:text-[#D4AF37]'
-                  : 'bg-black/30 hover:bg-black/50 text-[#F4F0E9]'
-              }`}
+              className="p-2.5 transition-all duration-300 rounded-full flex items-center justify-center focus:outline-none focus:ring-1 focus:ring-[#A96227] dark:focus:ring-[#D4AF37] bg-[#24221F]/5 dark:bg-white/10 hover:bg-[#24221F]/10 dark:hover:bg-white/15 text-[#24221F] dark:text-[#D4AF37]"
               title={
                 theme === 'dark'
                   ? 'Alternar para Modo Atelier Diurno'
@@ -142,9 +146,9 @@ export const Header: React.FC<HeaderProps> = ({
               }
             >
               {theme === 'dark' ? (
-                <Sun className="w-[18px] h-[18px] text-[#D4AF37] animate-in spin-in-180 duration-300" />
+                <Sun className="w-5 h-5 text-[#D4AF37] animate-in spin-in-180 duration-300" />
               ) : (
-                <Moon className="w-[18px] h-[18px] text-[#A96227] dark:text-[#D4AF37] animate-in spin-in-180 duration-300" />
+                <Moon className="w-5 h-5 text-[#A96227] animate-in spin-in-180 duration-300" />
               )}
             </button>
 
@@ -152,38 +156,30 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="search-trigger-btn"
               onClick={onOpenSearch}
-              className={`p-2 transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-sm ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
+              className="p-2.5 transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-full hover:bg-[#24221F]/5 dark:hover:bg-white/10 text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37]"
               aria-label="Buscar fragrâncias ou notas"
+              title="Buscar no catálogo"
             >
-              <Search className="w-[18px] h-[18px] sm:w-5 sm:h-5 stroke-[1.5]" />
+              <Search className="w-5 h-5 stroke-[1.75]" />
             </button>
 
             {/* Favorites */}
             <button
               id="favorites-trigger-btn"
               onClick={onOpenFavorites}
-              className={`relative p-2 transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-sm ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
+              className="relative p-2.5 transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-full hover:bg-[#24221F]/5 dark:hover:bg-white/10 text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37]"
               aria-label={`Ver ${favoritesCount} perfumes favoritados`}
+              title="Ver favoritos"
             >
               <Heart
-                className={`w-[19px] h-[19px] sm:w-5 sm:h-5 stroke-[1.5] transition-colors ${
+                className={`w-5 h-5 stroke-[1.75] transition-colors ${
                   favoritesCount > 0
                     ? 'text-[#A96227] dark:text-[#D4AF37] fill-[#A96227] dark:fill-[#D4AF37]'
-                    : isScrolled
-                    ? 'text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                    : 'text-[#F4F0E9] hover:text-white'
+                    : 'text-[#24221F] dark:text-[#F5F2EB]'
                 }`}
               />
               {favoritesCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#A96227] dark:bg-[#D4AF37] text-white dark:text-[#121110] font-mono text-[9px] rounded-full flex items-center justify-center font-bold shadow-xs animate-in zoom-in-50 duration-200">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#A96227] dark:bg-[#D4AF37] text-white dark:text-[#121110] font-mono text-[10px] rounded-full flex items-center justify-center font-bold shadow-xs animate-in zoom-in-50 duration-200">
                   {favoritesCount}
                 </span>
               )}
@@ -193,16 +189,13 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="cart-trigger-btn"
               onClick={onOpenCart}
-              className={`relative p-2 transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-sm flex items-center gap-2 ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
+              className="relative p-2.5 transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-full hover:bg-[#24221F]/5 dark:hover:bg-white/10 text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37]"
               aria-label={`Sacola com ${cartCount} itens`}
+              title="Ver sacola de compras"
             >
-              <ShoppingBag className="w-[18px] h-[18px] sm:w-5 sm:h-5 stroke-[1.5]" />
+              <ShoppingBag className="w-5 h-5 stroke-[1.75]" />
               {cartCount > 0 && (
-                <span className="w-4 h-4 sm:w-5 sm:h-5 bg-[#A96227] dark:bg-[#D4AF37] text-white dark:text-[#121110] font-mono text-[10px] rounded-full flex items-center justify-center font-bold shadow-xs">
+                <span className="absolute top-1 right-1 w-4 h-4 sm:w-5 sm:h-5 bg-[#A96227] dark:bg-[#D4AF37] text-white dark:text-[#121110] font-mono text-[10px] rounded-full flex items-center justify-center font-bold shadow-xs">
                   {cartCount}
                 </span>
               )}
@@ -212,18 +205,14 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`md:hidden p-2 transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-sm ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
+              className="md:hidden p-2.5 transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-full text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37]"
               aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu de navegação'}
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <X className="w-5 h-5 stroke-[1.5]" />
+                <X className="w-6 h-6 stroke-[1.75]" />
               ) : (
-                <Menu className="w-5 h-5 stroke-[1.5]" />
+                <Menu className="w-6 h-6 stroke-[1.75]" />
               )}
             </button>
           </div>

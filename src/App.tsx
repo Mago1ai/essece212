@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PERFUMES, BRAND_INFO } from './data/perfumes';
+import { PERFUMES as INITIAL_PERFUMES, BRAND_INFO } from './data/perfumes';
 import { Perfume, OlfactoryFamily, CartItem } from './types';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -18,22 +18,29 @@ import { StoryModal } from './components/StoryModal';
 import { ManifestoModal } from './components/ManifestoModal';
 import { DiscoverySetModal } from './components/DiscoverySetModal';
 import { InfoModals } from './components/InfoModals';
-import { DownloadStandaloneButton } from './components/DownloadStandaloneButton';
+import { MasterAuthModal } from './components/MasterAuthModal';
+import { MasterAdminModal } from './components/MasterAdminModal';
 
 export default function App() {
+  const [perfumesList, setPerfumesList] = useState<Perfume[]>(() => {
+    try {
+      const saved = localStorage.getItem('maximo_perfumes_catalog');
+      return saved ? JSON.parse(saved) : INITIAL_PERFUMES;
+    } catch {
+      return INITIAL_PERFUMES;
+    }
+  });
+
   const [activeFamily, setActiveFamily] = useState<OlfactoryFamily>('Todos');
   const [selectedPerfume, setSelectedPerfume] = useState<Perfume | null>(null);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
       const saved = localStorage.getItem('maximo_theme');
       if (saved === 'dark' || saved === 'light') return saved;
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
     } catch {
       // Fallback
     }
-    return 'dark';
+    return 'light';
   });
 
   const [favorites, setFavorites] = useState<string[]>(() => {
@@ -61,6 +68,10 @@ export default function App() {
   const [isManifestoOpen, setIsManifestoOpen] = useState(false);
   const [isDiscoverySetOpen, setIsDiscoverySetOpen] = useState(false);
   const [infoModalType, setInfoModalType] = useState<'contact' | 'returns' | 'privacy' | null>(null);
+  
+  // Easter Egg Master Admin States
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
 
   // Sync theme
   useEffect(() => {
@@ -97,6 +108,25 @@ export default function App() {
       // Ignore in strict private mode
     }
   }, [cartItems]);
+
+  // Sync perfumes catalog
+  const handleSavePerfumes = (updated: Perfume[]) => {
+    setPerfumesList(updated);
+    try {
+      localStorage.setItem('maximo_perfumes_catalog', JSON.stringify(updated));
+    } catch {
+      // Ignore
+    }
+  };
+
+  const handleResetPerfumes = () => {
+    setPerfumesList(INITIAL_PERFUMES);
+    try {
+      localStorage.removeItem('maximo_perfumes_catalog');
+    } catch {
+      // Ignore
+    }
+  };
 
   const handleToggleFavorite = (id: string) => {
     setFavorites((prev) =>
@@ -151,6 +181,10 @@ export default function App() {
     handleNavigateSection('colecao');
   };
 
+  const handleEasterEggTrigger = () => {
+    setIsAuthModalOpen(true);
+  };
+
   const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -165,22 +199,28 @@ export default function App() {
         onNavigateSection={handleNavigateSection}
         theme={theme}
         onToggleTheme={handleToggleTheme}
+        onTriggerEasterEgg={handleEasterEggTrigger}
       />
 
       {/* Main Content Sections */}
       <main>
         {/* 1. Hero Section */}
         <Hero
+          perfumes={perfumesList}
           onExploreCollection={() => handleNavigateSection('colecao')}
           onScrollToNext={() => handleNavigateSection('casa')}
+          onSelectPerfume={setSelectedPerfume}
         />
 
         {/* 2. House Section (01 — A CASA) */}
-        <HouseSection onOpenStoryModal={() => setIsStoryOpen(true)} />
+        <HouseSection
+          onOpenStoryModal={() => setIsStoryOpen(true)}
+          onSelectPerfume={setSelectedPerfume}
+        />
 
         {/* 3. Collection Section (02 — A COLEÇÃO) */}
         <CollectionSection
-          perfumes={PERFUMES}
+          perfumes={perfumesList}
           activeFamily={activeFamily}
           onSelectFamily={setActiveFamily}
           onSelectPerfume={setSelectedPerfume}
@@ -209,6 +249,7 @@ export default function App() {
         onOpenPrivacyModal={() => setInfoModalType('privacy')}
         onOpenReturnsModal={() => setInfoModalType('returns')}
         onOpenContactModal={() => setInfoModalType('contact')}
+        onTriggerEasterEgg={handleEasterEggTrigger}
       />
 
       {/* Product Details Modal */}
@@ -244,7 +285,7 @@ export default function App() {
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        perfumes={PERFUMES}
+        perfumes={perfumesList}
         onSelectPerfume={setSelectedPerfume}
       />
 
@@ -264,8 +305,24 @@ export default function App() {
       {/* Contact, Privacy & Returns Modals */}
       <InfoModals type={infoModalType} onClose={() => setInfoModalType(null)} />
 
-      {/* Floating Single-File HTML Download Trigger */}
-      <DownloadStandaloneButton />
+      {/* Secret Master Admin Easter Egg Auth Modal */}
+      <MasterAuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        onSuccess={() => {
+          setIsAuthModalOpen(false);
+          setIsAdminModalOpen(true);
+        }}
+      />
+
+      {/* Secret Master Admin Catalog Manager */}
+      <MasterAdminModal
+        isOpen={isAdminModalOpen}
+        onClose={() => setIsAdminModalOpen(false)}
+        perfumes={perfumesList}
+        onSavePerfumes={handleSavePerfumes}
+        onResetToDefault={handleResetPerfumes}
+      />
     </div>
   );
 }
