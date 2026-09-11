@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <!-- Liquid Gradient (Golden-Amber Glow) -->
+    <linearGradient id="cap-liquid" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E8BE78" stop-opacity="0.8"/>
+      <stop offset="25%" stop-color="#FAE8BE" stop-opacity="0.95"/>
+      <stop offset="65%" stop-color="#F2D194" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#D9A855" stop-opacity="0.9"/>
+    </linearGradient>
+    <!-- Label Gradient (Warm Ivory-Peach) -->
+    <linearGradient id="cap-label" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDFBF8"/>
+      <stop offset="100%" stop-color="#F7EEE4"/>
+    </linearGradient>
+    <filter id="cap-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#000000" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#cap-shadow)">
+    <!-- Decorative Pearls on Golden Dish at the base (from photo) -->
+    <g transform="translate(130, 420) scale(0.65)" opacity="0.9">
+      <circle cx="0" cy="0" r="14" fill="#FCFAF2" stroke="#E5DAC5" stroke-width="0.8"/>
+      <circle cx="-5" cy="-5" r="4" fill="#FFFFFF"/>
+      <circle cx="18" cy="6" r="12" fill="#F8F4E6" stroke="#E5DAC5" stroke-width="0.8"/>
+      <circle cx="15" cy="2" r="3" fill="#FFFFFF"/>
+      <circle cx="-16" cy="8" r="10" fill="#FAF6EA" stroke="#E5DAC5" stroke-width="0.8"/>
+    </g>
+
+    <!-- Translucent Overcap (Top) -->
+    <rect x="180" y="60" width="40" height="75" rx="5" fill="#FFFFFF" fill-opacity="0.5" stroke="#E2D8CA" stroke-width="1.2"/>
+    <rect x="182" y="63" width="8" height="69" rx="2" fill="#FFFFFF" fill-opacity="0.6"/>
+
+    <!-- White Spray Pump & Collar -->
+    <rect x="186" y="80" width="28" height="40" rx="3" fill="#FFFFFF" stroke="#DCD3C5" stroke-width="1"/>
+    <rect x="176" y="130" width="48" height="35" rx="3" fill="#FFFFFF" stroke="#DCD3C5" stroke-width="1.2"/>
+    <line x1="176" y1="145" x2="224" y2="145" stroke="#E0D6C8" stroke-width="1"/>
+
+    <!-- Slender 60ml Glass Bottle -->
+    <rect x="162" y="165" width="76" height="265" rx="10" fill="#FFFFFF" fill-opacity="0.3" stroke="#E2D8CA" stroke-width="1.2"/>
+    <!-- Liquid Layer -->
+    <rect x="165" y="180" width="70" height="245" rx="6" fill="url(#cap-liquid)"/>
+
+    <!-- Dip Tube -->
+    <line x1="200" y1="165" x2="201" y2="420" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.8"/>
+
+    <!-- Label Wrap (Pastel Floral Máximo Label) -->
+    <rect x="166" y="210" width="68" height="175" rx="3" fill="url(#cap-label)" stroke="#D4AF37" stroke-width="0.9"/>
+    
+    <!-- Top Floral Border Pattern -->
+    <g transform="translate(200, 222) scale(0.45)">
+      <circle cx="-25" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
+      <circle cx="0" cy="-2" r="8" fill="#E8788E" opacity="0.9"/>
+      <circle cx="25" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
+      <path d="M-12,-4 Q-16,-8 -10,-8 Z" fill="#88A878"/>
+      <path d="M12,-4 Q16,-8 10,-8 Z" fill="#88A878"/>
+    </g>
+
+    <!-- Brand Typography "Máximo" -->
+    <text x="200" y="255" font-family="'Cormorant Garamond', 'Alex Brush', cursive, serif" font-size="20" font-style="italic" font-weight="600" fill="#24221F" text-anchor="middle" letter-spacing="1">Máximo</text>
+    
+    <line x1="178" y1="266" x2="222" y2="266" stroke="#D4AF37" stroke-width="0.7"/>
+
+    <!-- Product Name "PERFUME CAPILAR" -->
+    <text x="200" y="286" font-family="'Cormorant Garamond', serif" font-size="9" font-weight="700" fill="#24221F" text-anchor="middle" letter-spacing="1.5">PERFUME</text>
+    <text x="200" y="298" font-family="'Cormorant Garamond', serif" font-size="9" font-weight="700" fill="#24221F" text-anchor="middle" letter-spacing="1.5">CAPILAR</text>
+
+    <!-- Volume "60ml" -->
+    <text x="200" y="322" font-family="'DM Sans', sans-serif" font-size="8" font-weight="600" fill="#7A6F62" text-anchor="middle" letter-spacing="1">60ml</text>
+
+    <!-- Bottom Botanical Rose Illustration (from photo) -->
+    <g transform="translate(200, 352) scale(0.55)">
+      <circle cx="-16" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
+      <circle cx="0" cy="4" r="8" fill="#E8788E" opacity="0.9"/>
+      <circle cx="16" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
+      <path d="M-8,8 Q-12,14 -6,12 Z" fill="#88A878"/>
+      <path d="M8,8 Q12,14 6,12 Z" fill="#88A878"/>
+      <path d="M-20,-4 Q-24,-8 -18,-8 Z" fill="#88A878"/>
+      <path d="M20,-4 Q24,-8 18,-8 Z" fill="#88A878"/>
+    </g>
+
+    <!-- Glass Highlights -->
+    <path d="M 166 170 L 172 170 L 170 425 L 165 425 Z" fill="#FFFFFF" fill-opacity="0.4"/>
+    <path d="M 232 170 L 235 170 L 233 425 L 230 425 Z" fill="#FFFFFF" fill-opacity="0.2"/>
+  </g>
+</svg>

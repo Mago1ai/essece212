@@ -1,0 +1,7 @@
+{
+  "name": "Máximo Eau de Parfum",
+  "description": "Catálogo de alta perfumaria e cosméticos autorais Máximo Eau de Parfum. Fragrâncias sofisticadas, notas nobres e atendimento exclusivo via WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
