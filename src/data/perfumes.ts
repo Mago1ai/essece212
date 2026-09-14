@@ -1,4 +1,89 @@
-import { Perfume, StoreSettings } from '../types';
+import { Perfume, StoreSettings, CollectionOrigin } from '../types';
+
+export interface CollectionMeta {
+  id: 'autorais' | 'importados' | 'renomeados';
+  title: string;
+  subtitle: string;
+  tagline: string;
+  description: string;
+  editorialAtmosphere: string;
+  curatorshipHighlights: string[];
+  image: string;
+  badge: string;
+  accentColor: string;
+}
+
+export const COLLECTIONS_DATA: Record<'autorais' | 'importados' | 'renomeados', CollectionMeta> = {
+  autorais: {
+    id: 'autorais',
+    title: 'Autorais',
+    subtitle: 'Criações Exclusivas da Casa Máximo',
+    tagline: 'Fórmulas autorais desenvolvidas com matérias-primas nobres e toque aveludado',
+    description:
+      'A assinatura autêntica da Casa Máximo. Linha de alta perfumaria e cosméticos de luxo desenvolvidos com extratos botânicos refinados, texturas acetinadas e fixação prolongada.',
+    editorialAtmosphere: 'O ritual íntimo de autocuidado com toque de seda e perfumação nobre em camadas.',
+    curatorshipHighlights: [
+      'Sabonete Líquido Iluminador',
+      'Body Splash Floral Acetinado',
+      'Creme Corporal Toque de Seda',
+      'Perfume Capilar Anti-Frizz',
+    ],
+    image: '/assets/maximo-kit-ritual.svg',
+    badge: 'COLEÇÃO AUTORAL',
+    accentColor: '#A96227',
+  },
+  importados: {
+    id: 'importados',
+    title: 'Importados',
+    subtitle: 'Alta Perfumaria & Nicho Internacional',
+    tagline: 'Ícones mundiais de casas francesas, italianas e nova-iorquinas',
+    description:
+      'A grandiosidade das maiores casas de perfumaria do mundo. Uma curadoria criteriosa de fragrâncias de nicho e grifes de prestígio internacional com pirâmides olfativas opulentas.',
+    editorialAtmosphere: 'A sofisticação atemporal dos grandes boulevards de Paris e salões de alta costura.',
+    curatorshipHighlights: [
+      'Creed Aventus',
+      'Parfums de Marly Delina & Althaïr',
+      'Carolina Herrera Good Girl & 212',
+      'YSL Libre',
+    ],
+    image: 'https://pngimg.com/d/perfume_PNG10292.png',
+    badge: 'SELEÇÃO INTERNACIONAL',
+    accentColor: '#D4AF37',
+  },
+  renomeados: {
+    id: 'renomeados',
+    title: 'Renomeados',
+    subtitle: 'Identidade Própria & Referências Consagradas',
+    tagline: 'Fragrâncias consagradas com nomes e identidades reconhecidas',
+    description:
+      'Criações consagradas com identidade própria e formulações marcantes que conquistaram admiração pela harmonia olfativa, presença cativante e elegância.',
+    editorialAtmosphere: 'O charme vibrante e a elegância de fragrâncias que marcaram momentos inesquecíveis.',
+    curatorshipHighlights: [
+      'Glamour O Boticário',
+      'Florais Envolventes',
+      'Clássicos Contemporâneos',
+    ],
+    image: 'https://pngimg.com/d/perfume_PNG10308.png',
+    badge: 'LINHA RENOMADA',
+    accentColor: '#8C5A3C',
+  },
+};
+
+export function getPerfumeCollectionOrigin(perfume: Perfume): 'autorais' | 'importados' | 'renomeados' {
+  if (perfume.collectionOrigin) return perfume.collectionOrigin;
+  if (perfume.brand === 'Máximo' || perfume.category === 'Linha Máximo' || perfume.badge?.includes('LINHA PRÓPRIA')) {
+    return 'autorais';
+  }
+  if (
+    perfume.brand === 'O Boticário' ||
+    perfume.brand?.toLowerCase().includes('boticário') ||
+    perfume.badge?.includes('RENOMEADO') ||
+    perfume.category?.includes('Renomeado')
+  ) {
+    return 'renomeados';
+  }
+  return 'importados';
+}
 
 export const PERFUMES: Perfume[] = [
   // --- LINHA MÁXIMO EAU DE PARFUM & COSMÉTICOS (LINHA PRÓPRIA AUTORAL) ---
@@ -10,6 +95,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Linha Máximo',
     gender: 'Feminino',
     category: 'Linha Máximo',
+    collectionOrigin: 'autorais',
     accords: ['limpeza suave', 'floral nobre', 'aveludado', 'hidratante', 'toque de seda'],
     notes: {
       top: ['Flor de Laranjeira', 'Pera Francesa', 'Toque de Bergamota'],
@@ -38,6 +124,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Linha Máximo',
     gender: 'Feminino',
     category: 'Linha Máximo',
+    collectionOrigin: 'autorais',
     accords: ['floral', 'frutado', 'aveludado', 'baunilha', 'almiscarado'],
     notes: {
       top: ['Pera Francesa', 'Pétalas de Peônia Rosa', 'Toque de Bergamota'],
@@ -66,6 +153,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Linha Máximo',
     gender: 'Feminino',
     category: 'Linha Máximo',
+    collectionOrigin: 'autorais',
     accords: ['hidratante', 'floral suave', 'baunilha', 'manteiga de karité'],
     notes: {
       top: ['Néroli Suave', 'Flor de Algodão'],
@@ -94,6 +182,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Linha Máximo',
     gender: 'Feminino',
     category: 'Linha Máximo',
+    collectionOrigin: 'autorais',
     accords: ['brilho radiante', 'floral leve', 'fresco', 'anti-frizz'],
     notes: {
       top: ['Gotas de Orvalho', 'Maçã Verde'],
@@ -121,6 +210,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Linha Máximo',
     gender: 'Feminino',
     category: 'Linha Máximo',
+    collectionOrigin: 'autorais',
     accords: ['ritual completo', 'banho & corpo', 'alta perfumação'],
     notes: {
       top: ['Sabonete Líquido 190ml'],
@@ -150,6 +240,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Amadeirados',
     gender: 'Masculino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['frutado', 'doce', 'amadeirado', 'couro', 'cítrico', 'defumado', 'almiscarado', 'fresco', 'tropical', 'musgo'],
     notes: {
       top: ['Abacaxi Real', 'Bergamota Siciliana', 'Groselha Preta', 'Maçã Crocante'],
@@ -178,6 +269,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Ambarados',
     gender: 'Masculino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['especiado quente', 'canela', 'cítrico', 'âmbar', 'amadeirado', 'couro', 'rosa', 'animálico', 'patchouli'],
     notes: {
       top: ['Mandarina Sanguínea', 'Toranja Espumante', 'Hortelã'],
@@ -206,6 +298,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Orientais',
     gender: 'Masculino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['doce', 'baunilha', 'especiado quente', 'canela', 'aromático', 'atalcado', 'almiscarado', 'cítrico', 'âmbar', 'floral branco'],
     notes: {
       top: ['Flor de Laranjeira', 'Bergamota da Calábria', 'Canela do Ceilão', 'Cardamomo da Guatemala'],
@@ -234,6 +327,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Florais',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['doce', 'floral branco', 'especiado quente', 'baunilha', 'âmbar', 'cacau', 'amadeirado', 'tuberosa', 'amêndoa', 'atalcado'],
     notes: {
       top: ['Amêndoa Torrada', 'Café Arábica', 'Bergamota', 'Limão Siciliano'],
@@ -262,6 +356,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Frescos',
     gender: 'Masculino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['cítrico', 'verde', 'fresco especiado', 'aromático', 'amadeirado', 'atalcado', 'especiado quente', 'almiscarado', 'lavanda', 'herbal'],
     notes: {
       top: ['Folhas Verdes', 'Toranja', 'Especiarias', 'Bergamota', 'Lavanda', 'Petitgrain'],
@@ -289,6 +384,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Amadeirados',
     gender: 'Masculino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['especiado quente', 'amadeirado', 'couro', 'rum', 'âmbar', 'tabaco', 'doce', 'baunilha', 'animálico', 'íris'],
     notes: {
       top: ['Rum Envelhecido', 'Tabaco Picante', 'Especiarias Quentes'],
@@ -317,6 +413,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Gourmand & Frutados',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['doce', 'patchouli', 'frutado', 'especiado quente', 'caramelo', 'baunilha', 'amadeirado', 'mel', 'atalcado', 'chocolate'],
     notes: {
       top: ['Algodão Doce', 'Coco', 'Cassis', 'Melão', 'Bergamota', 'Abacaxi'],
@@ -344,6 +441,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Florais',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['mel', 'doce', 'floral branco', 'cítrico', 'caramelo', 'animálico', 'cera de abelha', 'patchouli', 'floral', 'madeira'],
     notes: {
       top: ['Laranja Sanguínea', 'Mandarina Suculenta'],
@@ -371,6 +469,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Florais',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['floral branco', 'cítrico', 'lavanda', 'baunilha', 'aromático', 'doce', 'atalcado', 'almiscarado', 'amadeirado'],
     notes: {
       top: ['Lavanda Francesa', 'Mandarina', 'Groselha Preta', 'Petitgrain'],
@@ -399,6 +498,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Florais',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['rosa', 'floral', 'frutado', 'fresco', 'almiscarado', 'aromático', 'verde', 'atalcado', 'tropical', 'amadeirado'],
     notes: {
       top: ['Lichia Doce', 'Ruibarbo Crocante', 'Bergamota', 'Noz-moscada'],
@@ -427,6 +527,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Florais',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['rosa', 'cítrico', 'amadeirado', 'almiscarado', 'atalcado', 'âmbar', 'íris', 'floral', 'terroso', 'fresco'],
     notes: {
       top: ['Água de Rosas Fresca', 'Bergamota', 'Cítricos Luminosos'],
@@ -454,6 +555,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Gourmand & Frutados',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['floral', 'tropical', 'frutado', 'baunilha', 'fresco', 'patchouli'],
     notes: {
       top: ['Fruta do Dragão Rosa', 'Frutas Tropicais Exóticas', 'Bergamota'],
@@ -482,6 +584,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Gourmand & Frutados',
     gender: 'Feminino',
     category: 'Body Mist & Capilar',
+    collectionOrigin: 'importados',
     accords: ['tropical', 'frutado', 'floral', 'almiscarado', 'baunilha', 'floral branco', 'marinho', 'fresco', 'atalcado'],
     notes: {
       top: ['Jasmim Brasileiro', 'Fruta do Dragão Rosa'],
@@ -510,6 +613,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Gourmand & Frutados',
     gender: 'Feminino',
     category: 'Body Mist & Capilar',
+    collectionOrigin: 'importados',
     accords: ['baunilha', 'atalcado', 'amadeirado', 'almiscarado', 'âmbar', 'doce'],
     notes: {
       top: ['Baunilha Batida Doce'],
@@ -538,6 +642,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Florais',
     gender: 'Feminino',
     category: 'Body Mist & Capilar',
+    collectionOrigin: 'importados',
     accords: ['frutado', 'floral', 'fresco', 'doce', 'atalcado', 'floral branco'],
     notes: {
       top: ['Pêssego Suculento', 'Cereja Silvestre'],
@@ -565,6 +670,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Florais',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['floral', 'almiscarado', 'frutado', 'amadeirado', 'atalcado', 'rosa', 'champagne'],
     notes: {
       top: ['Champagne Rosé Efervescente', 'Frutas Vermelhas'],
@@ -592,6 +698,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Gourmand & Frutados',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'importados',
     accords: ['doce', 'frutado', 'tropical', 'fresco', 'chocolate', 'gourmand'],
     notes: {
       top: ['Kiwi Exótico', 'Lichia Vermelha', 'Marmelo Dourado'],
@@ -620,6 +727,7 @@ export const PERFUMES: Perfume[] = [
     family: 'Florais',
     gender: 'Feminino',
     category: 'Perfumes',
+    collectionOrigin: 'renomeados',
     accords: ['cítrico', 'atalcado', 'amadeirado', 'especiado quente', 'almiscarado', 'fresco', 'floral', 'floral branco', 'doce', 'íris'],
     notes: {
       top: ['Mandarina', 'Ameixa Preta', 'Néroli', 'Cítricos Frescos'],
@@ -686,7 +794,7 @@ export const DEFAULT_STORE_SETTINGS: StoreSettings = {
   tagline: 'A arte da alta perfumaria e do autocuidado refinado.',
   instagram: '@maximoeaudeparfum',
   email: 'contato@maximoperfumes.com.br',
-  orderMessagePrefix: 'Olá! Gostaria de fazer o pedido de',
+  orderMessagePrefix: 'Olá! Tenho interesse no perfume',
   adminPassword: '@Luangalo013',
 };
 
@@ -743,9 +851,8 @@ export function createProductWhatsAppLink(
 ): string {
   const settings = getStoreSettings();
   const sizeText = size ? ` (${size})` : '';
-  const priceText = price ? ` no valor de ${price}` : '';
-  const brandText = brand && brand !== 'Máximo' ? ` da marca ${brand}` : '';
-  const prefix = settings.orderMessagePrefix || 'Olá! Gostaria de fazer o pedido de';
-  const text = `${prefix} ${perfumeName}${brandText}${sizeText}${priceText} visto no site ${settings.storeName}.`;
+  const priceText = price ? ` [${price}]` : '';
+  const brandText = brand ? ` da marca ${brand}` : '';
+  const text = `Olá! Tenho interesse no perfume ${perfumeName}${brandText}${sizeText}${priceText} que vi no catálogo Máximo Eau de Parfum. Poderia me passar mais detalhes e disponibilidade?`;
   return createWhatsAppLink(text, settings.phoneWhatsApp);
 }

@@ -3,6 +3,7 @@ import { ArrowRight, ArrowDown, Sparkles, Droplets, Eye, MessageCircle } from 'l
 import { Perfume } from '../types';
 import { createProductWhatsAppLink } from '../data/perfumes';
 import { EditorialImage } from './EditorialImage';
+import { MaximoLogo } from './MaximoLogo';
 
 interface HeroProps {
   perfumes: Perfume[];
@@ -59,35 +60,39 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-28 flex flex-col justify-between min-h-[85vh] md:min-h-[90vh]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mt-8 sm:mt-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 md:py-28 flex flex-col justify-between min-h-[85vh] md:min-h-[90vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 items-center mt-6 sm:mt-12">
           {/* Left Column: Editorial Display Typography */}
           <div className="lg:col-span-7 max-w-xl">
-            {/* Subtle Label */}
-            <div className="inline-flex items-center gap-3 mb-6 sm:mb-8">
-              <span className="w-8 h-[1px] bg-[#A96227] dark:bg-[#D4AF37]" />
-              <span className="text-[11px] sm:text-[12px] tracking-[0.28em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
-                MÁXIMO EAU DE PARFUM · ALTA PERFUMARIA
-              </span>
+            {/* Official Logo - Static, Majestic Presence */}
+            <div className="mb-4 sm:mb-8 flex flex-col items-start">
+              <div className="relative group">
+                <MaximoLogo
+                  variant="adaptive"
+                  size="hero"
+                  id="hero-official-brandmark"
+                  className="origin-left transform transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+              </div>
             </div>
 
             {/* Editorial Display Heading */}
-            <h1 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[0.01em] leading-[1.08] text-[#24221F] dark:text-[#F4F0E9] mb-6 sm:mb-8">
+            <h1 className="font-serif-editorial text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[0.01em] leading-[1.1] text-[#24221F] dark:text-[#F4F0E9] mb-4 sm:mb-8">
               A presença que <br />
               <span className="italic font-normal text-[#A96227] dark:text-[#D4AF37]">permanece.</span>
             </h1>
 
             {/* Poetic Subtitle */}
-            <p className="font-sans-clean text-lg sm:text-xl md:text-2xl text-[#24221F]/85 dark:text-[#F4F0E9]/90 font-light leading-relaxed max-w-xl mb-8 sm:mb-10">
+            <p className="font-sans-clean text-base sm:text-xl md:text-2xl text-[#24221F]/85 dark:text-[#F4F0E9]/90 font-light leading-relaxed max-w-xl mb-6 sm:mb-10">
               Fragrâncias e cosméticos nobres criados para marcar presença com distinção, elegância e sensorialidade aveludada.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <button
                 id="hero-cta-btn"
                 onClick={onExploreCollection}
-                className="group inline-flex items-center gap-3.5 px-8 py-4 bg-[#24221F] hover:bg-[#A96227] text-white dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] dark:text-[#121110] text-sm tracking-[0.2em] uppercase transition-all duration-300 active:scale-[0.97] focus:outline-none font-bold shadow-lg shadow-black/10 dark:shadow-[#D4AF37]/15"
+                className="group inline-flex items-center justify-center gap-3.5 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] bg-[#24221F] hover:bg-[#A96227] text-white dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] dark:text-[#121110] text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 active:scale-[0.97] focus:outline-none font-bold shadow-lg shadow-black/10 dark:shadow-[#D4AF37]/15 rounded-xs"
               >
                 <span>VER CATÁLOGO COMPLETO</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -98,7 +103,7 @@ export const Hero: React.FC<HeroProps> = ({
                 href="https://wa.me/5531975394776?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20as%20fragr%C3%A2ncias%20da%20M%C3%A1ximo%20Eau%20de%20Parfum."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 px-7 py-4 border border-[#24221F]/20 dark:border-white/20 hover:border-[#A96227] dark:hover:border-[#D4AF37] bg-white/80 dark:bg-black/40 hover:bg-white dark:hover:bg-black/60 backdrop-blur-md text-[#24221F] dark:text-[#F4F0E9] text-sm tracking-[0.16em] uppercase transition-all duration-300 active:scale-[0.97] font-semibold"
+                className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 min-h-[48px] border border-[#24221F]/20 dark:border-white/20 hover:border-[#A96227] dark:hover:border-[#D4AF37] bg-white/80 dark:bg-black/40 hover:bg-white dark:hover:bg-black/60 backdrop-blur-md text-[#24221F] dark:text-[#F4F0E9] text-xs sm:text-sm tracking-[0.16em] uppercase transition-all duration-300 active:scale-[0.97] font-semibold rounded-xs"
               >
                 <MessageCircle className="w-4 h-4 text-[#A96227] dark:text-[#D4AF37]" />
                 <span>CONSULTORIA WHATSAPP</span>
@@ -106,21 +111,21 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Brand Distinctions */}
-            <div className="flex items-center gap-6 sm:gap-10 mt-10 pt-8 border-t border-[#24221F]/10 dark:border-white/10 text-sm text-[#24221F]/80 dark:text-white/70 font-mono-subtle">
+            <div className="flex items-center gap-6 sm:gap-10 mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[#24221F]/10 dark:border-white/10 text-sm text-[#24221F]/80 dark:text-white/70 font-mono-subtle">
               <div>
-                <span className="block text-[#A96227] dark:text-[#D4AF37] font-semibold text-base">Envio Cortesia</span>
+                <span className="block text-[#A96227] dark:text-[#D4AF37] font-semibold text-sm sm:text-base">Envio Cortesia</span>
                 <span className="text-xs sm:text-sm text-[#24221F]/70 dark:text-white/60">Todo o Brasil</span>
               </div>
-              <div className="w-[1px] h-9 bg-[#24221F]/15 dark:bg-white/15" />
+              <div className="w-[1px] h-8 sm:h-9 bg-[#24221F]/15 dark:bg-white/15" />
               <div>
-                <span className="block text-[#24221F] dark:text-white font-semibold text-base">Edições Numeradas</span>
+                <span className="block text-[#24221F] dark:text-white font-semibold text-sm sm:text-base">Edições Numeradas</span>
                 <span className="text-xs sm:text-sm text-[#24221F]/70 dark:text-white/60">Lotes Artesanais</span>
               </div>
             </div>
           </div>
 
           {/* Right Column: Interactive Animated Perfume Showcase */}
-          <div className="lg:col-span-5 flex flex-col items-center">
+          <div className="lg:col-span-5 flex flex-col items-center mt-4 sm:mt-0">
             {activePerfume && (
               <div className="w-full max-w-md relative group">
                 {/* Floating Glow Behind Bottle */}
@@ -128,16 +133,16 @@ export const Hero: React.FC<HeroProps> = ({
 
                 {/* Main Interactive Animated Bottle Container */}
                 <div
-                  className="relative z-10 bg-[#FAF8F5]/90 dark:bg-gradient-to-b dark:from-[#1E1C19]/90 dark:to-[#141210]/95 border border-[#24221F]/10 dark:border-white/15 p-6 sm:p-7 rounded-xs shadow-[0_20px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-md cursor-pointer transition-all duration-500 hover:border-[#A96227]/60 dark:hover:border-[#D4AF37]/60"
+                  className="relative z-10 bg-[#FAF8F5]/90 dark:bg-gradient-to-b dark:from-[#1E1C19]/90 dark:to-[#141210]/95 border border-[#24221F]/10 dark:border-white/15 p-5 sm:p-7 rounded-xs shadow-[0_20px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-md cursor-pointer transition-all duration-500 hover:border-[#A96227]/60 dark:hover:border-[#D4AF37]/60"
                   onClick={() => onSelectPerfume(activePerfume)}
                 >
                   {/* Top Badge on Stage */}
-                  <div className="flex items-center justify-between mb-4 text-xs tracking-[0.2em] uppercase font-semibold">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4 text-xs tracking-[0.2em] uppercase font-semibold">
                     <span className="text-[#A96227] dark:text-[#D4AF37] flex items-center gap-1.5 text-xs">
                       <Sparkles className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37]" />
                       EM DESTAQUE
                     </span>
-                    <span className="text-[#24221F]/80 dark:text-white/80 bg-[#24221F]/5 dark:bg-white/10 px-2.5 py-1 rounded-xs text-[11px]">
+                    <span className="text-[#24221F]/80 dark:text-white/80 bg-[#24221F]/5 dark:bg-white/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-xs text-[10px] sm:text-[11px]">
                       {activePerfume.family}
                     </span>
                   </div>
@@ -159,21 +164,21 @@ export const Hero: React.FC<HeroProps> = ({
                   </div>
 
                   {/* Bottle Info Overlay */}
-                  <div className="mt-5 pt-4 border-t border-[#24221F]/10 dark:border-white/10 flex items-end justify-between">
+                  <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-[#24221F]/10 dark:border-white/10 flex items-end justify-between">
                     <div>
                       <span className="text-xs text-[#A96227] dark:text-[#D4AF37] font-semibold uppercase tracking-widest block">
                         {activePerfume.brand}
                       </span>
-                      <h3 className="font-serif-editorial text-2xl sm:text-3xl text-[#24221F] dark:text-white font-normal leading-tight group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37] transition-colors mt-0.5">
+                      <h3 className="font-serif-editorial text-xl sm:text-3xl text-[#24221F] dark:text-white font-normal leading-tight group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37] transition-colors mt-0.5">
                         {activePerfume.name}
                       </h3>
-                      <p className="text-sm text-[#24221F]/80 dark:text-white/80 font-light mt-1">
+                      <p className="text-xs sm:text-sm text-[#24221F]/80 dark:text-white/80 font-light mt-1">
                         {activePerfume.size} · {activePerfume.concentration}
                       </p>
                     </div>
 
                     <div className="text-right">
-                      <span className="text-2xl text-[#24221F] dark:text-white font-serif font-medium block">
+                      <span className="text-xl sm:text-2xl text-[#24221F] dark:text-white font-serif font-medium block">
                         {activePerfume.price}
                       </span>
                       <button
@@ -191,12 +196,12 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
 
                 {/* Interactive Bottle Selector Pills */}
-                <div className="flex items-center justify-center gap-2.5 mt-5 overflow-x-auto py-1 max-w-full">
+                <div className="flex items-center justify-start sm:justify-center gap-2 mt-4 overflow-x-auto py-1 max-w-full no-scrollbar">
                   {featuredPerfumes.map((p, idx) => (
                     <button
                       key={p.id}
                       onClick={() => setCurrentIndex(idx)}
-                      className={`px-4 py-2 text-xs tracking-[0.16em] uppercase border transition-all duration-300 whitespace-nowrap rounded-xs font-semibold ${
+                      className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs tracking-[0.14em] sm:tracking-[0.16em] uppercase border transition-all duration-300 whitespace-nowrap rounded-xs font-semibold shrink-0 ${
                         currentIndex === idx
                           ? 'bg-[#24221F] text-white border-[#24221F] dark:bg-[#D4AF37] dark:text-[#121110] dark:border-[#D4AF37] scale-105 shadow-md'
                           : 'bg-white/90 dark:bg-black/60 text-[#24221F]/80 dark:text-white/80 border-[#24221F]/20 dark:border-white/20 hover:border-[#A96227] dark:hover:border-white/40'
@@ -212,8 +217,8 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Bottom Editorial Coordinates & Scroll Indicator */}
-        <div className="flex items-end justify-between pt-12 border-t border-[#24221F]/10 dark:border-white/15 text-[#24221F]/70 dark:text-white/70">
-          <div className="flex items-center gap-3">
+        <div className="flex items-end justify-between pt-8 sm:pt-12 border-t border-[#24221F]/10 dark:border-white/15 text-[#24221F]/70 dark:text-white/70 mt-6 sm:mt-0">
+          <div className="flex items-center gap-2 sm:gap-3">
             <span className="text-xs tracking-[0.2em] text-[#A96227] dark:text-[#D4AF37] font-medium">
               01 / 04
             </span>
@@ -226,14 +231,14 @@ export const Hero: React.FC<HeroProps> = ({
           <button
             id="hero-scroll-down-btn"
             onClick={onScrollToNext}
-            className="group flex items-center gap-3 text-left focus:outline-none"
+            className="group flex items-center gap-2 sm:gap-3 text-left focus:outline-none min-h-[44px] py-1"
             aria-label="Deslizar para a próxima seção"
           >
-            <span className="text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[#A96227] dark:text-[#D4AF37] group-hover:text-[#24221F] dark:group-hover:text-white transition-colors font-semibold">
+            <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-[#A96227] dark:text-[#D4AF37] group-hover:text-[#24221F] dark:group-hover:text-white transition-colors font-semibold">
               DESLIZE PARA A COLEÇÃO
             </span>
-            <div className="w-8 h-8 rounded-full border border-[#24221F]/30 dark:border-white/30 flex items-center justify-center group-hover:border-[#A96227] dark:group-hover:border-[#D4AF37] transition-colors">
-              <ArrowDown className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] group-hover:translate-y-0.5 transition-transform" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#24221F]/30 dark:border-white/30 flex items-center justify-center group-hover:border-[#A96227] dark:group-hover:border-[#D4AF37] transition-colors">
+              <ArrowDown className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#A96227] dark:text-[#D4AF37] group-hover:translate-y-0.5 transition-transform" />
             </div>
           </button>
         </div>

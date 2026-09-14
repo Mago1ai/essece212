@@ -1,3 +1,5 @@
+export type CollectionOrigin = 'all' | 'autorais' | 'importados' | 'renomeados';
+
 export type OlfactoryFamily =
   | 'Todos'
   | 'Linha Máximo'
@@ -22,6 +24,7 @@ export interface Perfume {
   family: 'Linha Máximo' | 'Florais' | 'Amadeirados' | 'Ambarados' | 'Orientais' | 'Frescos' | 'Gourmand & Frutados';
   gender?: 'Feminino' | 'Masculino' | 'Unissex';
   category?: 'Perfumes' | 'Linha Máximo' | 'Body Mist & Capilar';
+  collectionOrigin?: 'autorais' | 'importados' | 'renomeados';
   notes: PerfumeNotes;
   accords?: string[];
   shortNotes: string;

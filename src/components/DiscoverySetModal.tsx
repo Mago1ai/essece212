@@ -6,13 +6,11 @@ import { Perfume } from '../types';
 interface DiscoverySetModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onAddToCart: (item: any) => void;
 }
 
 export const DiscoverySetModal: React.FC<DiscoverySetModalProps> = ({
   isOpen,
   onClose,
-  onAddToCart,
 }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -153,23 +151,14 @@ export const DiscoverySetModal: React.FC<DiscoverySetModalProps> = ({
             </div>
 
             {/* Actions */}
-            <div className="pt-6 border-t border-[#24221F]/10 dark:border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="pt-6 border-t border-[#24221F]/10 dark:border-white/10">
               <button
-                onClick={() => {
-                  onAddToCart(discoveryPerfumeMock);
-                  onClose();
-                }}
-                className="w-full py-3.5 bg-[#24221F] hover:bg-[#121110] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-[#F4F0E9] dark:text-[#121110] font-mono-subtle text-xs tracking-[0.2em] uppercase transition-colors flex items-center justify-center gap-2 font-bold shadow-sm"
-              >
-                <span>+ ADICIONAR À SACOLA</span>
-              </button>
-
-              <button
+                id="discovery-modal-whatsapp-btn"
                 onClick={handleWhatsApp}
-                className="w-full py-3.5 bg-[#A96227] dark:bg-[#C97D3E] hover:bg-[#8F511E] text-white font-mono-subtle text-xs tracking-[0.2em] uppercase transition-colors flex items-center justify-center gap-2 shadow-xs font-semibold"
+                className="w-full py-4 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-[#F4F0E9] dark:text-[#121110] font-mono-subtle text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3 shadow-md hover:shadow-lg active:scale-[0.98] font-bold"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>PEDIR VIA WHATSAPP</span>
+                <MessageCircle className="w-5 h-5" />
+                <span>SOLICITAR DISCOVERY SET VIA WHATSAPP</span>
               </button>
             </div>
           </div>

@@ -19,7 +19,6 @@ import { InteractiveBottleShowcase } from './InteractiveBottleShowcase';
 interface ProductModalProps {
   perfume: Perfume | null;
   onClose: () => void;
-  onAddToCart: (perfume: Perfume) => void;
   isFavorite: boolean;
   onToggleFavorite: (id: string) => void;
 }
@@ -27,7 +26,6 @@ interface ProductModalProps {
 export const ProductModal: React.FC<ProductModalProps> = ({
   perfume,
   onClose,
-  onAddToCart,
   isFavorite,
   onToggleFavorite,
 }) => {
@@ -119,19 +117,19 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="product-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-black/75 dark:bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 md:p-8 bg-black/80 dark:bg-black/90 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto"
       onClick={onClose}
     >
       <div
         id="product-modal-container"
-        className="relative w-full max-w-5xl bg-[#F4F0E9] dark:bg-[#161513] text-[#24221F] dark:text-[#F5F2EB] border border-[#24221F]/15 dark:border-white/10 shadow-2xl max-h-[92vh] overflow-y-auto transform transition-all duration-300 my-auto rounded-xs"
+        className="relative w-full max-w-5xl bg-[#F4F0E9] dark:bg-[#161513] text-[#24221F] dark:text-[#F5F2EB] border border-[#24221F]/15 dark:border-white/10 shadow-2xl max-h-[95vh] sm:max-h-[92vh] overflow-y-auto transform transition-all duration-300 my-auto rounded-xs no-scrollbar pb-[env(safe-area-inset-bottom)]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           id="close-product-modal-btn"
           onClick={onClose}
-          className="absolute top-4 right-4 z-30 p-2.5 bg-[#F4F0E9]/90 dark:bg-[#1E1C1A]/90 backdrop-blur-xs text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors focus:outline-none rounded-full border border-[#24221F]/10 dark:border-white/10 shadow-sm"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 w-11 h-11 flex items-center justify-center bg-[#F4F0E9]/90 dark:bg-[#1E1C1A]/90 backdrop-blur-xs text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors focus:outline-none rounded-full border border-[#24221F]/10 dark:border-white/10 shadow-sm touch-press"
           aria-label="Fechar modal do perfume"
         >
           <X className="w-5 h-5 stroke-[1.5]" />
@@ -152,10 +150,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           </div>
 
           {/* Right: Detailed Perfume Dossier & Chronological Sensory Journey */}
-          <div className="md:col-span-7 p-6 sm:p-8 lg:p-9 flex flex-col justify-between space-y-6">
-            <div className="space-y-5">
+          <div className="md:col-span-7 p-4 sm:p-8 lg:p-9 flex flex-col justify-between space-y-5 sm:space-y-6">
+            <div className="space-y-4 sm:space-y-5">
               {/* Category & Concentration */}
-              <div className="flex items-center justify-between font-mono-subtle text-xs tracking-[0.22em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
+              <div className="flex items-center justify-between font-mono-subtle text-[11px] sm:text-xs tracking-[0.22em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
                 <span>{perfume.family} · {perfume.concentration}</span>
                 <span className="text-[#24221F]/70 dark:text-[#F5F2EB]/70 font-medium">{perfume.size}</span>
               </div>
@@ -164,22 +162,22 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               <div>
                 <h2
                   id="product-modal-title"
-                  className="font-serif-editorial text-3xl sm:text-4xl text-[#24221F] dark:text-[#F5F2EB] font-light leading-tight mb-1.5"
+                  className="font-serif-editorial text-2xl sm:text-4xl text-[#24221F] dark:text-[#F5F2EB] font-light leading-tight mb-1"
                 >
                   {perfume.name}
                 </h2>
-                <p className="font-mono-subtle text-sm text-[#24221F]/75 dark:text-[#F5F2EB]/75 tracking-wider uppercase">
+                <p className="font-mono-subtle text-xs sm:text-sm text-[#24221F]/75 dark:text-[#F5F2EB]/75 tracking-wider uppercase">
                   Casa de Perfumaria: <span className="font-semibold text-[#24221F] dark:text-[#D4AF37]">{perfume.brand}</span>
                 </p>
               </div>
 
               {/* Fragrantica Accords */}
               {perfume.accords && perfume.accords.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 pt-1">
+                <div className="flex flex-wrap gap-1.5 pt-0.5">
                   {perfume.accords.map((accord, idx) => (
                     <span
                       key={idx}
-                      className="bg-[#24221F]/5 dark:bg-white/5 text-[#24221F]/85 dark:text-[#F5F2EB]/85 border border-[#24221F]/10 dark:border-white/10 font-mono-subtle text-[11px] uppercase tracking-wider px-3 py-1 rounded-xs font-medium"
+                      className="bg-[#24221F]/5 dark:bg-white/5 text-[#24221F]/85 dark:text-[#F5F2EB]/85 border border-[#24221F]/10 dark:border-white/10 font-mono-subtle text-[10px] sm:text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-xs font-medium"
                     >
                       {accord}
                     </span>
@@ -188,31 +186,31 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               )}
 
               {/* Atmosphere Quote */}
-              <p className="font-serif-editorial italic text-lg text-[#24221F]/85 dark:text-[#F5F2EB]/85 border-l-2 border-[#A96227] dark:border-[#D4AF37] pl-3.5 py-1">
+              <p className="font-serif-editorial italic text-base sm:text-lg text-[#24221F]/85 dark:text-[#F5F2EB]/85 border-l-2 border-[#A96227] dark:border-[#D4AF37] pl-3 py-0.5">
                 “{perfume.atmosphere}”
               </p>
 
               {/* Sensory Description */}
-              <p className="font-sans-clean text-sm sm:text-[15px] text-[#24221F]/85 dark:text-[#F5F2EB]/80 font-light leading-relaxed">
+              <p className="font-sans-clean text-xs sm:text-[15px] text-[#24221F]/85 dark:text-[#F5F2EB]/80 font-light leading-relaxed">
                 {perfume.sensoryDescription}
               </p>
 
               {/* --- PIRÂMIDE SENSORIAL DINÂMICA EM 3 MOMENTOS CRONOLÓGICOS --- */}
-              <div className="bg-[#EAE3D9]/70 dark:bg-[#1F1D1A] p-4 sm:p-5 border border-[#24221F]/10 dark:border-white/10 space-y-3 rounded-xs shadow-xs">
+              <div className="bg-[#EAE3D9]/70 dark:bg-[#1F1D1A] p-3.5 sm:p-5 border border-[#24221F]/10 dark:border-white/10 space-y-2.5 sm:space-y-3 rounded-xs shadow-xs">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-[#A96227] dark:text-[#D4AF37]" />
-                    <span className="font-mono-subtle text-xs tracking-[0.24em] text-[#A96227] dark:text-[#D4AF37] uppercase font-bold">
-                      PIRÂMIDE SENSORIAL CRONOLÓGICA
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Layers className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37]" />
+                    <span className="font-mono-subtle text-[11px] sm:text-xs tracking-[0.2em] sm:tracking-[0.24em] text-[#A96227] dark:text-[#D4AF37] uppercase font-bold">
+                      PIRÂMIDE CRONOLÓGICA
                     </span>
                   </div>
-                  <span className="font-mono-subtle text-[10px] text-[#24221F]/60 dark:text-[#F5F2EB]/60 tracking-wider uppercase font-medium">
+                  <span className="font-mono-subtle text-[9px] sm:text-[10px] text-[#24221F]/60 dark:text-[#F5F2EB]/60 tracking-wider uppercase font-medium">
                     Selecione a fase
                   </span>
                 </div>
 
                 {/* 3 Chronological Tabs */}
-                <div className="grid grid-cols-3 gap-1.5 p-1 bg-[#F4F0E9] dark:bg-[#141311] border border-[#24221F]/10 dark:border-white/10">
+                <div className="grid grid-cols-3 gap-1 p-1 bg-[#F4F0E9] dark:bg-[#141311] border border-[#24221F]/10 dark:border-white/10">
                   {sensoryStages.map((stage, idx) => {
                     const isActive = activeSensoryStage === idx;
                     return (
@@ -220,16 +218,16 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                         key={idx}
                         type="button"
                         onClick={() => setActiveSensoryStage(idx as 0 | 1 | 2)}
-                        className={`py-2 px-1.5 text-center transition-all duration-300 flex flex-col items-center justify-center active:scale-95 ${
+                        className={`py-2 px-1 text-center transition-all duration-300 min-h-[44px] flex flex-col items-center justify-center active:scale-95 touch-press ${
                           isActive
                             ? 'bg-[#24221F] dark:bg-[#2A2622] text-[#F4F0E9] dark:text-[#D4AF37] shadow-sm font-semibold'
                             : 'text-[#24221F]/70 dark:text-[#F5F2EB]/60 hover:text-[#24221F] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                         }`}
                       >
-                        <span className="font-mono-subtle text-[10px] uppercase tracking-wider block opacity-75">
+                        <span className="font-mono-subtle text-[9px] uppercase tracking-wider block opacity-75">
                           {stage.timeframe}
                         </span>
-                        <span className="font-serif-editorial text-xs truncate max-w-full font-medium">
+                        <span className="font-serif-editorial text-[11px] sm:text-xs truncate max-w-full font-medium">
                           {stage.title.split(' ')[0]} {stage.title.split(' ')[1]}
                         </span>
                       </button>
@@ -238,12 +236,12 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </div>
 
                 {/* Active Sensory Stage Dossier */}
-                <div className="p-3.5 bg-[#F4F0E9]/90 dark:bg-[#161513] border border-[#24221F]/10 dark:border-white/10 space-y-2 animate-in fade-in duration-200">
+                <div className="p-3 sm:p-3.5 bg-[#F4F0E9]/90 dark:bg-[#161513] border border-[#24221F]/10 dark:border-white/10 space-y-1.5 sm:space-y-2 animate-in fade-in duration-200">
                   <div className="flex items-center justify-between">
-                    <span className={`font-mono-subtle text-xs tracking-wider uppercase font-semibold ${sensoryStages[activeSensoryStage].accentColor}`}>
-                      Momento: {sensoryStages[activeSensoryStage].title} ({sensoryStages[activeSensoryStage].timeframe})
+                    <span className={`font-mono-subtle text-[11px] sm:text-xs tracking-wider uppercase font-semibold ${sensoryStages[activeSensoryStage].accentColor}`}>
+                      {sensoryStages[activeSensoryStage].title} ({sensoryStages[activeSensoryStage].timeframe})
                     </span>
-                    <span className="font-mono-subtle text-[10px] uppercase tracking-wider text-[#24221F]/60 dark:text-[#F5F2EB]/60 font-medium">
+                    <span className="font-mono-subtle text-[9px] sm:text-[10px] uppercase tracking-wider text-[#24221F]/60 dark:text-[#F5F2EB]/60 font-medium">
                       {sensoryStages[activeSensoryStage].type}
                     </span>
                   </div>
@@ -254,13 +252,13 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
                   <div className="pt-2 border-t border-[#24221F]/10 dark:border-white/10">
                     <span className="text-[10px] uppercase tracking-wider font-mono-subtle text-[#24221F]/70 dark:text-[#F5F2EB]/70 block mb-1 font-medium">
-                      Notas Evidenciadas nesta fase:
+                      Notas Evidenciadas:
                     </span>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1">
                       {sensoryStages[activeSensoryStage].notes.map((note, i) => (
                         <span
                           key={i}
-                          className="bg-[#24221F] dark:bg-[#D4AF37]/15 text-[#F4F0E9] dark:text-[#D4AF37] font-mono-subtle text-xs px-2.5 py-1 border border-transparent dark:border-[#D4AF37]/30 shadow-xs font-semibold"
+                          className="bg-[#24221F] dark:bg-[#D4AF37]/15 text-[#F4F0E9] dark:text-[#D4AF37] font-mono-subtle text-[11px] sm:text-xs px-2 py-0.5 border border-transparent dark:border-[#D4AF37]/30 shadow-xs font-semibold"
                         >
                           {note}
                         </span>
@@ -271,7 +269,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               </div>
 
               {/* --- GUIA DE PROJEÇÃO & FIXAÇÃO (MEDIDORES MINIMALISTAS) --- */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-0.5">
                 {/* Projeção Meter */}
                 <div className="p-3 bg-[#EAE3D9]/50 dark:bg-[#1F1D1A] border border-[#24221F]/10 dark:border-white/10 space-y-1.5">
                   <div className="flex items-center justify-between font-mono-subtle text-xs">
@@ -333,20 +331,20 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             </div>
 
             {/* Bottom Actions & Price */}
-            <div className="space-y-4 pt-4 border-t border-[#24221F]/10 dark:border-white/10">
+            <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4 border-t border-[#24221F]/10 dark:border-white/10">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <span className="font-mono-subtle text-2xl sm:text-3xl text-[#24221F] dark:text-[#F5F2EB] font-bold tracking-tight">
+                  <span className="font-mono-subtle text-xl sm:text-3xl text-[#24221F] dark:text-[#F5F2EB] font-bold tracking-tight">
                     {perfume.price}
                   </span>
-                  <span className="ml-2 font-mono-subtle text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70">
+                  <span className="ml-1.5 sm:ml-2 font-mono-subtle text-[11px] sm:text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70">
                     / {perfume.size} · Frete Incluso
                   </span>
                 </div>
                 <button
                   id={`modal-favorite-${perfume.id}`}
                   onClick={() => onToggleFavorite(perfume.id)}
-                  className="flex items-center gap-1.5 font-mono-subtle text-xs text-[#24221F]/80 dark:text-[#F5F2EB]/80 hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors font-medium"
+                  className="flex items-center gap-1.5 font-mono-subtle text-xs text-[#24221F]/80 dark:text-[#F5F2EB]/80 hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors font-medium min-h-[44px] px-2 touch-press"
                 >
                   <Heart
                     className={`w-4 h-4 ${
@@ -365,35 +363,23 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 href={whatsAppLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/wa w-full py-4 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-[#F4F0E9] dark:text-[#121110] font-mono-subtle text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg active:scale-[0.98] font-bold"
+                className="group/wa w-full min-h-[48px] py-3.5 sm:py-4 px-4 sm:px-6 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-[#F4F0E9] dark:text-[#121110] font-mono-subtle text-xs sm:text-sm tracking-[0.16em] sm:tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 shadow-md hover:shadow-lg active:scale-[0.98] font-bold rounded-xs touch-press"
               >
-                <MessageCircle className="w-4 h-4 transition-transform group-hover/wa:scale-110" />
-                <span>PEDIR OU CONSULTAR VIA WHATSAPP</span>
+                <MessageCircle className="w-5 h-5 transition-transform group-hover/wa:scale-110" />
+                <span>TENHO INTERESSE (WHATSAPP)</span>
               </a>
 
-              {/* Add to Cart */}
-              <button
-                id="modal-add-to-cart-btn"
-                onClick={() => {
-                  onAddToCart(perfume);
-                  onClose();
-                }}
-                className="w-full py-3.5 border border-[#24221F]/25 dark:border-white/20 hover:border-[#24221F] dark:hover:border-white hover:bg-[#24221F] hover:text-[#F4F0E9] dark:hover:bg-white dark:hover:text-[#121110] text-[#24221F] dark:text-[#F5F2EB] font-mono-subtle text-xs tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] font-semibold"
-              >
-                <span>ADICIONAR À SACOLA DE COMPRAS</span>
-              </button>
-
               {/* Guarantees */}
-              <div className="pt-2 grid grid-cols-3 gap-2 font-mono-subtle text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70 border-t border-[#24221F]/10 dark:border-white/10">
-                <div className="flex items-center gap-1.5">
+              <div className="pt-2 grid grid-cols-3 gap-1 sm:gap-2 font-mono-subtle text-[10px] sm:text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70 border-t border-[#24221F]/10 dark:border-white/10">
+                <div className="flex items-center gap-1 sm:gap-1.5">
                   <Truck className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] shrink-0" />
                   <span>Envios Brasil</span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1 sm:gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] shrink-0" />
                   <span>Amostra cortesia</span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1 sm:gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] shrink-0" />
                   <span>100% Original</span>
                 </div>

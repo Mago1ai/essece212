@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { PERFUMES as INITIAL_PERFUMES, BRAND_INFO } from './data/perfumes';
-import { Perfume, OlfactoryFamily, CartItem } from './types';
+import { Perfume, OlfactoryFamily, CollectionOrigin } from './types';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BottleSlowReel } from './components/BottleSlowReel';
 import { HouseSection } from './components/HouseSection';
+import { CollectionsGateway } from './components/CollectionsGateway';
 import { CollectionSection } from './components/CollectionSection';
 import { ManifestoSection } from './components/ManifestoSection';
 import { DiscoverySection } from './components/DiscoverySection';
@@ -12,7 +13,6 @@ import { DiscoverySetBanner } from './components/DiscoverySetBanner';
 import { NewsletterSection } from './components/NewsletterSection';
 import { Footer } from './components/Footer';
 import { ProductModal } from './components/ProductModal';
-import { CartDrawer } from './components/CartDrawer';
 import { FavoritesDrawer } from './components/FavoritesDrawer';
 import { SearchModal } from './components/SearchModal';
 import { StoryModal } from './components/StoryModal';
@@ -35,6 +35,7 @@ export default function App() {
   });
 
   const [activeFamily, setActiveFamily] = useState<OlfactoryFamily>('Todos');
+  const [activeCollection, setActiveCollection] = useState<CollectionOrigin>('all');
   const [selectedPerfume, setSelectedPerfume] = useState<Perfume | null>(null);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
@@ -60,21 +61,7 @@ export default function App() {
     }
   });
 
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    try {
-      const saved = localStorage.getItem('maximo_cart');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) return parsed;
-      }
-      return [];
-    } catch {
-      return [];
-    }
-  });
-
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [isManifestoOpen, setIsManifestoOpen] = useState(false);
@@ -112,15 +99,6 @@ export default function App() {
     }
   }, [favorites]);
 
-  // Sync cart
-  useEffect(() => {
-    try {
-      localStorage.setItem('maximo_cart', JSON.stringify(cartItems));
-    } catch {
-      // Ignore in strict private mode
-    }
-  }, [cartItems]);
-
   // Sync perfumes catalog
   const handleSavePerfumes = (updated: Perfume[]) => {
     setPerfumesList(updated);
@@ -150,37 +128,6 @@ export default function App() {
     setFavorites([]);
   };
 
-  const handleAddToCart = (perfume: Perfume) => {
-    setCartItems((prev) => {
-      const existing = prev.find((item) => item.perfume.id === perfume.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.perfume.id === perfume.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      return [...prev, { perfume, quantity: 1, size: perfume.size }];
-    });
-    setIsCartOpen(true);
-  };
-
-  const handleUpdateQuantity = (perfumeId: string, quantity: number) => {
-    if (quantity <= 0) {
-      handleRemoveFromCart(perfumeId);
-      return;
-    }
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.perfume.id === perfumeId ? { ...item, quantity } : item
-      )
-    );
-  };
-
-  const handleRemoveFromCart = (perfumeId: string) => {
-    setCartItems((prev) => prev.filter((item) => item.perfume.id !== perfumeId));
-  };
-
   const handleNavigateSection = (sectionId: string) => {
     if (sectionId === 'discovery-set') {
       setIsDiscoverySetOpen(true);
@@ -201,14 +148,10 @@ export default function App() {
     setIsAuthModalOpen(true);
   };
 
-  const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
   return (
     <div className="min-h-screen bg-[#F4F0E9] dark:bg-[#121110] text-[#24221F] dark:text-[#F5F2EB] font-sans-clean selection:bg-[#A96227]/20 relative transition-colors duration-300">
       {/* Editorial Header */}
       <Header
-        cartCount={totalCartCount}
-        onOpenCart={() => setIsCartOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
         favoritesCount={favorites.length}
         onOpenFavorites={() => setIsFavoritesOpen(true)}
@@ -242,15 +185,25 @@ export default function App() {
           onSelectPerfume={setSelectedPerfume}
         />
 
+        {/* 2.1 Editorial Gateway to Collections (Autorais | Importados | Renomeados) */}
+        <CollectionsGateway
+          perfumes={perfumesList}
+          activeCollection={activeCollection}
+          onSelectCollection={(col) => {
+            setActiveCollection(col);
+          }}
+        />
+
         {/* 3. Collection Section (02 — A COLEÇÃO) */}
         <CollectionSection
           perfumes={perfumesList}
           activeFamily={activeFamily}
           onSelectFamily={setActiveFamily}
+          activeCollection={activeCollection}
+          onSelectCollection={setActiveCollection}
           onSelectPerfume={setSelectedPerfume}
           favorites={favorites}
           onToggleFavorite={handleToggleFavorite}
-          onAddToCart={handleAddToCart}
         />
 
         {/* 4. Manifesto Section (03 — O GESTO) */}
@@ -286,22 +239,11 @@ export default function App() {
       <ProductModal
         perfume={selectedPerfume}
         onClose={() => setSelectedPerfume(null)}
-        onAddToCart={handleAddToCart}
         isFavorite={selectedPerfume ? favorites.includes(selectedPerfume.id) : false}
         onToggleFavorite={handleToggleFavorite}
       />
 
-      {/* Cart Drawer */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveFromCart}
-        enablePixCheckout={true}
-      />
-
-      {/* Favorites Drawer */}
+      {/* Favorites / Curadoria Drawer */}
       <FavoritesDrawer
         isOpen={isFavoritesOpen}
         onClose={() => setIsFavoritesOpen(false)}
@@ -309,7 +251,6 @@ export default function App() {
         perfumes={perfumesList}
         onToggleFavorite={handleToggleFavorite}
         onClearAllFavorites={handleClearAllFavorites}
-        onAddToCart={handleAddToCart}
         onSelectPerfume={setSelectedPerfume}
       />
 
@@ -331,7 +272,6 @@ export default function App() {
       <DiscoverySetModal
         isOpen={isDiscoverySetOpen}
         onClose={() => setIsDiscoverySetOpen(false)}
-        onAddToCart={(item) => handleAddToCart(item as unknown as Perfume)}
       />
 
       {/* Contact, Privacy & Returns Modals */}

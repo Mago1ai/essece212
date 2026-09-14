@@ -148,8 +148,8 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
           className="relative z-10 w-full h-full flex items-center justify-center transition-transform duration-200 ease-out"
           style={{
             transform: enableTilt && isHovered
-              ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-4px) scale(1.06)`
-              : 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)',
+              ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-4px) scale(1.18)`
+              : 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1.10)',
             transformStyle: 'preserve-3d',
           }}
         >
@@ -160,7 +160,7 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
             loading="lazy"
             onLoad={() => setIsLoaded(true)}
             onError={handleImageError}
-            className={`w-full h-full max-h-[340px] sm:max-h-[370px] object-contain ${padding} transition-all duration-500 drop-shadow-[0_16px_24px_rgba(0,0,0,0.22)] dark:drop-shadow-[0_20px_30px_rgba(0,0,0,0.75)] ${
+            className={`w-full h-full max-h-[380px] sm:max-h-[410px] object-contain ${padding} transition-all duration-500 drop-shadow-[0_18px_26px_rgba(0,0,0,0.22)] dark:drop-shadow-[0_22px_32px_rgba(0,0,0,0.75)] ${
               isLoaded ? 'opacity-100' : 'opacity-85'
             } ${isHovered ? 'brightness-105 contrast-105' : ''} ${className}`}
           />
