@@ -84,16 +84,12 @@ export const Header: React.FC<HeaderProps> = ({
             : 'bg-[#F4F0E9]/80 dark:bg-black/60 backdrop-blur-xs border-b border-[#24221F]/5 dark:border-white/5 text-[#24221F] dark:text-[#F4F0E9]'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-          {/* Brand Logo with Easter Egg Trigger (7 Clicks) - Hidden at top on mobile to prevent repetition with Hero */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
+          {/* Brand Logo with Easter Egg Trigger (7 Clicks) */}
           <button
             id="brand-logo-btn"
             onClick={handleLogoClick}
-            className={`group text-left focus:outline-none transition-all duration-300 py-1 ${
-              isScrolled
-                ? 'scale-95 opacity-100 pointer-events-auto translate-y-0'
-                : 'scale-100 max-md:opacity-0 max-md:pointer-events-none max-md:-translate-y-1 md:opacity-100 md:pointer-events-auto md:translate-y-0'
-            }`}
+            className="group text-left focus:outline-none transition-all duration-300 flex items-center h-full py-1 cursor-pointer"
             aria-label="Máximo Eau de Parfum Home"
             title="Máximo Eau de Parfum"
           >
@@ -101,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
               variant={theme === 'dark' ? 'light' : 'dark'}
               size="sm"
               id="header-official-logo"
-              className="transition-transform duration-300 group-hover:scale-[1.02] sm:w-48 md:w-56"
+              className="transition-transform duration-300 group-hover:scale-[1.02] max-h-11 sm:max-h-13"
             />
           </button>
 

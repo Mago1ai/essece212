@@ -53,8 +53,8 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="absolute -bottom-32 -left-20 w-[400px] h-[400px] bg-[#1E1C1A]/5 dark:bg-black/40 rounded-full blur-3xl pointer-events-none" />
       </div>
 
-      {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 md:py-28 flex flex-col justify-between min-h-[85vh] md:min-h-[90vh]">
+      {/* Main Content Container with safe top clearance for fixed header */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 flex flex-col justify-between min-h-[85vh] md:min-h-[90vh]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-12 items-center my-auto">
           {/* Left Column: Quiet Luxury Display Typography */}
           <div className="lg:col-span-7 max-w-2xl space-y-6 sm:space-y-8">

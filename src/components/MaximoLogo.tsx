@@ -36,20 +36,20 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
     return () => window.removeEventListener('maximo_settings_updated', handleSettingsUpdate);
   }, []);
 
-  // Dimension scaling designed for balanced, high-end optical proportion
+  // Dimension scaling designed for balanced, high-end optical proportion without vertical overflow
   const sizeClasses: Record<string, string> = {
-    sm: 'w-36 sm:w-44 md:w-52',
-    md: 'w-48 sm:w-56 md:w-64 lg:w-72',
-    lg: 'w-64 sm:w-80 md:w-96',
-    xl: 'w-80 sm:w-96 md:w-[28rem]',
-    hero: 'w-72 sm:w-88 md:w-[28rem] lg:w-[34rem] max-w-full',
+    sm: 'h-10 sm:h-12 md:h-14 max-w-[180px] sm:max-w-[220px]',
+    md: 'h-14 sm:h-16 md:h-20 max-w-[240px] sm:max-w-[280px]',
+    lg: 'h-20 sm:h-24 md:h-28 max-w-[320px]',
+    xl: 'h-28 sm:h-32 md:h-36 max-w-[400px]',
+    hero: 'h-24 sm:h-32 md:h-36 max-w-[420px]',
     custom: '',
   };
 
   return (
     <div
       id={id || `maximo-logo-container-${safeId}`}
-      className={`relative inline-flex flex-col items-center justify-center select-none text-center transition-all duration-300 ${sizeClasses[size] || ''} ${className}`}
+      className={`relative inline-flex items-center justify-center select-none text-center transition-all duration-300 ${sizeClasses[size] || ''} ${className}`}
       aria-label="Máximo Eau de Parfum Logo Oficial"
     >
       {variant === 'adaptive' ? (
@@ -61,7 +61,7 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
               (e.currentTarget as HTMLImageElement).src = '/assets/logo.png';
             }}
             alt="Máximo Eau de Parfum"
-            className="w-full h-auto object-contain dark:hidden transition-opacity duration-300 select-none pointer-events-none mix-blend-multiply drop-shadow-xs"
+            className="max-h-full max-w-full w-auto h-auto object-contain dark:hidden transition-opacity duration-300 select-none pointer-events-none mix-blend-multiply drop-shadow-xs"
             loading="eager"
             referrerPolicy="no-referrer"
           />
@@ -72,7 +72,7 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
               (e.currentTarget as HTMLImageElement).src = '/assets/logo-white.png';
             }}
             alt="Máximo Eau de Parfum"
-            className="w-full h-auto object-contain hidden dark:block transition-opacity duration-300 select-none pointer-events-none mix-blend-screen brightness-125 filter drop-shadow-[0_2px_12px_rgba(212,175,55,0.3)]"
+            className="max-h-full max-w-full w-auto h-auto object-contain hidden dark:block transition-opacity duration-300 select-none pointer-events-none mix-blend-screen brightness-125 filter drop-shadow-[0_2px_12px_rgba(212,175,55,0.3)]"
             loading="eager"
             referrerPolicy="no-referrer"
           />
@@ -84,7 +84,7 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
             (e.currentTarget as HTMLImageElement).src = '/assets/logo-white.png';
           }}
           alt="Máximo Eau de Parfum"
-          className="w-full h-auto object-contain transition-opacity duration-300 select-none pointer-events-none mix-blend-screen brightness-125 filter drop-shadow-[0_2px_12px_rgba(212,175,55,0.3)]"
+          className="max-h-full max-w-full w-auto h-auto object-contain transition-opacity duration-300 select-none pointer-events-none mix-blend-screen brightness-125 filter drop-shadow-[0_2px_12px_rgba(212,175,55,0.3)]"
           loading="eager"
           referrerPolicy="no-referrer"
         />
@@ -95,7 +95,7 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
             (e.currentTarget as HTMLImageElement).src = '/assets/logo-gold.png';
           }}
           alt="Máximo Eau de Parfum"
-          className="w-full h-auto object-contain transition-opacity duration-300 select-none pointer-events-none filter sepia-[0.3] contrast-125 brightness-110"
+          className="max-h-full max-w-full w-auto h-auto object-contain transition-opacity duration-300 select-none pointer-events-none filter sepia-[0.3] contrast-125 brightness-110"
           loading="eager"
           referrerPolicy="no-referrer"
         />
@@ -106,7 +106,7 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
             (e.currentTarget as HTMLImageElement).src = '/assets/logo.png';
           }}
           alt="Máximo Eau de Parfum"
-          className="w-full h-auto object-contain transition-opacity duration-300 select-none pointer-events-none mix-blend-multiply"
+          className="max-h-full max-w-full w-auto h-auto object-contain transition-opacity duration-300 select-none pointer-events-none mix-blend-multiply"
           loading="eager"
           referrerPolicy="no-referrer"
         />
