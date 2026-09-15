@@ -148,8 +148,9 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               brand={perfume.brand}
               name={perfume.name}
               aspectRatio="h-full min-h-[340px]"
-              padding="p-8 sm:p-10"
-              showContactShadow={true}
+              padding="p-0"
+              objectFit="object-cover"
+              showContactShadow={false}
               enableTilt={true}
               showMistParticles={true}
             />

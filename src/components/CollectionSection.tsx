@@ -215,8 +215,9 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                     brand={perfume.brand}
                     name={perfume.name}
                     aspectRatio="aspect-[3/4]"
-                    padding="p-6 sm:p-7 md:p-8"
-                    showContactShadow={true}
+                    padding="p-0"
+                    objectFit="object-cover"
+                    showContactShadow={false}
                     enableTilt={true}
                     showMistParticles={true}
                   />

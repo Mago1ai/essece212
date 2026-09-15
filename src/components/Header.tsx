@@ -57,14 +57,14 @@ export const Header: React.FC<HeaderProps> = ({
             id="brand-logo-btn"
             onClick={() => handleNavClick('hero')}
             className={`group text-left focus:outline-none transition-all duration-300 py-1 ${
-              isScrolled ? 'scale-95' : 'scale-100'
+              isScrolled ? 'w-[95%]' : 'w-full'
             }`}
             aria-label="Máximo Eau de Parfum Home"
           >
             <MaximoLogo
               variant={theme === 'dark' ? 'light' : (isScrolled ? 'dark' : 'light')}
               size="md"
-              className="transition-all duration-300 group-hover:scale-[1.02]"
+              className="transition-all duration-300"
             />
           </button>
 
@@ -119,35 +119,8 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </nav>
 
-          {/* Actions: Theme Atmosphere Toggle, Search, Wishlist, Bag, Mobile Toggle */}
+          {/* Actions: Search, Wishlist, Bag, Mobile Toggle */}
           <div className="flex items-center space-x-3 sm:space-x-5">
-            {/* Dark / Light Atmosphere Toggle (Sensorial) */}
-            <button
-              id="theme-atmosphere-toggle-btn"
-              onClick={onToggleTheme}
-              className={`p-2 transition-all duration-300 rounded-full flex items-center justify-center focus:outline-none focus:ring-1 focus:ring-[#A96227] dark:focus:ring-[#D4AF37] ${
-                isScrolled
-                  ? 'bg-[#24221F]/5 dark:bg-white/10 hover:bg-[#24221F]/10 dark:hover:bg-white/15 text-[#24221F] dark:text-[#D4AF37]'
-                  : 'bg-black/30 hover:bg-black/50 text-[#F4F0E9]'
-              }`}
-              title={
-                theme === 'dark'
-                  ? 'Alternar para Modo Atelier Diurno'
-                  : 'Alternar para Modo Noturno / Velvet Dark'
-              }
-              aria-label={
-                theme === 'dark'
-                  ? 'Ativar Modo Atelier Diurno'
-                  : 'Ativar Modo Noturno / Velvet Dark'
-              }
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-[18px] h-[18px] text-[#D4AF37] animate-in spin-in-180 duration-300" />
-              ) : (
-                <Moon className="w-[18px] h-[18px] text-[#A96227] dark:text-[#D4AF37] animate-in spin-in-180 duration-300" />
-              )}
-            </button>
-
             {/* Search */}
             <button
               id="search-trigger-btn"
@@ -246,31 +219,7 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
 
           <div className="space-y-4">
-            {/* Mobile Atmosphere Selector */}
-            <div className="flex items-center justify-between p-3.5 bg-[#EAE3D9] dark:bg-[#1A1816] border border-[#24221F]/10 dark:border-white/10 mb-6">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#A96227] dark:text-[#D4AF37]" />
-                <span className="font-mono-subtle text-xs tracking-wider uppercase font-medium">
-                  {theme === 'dark' ? 'Modo Velvet Dark' : 'Modo Atelier Diurno'}
-                </span>
-              </div>
-              <button
-                onClick={onToggleTheme}
-                className="px-3 py-1.5 bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-[#121110] font-mono-subtle text-[10px] tracking-wider uppercase flex items-center gap-1.5"
-              >
-                {theme === 'dark' ? (
-                  <>
-                    <Sun className="w-3 h-3" />
-                    <span>Diurno</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon className="w-3 h-3" />
-                    <span>Noturno</span>
-                  </>
-                )}
-              </button>
-            </div>
+
 
             <span className="font-mono-subtle text-[10px] tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase block mb-4">
               NAVEGAÇÃO EDITORIAL

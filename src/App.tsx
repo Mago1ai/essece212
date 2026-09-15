@@ -18,23 +18,11 @@ import { StoryModal } from './components/StoryModal';
 import { ManifestoModal } from './components/ManifestoModal';
 import { DiscoverySetModal } from './components/DiscoverySetModal';
 import { InfoModals } from './components/InfoModals';
-import { DownloadStandaloneButton } from './components/DownloadStandaloneButton';
 
 export default function App() {
   const [activeFamily, setActiveFamily] = useState<OlfactoryFamily>('Todos');
   const [selectedPerfume, setSelectedPerfume] = useState<Perfume | null>(null);
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    try {
-      const saved = localStorage.getItem('maximo_theme');
-      if (saved === 'dark' || saved === 'light') return saved;
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-    } catch {
-      // Fallback
-    }
-    return 'dark';
-  });
+  const theme = 'light';
 
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
@@ -69,15 +57,11 @@ export default function App() {
     } catch {
       // Ignore
     }
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.remove('dark');
   }, [theme]);
 
   const handleToggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    // No-op, tema sempre claro
   };
 
   // Sync favorites
@@ -263,9 +247,6 @@ export default function App() {
 
       {/* Contact, Privacy & Returns Modals */}
       <InfoModals type={infoModalType} onClose={() => setInfoModalType(null)} />
-
-      {/* Floating Single-File HTML Download Trigger */}
-      <DownloadStandaloneButton />
     </div>
   );
 }

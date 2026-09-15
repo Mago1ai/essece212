@@ -644,34 +644,6 @@ export const PERFUMES: Perfume[] = [
     image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
 
-  // --- COMBO MASCULINO + FEMININO ---
-  {
-    id: 'maximo-combo-masculino-feminino',
-    name: 'Combo Máximo Duo',
-    brand: 'Máximo',
-    subtitle: 'Kit 2 Frascos · Masculino 30ml + Feminino 60ml',
-    family: 'Linha Máximo',
-    gender: 'Unissex',
-    category: 'Linha Máximo',
-    accords: ['combo', 'presente', 'duo', 'masculino', 'feminino'],
-    notes: {
-      top: ['Frasco Masculino 30ml · Escolha a Inspiração'],
-      heart: ['Frasco Feminino 60ml · Escolha a Inspiração'],
-      base: ['Embalagem Premium de Presente Máximo'],
-    },
-    shortNotes: 'Kit completo · Masculino 30ml + Feminino 60ml · Caixa Premium',
-    price: 'R$ 179',
-    priceNumeric: 179,
-    size: 'Kit Duo',
-    concentration: 'Eau de Parfum Contratipo',
-    badge: 'MELHOR CUSTO-BENEFÍCIO',
-    sensoryDescription:
-      'O Kit Duo Máximo reúne os dois frascos exclusivos: o masculino 30ml e o feminino 60ml na sua escolha de inspiração. Embalagem premium perfeita para presente ou uso casal.',
-    atmosphere: 'A sofisticação de dois mundos em uma única caixa de presente.',
-    longevity: 'Varia conforme a inspiração escolhida',
-    sillage: 'Masculino e feminino em perfeita harmonia',
-    image: '/images/products/maximo-combo.jpg',
-  },
 ];
 
 export const DISCOVERY_SET_DETAILS = {

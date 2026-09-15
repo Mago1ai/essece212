@@ -144,15 +144,6 @@ export const Footer: React.FC<FooterProps> = ({
             <span>Alta Perfumaria</span>
             <span>·</span>
             <span>Edições Numeradas</span>
-            <span>·</span>
-            <button
-              onClick={() => {
-                import('../utils/standaloneHtml').then(m => m.downloadStandaloneHtml());
-              }}
-              className="inline-flex items-center gap-1.5 text-[#A96227] dark:text-[#D4AF37] hover:underline font-semibold"
-            >
-              <span>Baixar Arquivo Único .HTML</span>
-            </button>
           </div>
         </div>
       </div>

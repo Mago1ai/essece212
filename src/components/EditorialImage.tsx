@@ -12,6 +12,7 @@ interface EditorialImageProps {
   name?: string;
   enableTilt?: boolean;
   showMistParticles?: boolean;
+  objectFit?: 'object-contain' | 'object-cover';
 }
 
 export const EditorialImage: React.FC<EditorialImageProps> = ({
@@ -26,6 +27,7 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
   name = 'Perfume',
   enableTilt = true,
   showMistParticles = true,
+  objectFit = 'object-contain',
 }) => {
   const [imageError, setImageError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -135,7 +137,7 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
             loading="lazy"
             onLoad={() => setIsLoaded(true)}
             onError={() => setImageError(true)}
-            className={`max-h-[260px] w-auto max-w-full h-full object-contain ${padding} transition-all duration-300 drop-shadow-[0_16px_20px_rgba(0,0,0,0.20)] dark:drop-shadow-[0_20px_25px_rgba(0,0,0,0.65)] ${
+            className={`w-full h-full ${objectFit} ${padding} transition-all duration-300 drop-shadow-[0_16px_20px_rgba(0,0,0,0.20)] dark:drop-shadow-[0_20px_25px_rgba(0,0,0,0.65)] ${
               isLoaded ? 'opacity-100' : 'opacity-85'
             } ${className}`}
           />
