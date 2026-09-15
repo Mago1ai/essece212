@@ -27,7 +27,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A sensação purificante e relaxante de um banho com pétalas e água morna.',
     longevity: 'Fragrância suave de pele limpa e hidratada',
     sillage: 'Aura íntima e acolhedora',
-    image: '/images/products/maximo-sabonete-crop.jpg',
+    image: '/images/products/maximo-kit-completo-novo.jpg',
     secondaryImage: '/images/photo_4978966337568837228_y.jpg',
   },
   {
@@ -55,7 +55,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O frescor floral e aveludado de uma manhã iluminada em um jardim de rosas.',
     longevity: '6 a 8 horas com sensação de frescor contínuo',
     sillage: 'Aura suave, agradável e convidativa',
-    image: '/images/products/maximo-bodysplash-crop.jpg',
+    image: '/images/products/maximo-splash-creme.jpg',
     secondaryImage: '/images/photo_4978966337568837233_y.jpg',
   },
   {
@@ -83,7 +83,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O carinho reconfortante de um manto de seda perfumado sobre a pele.',
     longevity: 'Hidratação ativa por até 24 horas',
     sillage: 'Perfume íntimo de pele hidratada',
-    image: '/images/products/maximo-creme-crop.jpg',
+    image: '/images/products/maximo-splash-creme.jpg',
     secondaryImage: '/images/photo_4978966337568837233_y.jpg',
   },
   {
@@ -111,7 +111,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A brisa leve que faz os cabelos dançarem e perfumarem o ar.',
     longevity: 'Perfume ativo nos fios durante todo o dia',
     sillage: 'Rastro etéreo e marcante no movimento',
-    image: '/images/products/maximo-perfume-capilar.jpg',
+    image: '/images/products/maximo-perfume-capilar-novo.jpg',
     secondaryImage: '/images/photo_4978966337568837231_y.jpg',
   },
   {
@@ -139,7 +139,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um santuário de bem-estar e sofisticação no conforto do seu dia a dia.',
     longevity: 'Duração prolongada por sobreposição de camadas aromáticas',
     sillage: 'Presença elegante, limpa e refinada',
-    image: '/images/photo_4978966337568837228_y.jpg',
+    image: '/images/products/maximo-kit-completo-novo.jpg',
     secondaryImage: '/images/photo_4978966337568837233_y.jpg',
   },
 
@@ -170,7 +170,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A imponência e a determinação de um conquistador contemporâneo.',
     longevity: '10 a 12 horas na pele',
     sillage: 'Projeção imponente e rastro inconfundível',
-    image: '/images/products/maximo-masculino-30ml.jpg',
+    image: '/images/products/maximo-masculino-30ml-novo.jpg',
   },
   {
     id: '1-million-rabanne',
@@ -198,7 +198,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O magnetismo e a energia vibrante de uma noite de celebração.',
     longevity: '8 a 10 horas na pele',
     sillage: 'Marcante, quente e envolvente',
-    image: '/images/products/maximo-masculino-30ml.jpg',
+    image: '/images/products/maximo-masculino-30ml-novo.jpg',
   },
   {
     id: 'althair-parfums-de-marly',
@@ -226,7 +226,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O requinte de salões da corte francesa aquecidos por madeiras raras e confeitos nobres.',
     longevity: '12 a 14 horas na pele',
     sillage: 'Aura aveludada, rica e magnética',
-    image: '/images/products/maximo-masculino-30ml.jpg',
+    image: '/images/products/maximo-masculino-30ml-novo.jpg',
   },
   {
     id: '212-men-carolina-herrera',
@@ -253,7 +253,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O ar puro de um amanhecer no Central Park cercado pela arquitetura de aço e vidro.',
     longevity: '7 a 9 horas na pele',
     sillage: 'Fresco, limpo e contemporâneo',
-    image: '/images/products/maximo-masculino-30ml.jpg',
+    image: '/images/products/maximo-masculino-30ml-novo.jpg',
   },
   {
     id: 'bvlgari-man-in-black',
@@ -281,7 +281,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O ambiente intimista de um clube de cavalheiros com poltronas de couro capitonê.',
     longevity: '9 a 11 horas na pele',
     sillage: 'Envolvente, austero e refinado',
-    image: '/images/products/maximo-masculino-30ml.jpg',
+    image: '/images/products/maximo-masculino-30ml-novo.jpg',
   },
 
   // --- CONTRATIPOS — INSPIRAÇÕES FEMININAS (FRASCO MÁXIMO 60ML) ---
@@ -310,7 +310,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um céu noturno pontilhado de estrelas azuis e memórias açucaradas.',
     longevity: '12 a 16 horas na pele',
     sillage: 'Ultra potente e inconfundível',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'scandal-jean-paul-gaultier',
@@ -337,7 +337,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A audácia e o charme irreverente de um cabaré parisiense à meia-noite.',
     longevity: '10 a 12 horas na pele',
     sillage: 'Viciante, doce e sedutor',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'good-girl-carolina-herrera',
@@ -365,7 +365,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A intensidade hipnótica de passos confiantes na noite cosmopolita.',
     longevity: '9 a 11 horas na pele',
     sillage: 'Sedutor, potente e inesquecível',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'libre-yves-saint-laurent',
@@ -393,7 +393,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A elegância de um smoking feminino sob as luzes da alta costura em Paris.',
     longevity: '9 a 11 horas na pele',
     sillage: 'Radiante, sofisticado e marcante',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'delina-parfums-de-marly',
@@ -421,7 +421,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O esplendor dos jardins reais de Marly na primavera dourada.',
     longevity: '12 a 14 horas na pele',
     sillage: 'Projeção estelar e inesquecível',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'la-vie-est-belle-rose-lancome',
@@ -448,7 +448,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um raio de sol iluminando uma rosa orvalhada recém-aberta.',
     longevity: '8 a 10 horas na pele',
     sillage: 'Alegre, luminoso e floral nobre',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'la-bomba-carolina-herrera',
@@ -476,7 +476,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A celebração exuberante de uma noite tropical sob palmeiras iluminadas.',
     longevity: '9 a 11 horas na pele',
     sillage: 'Frutado floral deslumbrante',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'cheirosa-68-sol-de-janeiro',
@@ -504,7 +504,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O calor dourado do sol carioca sobre a pele após um mergulho no mar.',
     longevity: '6 a 8 horas na pele',
     sillage: 'Alegre, solar e irresistível',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'bare-vanilla-victorias-secret',
@@ -532,7 +532,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'O abraço macio de um suéter de cashmere em um entardecer acolhedor.',
     longevity: '5 a 7 horas no corpo',
     sillage: 'Confortável, doce e intimista',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'love-spell-victorias-secret',
@@ -559,7 +559,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um piquenique ensolarado rodeado de flores de cerejeira em flor.',
     longevity: '5 a 7 horas',
     sillage: 'Fresco, frutado e romântico',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: '212-vip-rose-carolina-herrera',
@@ -586,7 +586,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um brinde com taças de cristal no rooftop mais disputado da cidade.',
     longevity: '8 a 10 horas na pele',
     sillage: 'Chic, efervescente e vibrante',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'fantasy-britney-spears',
@@ -614,7 +614,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'Um conto de fadas moderno e doce com toques de mistério.',
     longevity: '8 a 10 horas na pele',
     sillage: 'Doce, marcante e jovial',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
   {
     id: 'glamour-o-boticario',
@@ -641,7 +641,7 @@ export const PERFUMES: Perfume[] = [
     atmosphere: 'A sofisticação natural de quem caminha com leveza e presença.',
     longevity: '7 a 8 horas na pele',
     sillage: 'Elegante, equilibrado e agradável',
-    image: '/images/products/maximo-feminino-60ml.png',
+    image: '/images/products/maximo-feminino-60ml-novo.jpg',
   },
 
   // --- COMBO MASCULINO + FEMININO ---
@@ -687,7 +687,7 @@ export const DISCOVERY_SET_DETAILS = {
     'Creme Acetinado Corporal Toque de Seda (200 g)',
     'Perfume Capilar Brilho Tridimensional (45 ml)',
   ],
-  image: '/images/photo_4978966337568837228_y.jpg',
+  image: '/images/products/maximo-kit-completo-novo.jpg',
 };
 
 export function getPerfumeTactileSensation(perfume: Perfume): string {
