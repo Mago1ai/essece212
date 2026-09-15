@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, ArrowRight, MessageCircle, Droplets, Sparkles } from 'lucide-react';
+import { Heart, ArrowRight, MessageCircle, Droplets, Sparkles, Gem } from 'lucide-react';
 import { Perfume, OlfactoryFamily } from '../types';
 import { createProductWhatsAppLink, getPerfumeTactileSensation } from '../data/perfumes';
 import { EditorialImage } from './EditorialImage';
@@ -101,17 +101,17 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
               <div className="w-12 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40" />
             </div>
             <h2 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl font-light leading-[1.08] tracking-[-0.01em]">
-              Fragrâncias & <br />
-              <span className="italic font-normal text-[#A96227] dark:text-[#D4AF37]">criações nobres.</span>
+              Perfumes <br />
+              <span className="italic font-normal text-[#A96227] dark:text-[#D4AF37]">Contratipo.</span>
             </h2>
           </div>
 
           <div className="max-w-md text-xs sm:text-[13px] text-[#24221F]/75 dark:text-[#F5F2EB]/75 space-y-1.5 border-l-2 border-[#A96227]/30 dark:border-[#D4AF37]/40 pl-4">
             <p className="uppercase tracking-[0.16em] text-[#24221F] dark:text-[#F5F2EB] font-semibold text-[11px]">
-              Máximo Eau de Parfum & Importados
+              Máximo Eau de Parfum
             </p>
             <p className="tracking-normal font-light">
-              Consultoria olfativa, pedidos diretos e curadoria sob medida.
+              Fragrâncias contratipo de alta fidelidade. Masculino 30ml · Feminino 60ml. Pedidos via WhatsApp.
             </p>
           </div>
         </div>
@@ -291,6 +291,19 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                     >
                       {perfume.name}
                     </h3>
+
+                    {/* Inspirado em badge — só exibe para contratipos */}
+                    {perfume.inspiradoEm && (
+                      <div className="flex items-center gap-1.5 mt-2.5">
+                        <Gem className="w-3 h-3 text-[#A96227]/70 dark:text-[#D4AF37]/70 shrink-0" />
+                        <span className="text-[10px] uppercase tracking-[0.18em] text-[#24221F]/55 dark:text-[#F5F2EB]/55 font-medium">
+                          Ref.:&nbsp;
+                        </span>
+                        <span className="text-[10px] uppercase tracking-[0.14em] text-[#A96227] dark:text-[#D4AF37] font-semibold truncate">
+                          {perfume.inspiradoEm}
+                        </span>
+                      </div>
+                    )}
 
                     {/* Olfactory Notes */}
                     <p className="font-sans-clean text-xs sm:text-[13px] text-[#24221F]/75 dark:text-[#F5F2EB]/75 font-light mt-2 leading-relaxed line-clamp-2">

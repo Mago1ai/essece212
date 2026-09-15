@@ -11,6 +11,8 @@ import {
   Layers,
   ChevronRight,
   Droplets,
+  Gem,
+  Info,
 } from 'lucide-react';
 import { Perfume } from '../types';
 import { createProductWhatsAppLink, getPerfumeTactileSensation } from '../data/perfumes';
@@ -212,9 +214,30 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </div>
               )}
 
+              {/* Inspirado em — aparece apenas para contratipos */}
+              {perfume.inspiradoEm && (
+                <div className="flex flex-col gap-1.5 bg-[#D4AF37]/8 dark:bg-[#D4AF37]/5 border border-[#D4AF37]/20 dark:border-[#D4AF37]/15 p-3 rounded-xs">
+                  <div className="flex items-center gap-2">
+                    <Gem className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] shrink-0" />
+                    <span className="font-mono-subtle text-[10px] uppercase tracking-[0.22em] text-[#A96227] dark:text-[#D4AF37] font-bold">
+                      REFERÊNCIA ORIGINAL
+                    </span>
+                  </div>
+                  <p className="font-serif-editorial text-base text-[#24221F] dark:text-[#F5F2EB] font-light pl-5">
+                    {perfume.inspiradoEm}
+                  </p>
+                  <div className="flex items-start gap-1.5 pl-5 pt-0.5">
+                    <Info className="w-3 h-3 text-[#24221F]/40 dark:text-[#F5F2EB]/40 shrink-0 mt-0.5" />
+                    <p className="font-mono-subtle text-[9px] text-[#24221F]/50 dark:text-[#F5F2EB]/50 leading-relaxed">
+                      Fragrância contratipo artesanal de alta fidelidade. Não é produto original da marca referenciada.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {/* Atmosphere Quote */}
               <p className="font-serif-editorial italic text-base text-[#24221F]/80 dark:text-[#F5F2EB]/80 border-l-2 border-[#A96227] dark:border-[#D4AF37] pl-3 py-0.5">
-                “{perfume.atmosphere}”
+                "{perfume.atmosphere}"
               </p>
 
               {/* Sensory Description */}

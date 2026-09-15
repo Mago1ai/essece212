@@ -37,6 +37,7 @@ export interface Perfume {
   tactileSensation?: string;
   image: string;
   secondaryImage?: string;
+  inspiradoEm?: string; // ex: "Good Girl - Carolina Herrera" — para contratipos
   isFavorite?: boolean;
 }
 
