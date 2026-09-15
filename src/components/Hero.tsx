@@ -171,10 +171,10 @@ export const Hero: React.FC<HeroProps> = ({
                     </div>
 
                     <div className="text-right">
-                      <span className="text-xl sm:text-2xl text-[#1E1C1A] dark:text-white font-serif font-medium block">
-                        {activePerfume.price}
+                      <span className="font-mono text-xs uppercase tracking-widest text-[#A96227] dark:text-[#D4AF37] font-semibold block">
+                        Exclusivo
                       </span>
-                      <span className="text-[11px] uppercase tracking-wider text-[#A96227] dark:text-[#D4AF37] font-semibold">
+                      <span className="text-[11px] uppercase tracking-wider text-[#1E1C1A]/70 dark:text-[#F4F0E9]/70 group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37] transition-colors font-medium">
                         Ver Dossiê →
                       </span>
                     </div>

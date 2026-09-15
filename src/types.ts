@@ -21,12 +21,16 @@ export interface PerfumeNotes {
 export interface Perfume {
   id: string;
   name: string;
+  referenceCode?: string;
   brand: string;
+  inspiredBy?: string;
+  originalHouse?: string;
   subtitle: string;
   family: 'Linha Máximo' | 'Florais' | 'Amadeirados' | 'Ambarados' | 'Orientais' | 'Frescos' | 'Gourmand & Frutados';
   gender?: 'Feminino' | 'Masculino' | 'Unissex';
   category?: 'Perfumes' | 'Linha Máximo' | 'Body Mist & Capilar';
   collectionOrigin?: 'autorais' | 'importados' | 'renomeados';
+  status?: 'Disponível' | 'Sob Consulta' | 'Esgotado';
   notes: PerfumeNotes;
   accords?: string[];
   shortNotes: string;
@@ -35,6 +39,7 @@ export interface Perfume {
   size: string;
   concentration: string;
   badge?: string;
+  description?: string;
   sensoryDescription: string;
   atmosphere: string;
   longevity: string;

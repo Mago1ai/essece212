@@ -37,7 +37,7 @@ export const DiscoverySetBanner: React.FC<DiscoverySetBannerProps> = ({
 
             <div className="pt-2 font-mono-subtle text-xs text-white/75 flex flex-wrap gap-x-6 gap-y-1">
               <span>· 3 x 3 ml em vidro âmbar</span>
-              <span>· {DISCOVERY_SET_DETAILS.price} (revertidos em crédito)</span>
+              <span>· Condições sob consulta via WhatsApp</span>
               <span>· Frete cortesia</span>
             </div>
           </div>

@@ -30,6 +30,13 @@ import { OfflineIndicator } from './components/OfflineIndicator';
 export default function App() {
   const [perfumesList, setPerfumesList] = useState<Perfume[]>(() => {
     try {
+      const CATALOG_VERSION = 'v2_maximo_contratipo';
+      const savedVersion = localStorage.getItem('maximo_catalog_version');
+      if (savedVersion !== CATALOG_VERSION) {
+        localStorage.setItem('maximo_catalog_version', CATALOG_VERSION);
+        localStorage.setItem('maximo_perfumes_catalog', JSON.stringify(INITIAL_PERFUMES));
+        return INITIAL_PERFUMES;
+      }
       const saved = localStorage.getItem('maximo_perfumes_catalog');
       return saved ? JSON.parse(saved) : INITIAL_PERFUMES;
     } catch {

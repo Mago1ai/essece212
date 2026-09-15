@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   X,
   Heart,
@@ -13,7 +13,7 @@ import {
   Droplets,
 } from 'lucide-react';
 import { Perfume } from '../types';
-import { createProductWhatsAppLink, getPerfumeTactileSensation } from '../data/perfumes';
+import { createPerfumeWhatsAppLink, getPerfumeTactileSensation } from '../data/perfumes';
 import { InteractiveBottleShowcase } from './InteractiveBottleShowcase';
 
 interface ProductModalProps {
@@ -30,30 +30,69 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   onToggleFavorite,
 }) => {
   const [activeSensoryStage, setActiveSensoryStage] = useState<0 | 1 | 2>(0);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const lastActiveElementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
     if (perfume) {
+      lastActiveElementRef.current = document.activeElement as HTMLElement;
       setActiveSensoryStage(0);
       document.body.style.overflow = 'hidden';
+
+      // Auto focus close button after render
+      const focusTimer = setTimeout(() => {
+        closeBtnRef.current?.focus();
+      }, 50);
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          onClose();
+          return;
+        }
+
+        // Focus Trap: Tab and Shift+Tab cycling
+        if (e.key === 'Tab' && modalRef.current) {
+          const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          );
+
+          if (focusableElements.length === 0) return;
+
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              e.preventDefault();
+              lastElement.focus();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              e.preventDefault();
+              firstElement.focus();
+            }
+          }
+        }
+      };
+
       window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        clearTimeout(focusTimer);
+        document.body.style.overflow = 'unset';
+        window.removeEventListener('keydown', handleKeyDown);
+        if (lastActiveElementRef.current && typeof lastActiveElementRef.current.focus === 'function') {
+          lastActiveElementRef.current.focus();
+        }
+      };
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
   }, [perfume, onClose]);
 
   if (!perfume) return null;
 
-  const whatsAppLink = createProductWhatsAppLink(
-    perfume.name,
-    perfume.brand,
-    perfume.size,
-    perfume.price
-  );
+  const whatsAppLink = createPerfumeWhatsAppLink(perfume);
 
   const tactileDescription = getPerfumeTactileSensation(perfume);
 
@@ -121,15 +160,19 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       onClick={onClose}
     >
       <div
+        ref={modalRef}
         id="product-modal-container"
-        className="relative w-full max-w-5xl bg-[#F4F0E9] dark:bg-[#161513] text-[#24221F] dark:text-[#F5F2EB] border border-[#24221F]/15 dark:border-white/10 shadow-2xl max-h-[95vh] sm:max-h-[92vh] overflow-y-auto transform transition-all duration-300 my-auto rounded-xs no-scrollbar pb-[env(safe-area-inset-bottom)]"
+        tabIndex={-1}
+        className="relative w-full max-w-5xl bg-[#F4F0E9] dark:bg-[#161513] text-[#24221F] dark:text-[#F5F2EB] border border-[#24221F]/15 dark:border-white/10 shadow-2xl max-h-[95vh] sm:max-h-[92vh] overflow-y-auto transform transition-all duration-300 my-auto rounded-xs no-scrollbar pb-[env(safe-area-inset-bottom)] focus:outline-none"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
+          ref={closeBtnRef}
+          type="button"
           id="close-product-modal-btn"
           onClick={onClose}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 w-11 h-11 flex items-center justify-center bg-[#F4F0E9]/90 dark:bg-[#1E1C1A]/90 backdrop-blur-xs text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors focus:outline-none rounded-full border border-[#24221F]/10 dark:border-white/10 shadow-sm touch-press"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 w-11 h-11 flex items-center justify-center bg-[#F4F0E9]/90 dark:bg-[#1E1C1A]/90 backdrop-blur-xs text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] rounded-full border border-[#24221F]/10 dark:border-white/10 shadow-sm touch-press cursor-pointer"
           aria-label="Fechar modal do perfume"
         >
           <X className="w-5 h-5 stroke-[1.5]" />
@@ -158,17 +201,54 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 <span className="text-[#24221F]/70 dark:text-[#F5F2EB]/70 font-medium">{perfume.size}</span>
               </div>
 
-              {/* Title & Brand */}
+              {/* Title, Reference Code & Brand */}
               <div>
+                <div className="flex items-center gap-2 mb-1">
+                  {perfume.referenceCode && (
+                    <span className="font-mono-subtle text-[11px] px-2 py-0.5 bg-[#A96227]/15 dark:bg-[#D4AF37]/20 text-[#A96227] dark:text-[#D4AF37] font-bold tracking-wider rounded-xs border border-[#A96227]/30 dark:border-[#D4AF37]/30">
+                      {perfume.referenceCode}
+                    </span>
+                  )}
+                  <span className="font-mono-subtle text-xs tracking-wider uppercase text-[#24221F]/70 dark:text-[#F5F2EB]/70">
+                    Maison Máximo
+                  </span>
+                </div>
                 <h2
                   id="product-modal-title"
-                  className="font-serif-editorial text-2xl sm:text-4xl text-[#24221F] dark:text-[#F5F2EB] font-light leading-tight mb-1"
+                  className="font-serif-editorial text-2xl sm:text-4xl text-[#24221F] dark:text-[#F5F2EB] font-light leading-tight mb-2"
                 >
                   {perfume.name}
                 </h2>
-                <p className="font-mono-subtle text-xs sm:text-sm text-[#24221F]/75 dark:text-[#F5F2EB]/75 tracking-wider uppercase">
-                  Casa de Perfumaria: <span className="font-semibold text-[#24221F] dark:text-[#D4AF37]">{perfume.brand}</span>
-                </p>
+
+                {/* Inspired By / Olfactory Reference Banner */}
+                {perfume.inspiredBy ? (
+                  <div className="p-3 sm:p-3.5 bg-[#EAE3D9]/70 dark:bg-[#1A1816] border border-[#A96227]/30 dark:border-[#D4AF37]/30 rounded-xs flex items-center justify-between gap-3 my-2">
+                    <div>
+                      <span className="text-[10px] font-mono-subtle uppercase tracking-[0.2em] text-[#A96227] dark:text-[#D4AF37] font-bold block">
+                        Referência Olfativa / Inspirado em:
+                      </span>
+                      <span className="font-serif-editorial text-lg sm:text-xl text-[#24221F] dark:text-[#F5F2EB] font-normal">
+                        {perfume.inspiredBy}
+                      </span>
+                    </div>
+                    {perfume.originalHouse && (
+                      <div className="text-right">
+                        <span className="text-[9px] font-mono-subtle uppercase tracking-wider text-[#24221F]/60 dark:text-[#F5F2EB]/60 block">
+                          Casa de Referência
+                        </span>
+                        <span className="text-xs font-semibold text-[#24221F]/90 dark:text-[#F5F2EB]/90">
+                          {perfume.originalHouse}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="p-2.5 bg-[#EAE3D9]/40 dark:bg-[#1A1816]/60 border border-[#24221F]/10 dark:border-white/10 rounded-xs my-2">
+                    <span className="text-[11px] font-mono-subtle uppercase tracking-wider text-[#A96227] dark:text-[#D4AF37] font-semibold block">
+                      Criação Autoral Exclusiva Casa Máximo
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Fragrantica Accords */}
@@ -334,11 +414,11 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4 border-t border-[#24221F]/10 dark:border-white/10">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <span className="font-mono-subtle text-xl sm:text-3xl text-[#24221F] dark:text-[#F5F2EB] font-bold tracking-tight">
-                    {perfume.price}
+                  <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-[#A96227] dark:text-[#D4AF37] font-semibold">
+                    Consultoria Olfativa Exclusiva
                   </span>
-                  <span className="ml-1.5 sm:ml-2 font-mono-subtle text-[11px] sm:text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70">
-                    / {perfume.size} · Frete Incluso
+                  <span className="block font-mono-subtle text-[11px] sm:text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70 mt-0.5">
+                    {perfume.size} · {perfume.concentration}
                   </span>
                 </div>
                 <button
@@ -381,7 +461,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </div>
                 <div className="flex items-center gap-1 sm:gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] shrink-0" />
-                  <span>100% Original</span>
+                  <span>Alta Fixação</span>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Sparkles, MessageCircle, Eye, Droplets, Heart } from 'lucide-react';
 import { Perfume } from '../types';
-import { createProductWhatsAppLink } from '../data/perfumes';
+import { createPerfumeWhatsAppLink } from '../data/perfumes';
 import { EditorialImage } from './EditorialImage';
 
 interface FeaturedHeroProductsProps {
@@ -63,7 +63,7 @@ export const FeaturedHeroProducts: React.FC<FeaturedHeroProductsProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
           {displayProducts.map((product) => {
             const isFav = favorites.includes(product.id);
-            const waLink = createProductWhatsAppLink(product.name, product.brand, product.price);
+            const waLink = createPerfumeWhatsAppLink(product);
 
             return (
               <div
@@ -75,7 +75,7 @@ export const FeaturedHeroProducts: React.FC<FeaturedHeroProductsProps> = ({
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] sm:text-[11px] font-mono-subtle uppercase tracking-[0.24em] font-bold text-[#A96227] dark:text-[#D4AF37]">
-                      {product.brand}
+                      {product.referenceCode ? `${product.referenceCode} · ` : ''}{product.brand}
                     </span>
                     <span className="text-[10px] text-[#1E1C1A]/30 dark:text-white/30">•</span>
                     <span className="text-[10px] sm:text-[11px] font-mono-subtle uppercase tracking-wider text-[#1E1C1A]/60 dark:text-white/60">
@@ -134,14 +134,23 @@ export const FeaturedHeroProducts: React.FC<FeaturedHeroProductsProps> = ({
                       >
                         {product.name}
                       </h3>
+                      {product.inspiredBy && (
+                        <p className="text-xs text-[#A96227] dark:text-[#D4AF37] font-medium mt-1">
+                          <span className="text-[10px] uppercase font-mono-subtle opacity-75">Inspirado em: </span>
+                          <span className="font-semibold">{product.inspiredBy}</span>
+                          {product.originalHouse && (
+                            <span className="opacity-70 text-[11px]"> ({product.originalHouse})</span>
+                          )}
+                        </p>
+                      )}
                       <p className="text-xs text-[#1E1C1A]/60 dark:text-white/60 font-mono-subtle mt-0.5">
                         {product.size} · {product.concentration} · {product.gender}
                       </p>
                     </div>
 
                     <div className="text-right shrink-0">
-                      <span className="font-serif text-2xl sm:text-3xl text-[#1E1C1A] dark:text-white font-medium block">
-                        {product.price}
+                      <span className="font-mono text-xs uppercase tracking-widest text-[#A96227] dark:text-[#D4AF37] font-semibold block">
+                        Exclusivo
                       </span>
                     </div>
                   </div>

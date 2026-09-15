@@ -107,11 +107,11 @@ export const DiscoverySetModal: React.FC<DiscoverySetModalProps> = ({
               </h3>
 
               <div className="flex items-baseline gap-4 pt-1">
-                <span className="font-mono-subtle text-2xl text-[#24221F] dark:text-[#F5F2EB] font-bold">
-                  {DISCOVERY_SET_DETAILS.price}
+                <span className="font-mono-subtle text-xl text-[#24221F] dark:text-[#F5F2EB] font-bold">
+                  Valores sob consulta
                 </span>
                 <span className="font-mono-subtle text-xs text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider font-semibold">
-                  100% REVERTIDO EM CRÉDITO
+                  CONSULTORIA VIA WHATSAPP
                 </span>
               </div>
 

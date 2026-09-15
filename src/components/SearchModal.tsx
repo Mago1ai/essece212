@@ -38,6 +38,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         const matchesShortNotes = p.shortNotes.toLowerCase().includes(normalized);
         const matchesDesc = p.sensoryDescription.toLowerCase().includes(normalized);
         const matchesAccords = p.accords?.some((a) => a.toLowerCase().includes(normalized)) || false;
+        const matchesRefCode = p.referenceCode ? p.referenceCode.toLowerCase().includes(normalized) : false;
+        const matchesInspired = p.inspiredBy ? p.inspiredBy.toLowerCase().includes(normalized) : false;
+        const matchesHouse = p.originalHouse ? p.originalHouse.toLowerCase().includes(normalized) : false;
         const matchesNotes = [
           ...p.notes.top,
           ...p.notes.heart,
@@ -51,6 +54,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           matchesShortNotes ||
           matchesDesc ||
           matchesAccords ||
+          matchesRefCode ||
+          matchesInspired ||
+          matchesHouse ||
           matchesNotes
         );
       })
@@ -58,14 +64,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   const quickPills = [
     'Máximo',
-    'Aventus Creed',
+    'MX-07',
+    'MX-01',
+    'Aventus',
     'Good Girl',
-    'Althaïr Marly',
+    'Althaïr',
     'Body Splash',
     '1 Million',
     'Baunilha',
-    'Florais',
-    'Amadeirados',
     'Delina',
   ];
 
@@ -160,14 +166,27 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                         />
                       </div>
                       <div>
-                        <span className="font-mono-subtle text-[9px] text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider block font-medium group-hover:text-[#EAE3D9]">
-                          {perfume.brand} · {perfume.family}
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          {perfume.referenceCode && (
+                            <span className="font-mono-subtle text-[8px] bg-[#A96227]/20 dark:bg-[#D4AF37]/25 text-[#A96227] dark:text-[#D4AF37] px-1 py-0.2 rounded-xs font-bold">
+                              {perfume.referenceCode}
+                            </span>
+                          )}
+                          <span className="font-mono-subtle text-[9px] text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider block font-medium group-hover:text-[#EAE3D9]">
+                            {perfume.brand} · {perfume.family}
+                          </span>
+                        </div>
                         <h4 className="font-serif-editorial text-lg leading-tight">
                           {perfume.name}
                         </h4>
+                        {perfume.inspiredBy && (
+                          <p className="text-xs text-[#A96227] dark:text-[#D4AF37] font-medium">
+                            <span className="text-[9px] uppercase font-mono-subtle opacity-75">Inspirado em: </span>
+                            {perfume.inspiredBy} {perfume.originalHouse ? `(${perfume.originalHouse})` : ''}
+                          </p>
+                        )}
                         <p className="font-mono-subtle text-[10px] opacity-70">
-                          {perfume.size} · {perfume.price}
+                          {perfume.size} · {perfume.concentration}
                         </p>
                       </div>
                     </div>

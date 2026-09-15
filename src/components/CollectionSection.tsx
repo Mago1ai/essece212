@@ -3,6 +3,7 @@ import { Heart, ArrowRight, MessageCircle, Droplets, SlidersHorizontal, Sparkles
 import { Perfume, OlfactoryFamily, CollectionOrigin, GenderSelection } from '../types';
 import {
   createProductWhatsAppLink,
+  createPerfumeWhatsAppLink,
   getPerfumeTactileSensation,
   COLLECTIONS_DATA,
   getPerfumeCollectionOrigin,
@@ -648,7 +649,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                     {/* Top Badges */}
                     <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex flex-col gap-1.5 z-20 pointer-events-none">
                       <span className="bg-[#24221F]/90 dark:bg-[#201E1B]/95 text-[#F4F0E9] dark:text-[#D4AF37] text-[10px] sm:text-[11px] tracking-[0.2em] px-2.5 sm:px-3 py-0.5 sm:py-1 uppercase font-semibold border border-[#24221F]/20 dark:border-[#D4AF37]/30 shadow-xs">
-                        {perfume.brand}
+                        {perfume.referenceCode ? `${perfume.referenceCode} · ` : ''}{perfume.brand}
                       </span>
                       {perfume.badge ? (
                         <span className="bg-[#A96227] dark:bg-[#C97D3E] text-white text-[9px] sm:text-[10px] tracking-[0.18em] px-2 sm:px-2.5 py-0.5 uppercase font-semibold shadow-xs">
@@ -720,6 +721,27 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                         {perfume.name}
                       </h3>
 
+                      {/* Olfactory Reference / Inspired by */}
+                      {perfume.inspiredBy ? (
+                        <div className="mt-1 flex items-center flex-wrap gap-1 text-xs text-[#A96227] dark:text-[#D4AF37] font-medium">
+                          <span className="text-[10px] uppercase font-mono-subtle tracking-wider opacity-75">
+                            Referência Olfativa:
+                          </span>
+                          <span className="font-semibold underline decoration-[#A96227]/40 dark:decoration-[#D4AF37]/40 underline-offset-2">
+                            {perfume.inspiredBy}
+                          </span>
+                          {perfume.originalHouse && (
+                            <span className="text-[11px] opacity-70">
+                              ({perfume.originalHouse})
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="mt-1 flex items-center gap-1 text-[11px] text-[#A96227] dark:text-[#D4AF37] font-mono-subtle uppercase tracking-wider font-semibold">
+                          <span>Fórmula Autoral Máximo</span>
+                        </div>
+                      )}
+
                       {/* Olfactory Notes */}
                       <p className="font-sans-clean text-xs sm:text-sm text-[#24221F]/80 dark:text-[#F5F2EB]/80 font-light mt-1.5 sm:mt-2 leading-relaxed line-clamp-2">
                         {perfume.shortNotes}
@@ -730,8 +752,8 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                     <div className="pt-3 sm:pt-4 border-t border-[#24221F]/10 dark:border-white/10 space-y-2.5 sm:space-y-3">
                       <div className="flex items-center justify-between">
                         <div>
-                          <span className="text-xl sm:text-2xl text-[#24221F] dark:text-[#F5F2EB] font-serif font-medium tracking-tight">
-                            {perfume.price}
+                          <span className="text-xs uppercase font-mono tracking-widest text-[#A96227] dark:text-[#D4AF37] font-semibold block">
+                            Maison Máximo
                           </span>
                           <span className="block text-[10px] sm:text-xs text-[#24221F]/60 dark:text-[#F5F2EB]/60 uppercase tracking-wider font-medium">
                             {perfume.concentration}
@@ -751,12 +773,7 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
                       {/* Single Premium WhatsApp Conversion Action */}
                       <a
                         id={`whatsapp-order-${perfume.id}`}
-                        href={createProductWhatsAppLink(
-                          perfume.name,
-                          perfume.brand,
-                          perfume.size,
-                          perfume.price
-                        )}
+                        href={createPerfumeWhatsAppLink(perfume)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group/wa w-full min-h-[46px] flex items-center justify-center gap-2 py-3 px-4 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-[#F4F0E9] dark:text-[#121110] text-xs tracking-[0.2em] uppercase transition-all duration-300 active:scale-[0.98] text-center font-bold shadow-xs hover:shadow-md cursor-pointer rounded-xs touch-press"

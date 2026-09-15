@@ -93,6 +93,10 @@ export const MasterAdminModal: React.FC<MasterAdminModalProps> = ({
     accords: ['floral', 'aveludado', 'nobre'],
     tactileSensation: 'Toque sedoso e aveludado na pele',
     image: '/assets/maximo-sabonete-liquido.svg',
+    referenceCode: '',
+    inspiredBy: '',
+    originalHouse: '',
+    status: 'Disponível',
   };
 
   const [formData, setFormData] = useState<Perfume>(initialForm);
@@ -663,6 +667,11 @@ export const CATALOG_PRODUCTS: PerfumeItem[] = ${JSON.stringify(perfumes, null, 
 
                       <div className="flex-grow min-w-0">
                         <div className="flex items-center gap-1.5 mb-1">
+                          {p.referenceCode && (
+                            <span className="text-[9px] bg-[#D4AF37]/20 text-[#D4AF37] px-1.5 py-0.5 rounded-xs font-mono font-bold">
+                              {p.referenceCode}
+                            </span>
+                          )}
                           <span className="text-[10px] font-mono-subtle text-[#D4AF37] uppercase tracking-widest font-semibold">
                             {p.brand}
                           </span>
@@ -675,8 +684,13 @@ export const CATALOG_PRODUCTS: PerfumeItem[] = ${JSON.stringify(perfumes, null, 
                         <h4 className="font-serif-editorial text-base text-white truncate font-normal">
                           {p.name}
                         </h4>
+                        {p.inspiredBy && (
+                          <p className="text-[11px] text-[#D4AF37] truncate font-medium">
+                            Ref: {p.inspiredBy} {p.originalHouse ? `(${p.originalHouse})` : ''}
+                          </p>
+                        )}
                         <p className="text-xs text-white/60 truncate">{p.subtitle || p.size}</p>
-                        <p className="text-xs text-[#D4AF37] font-semibold mt-1">{p.price}</p>
+                        <p className="text-xs text-[#D4AF37] font-semibold mt-1">{p.price || 'Sob Consulta'}</p>
                       </div>
                     </div>
 
@@ -748,6 +762,45 @@ export const CATALOG_PRODUCTS: PerfumeItem[] = ${JSON.stringify(perfumes, null, 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Left Column: Core Product Info */}
                 <div className="space-y-4">
+                  <div className="grid grid-cols-3 gap-3">
+                    <div>
+                      <label className="block text-[11px] font-mono-subtle text-white/70 uppercase tracking-wider mb-1">
+                        Código Máximo
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.referenceCode || ''}
+                        onChange={(e) => setFormData({ ...formData, referenceCode: e.target.value })}
+                        placeholder="Ex: MX-07"
+                        className="w-full bg-black/50 border border-white/20 text-white text-xs px-3.5 py-2.5 rounded-xs focus:border-[#D4AF37] focus:outline-none font-mono"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-mono-subtle text-white/70 uppercase tracking-wider mb-1">
+                        Inspirado em (Ref.)
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.inspiredBy || ''}
+                        onChange={(e) => setFormData({ ...formData, inspiredBy: e.target.value })}
+                        placeholder="Ex: Aventus"
+                        className="w-full bg-black/50 border border-white/20 text-white text-xs px-3.5 py-2.5 rounded-xs focus:border-[#D4AF37] focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-mono-subtle text-white/70 uppercase tracking-wider mb-1">
+                        Casa de Referência
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.originalHouse || ''}
+                        onChange={(e) => setFormData({ ...formData, originalHouse: e.target.value })}
+                        placeholder="Ex: Creed"
+                        className="w-full bg-black/50 border border-white/20 text-white text-xs px-3.5 py-2.5 rounded-xs focus:border-[#D4AF37] focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-[11px] font-mono-subtle text-white/70 uppercase tracking-wider mb-1">
                       Nome do Produto / Perfume *

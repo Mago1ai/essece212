@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-    <title>Máximo · Eau de Parfum</title>
+    <title>Máximo Eau de Parfum</title>
     <meta name="description" content="Catálogo de alta perfumaria e cosméticos autorais Máximo Eau de Parfum. Fragrâncias sofisticadas, notas nobres e atendimento exclusivo via WhatsApp." />
     
     <!-- PWA & Mobile Web App Meta -->
@@ -20,12 +20,46 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Open Graph & Social -->
-    <meta property="og:title" content="Máximo · Eau de Parfum" />
+    <meta property="og:site_name" content="Máximo Eau de Parfum" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Máximo Eau de Parfum" />
     <meta property="og:description" content="Catálogo de alta perfumaria e cosméticos autorais Máximo Eau de Parfum. Fragrâncias sofisticadas, notas nobres e atendimento exclusivo via WhatsApp." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/pwa-512x512.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Máximo Eau de Parfum" />
+    <meta name="twitter:description" content="Catálogo de alta perfumaria e cosméticos autorais Máximo Eau de Parfum. Fragrâncias sofisticadas, notas nobres e atendimento exclusivo via WhatsApp." />
     <meta name="twitter:image" content="/pwa-512x512.png" />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PerfumeStore",
+      "name": "Máximo Eau de Parfum",
+      "description": "Atelier e Casa de Alta Perfumaria de Nicho e Contratipos Nobres com maceração artesanal e criações autorais coroadas.",
+      "image": "/pwa-512x512.png",
+      "priceRange": "$$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Fragrâncias e Rituais Máximo",
+        "itemListElement": [
+          {
+            "@type": "Product",
+            "name": "Máximo Pour Homme Eau de Parfum (30ml)",
+            "brand": { "@type": "Brand", "name": "Máximo" },
+            "description": "Frasco retangular em cristal pesado com colar e pingente de coroa. Cardamomo negro, âmbar nobre e vetiver do Haiti."
+          },
+          {
+            "@type": "Product",
+            "name": "Máximo Pour Femme Eau de Parfum (60ml)",
+            "brand": { "@type": "Brand", "name": "Máximo" },
+            "description": "Silhueta em torre de cristal lapidado com pingente de coroa. Flor de laranjeira imperial, jasmim sambac e baunilha de Bourbon."
+          }
+        ]
+      }
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

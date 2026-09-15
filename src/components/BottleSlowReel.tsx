@@ -113,7 +113,7 @@ export const BottleSlowReel: React.FC<BottleSlowReelProps> = ({
 
                   {/* Top Brand Pill */}
                   <span className="absolute top-2 left-2 bg-[#24221F]/90 dark:bg-black/80 text-white text-[9px] uppercase tracking-widest px-2 py-0.5 font-mono-subtle rounded-xs">
-                    {perfume.brand}
+                    {perfume.referenceCode ? `${perfume.referenceCode} · ` : ''}{perfume.brand}
                   </span>
 
                   {/* Mini Favorite Button */}
@@ -143,9 +143,14 @@ export const BottleSlowReel: React.FC<BottleSlowReelProps> = ({
                   <h4 className="font-serif-editorial text-base text-[#24221F] dark:text-[#F5F2EB] truncate group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37] transition-colors">
                     {perfume.name}
                   </h4>
+                  {perfume.inspiredBy && (
+                    <span className="text-[10px] text-[#A96227] dark:text-[#D4AF37] truncate block font-medium">
+                      Ref: {perfume.inspiredBy}
+                    </span>
+                  )}
                   <div className="flex items-center justify-between mt-1">
-                    <span className="text-sm font-serif font-medium text-[#24221F] dark:text-white">
-                      {perfume.price}
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-[#A96227] dark:text-[#D4AF37] font-semibold">
+                      {perfume.size}
                     </span>
                     <span className="text-[10px] uppercase font-mono-subtle text-[#A96227] dark:text-[#D4AF37] flex items-center gap-0.5 font-bold">
                       <Eye className="w-2.5 h-2.5" /> Ver

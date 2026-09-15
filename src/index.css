@@ -57,6 +57,17 @@
     background-color: rgba(201, 125, 62, 0.4);
     color: #FFFFFF;
   }
+
+  /* Accessible focus indicators for keyboard navigation */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #D4AF37 !important;
+    outline-offset: 2px !important;
+  }
 }
 
 .font-serif-editorial {

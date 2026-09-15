@@ -654,12 +654,12 @@ export function getStandaloneHtmlContent(): string {
                         </p>
                       </div>
 
-                      {/* Price & Actions */}
+                      {/* Exclusivity & Actions */}
                       <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.06] space-y-3">
                         <div className="flex items-center justify-between">
                           <div>
-                            <span className="text-xl sm:text-2xl font-serif font-medium text-[#24221F] dark:text-[#F4F0E9]">
-                              {perfume.price}
+                            <span className="text-sm font-mono uppercase tracking-widest text-[#A96227] dark:text-[#D4AF37] font-semibold">
+                              Exclusivo
                             </span>
                             <span className="block text-[10px] uppercase text-[#24221F]/50 dark:text-[#F4F0E9]/50 tracking-wider">
                               {perfume.concentration}
@@ -676,7 +676,7 @@ export function getStandaloneHtmlContent(): string {
 
                         <div className="grid grid-cols-2 gap-2">
                           <a
-                            href={getWhatsappUrl(\`Olá! Gostaria de encomendar o perfume \${perfume.name} (\${perfume.brand}, \${perfume.size}) no valor de \${perfume.price}.\`)}
+                            href={getWhatsappUrl(\`Olá! Tenho interesse no perfume \${perfume.name} (\${perfume.brand}, \${perfume.size}) da Maison Máximo Eau de Parfum. Gostaria de atendimento exclusivo.\`)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="py-2.5 px-3 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-white dark:text-black text-[11px] tracking-[0.12em] uppercase font-semibold text-center transition-all flex items-center justify-center gap-1.5 shadow-sm"
