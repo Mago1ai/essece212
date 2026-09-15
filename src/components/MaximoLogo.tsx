@@ -19,16 +19,25 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
   const safeId = (id || rawId).replace(/[^a-zA-Z0-9-_]/g, '_');
 
   const [logoUrl, setLogoUrl] = useState<string>(() => {
-    return getStoreSettings().logoUrl || 'https://i.postimg.cc/JHBpWK7K/image.png';
+    const custom = getStoreSettings().logoUrl;
+    if (custom && custom !== 'https://i.postimg.cc/JHBpWK7K/image.png' && custom !== 'https://i.postimg.cc/wMwZLbCK/image.png') {
+      return custom;
+    }
+    return '/assets/logo.png';
   });
 
   useEffect(() => {
     const handleSettingsUpdate = (e: Event) => {
       const customEvent = e as CustomEvent;
       if (customEvent.detail && customEvent.detail.logoUrl) {
-        setLogoUrl(customEvent.detail.logoUrl);
+        const custom = customEvent.detail.logoUrl;
+        if (custom === 'https://i.postimg.cc/JHBpWK7K/image.png' || custom === 'https://i.postimg.cc/wMwZLbCK/image.png') {
+          setLogoUrl('/assets/logo.png');
+        } else {
+          setLogoUrl(custom);
+        }
       } else {
-        setLogoUrl(getStoreSettings().logoUrl || 'https://i.postimg.cc/JHBpWK7K/image.png');
+        setLogoUrl('/assets/logo.png');
       }
     };
 
@@ -36,13 +45,13 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
     return () => window.removeEventListener('maximo_settings_updated', handleSettingsUpdate);
   }, []);
 
-  // Dimension scaling designed for balanced, high-end optical proportion without vertical overflow
+  // Dimension scaling designed for grand, legible, and luxurious optical proportion
   const sizeClasses: Record<string, string> = {
-    sm: 'h-10 sm:h-12 md:h-14 max-w-[180px] sm:max-w-[220px]',
-    md: 'h-14 sm:h-16 md:h-20 max-w-[240px] sm:max-w-[280px]',
-    lg: 'h-20 sm:h-24 md:h-28 max-w-[320px]',
-    xl: 'h-28 sm:h-32 md:h-36 max-w-[400px]',
-    hero: 'h-24 sm:h-32 md:h-36 max-w-[420px]',
+    sm: 'h-10 sm:h-12 w-36 sm:w-44 max-w-[190px]',
+    md: 'h-12 sm:h-16 md:h-18 w-44 sm:w-56 md:w-68 max-w-[300px]',
+    lg: 'h-18 sm:h-24 md:h-28 w-60 sm:w-76 md:w-88 max-w-[380px]',
+    xl: 'h-24 sm:h-32 md:h-36 w-72 sm:w-96 max-w-[450px]',
+    hero: 'h-20 sm:h-28 md:h-32 w-64 sm:w-80 md:w-96 max-w-[420px]',
     custom: '',
   };
 

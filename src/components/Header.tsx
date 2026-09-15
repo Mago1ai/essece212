@@ -84,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
             : 'bg-[#F4F0E9]/80 dark:bg-black/60 backdrop-blur-xs border-b border-[#24221F]/5 dark:border-white/5 text-[#24221F] dark:text-[#F4F0E9]'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 h-20 sm:h-24 flex items-center justify-between">
           {/* Brand Logo with Easter Egg Trigger (7 Clicks) */}
           <button
             id="brand-logo-btn"
@@ -95,9 +95,9 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <MaximoLogo
               variant={theme === 'dark' ? 'light' : 'dark'}
-              size="sm"
+              size="md"
               id="header-official-logo"
-              className="transition-transform duration-300 group-hover:scale-[1.02] max-h-11 sm:max-h-13"
+              className="transition-transform duration-300 group-hover:scale-[1.03] max-h-14 sm:max-h-18 w-44 sm:w-56 md:w-64"
             />
           </button>
 
