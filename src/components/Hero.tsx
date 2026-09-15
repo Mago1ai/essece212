@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ArrowDown, Sparkles, Droplets, Eye, MessageCircle } from 'lucide-react';
+import { ArrowRight, ArrowDown, Sparkles, MessageCircle, Compass } from 'lucide-react';
 import { Perfume } from '../types';
 import { createProductWhatsAppLink } from '../data/perfumes';
 import { EditorialImage } from './EditorialImage';
@@ -18,12 +18,12 @@ export const Hero: React.FC<HeroProps> = ({
   onScrollToNext,
   onSelectPerfume,
 }) => {
-  // Featured spotlight perfumes
+  // Select 5 real iconic perfumes for the hero campaign rotation
   const featuredIds = [
-    'maximo-body-splash',
     'maximo-sabonete-liquido',
-    'maximo-creme-acetinado',
+    'maximo-body-splash',
     'aventus-creed',
+    'delina-parfums-de-marly',
     'good-girl-carolina-herrera',
   ];
 
@@ -31,124 +31,126 @@ export const Hero: React.FC<HeroProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const activePerfume = featuredPerfumes[currentIndex] || perfumes[0];
 
-  // Auto cycle every 7 seconds if user isn't interacting
+  // Subtle auto-rotation every 8 seconds
   useEffect(() => {
+    if (featuredPerfumes.length === 0) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % featuredPerfumes.length);
-    }, 7000);
+    }, 8000);
     return () => clearInterval(timer);
   }, [featuredPerfumes.length]);
 
   return (
     <section
       id="hero"
-      className="relative w-full min-h-[92vh] flex items-center bg-[#F7F4EE] dark:bg-[#141210] text-[#24221F] dark:text-[#F4F0E9] overflow-hidden select-none transition-colors duration-500"
+      className="relative w-full min-h-[92vh] flex items-center bg-[#F4EFE6] dark:bg-[#11100E] text-[#1E1C1A] dark:text-[#F4F0E9] overflow-hidden select-none transition-colors duration-500"
     >
-      {/* Background Editorial Atmosphere */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=2200&q=85"
-          alt="Frasco de alta perfumaria autoral em vidro âmbar sobre pedra de travertino e linho marfim"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-[70%_center] sm:object-[65%_center] md:object-center brightness-[0.95] dark:brightness-[0.75] contrast-[1.05] dark:contrast-[1.1] transition-all duration-500"
-        />
-        {/* Vignette & Left Gradient for Maximum Typographic Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F7F4EE]/98 via-[#F7F4EE]/85 to-[#F7F4EE]/50 dark:from-[#121110]/98 dark:via-[#121110]/85 dark:to-[#121110]/40 transition-colors duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F7F4EE] via-transparent to-white/30 dark:from-[#121110] dark:via-transparent dark:to-black/50 transition-colors duration-500" />
-        {/* Subtle Luxury Gold Ambient Glow */}
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#A96227]/10 dark:bg-[#D4AF37]/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
+      {/* Background Editorial Atmosphere with Fine Ambient Lighting */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-radial from-transparent via-[#F4EFE6]/70 to-[#EAE4D9] dark:via-[#11100E]/70 dark:to-[#0A0908] transition-colors duration-500" />
+        {/* Extremely Discreet Champagne Jewelry Glow */}
+        <div className="absolute -top-32 right-1/4 w-[500px] h-[500px] bg-[#C5A059]/8 dark:bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-20 w-[400px] h-[400px] bg-[#1E1C1A]/5 dark:bg-black/40 rounded-full blur-3xl pointer-events-none" />
       </div>
 
-      {/* Main Content Area */}
+      {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 md:py-28 flex flex-col justify-between min-h-[85vh] md:min-h-[90vh]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 items-center mt-6 sm:mt-12">
-          {/* Left Column: Editorial Display Typography */}
-          <div className="lg:col-span-7 max-w-xl">
-            {/* Official Logo - Static, Majestic Presence */}
-            <div className="mb-4 sm:mb-8 flex flex-col items-start">
-              <div className="relative group">
-                <MaximoLogo
-                  variant="adaptive"
-                  size="hero"
-                  id="hero-official-brandmark"
-                  className="origin-left transform transition-transform duration-300 group-hover:scale-[1.01]"
-                />
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-12 items-center my-auto">
+          {/* Left Column: Quiet Luxury Display Typography */}
+          <div className="lg:col-span-7 max-w-2xl space-y-6 sm:space-y-8">
+            {/* Brand Logo Stamp */}
+            <div className="flex items-center gap-3">
+              <span className="text-[10px] sm:text-xs tracking-[0.32em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
+                CASA DE ALTA PERFUMARIA
+              </span>
+              <div className="w-10 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40" />
             </div>
 
-            {/* Editorial Display Heading */}
-            <h1 className="font-serif-editorial text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[0.01em] leading-[1.1] text-[#24221F] dark:text-[#F4F0E9] mb-4 sm:mb-8">
+            <div>
+              <MaximoLogo
+                variant="adaptive"
+                size="hero"
+                id="hero-official-brandmark"
+                className="origin-left transform transition-transform duration-300"
+              />
+            </div>
+
+            {/* Campaign Central Concept */}
+            <h1 className="font-serif-editorial text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[76px] font-light tracking-[-0.01em] leading-[1.06] text-[#1E1C1A] dark:text-[#F4F0E9]">
               A presença que <br />
               <span className="italic font-normal text-[#A96227] dark:text-[#D4AF37]">permanece.</span>
             </h1>
 
             {/* Poetic Subtitle */}
-            <p className="font-sans-clean text-base sm:text-xl md:text-2xl text-[#24221F]/85 dark:text-[#F4F0E9]/90 font-light leading-relaxed max-w-xl mb-6 sm:mb-10">
-              Fragrâncias e cosméticos nobres criados para marcar presença com distinção, elegância e sensorialidade aveludada.
+            <p className="font-sans-clean text-base sm:text-lg md:text-xl text-[#1E1C1A]/75 dark:text-[#F4F0E9]/80 font-light leading-relaxed max-w-lg">
+              Fragrâncias nobres e rituais de autocuidado com maceração artesanal, desenhados para deixar uma assinatura inesquecível na pele e no ar.
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+            {/* Elegant Primary & Secondary Actions */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
               <button
                 id="hero-cta-btn"
                 onClick={onExploreCollection}
-                className="group inline-flex items-center justify-center gap-3.5 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] bg-[#24221F] hover:bg-[#A96227] text-white dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] dark:text-[#121110] text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 active:scale-[0.97] focus:outline-none font-bold shadow-lg shadow-black/10 dark:shadow-[#D4AF37]/15 rounded-xs"
+                className="group inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-4 min-h-[50px] bg-[#1E1C1A] hover:bg-[#A96227] text-white dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] dark:text-[#121110] text-xs sm:text-[13px] tracking-[0.22em] uppercase transition-all duration-300 active:scale-[0.98] font-bold shadow-lg shadow-black/10 dark:shadow-[#D4AF37]/15 rounded-xs cursor-pointer touch-press"
               >
-                <span>VER CATÁLOGO COMPLETO</span>
+                <span>DESCOBRIR A COLEÇÃO</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
 
-              <a
-                id="hero-whatsapp-btn"
-                href="https://wa.me/5531975394776?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20as%20fragr%C3%A2ncias%20da%20M%C3%A1ximo%20Eau%20de%20Parfum."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 min-h-[48px] border border-[#24221F]/20 dark:border-white/20 hover:border-[#A96227] dark:hover:border-[#D4AF37] bg-white/80 dark:bg-black/40 hover:bg-white dark:hover:bg-black/60 backdrop-blur-md text-[#24221F] dark:text-[#F4F0E9] text-xs sm:text-sm tracking-[0.16em] uppercase transition-all duration-300 active:scale-[0.97] font-semibold rounded-xs"
+              <button
+                id="hero-explore-fragrances-btn"
+                onClick={onScrollToNext}
+                className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-4 min-h-[50px] border border-[#1E1C1A]/20 dark:border-white/20 hover:border-[#A96227] dark:hover:border-[#D4AF37] bg-white/70 dark:bg-black/30 hover:bg-white dark:hover:bg-black/60 backdrop-blur-md text-[#1E1C1A] dark:text-[#F4F0E9] text-xs sm:text-[13px] tracking-[0.18em] uppercase transition-all duration-300 active:scale-[0.98] font-semibold rounded-xs cursor-pointer touch-press"
               >
-                <MessageCircle className="w-4 h-4 text-[#A96227] dark:text-[#D4AF37]" />
-                <span>CONSULTORIA WHATSAPP</span>
-              </a>
+                <Compass className="w-4 h-4 text-[#A96227] dark:text-[#D4AF37]" />
+                <span>EXPLORAR FRAGRÂNCIAS</span>
+              </button>
             </div>
 
-            {/* Brand Distinctions */}
-            <div className="flex items-center gap-6 sm:gap-10 mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[#24221F]/10 dark:border-white/10 text-sm text-[#24221F]/80 dark:text-white/70 font-mono-subtle">
+            {/* Quiet Atelier Guarantees */}
+            <div className="flex items-center gap-6 sm:gap-10 pt-6 border-t border-[#1E1C1A]/10 dark:border-white/10 text-xs text-[#1E1C1A]/70 dark:text-white/70 font-mono-subtle">
               <div>
-                <span className="block text-[#A96227] dark:text-[#D4AF37] font-semibold text-sm sm:text-base">Envio Cortesia</span>
-                <span className="text-xs sm:text-sm text-[#24221F]/70 dark:text-white/60">Todo o Brasil</span>
+                <span className="block text-[#A96227] dark:text-[#D4AF37] font-semibold text-xs sm:text-sm">90 Dias de Maceração</span>
+                <span className="text-[11px] text-[#1E1C1A]/60 dark:text-white/50">Harmonia & Fixação</span>
               </div>
-              <div className="w-[1px] h-8 sm:h-9 bg-[#24221F]/15 dark:bg-white/15" />
+              <div className="w-[1px] h-7 bg-[#1E1C1A]/15 dark:bg-white/15" />
               <div>
-                <span className="block text-[#24221F] dark:text-white font-semibold text-sm sm:text-base">Edições Numeradas</span>
-                <span className="text-xs sm:text-sm text-[#24221F]/70 dark:text-white/60">Lotes Artesanais</span>
+                <span className="block text-[#1E1C1A] dark:text-white font-semibold text-xs sm:text-sm">Envio Seguro</span>
+                <span className="text-[11px] text-[#1E1C1A]/60 dark:text-white/50">Todo o Brasil</span>
+              </div>
+              <div className="w-[1px] h-7 bg-[#1E1C1A]/15 dark:bg-white/15" />
+              <div>
+                <span className="block text-[#1E1C1A] dark:text-white font-semibold text-xs sm:text-sm">Atelier Concierge</span>
+                <span className="text-[11px] text-[#1E1C1A]/60 dark:text-white/50">Via WhatsApp</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Interactive Animated Perfume Showcase */}
-          <div className="lg:col-span-5 flex flex-col items-center mt-4 sm:mt-0">
+          {/* Right Column: High-End Bottle Spotlight Showcase */}
+          <div className="lg:col-span-5 flex flex-col items-center">
             {activePerfume && (
               <div className="w-full max-w-md relative group">
-                {/* Floating Glow Behind Bottle */}
-                <div className="absolute inset-0 bg-radial from-[#A96227]/15 dark:from-[#D4AF37]/20 via-transparent to-transparent rounded-full blur-2xl pointer-events-none animate-pulse-glow" />
+                {/* Floating Studio Halo Glow */}
+                <div className="absolute inset-0 bg-radial from-[#C5A059]/20 dark:from-[#D4AF37]/25 via-transparent to-transparent rounded-full blur-2xl pointer-events-none" />
 
-                {/* Main Interactive Animated Bottle Container */}
+                {/* Main Luxury Pedestal Container */}
                 <div
-                  className="relative z-10 bg-[#FAF8F5]/90 dark:bg-gradient-to-b dark:from-[#1E1C19]/90 dark:to-[#141210]/95 border border-[#24221F]/10 dark:border-white/15 p-5 sm:p-7 rounded-xs shadow-[0_20px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-md cursor-pointer transition-all duration-500 hover:border-[#A96227]/60 dark:hover:border-[#D4AF37]/60"
+                  className="relative z-10 bg-[#FAF7F2] dark:bg-[#161513] border border-[#1E1C1A]/10 dark:border-white/15 p-6 sm:p-8 rounded-xs shadow-[0_24px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_25px_65px_rgba(0,0,0,0.85)] cursor-pointer transition-all duration-500 hover:border-[#A96227]/60 dark:hover:border-[#D4AF37]/60"
                   onClick={() => onSelectPerfume(activePerfume)}
                 >
-                  {/* Top Badge on Stage */}
-                  <div className="flex items-center justify-between mb-3 sm:mb-4 text-xs tracking-[0.2em] uppercase font-semibold">
-                    <span className="text-[#A96227] dark:text-[#D4AF37] flex items-center gap-1.5 text-xs">
+                  {/* Top Spotlight Tag */}
+                  <div className="flex items-center justify-between mb-4 text-xs tracking-[0.2em] uppercase font-semibold">
+                    <span className="text-[#A96227] dark:text-[#D4AF37] flex items-center gap-1.5 text-[11px]">
                       <Sparkles className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37]" />
-                      EM DESTAQUE
+                      ÍCONE EM DESTAQUE
                     </span>
-                    <span className="text-[#24221F]/80 dark:text-white/80 bg-[#24221F]/5 dark:bg-white/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-xs text-[10px] sm:text-[11px]">
+                    <span className="text-[#1E1C1A]/70 dark:text-white/70 bg-black/5 dark:bg-white/10 px-2.5 py-0.5 rounded-full text-[10px] font-mono-subtle">
                       {activePerfume.family}
                     </span>
                   </div>
 
-                  {/* Animated Bottle Image with Float Effect */}
-                  <div className="relative aspect-[3/4] w-full flex items-center justify-center animate-float">
+                  {/* Bottle Visual Stage */}
+                  <div className="relative aspect-[3/4] w-full flex items-center justify-center">
                     <EditorialImage
                       src={activePerfume.image}
                       fallbackSrc={activePerfume.secondaryImage}
@@ -156,55 +158,48 @@ export const Hero: React.FC<HeroProps> = ({
                       brand={activePerfume.brand}
                       name={activePerfume.name}
                       aspectRatio="aspect-[3/4]"
-                      padding="p-4 sm:p-6"
+                      padding="p-3 sm:p-5"
                       showContactShadow={true}
                       enableTilt={true}
                       showMistParticles={true}
                     />
                   </div>
 
-                  {/* Bottle Info Overlay */}
-                  <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-[#24221F]/10 dark:border-white/10 flex items-end justify-between">
+                  {/* Bottle Details Header */}
+                  <div className="mt-4 pt-4 border-t border-[#1E1C1A]/10 dark:border-white/10 flex items-end justify-between">
                     <div>
-                      <span className="text-xs text-[#A96227] dark:text-[#D4AF37] font-semibold uppercase tracking-widest block">
+                      <span className="text-[11px] text-[#A96227] dark:text-[#D4AF37] font-semibold uppercase tracking-[0.2em] block">
                         {activePerfume.brand}
                       </span>
-                      <h3 className="font-serif-editorial text-xl sm:text-3xl text-[#24221F] dark:text-white font-normal leading-tight group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37] transition-colors mt-0.5">
+                      <h3 className="font-serif-editorial text-2xl sm:text-3xl text-[#1E1C1A] dark:text-white font-normal leading-tight group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37] transition-colors mt-0.5">
                         {activePerfume.name}
                       </h3>
-                      <p className="text-xs sm:text-sm text-[#24221F]/80 dark:text-white/80 font-light mt-1">
+                      <p className="text-xs text-[#1E1C1A]/70 dark:text-white/70 font-light mt-1">
                         {activePerfume.size} · {activePerfume.concentration}
                       </p>
                     </div>
 
                     <div className="text-right">
-                      <span className="text-xl sm:text-2xl text-[#24221F] dark:text-white font-serif font-medium block">
+                      <span className="text-xl sm:text-2xl text-[#1E1C1A] dark:text-white font-serif font-medium block">
                         {activePerfume.price}
                       </span>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onSelectPerfume(activePerfume);
-                        }}
-                        className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-[#A96227] dark:text-[#D4AF37] hover:underline mt-1 font-semibold ml-auto"
-                      >
-                        <Eye className="w-3.5 h-3.5" />
-                        <span>DETALHES</span>
-                      </button>
+                      <span className="text-[11px] uppercase tracking-wider text-[#A96227] dark:text-[#D4AF37] font-semibold">
+                        Ver Dossiê →
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Interactive Bottle Selector Pills */}
-                <div className="flex items-center justify-start sm:justify-center gap-2 mt-4 overflow-x-auto py-1 max-w-full no-scrollbar">
+                {/* Bottle Carousel Selectors */}
+                <div className="flex items-center justify-center gap-1.5 mt-4 overflow-x-auto py-1 max-w-full no-scrollbar">
                   {featuredPerfumes.map((p, idx) => (
                     <button
                       key={p.id}
                       onClick={() => setCurrentIndex(idx)}
-                      className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs tracking-[0.14em] sm:tracking-[0.16em] uppercase border transition-all duration-300 whitespace-nowrap rounded-xs font-semibold shrink-0 ${
+                      className={`px-3 py-1.5 text-[11px] font-mono-subtle uppercase border transition-all duration-300 whitespace-nowrap rounded-xs font-semibold cursor-pointer ${
                         currentIndex === idx
-                          ? 'bg-[#24221F] text-white border-[#24221F] dark:bg-[#D4AF37] dark:text-[#121110] dark:border-[#D4AF37] scale-105 shadow-md'
-                          : 'bg-white/90 dark:bg-black/60 text-[#24221F]/80 dark:text-white/80 border-[#24221F]/20 dark:border-white/20 hover:border-[#A96227] dark:hover:border-white/40'
+                          ? 'bg-[#1E1C1A] text-white border-[#1E1C1A] dark:bg-[#D4AF37] dark:text-[#121110] dark:border-[#D4AF37] shadow-sm'
+                          : 'bg-[#FAF7F2] dark:bg-[#181614] text-[#1E1C1A]/70 dark:text-white/70 border-[#1E1C1A]/15 dark:border-white/15 hover:border-[#A96227]'
                       }`}
                     >
                       {p.name.split(' ')[0]}
@@ -217,28 +212,28 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Bottom Editorial Coordinates & Scroll Indicator */}
-        <div className="flex items-end justify-between pt-8 sm:pt-12 border-t border-[#24221F]/10 dark:border-white/15 text-[#24221F]/70 dark:text-white/70 mt-6 sm:mt-0">
+        <div className="flex items-end justify-between pt-8 sm:pt-10 border-t border-[#1E1C1A]/10 dark:border-white/10 text-[#1E1C1A]/60 dark:text-white/60 mt-6 sm:mt-0">
           <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xs tracking-[0.2em] text-[#A96227] dark:text-[#D4AF37] font-medium">
-              01 / 04
+            <span className="text-xs tracking-[0.24em] text-[#A96227] dark:text-[#D4AF37] font-mono font-semibold">
+              01 / 08
             </span>
-            <span className="hidden sm:inline-block w-8 h-[1px] bg-[#24221F]/20 dark:bg-white/20" />
-            <span className="hidden sm:inline-block text-[11px] tracking-[0.18em] uppercase text-[#24221F]/60 dark:text-white/50 font-medium">
-              MÁXIMO EAU DE PARFUM & INSPIRAÇÕES
+            <span className="hidden sm:inline-block w-8 h-[1px] bg-[#1E1C1A]/20 dark:bg-white/20" />
+            <span className="hidden sm:inline-block text-[11px] tracking-[0.2em] uppercase font-mono-subtle">
+              MÁXIMO EAU DE PARFUM · CURADORIA DE PRESTÍGIO
             </span>
           </div>
 
           <button
             id="hero-scroll-down-btn"
             onClick={onScrollToNext}
-            className="group flex items-center gap-2 sm:gap-3 text-left focus:outline-none min-h-[44px] py-1"
+            className="group flex items-center gap-2.5 text-left focus:outline-none min-h-[44px] py-1 cursor-pointer"
             aria-label="Deslizar para a próxima seção"
           >
-            <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-[#A96227] dark:text-[#D4AF37] group-hover:text-[#24221F] dark:group-hover:text-white transition-colors font-semibold">
-              DESLIZE PARA A COLEÇÃO
+            <span className="text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[#A96227] dark:text-[#D4AF37] group-hover:text-[#1E1C1A] dark:group-hover:text-white transition-colors font-semibold">
+              CONHEÇA A CASA
             </span>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#24221F]/30 dark:border-white/30 flex items-center justify-center group-hover:border-[#A96227] dark:group-hover:border-[#D4AF37] transition-colors">
-              <ArrowDown className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#A96227] dark:text-[#D4AF37] group-hover:translate-y-0.5 transition-transform" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#1E1C1A]/25 dark:border-white/25 flex items-center justify-center group-hover:border-[#A96227] dark:group-hover:border-[#D4AF37] transition-colors">
+              <ArrowDown className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] group-hover:translate-y-0.5 transition-transform" />
             </div>
           </button>
         </div>
@@ -246,4 +241,5 @@ export const Hero: React.FC<HeroProps> = ({
     </section>
   );
 };
+
 

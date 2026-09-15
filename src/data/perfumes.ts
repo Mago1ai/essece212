@@ -23,12 +23,13 @@ export const COLLECTIONS_DATA: Record<'autorais' | 'importados' | 'renomeados', 
       'A assinatura autêntica da Casa Máximo. Linha de alta perfumaria e cosméticos de luxo desenvolvidos com extratos botânicos refinados, texturas acetinadas e fixação prolongada.',
     editorialAtmosphere: 'O ritual íntimo de autocuidado com toque de seda e perfumação nobre em camadas.',
     curatorshipHighlights: [
+      'Máximo Pour Homme (Frasco Oficial)',
+      'Máximo Pour Femme (Frasco Oficial)',
       'Sabonete Líquido Iluminador',
       'Body Splash Floral Acetinado',
       'Creme Corporal Toque de Seda',
-      'Perfume Capilar Anti-Frizz',
     ],
-    image: '/assets/maximo-kit-ritual.svg',
+    image: '/assets/maximo-pour-homme.svg',
     badge: 'COLEÇÃO AUTORAL',
     accentColor: '#A96227',
   },
@@ -86,6 +87,65 @@ export function getPerfumeCollectionOrigin(perfume: Perfume): 'autorais' | 'impo
 }
 
 export const PERFUMES: Perfume[] = [
+  // --- FRASCOS REAIS OFICIAIS DA MARCA MÁXIMO EAU DE PARFUM ---
+  {
+    id: 'maximo-pour-homme-edp',
+    name: 'Máximo Pour Homme Eau de Parfum',
+    brand: 'Máximo',
+    subtitle: '100 ml · Frasco Retangular de Cristal com Pingente de Coroa Dourada',
+    family: 'Linha Máximo',
+    gender: 'Masculino',
+    category: 'Linha Máximo',
+    collectionOrigin: 'autorais',
+    accords: ['âmbar nobre', 'madeiras preciosas', 'cardamomo', 'couro sutil', 'especiarias quentes'],
+    notes: {
+      top: ['Cardamomo Negro da Guatemala', 'Bergamota Siciliana', 'Pimenta Rosa'],
+      heart: ['Âmbar Nobre Cristalizado', 'Cedro da Virgínia', 'Madeira de Cashmere'],
+      base: ['Vetiver do Haiti', 'Fava Tonka Tostada', 'Almíscar Quente', 'Acorde de Couro Suave'],
+    },
+    shortNotes: 'Cardamomo Negro · Âmbar Nobre · Cedro da Virgínia · Vetiver',
+    price: 'Sob Consulta',
+    priceNumeric: 0,
+    size: '100 ml',
+    concentration: 'Eau de Parfum (Alta Fixação)',
+    badge: 'FRASCO REAL OFICIAL',
+    sensoryDescription:
+      'A assinatura da Maison Máximo no design do frasco real retangular em vidro cristal nobre com base espessa, tampa metálica canelada dourada e colar com pingente de coroa real banhada a ouro. Uma composição amadeirada ambarada opulenta, com cardamomo e cedro da Virgínia.',
+    atmosphere: 'O magnetismo sofisticado de um terno de alfaiataria e um lounge exclusivo à meia-luz.',
+    longevity: '10 a 14 horas na pele (Eau de Parfum Concentrado)',
+    sillage: 'Marcante, sofisticado e envolvente sem agredir',
+    image: '/assets/maximo-pour-homme.svg',
+    secondaryImage: '/assets/maximo-pour-homme.svg',
+  },
+  {
+    id: 'maximo-pour-femme-edp',
+    name: 'Máximo Pour Femme Eau de Parfum',
+    brand: 'Máximo',
+    subtitle: '100 ml · Frasco Torre Slim Lapidado com Pingente de Coroa Dourada',
+    family: 'Linha Máximo',
+    gender: 'Feminino',
+    category: 'Linha Máximo',
+    collectionOrigin: 'autorais',
+    accords: ['floral branco', 'baunilha de bourbon', 'âmbar dourado', 'sândalo cremoso', 'toque de seda'],
+    notes: {
+      top: ['Flor de Laranjeira Imperial', 'Mandarina Dourada', 'Pera Cristal'],
+      heart: ['Jasmim Sambac Real', 'Baunilha de Bourbon', 'Ylang-Ylang Aveludado'],
+      base: ['Âmbar Dourado Lapidado', 'Sândalo Cremoso', 'Almíscar Branco de Seda'],
+    },
+    shortNotes: 'Flor de Laranjeira · Jasmim Sambac · Baunilha de Bourbon · Âmbar',
+    price: 'Sob Consulta',
+    priceNumeric: 0,
+    size: '100 ml',
+    concentration: 'Eau de Parfum (Alta Fixação)',
+    badge: 'FRASCO REAL OFICIAL',
+    sensoryDescription:
+      'A silhueta autêntica do frasco torre slim lapidado em cristal luminoso, adornado com o colar de coroa real dourada e a assinatura Máximo serigrafada. Uma dança olfativa entre flor de laranjeira, jasmim sambac e a cremosidade aveludada do âmbar e da baunilha de Bourbon.',
+    atmosphere: 'O esplendor luminoso de seda champanhe, joias douradas e elegância sublime.',
+    longevity: '10 a 12 horas na pele (Eau de Parfum Concentrado)',
+    sillage: 'Aura aveludada, luminosa e irresistivelmente elegante',
+    image: '/assets/maximo-pour-femme.svg',
+    secondaryImage: '/assets/maximo-pour-femme.svg',
+  },
   // --- LINHA MÁXIMO EAU DE PARFUM & COSMÉTICOS (LINHA PRÓPRIA AUTORAL) ---
   {
     id: 'maximo-sabonete-liquido',
@@ -795,6 +855,7 @@ export const DEFAULT_STORE_SETTINGS: StoreSettings = {
   instagram: '@maximoeaudeparfum',
   email: 'contato@maximoperfumes.com.br',
   orderMessagePrefix: 'Olá! Tenho interesse no perfume',
+  logoUrl: 'https://i.postimg.cc/JHBpWK7K/image.png',
   adminPassword: '@Luangalo013',
 };
 
@@ -814,6 +875,7 @@ export function getStoreSettings(): StoreSettings {
 export function saveStoreSettings(settings: StoreSettings): void {
   try {
     localStorage.setItem('maximo_store_settings', JSON.stringify(settings));
+    window.dispatchEvent(new CustomEvent('maximo_settings_updated', { detail: settings }));
   } catch {
     // Fallback
   }

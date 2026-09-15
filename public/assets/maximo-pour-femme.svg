@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="100 20 200 440" width="100%" height="100%">
+  <defs>
+    <!-- Soft Contact Shadow -->
+    <radialGradient id="pf-ground-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#000000" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Luminous Champagne Gold Liquid -->
+    <linearGradient id="pf-gold-liquid" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DCA038" stop-opacity="0.95"/>
+      <stop offset="20%" stop-color="#F2C85C" stop-opacity="0.88"/>
+      <stop offset="50%" stop-color="#FCE182" stop-opacity="0.8"/>
+      <stop offset="80%" stop-color="#F2C85C" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#B87E20" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Polished Mirror Gold Cap -->
+    <linearGradient id="pf-gold-cap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7A561E"/>
+      <stop offset="15%" stop-color="#D4AF37"/>
+      <stop offset="35%" stop-color="#FFF8D6"/>
+      <stop offset="55%" stop-color="#D4AF37"/>
+      <stop offset="80%" stop-color="#FFF8D6"/>
+      <stop offset="100%" stop-color="#55390F"/>
+    </linearGradient>
+
+    <!-- Polished Gold Charm -->
+    <linearGradient id="pf-crown-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5C8"/>
+      <stop offset="40%" stop-color="#E2B743"/>
+      <stop offset="80%" stop-color="#9C6E20"/>
+      <stop offset="100%" stop-color="#5F4010"/>
+    </linearGradient>
+
+    <!-- Glass Facet Highlights -->
+    <linearGradient id="pf-glass-edge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.65"/>
+      <stop offset="12%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+      <stop offset="88%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <!-- Base Glass Solid Reflection -->
+    <linearGradient id="pf-glass-base" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DCA038" stop-opacity="0.15"/>
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.75"/>
+    </linearGradient>
+
+    <!-- Drop Shadow -->
+    <filter id="pf-shadow" x="-25%" y="-15%" width="150%" height="135%">
+      <feDropShadow dx="0" dy="10" stdDeviation="7" flood-color="#000000" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadow -->
+  <ellipse cx="200" cy="422" rx="46" ry="11" fill="url(#pf-ground-shadow)" />
+
+  <g id="feminine-bottle" filter="url(#pf-shadow)">
+    <!-- 1. Polished Mirror Gold Cap -->
+    <!-- Cap Top Bevel -->
+    <rect x="186" y="32" width="28" height="5" rx="1.5" fill="url(#pf-gold-cap)"/>
+    <!-- Main Cylindrical Cap -->
+    <rect x="183" y="36" width="34" height="48" rx="2" fill="url(#pf-gold-cap)"/>
+    <line x1="190" y1="36" x2="190" y2="84" stroke="#FFF8D6" stroke-width="1.2" opacity="0.8"/>
+    <line x1="208" y1="36" x2="208" y2="84" stroke="#FFF8D6" stroke-width="1" opacity="0.6"/>
+
+    <!-- Collar & Atomizer Ring -->
+    <rect x="185" y="84" width="30" height="14" rx="2" fill="url(#pf-gold-cap)"/>
+    <rect x="182" y="98" width="36" height="8" rx="1.5" fill="url(#pf-gold-cap)"/>
+
+    <!-- 2. Outer Glass Column (Tall Slender Tower / Flacon Tour) -->
+    <rect x="156" y="106" width="88" height="306" rx="7" fill="#FFFFFF" fill-opacity="0.25" stroke="#FFFFFF" stroke-width="1.2"/>
+
+    <!-- Inner Chamber with Champagne Gold Liquid -->
+    <rect x="164" y="116" width="72" height="264" rx="4" fill="url(#pf-gold-liquid)"/>
+
+    <!-- Heavy Crystal Solid Base -->
+    <path d="M 156 380 L 244 380 L 244 406 C 244 410 240 412 236 412 L 164 412 C 160 412 156 410 156 406 Z" fill="url(#pf-glass-base)" stroke="#FFFFFF" stroke-width="0.8"/>
+    <line x1="160" y1="382" x2="240" y2="382" stroke="#FFFFFF" stroke-width="1.2" opacity="0.85"/>
+    <line x1="166" y1="407" x2="234" y2="407" stroke="#FFFFFF" stroke-width="1" opacity="0.9"/>
+
+    <!-- Dip Tube -->
+    <line x1="200" y1="106" x2="200.5" y2="378" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.4"/>
+    <line x1="200.5" y1="106" x2="201" y2="378" stroke="#55390F" stroke-width="0.5" stroke-opacity="0.2"/>
+
+    <!-- 3. GOLD CHAIN & 3D ROYAL CROWN CHARM -->
+    <g id="charm-necklace-femme">
+      <!-- Chain draping from neck to pendant -->
+      <path d="M 188 106 C 191 118 194 130 198 140" fill="none" stroke="url(#pf-crown-gold)" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2,2"/>
+      <path d="M 212 106 C 209 118 206 130 202 140" fill="none" stroke="url(#pf-crown-gold)" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2,2"/>
+      <circle cx="200" cy="143" r="3.8" fill="none" stroke="url(#pf-crown-gold)" stroke-width="1.5"/>
+      
+      <!-- 3D ROYAL CROWN PENDANT -->
+      <g transform="translate(182, 147) scale(0.88)">
+        <!-- Base Band -->
+        <rect x="4" y="24" width="36" height="6" rx="2" fill="url(#pf-crown-gold)" stroke="#55390F" stroke-width="0.5"/>
+        <circle cx="9" cy="27" r="1.2" fill="#FFFFFF"/>
+        <circle cx="15" cy="27" r="1.2" fill="#FFFFFF"/>
+        <circle cx="22" cy="27" r="1.2" fill="#FFFFFF"/>
+        <circle cx="29" cy="27" r="1.2" fill="#FFFFFF"/>
+        <circle cx="35" cy="27" r="1.2" fill="#FFFFFF"/>
+
+        <!-- Crown Arches & Spires -->
+        <path d="M 22 24 C 22 12 18 4 22 1 C 26 4 22 12 22 24 Z" fill="url(#pf-crown-gold)"/>
+        <circle cx="22" cy="1" r="2.2" fill="url(#pf-crown-gold)" stroke="#55390F" stroke-width="0.4"/>
+        
+        <path d="M 8 24 C 6 14 12 6 16 6 C 20 12 16 18 16 24" fill="none" stroke="url(#pf-crown-gold)" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M 36 24 C 38 14 32 6 28 6 C 24 12 28 18 28 24" fill="none" stroke="url(#pf-crown-gold)" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="16" cy="6" r="1.6" fill="url(#pf-crown-gold)"/>
+        <circle cx="28" cy="6" r="1.6" fill="url(#pf-crown-gold)"/>
+
+        <path d="M 5 24 C 4 18 6 14 8 13" fill="none" stroke="url(#pf-crown-gold)" stroke-width="2"/>
+        <path d="M 39 24 C 40 18 38 14 36 13" fill="none" stroke="url(#pf-crown-gold)" stroke-width="2"/>
+        <circle cx="8" cy="13" r="1.3" fill="url(#pf-crown-gold)"/>
+        <circle cx="36" cy="13" r="1.3" fill="url(#pf-crown-gold)"/>
+      </g>
+    </g>
+
+    <!-- 4. OFFICIAL MÁXIMO LOGO (Serigraphy along the lower face) -->
+    <image href="data:image/png;base64,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" xlink:href="data:image/png;base64,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" x="166" y="278" width="68" height="68" preserveAspectRatio="xMidYMid meet" />
+
+    <!-- 5. Glass Bevels & Specular Light Reflections -->
+    <rect x="156" y="106" width="88" height="306" rx="7" fill="url(#pf-glass-edge)" pointer-events="none"/>
+    <!-- Left Vertical White Sheen -->
+    <path d="M 160 110 L 163 110 L 162 404 L 159 404 Z" fill="#FFFFFF" fill-opacity="0.6" pointer-events="none"/>
+    <!-- Right Subtle Sheen -->
+    <path d="M 241 110 L 243 110 L 242 404 L 240 404 Z" fill="#FFFFFF" fill-opacity="0.35" pointer-events="none"/>
+  </g>
+</svg>

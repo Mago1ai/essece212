@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Sparkles, Droplets, ShieldCheck, Flame, Award } from 'lucide-react';
+import { ArrowUpRight, Sparkles, Droplets, ShieldCheck, Flame, Award, Clock } from 'lucide-react';
 import { Perfume } from '../types';
 
 interface HouseSectionProps {
@@ -13,108 +13,109 @@ export const HouseSection: React.FC<HouseSectionProps> = ({
   return (
     <section
       id="casa"
-      className="relative w-full bg-[#F4F0E9] dark:bg-[#161513] text-[#24221F] dark:text-[#F5F2EB] py-20 sm:py-28 border-b border-[#24221F]/8 dark:border-white/10 transition-colors duration-500 overflow-hidden"
+      className="relative w-full bg-[#FAF7F2] dark:bg-[#141210] text-[#1E1C1A] dark:text-[#F4F0E9] py-24 sm:py-32 md:py-36 border-b border-[#1E1C1A]/8 dark:border-white/10 transition-colors duration-500 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Label */}
-        <div className="flex items-center gap-3 mb-10 sm:mb-14">
-          <span className="font-mono-subtle text-xs sm:text-[13px] tracking-[0.28em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
-            01 — A CASA & FILOSOFIA OLFATIVA
+        <div className="flex items-center gap-3 mb-10 sm:mb-16">
+          <span className="font-mono-subtle text-xs tracking-[0.32em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
+            01 — POSICIONAMENTO DA MARCA
           </span>
           <div className="w-12 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40" />
         </div>
 
-        {/* Asymmetric Editorial Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          {/* Left Column: Bold Display Heading */}
-          <div className="lg:col-span-6 space-y-4">
-            <h2 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl font-light leading-[1.08] tracking-[-0.01em]">
-              Uma presença <br />
-              <span className="italic font-normal text-[#A96227] dark:text-[#D4AF37]">sem pressa.</span>
+        {/* Asymmetric Editorial Luxury Spread */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          {/* Left Column: Bold Display Heading & Manifesto Excerpt */}
+          <div className="lg:col-span-6 space-y-6">
+            <h2 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-light leading-[1.06] tracking-[-0.01em]">
+              A arte do silêncio <br />
+              <span className="italic font-normal text-[#A96227] dark:text-[#D4AF37]">e da memória.</span>
             </h2>
-            <p className="font-mono-subtle text-xs tracking-[0.2em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
-              Perfumaria de nicho · Maceração artesanal · Alta concentração
+            <p className="font-mono-subtle text-xs tracking-[0.24em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
+              Perfumaria Autoral · Maceração Lenta · Alta Concentração
             </p>
+            <div className="w-16 h-[1px] bg-[#1E1C1A]/15 dark:bg-white/15" />
           </div>
 
-          {/* Right Column: Poetic Body Copy & Textual Action */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
-            <p className="font-sans-clean text-base sm:text-lg md:text-xl text-[#24221F]/85 dark:text-[#F5F2EB]/85 font-light leading-[1.7] max-w-xl">
-              <strong className="font-medium text-[#24221F] dark:text-[#F5F2EB]">Máximo Eau de Parfum</strong> nasce da paixão pelo extraordinário. Criamos fragrâncias com acordes nobres, evolução olfativa em 3 momentos cronológicos e sensorialidade tátil que acaricia a pele como um toque de seda.
+          {/* Right Column: Poetic Body Copy & Luxury Action */}
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-8">
+            <p className="font-sans-clean text-base sm:text-xl text-[#1E1C1A]/80 dark:text-[#F4F0E9]/85 font-light leading-[1.75] max-w-xl">
+              A <strong className="font-medium text-[#1E1C1A] dark:text-[#F4F0E9]">Casa Máximo</strong> concebe perfumes e cosméticos como extensões da própria aura. Cada acorde é maturado no tempo exato, sem pressa industrial, para que a pirâmide olfativa revele suas nuances com elegância intimista e presença magnética.
             </p>
 
             <div className="pt-2">
               <button
                 id="house-story-btn"
                 onClick={onOpenStoryModal}
-                className="group inline-flex items-center gap-2 font-mono-subtle text-xs sm:text-[13px] tracking-[0.22em] text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] uppercase transition-colors duration-200 border-b border-[#24221F]/30 dark:border-white/20 hover:border-[#A96227] dark:hover:border-[#D4AF37] pb-1 font-semibold"
+                className="group inline-flex items-center gap-2.5 font-mono-subtle text-xs tracking-[0.22em] text-[#1E1C1A] dark:text-[#F4F0E9] hover:text-[#A96227] dark:hover:text-[#D4AF37] uppercase transition-colors duration-200 border-b border-[#1E1C1A]/30 dark:border-white/25 hover:border-[#A96227] dark:hover:border-[#D4AF37] pb-1.5 font-semibold cursor-pointer"
               >
-                <span>CONHEÇA NOSSA FILOSOFIA & PROCESSO</span>
+                <span>LER A HISTÓRIA DO ATELIER</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#A96227] dark:text-[#D4AF37]" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* 4 Pillars of Craftsmanship */}
-        <div className="mt-14 sm:mt-18 pt-10 border-t border-[#24221F]/10 dark:border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          <div className="p-5 bg-[#FAF8F5]/80 dark:bg-[#1C1A17]/80 border border-[#24221F]/8 dark:border-white/10 rounded-xs space-y-2">
+        {/* 4 Pillars of Atelier Distinction */}
+        <div className="mt-16 sm:mt-24 pt-12 border-t border-[#1E1C1A]/10 dark:border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="p-6 bg-white/70 dark:bg-[#1A1816]/70 border border-[#1E1C1A]/8 dark:border-white/10 rounded-xs space-y-3">
             <div className="flex items-center gap-2 text-[#A96227] dark:text-[#D4AF37]">
-              <Flame className="w-4 h-4" />
-              <span className="font-mono-subtle text-xs tracking-[0.2em] uppercase font-bold">
-                MACERAÇÃO
+              <Clock className="w-4 h-4" />
+              <span className="font-mono-subtle text-[11px] tracking-[0.24em] uppercase font-bold">
+                MATURAÇÃO
               </span>
             </div>
-            <h4 className="font-serif-editorial text-lg text-[#24221F] dark:text-[#F5F2EB] font-normal">
+            <h4 className="font-serif-editorial text-xl text-[#1E1C1A] dark:text-[#F4F0E9] font-normal">
               90 Dias em Repouso
             </h4>
-            <p className="font-sans-clean text-xs text-[#24221F]/75 dark:text-[#F5F2EB]/75 leading-relaxed">
-              Tempo natural de maturação para que os óleos nobres atinjam harmonia e fixação máxima.
+            <p className="font-sans-clean text-xs text-[#1E1C1A]/70 dark:text-[#F4F0E9]/70 leading-relaxed">
+              Tempo natural de maturação para que os óleos essenciais nobres alcancem perfeita sinergia e fixação máxima.
             </p>
           </div>
 
-          <div className="p-5 bg-[#FAF8F5]/80 dark:bg-[#1C1A17]/80 border border-[#24221F]/8 dark:border-white/10 rounded-xs space-y-2">
+          <div className="p-6 bg-white/70 dark:bg-[#1A1816]/70 border border-[#1E1C1A]/8 dark:border-white/10 rounded-xs space-y-3">
             <div className="flex items-center gap-2 text-[#A96227] dark:text-[#D4AF37]">
               <Droplets className="w-4 h-4" />
-              <span className="font-mono-subtle text-xs tracking-[0.2em] uppercase font-bold">
-                EXPERIÊNCIA TÁTIL
+              <span className="font-mono-subtle text-[11px] tracking-[0.24em] uppercase font-bold">
+                TEXTURA TÁTIL
               </span>
             </div>
-            <h4 className="font-serif-editorial text-lg text-[#24221F] dark:text-[#F5F2EB] font-normal">
-              Toque de Seda
+            <h4 className="font-serif-editorial text-xl text-[#1E1C1A] dark:text-[#F4F0E9] font-normal">
+              Toque Acetinado
             </h4>
-            <p className="font-sans-clean text-xs text-[#24221F]/75 dark:text-[#F5F2EB]/75 leading-relaxed">
-              Gotas que deslizam na pele sem oleosidade pesada, deixando um rastro aveludado e íntimo.
+            <p className="font-sans-clean text-xs text-[#1E1C1A]/70 dark:text-[#F4F0E9]/70 leading-relaxed">
+              Fórmulas cosméticas e brumas perfumadas que abraçam o corpo com toque sedoso e sem oleosidade.
             </p>
           </div>
 
-          <div className="p-5 bg-[#FAF8F5]/80 dark:bg-[#1C1A17]/80 border border-[#24221F]/8 dark:border-white/10 rounded-xs space-y-2">
+          <div className="p-6 bg-white/70 dark:bg-[#1A1816]/70 border border-[#1E1C1A]/8 dark:border-white/10 rounded-xs space-y-3">
             <div className="flex items-center gap-2 text-[#A96227] dark:text-[#D4AF37]">
               <Award className="w-4 h-4" />
-              <span className="font-mono-subtle text-xs tracking-[0.2em] uppercase font-bold">
-                CONCENTRAÇÃO
+              <span className="font-mono-subtle text-[11px] tracking-[0.24em] uppercase font-bold">
+                POTÊNCIA
               </span>
             </div>
-            <h4 className="font-serif-editorial text-lg text-[#24221F] dark:text-[#F5F2EB] font-normal">
-              Eau de Parfum Real
+            <h4 className="font-serif-editorial text-xl text-[#1E1C1A] dark:text-[#F4F0E9] font-normal">
+              Eau de Parfum Puro
             </h4>
-            <p className="font-sans-clean text-xs text-[#24221F]/75 dark:text-[#F5F2EB]/75 leading-relaxed">
-              Alta dosagem de essências finas importadas garantindo silagem marcante de 8h a 14h+.
+            <p className="font-sans-clean text-xs text-[#1E1C1A]/70 dark:text-[#F4F0E9]/70 leading-relaxed">
+              Alta concentração de óleos importados garantindo silagem nobre de 8 a 14 horas de evolução contínua.
             </p>
           </div>
 
-          <div className="p-5 bg-[#FAF8F5]/80 dark:bg-[#1C1A17]/80 border border-[#24221F]/8 dark:border-white/10 rounded-xs space-y-2">
+          <div className="p-6 bg-white/70 dark:bg-[#1A1816]/70 border border-[#1E1C1A]/8 dark:border-white/10 rounded-xs space-y-3">
             <div className="flex items-center gap-2 text-[#A96227] dark:text-[#D4AF37]">
               <ShieldCheck className="w-4 h-4" />
-              <span className="font-mono-subtle text-xs tracking-[0.2em] uppercase font-bold">
+              <span className="font-mono-subtle text-[11px] tracking-[0.24em] uppercase font-bold">
                 CURADORIA
               </span>
             </div>
-            <h4 className="font-serif-editorial text-lg text-[#24221F] dark:text-[#F5F2EB] font-normal">
-              Linha Autoral & Importados
+            <h4 className="font-serif-editorial text-xl text-[#1E1C1A] dark:text-[#F4F0E9] font-normal">
+              Autoral & Importados
             </h4>
-            <p className="font-sans-clean text-xs text-[#24221F]/75 dark:text-[#F5F2EB]/75 leading-relaxed">
-              Criações autorais exclusivas Máximo e as fragrâncias mais aclamadas do mundo.
+            <p className="font-sans-clean text-xs text-[#1E1C1A]/70 dark:text-[#F4F0E9]/70 leading-relaxed">
+              Equilíbrio harmônico entre formulações autorais da Casa e as maiores referências da alta perfumaria internacional.
             </p>
           </div>
         </div>
@@ -122,4 +123,5 @@ export const HouseSection: React.FC<HouseSectionProps> = ({
     </section>
   );
 };
+
 

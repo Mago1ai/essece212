@@ -217,72 +217,20 @@ export function getStandaloneHtmlContent(): string {
       )
     };
 
-    // --- MÁXIMO VECTOR LOGO COMPONENT ---
+    // --- MÁXIMO OFFICIAL LOGO COMPONENT ---
     function MaximoLogo({ isDark, className = "w-48 sm:w-56 md:w-64" }) {
-      const textColor = isDark ? '#FFFFFF' : '#24221F';
       return (
         <div className={\`inline-flex flex-col items-center justify-center select-none text-center group \${className}\`}>
-          <svg
-            viewBox="0 0 380 135"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto transition-all duration-300"
-            style={{ color: textColor }}
-          >
-            <g id="maximo-official-brandmark">
-              <text
-                x="190"
-                y="74"
-                textAnchor="middle"
-                fill="currentColor"
-                style={{
-                  fontFamily: '"Alex Brush", "Parisienne", "Pinyon Script", cursive',
-                  fontSize: '84px',
-                  fontWeight: '400',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                Máximo
-              </text>
-              <path
-                d="M 64 82 C 95 104, 158 112, 236 101 C 278 95, 314 88, 338 80 C 312 84, 266 91, 226 94 C 162 99, 108 95, 68 80 C 63 78, 58 80, 64 82 Z"
-                fill="currentColor"
-              />
-              <path
-                d="M 130 99 C 192 105, 272 97, 330 81 C 286 91, 214 97, 146 94 C 135 93, 127 96, 130 99 Z"
-                fill="currentColor"
-              />
-              <path
-                d="M 42 66 C 33 61, 23 58, 14 62 C 10 64, 7 67, 6 70 C 9 67, 15 64, 23 63 C 31 62, 38 64, 42 66 Z"
-                fill="currentColor"
-              />
-              <path
-                d="M 298 62 C 314 65, 334 66, 354 63 C 360 62, 364 60, 366 57 C 362 59, 354 61, 342 61 C 324 61, 308 59, 298 62 Z"
-                fill="currentColor"
-              />
-              <path
-                d="M 112 18 L 126 10 L 128 12 L 115 22 Z"
-                fill="currentColor"
-              />
-              <g id="subtitle-eau-de-parfum" transform="translate(0, 10)">
-                <text
-                  x="190"
-                  y="116"
-                  textAnchor="middle"
-                  fill="currentColor"
-                  style={{
-                    fontFamily: '"DM Sans", system-ui, sans-serif',
-                    fontSize: '11px',
-                    fontWeight: '600',
-                    letterSpacing: '0.38em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  EAU DE PARFUM
-                </text>
-              </g>
-            </g>
-          </svg>
+          <img
+            src="https://i.postimg.cc/wMwZLbCK/image.png"
+            alt="Máximo Eau de Parfum"
+            className="w-full h-auto object-contain transition-all duration-300 select-none pointer-events-none"
+            style={{
+              filter: isDark ? 'invert(1) brightness(1.2)' : 'none',
+              mixBlendMode: isDark ? 'screen' : 'multiply'
+            }}
+            loading="eager"
+          />
         </div>
       );
     }

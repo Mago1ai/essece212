@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { PERFUMES as INITIAL_PERFUMES, BRAND_INFO } from './data/perfumes';
-import { Perfume, OlfactoryFamily, CollectionOrigin } from './types';
+import { Perfume, OlfactoryFamily, CollectionOrigin, GenderSelection } from './types';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BottleSlowReel } from './components/BottleSlowReel';
 import { HouseSection } from './components/HouseSection';
 import { CollectionsGateway } from './components/CollectionsGateway';
+import { FeaturedHeroProducts } from './components/FeaturedHeroProducts';
+import { SensorialUniverseSection } from './components/SensorialUniverseSection';
 import { CollectionSection } from './components/CollectionSection';
 import { ManifestoSection } from './components/ManifestoSection';
-import { DiscoverySection } from './components/DiscoverySection';
 import { DiscoverySetBanner } from './components/DiscoverySetBanner';
+import { BrandTrustSection } from './components/BrandTrustSection';
+import { FinalCTASection } from './components/FinalCTASection';
 import { NewsletterSection } from './components/NewsletterSection';
 import { Footer } from './components/Footer';
 import { ProductModal } from './components/ProductModal';
@@ -36,6 +39,7 @@ export default function App() {
 
   const [activeFamily, setActiveFamily] = useState<OlfactoryFamily>('Todos');
   const [activeCollection, setActiveCollection] = useState<CollectionOrigin>('all');
+  const [activeGender, setActiveGender] = useState<GenderSelection>('Todos');
   const [selectedPerfume, setSelectedPerfume] = useState<Perfume | null>(null);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
@@ -161,12 +165,12 @@ export default function App() {
         onTriggerEasterEgg={handleEasterEggTrigger}
       />
 
-      {/* Main Content Sections */}
-      <main>
-        {/* 1. Hero Section */}
+      {/* Main Content Sections in Strict Editorial Hierarchy */}
+      <main className="w-full max-w-full overflow-x-hidden relative">
+        {/* 1. Hero Section (Campanha Editorial & Frasco Rotativo) */}
         <Hero
           perfumes={perfumesList}
-          onExploreCollection={() => handleNavigateSection('colecao')}
+          onExploreCollection={() => handleNavigateSection('destaques')}
           onScrollToNext={() => handleNavigateSection('casa')}
           onSelectPerfume={setSelectedPerfume}
         />
@@ -179,47 +183,66 @@ export default function App() {
           onToggleFavorite={handleToggleFavorite}
         />
 
-        {/* 2. House Section (01 — A CASA) */}
+        {/* 2. House Section (01 — POSICIONAMENTO & A CASA) */}
         <HouseSection
           onOpenStoryModal={() => setIsStoryOpen(true)}
           onSelectPerfume={setSelectedPerfume}
         />
 
-        {/* 2.1 Editorial Gateway to Collections (Autorais | Importados | Renomeados) */}
+        {/* 3. Grandes Coleções (02 — CURADORIA & ORIGEM) */}
         <CollectionsGateway
           perfumes={perfumesList}
           activeCollection={activeCollection}
-          onSelectCollection={(col) => {
+          onSelectCollection={(col, gender = 'Todos') => {
             setActiveCollection(col);
+            setActiveGender(gender);
           }}
         />
 
-        {/* 3. Collection Section (02 — A COLEÇÃO) */}
+        {/* 4. Fragrâncias Hero (03 — ÍCONES DA CASA) */}
+        <FeaturedHeroProducts
+          perfumes={perfumesList}
+          onSelectPerfume={setSelectedPerfume}
+          favorites={favorites}
+          onToggleFavorite={handleToggleFavorite}
+        />
+
+        {/* 5. Universo Sensorial (04 — ANATOMIA DA FRAGRÂNCIA & SENSAÇÕES) */}
+        <SensorialUniverseSection
+          onSelectFamily={handleSelectDiscoveryOption}
+        />
+
+        {/* 6. Catálogo Geral Completo (05 — CATÁLOGO COM NAVEGAÇÃO EM 2 NÍVEIS) */}
         <CollectionSection
           perfumes={perfumesList}
           activeFamily={activeFamily}
           onSelectFamily={setActiveFamily}
           activeCollection={activeCollection}
           onSelectCollection={setActiveCollection}
+          activeGender={activeGender}
+          onSelectGender={setActiveGender}
           onSelectPerfume={setSelectedPerfume}
           favorites={favorites}
           onToggleFavorite={handleToggleFavorite}
         />
 
-        {/* 4. Manifesto Section (03 — O GESTO) */}
+        {/* 7. O Manifesto (06 — FILOSOFIA OLFATIVA) */}
         <ManifestoSection onOpenManifestoModal={() => setIsManifestoOpen(true)} />
 
-        {/* 5. Olfactory Discovery Section (04 — DESCOBERTA) */}
-        <DiscoverySection onSelectDiscoveryOption={handleSelectDiscoveryOption} />
-
-        {/* 6. Discovery Set Horizontal Banner */}
+        {/* 8. Discovery Set Banner (Ritual de Decants & Amostras) */}
         <DiscoverySetBanner onOrderDiscoverySet={() => setIsDiscoverySetOpen(true)} />
 
-        {/* 7. Newsletter Section */}
+        {/* 9. Atelier & Confiança (07 — GARANTIAS DE LUXO E AUTENTICIDADE) */}
+        <BrandTrustSection />
+
+        {/* 10. CTA Final ("Uma marca pode ser vista. Uma fragrância é lembrada.") */}
+        <FinalCTASection onExploreCatalog={() => handleNavigateSection('colecao')} />
+
+        {/* 11. Newsletter Privada da Casa */}
         <NewsletterSection />
       </main>
 
-      {/* 8. Editorial Footer */}
+      {/* 12. Rodapé Editorial */}
       <Footer
         onOpenSearch={() => setIsSearchOpen(true)}
         onNavigateSection={handleNavigateSection}
@@ -228,9 +251,6 @@ export default function App() {
         onOpenContactModal={() => setInfoModalType('contact')}
         onTriggerEasterEgg={handleEasterEggTrigger}
       />
-
-      {/* Floating PWA Install Button for easy access */}
-      <PWAInstallButton variant="floating" />
 
       {/* Offline Status Badge */}
       <OfflineIndicator />
@@ -298,3 +318,4 @@ export default function App() {
     </div>
   );
 }
+

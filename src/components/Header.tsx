@@ -78,10 +78,10 @@ export const Header: React.FC<HeaderProps> = ({
     <>
       <header
         id="main-header"
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 pt-[env(safe-area-inset-top,0px)] ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 pt-safe pb-safe ${
           isScrolled
-            ? 'bg-[#F4F0E9]/95 dark:bg-[#121110]/95 backdrop-blur-md border-b border-[#24221F]/10 dark:border-white/10 text-[#24221F] dark:text-[#F5F2EB] py-3 sm:py-4 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.7)]'
-            : 'bg-[#F4F0E9]/80 dark:bg-black/60 backdrop-blur-xs border-b border-[#24221F]/5 dark:border-white/5 text-[#24221F] dark:text-[#F4F0E9] py-3.5 sm:py-5'
+            ? 'bg-[#F4F0E9]/95 dark:bg-[#121110]/95 backdrop-blur-md border-b border-[#24221F]/10 dark:border-white/10 text-[#24221F] dark:text-[#F5F2EB] shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.7)]'
+            : 'bg-[#F4F0E9]/80 dark:bg-black/60 backdrop-blur-xs border-b border-[#24221F]/5 dark:border-white/5 text-[#24221F] dark:text-[#F4F0E9]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
@@ -220,7 +220,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 min-w-[40px] min-h-[40px] flex items-center justify-center transition-transform active:scale-95 focus:outline-none focus:ring-1 focus:ring-[#A96227] rounded-full text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37]"
+              className="header-menu-button md:hidden rounded-full text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#A96227] active:opacity-70 active:scale-95 transition-all duration-200 cursor-pointer"
               aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu de navegação'}
               aria-expanded={mobileMenuOpen}
             >
@@ -290,22 +290,24 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 setPwaModalOpen(true);
               }}
-              className="w-full flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#1E1B17] to-[#2D2821] text-[#F4F0E9] border border-[#D4AF37]/40 shadow-lg text-left active:scale-[0.98] transition-transform"
+              className="w-full flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-[#181614] via-[#201D19] to-[#181614] text-[#F4F0E9] border border-[#D4AF37]/40 shadow-lg text-left active:scale-[0.98] transition-all cursor-pointer group"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#141210] p-1 border border-[#D4AF37]/50 flex items-center justify-center shrink-0">
-                  <img src="/icon.svg" alt="App Icon" className="w-full h-full object-contain" />
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#8C4A10] p-0.5 flex items-center justify-center shadow-md shrink-0">
+                  <img src="/icon.svg" alt="App Icon" className="w-full h-full object-contain rounded-full" />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-wider text-[#D4AF37] font-semibold">
-                    App Máximo PWA
+                  <div className="text-[11px] font-mono-subtle uppercase tracking-[0.2em] text-[#D4AF37] font-bold flex items-center gap-1.5">
+                    <Sparkles className="w-3 h-3" /> APP MÁXIMO (PWA)
                   </div>
-                  <div className="text-xs text-[#F4F0E9] font-medium">
-                    Adicionar à Tela de Início
+                  <div className="text-xs text-[#F4F0E9]/90 font-light mt-0.5">
+                    Instalar aplicativo no seu celular
                   </div>
                 </div>
               </div>
-              <Smartphone className="w-4 h-4 text-[#D4AF37]" />
+              <div className="w-8 h-8 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#121110] transition-colors shrink-0">
+                <Smartphone className="w-4 h-4" />
+              </div>
             </button>
 
             {/* Direct WhatsApp Concierge Button */}

@@ -1,5 +1,7 @@
 export type CollectionOrigin = 'all' | 'autorais' | 'importados' | 'renomeados';
 
+export type GenderSelection = 'Todos' | 'Feminino' | 'Masculino' | 'Unissex';
+
 export type OlfactoryFamily =
   | 'Todos'
   | 'Linha Máximo'
@@ -62,5 +64,6 @@ export interface StoreSettings {
   instagram: string;
   email: string;
   orderMessagePrefix: string;
+  logoUrl?: string;
   adminPassword?: string;
 }

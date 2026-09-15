@@ -1,108 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="130 35 140 415" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="130 35 140 415" width="100%" height="100%">
   <defs>
-    <!-- Background subtle studio glow -->
-    <radialGradient id="bs-glow" cx="50%" cy="55%" r="45%">
-      <stop offset="0%" stop-color="#F5EFE6" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#E8DEC8" stop-opacity="0"/>
+    <radialGradient id="bs-contact-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#000000" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
     </radialGradient>
-    <!-- Liquid Gradient (Soft Blush Pinkish Amber) -->
-    <linearGradient id="bs-liquid" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#E898A5" stop-opacity="0.85"/>
-      <stop offset="25%" stop-color="#FAD4DB" stop-opacity="0.95"/>
-      <stop offset="70%" stop-color="#F4BAC4" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#D97A8C" stop-opacity="0.95"/>
+    <linearGradient id="bs-gold-cap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C5820"/>
+      <stop offset="25%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#FBF0B9"/>
+      <stop offset="75%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#5B3E12"/>
     </linearGradient>
-    <!-- Glass Highlights -->
-    <linearGradient id="bs-glass" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6"/>
+    <linearGradient id="bs-liquid-rose" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8E2D4B" stop-opacity="0.85"/>
+      <stop offset="25%" stop-color="#C75276" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#E882A2" stop-opacity="0.75"/>
+      <stop offset="75%" stop-color="#C75276" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#78233C" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="bs-label-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FBF9F6"/>
+      <stop offset="100%" stop-color="#F5EFE8"/>
+    </linearGradient>
+    <linearGradient id="bs-glass-sheen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"/>
       <stop offset="15%" stop-color="#FFFFFF" stop-opacity="0.1"/>
-      <stop offset="85%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+      <stop offset="85%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="95%" stop-color="#FFFFFF" stop-opacity="0.25"/>
       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.5"/>
     </linearGradient>
-    <!-- Gold Metallic Gradient -->
-    <linearGradient id="bs-gold" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#C59B4B"/>
-      <stop offset="30%" stop-color="#FDF1B8"/>
-      <stop offset="55%" stop-color="#D4AF37"/>
-      <stop offset="85%" stop-color="#A57A2B"/>
-      <stop offset="100%" stop-color="#E6C875"/>
-    </linearGradient>
-    <!-- Label Gradient (Ivory Texture) -->
-    <linearGradient id="bs-label" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FCFAF7"/>
-      <stop offset="100%" stop-color="#F7F1E6"/>
-    </linearGradient>
     <filter id="bs-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#000000" flood-opacity="0.25"/>
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.38"/>
     </filter>
   </defs>
 
-  <g filter="url(#bs-shadow)">
-    <!-- Clear Protective Cap (Top) -->
-    <rect x="175" y="45" width="50" height="75" rx="5" fill="#FFFFFF" fill-opacity="0.45" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.5"/>
-    <rect x="178" y="47" width="10" height="71" rx="2" fill="#FFFFFF" fill-opacity="0.5"/>
+  <!-- Contact Shadow -->
+  <ellipse cx="200" cy="428" rx="55" ry="10" fill="url(#bs-contact-shadow)" />
 
-    <!-- Inner Spray Nozzle -->
-    <rect x="188" y="65" width="24" height="42" rx="3" fill="#FFFFFF" stroke="#E0D6C8" stroke-width="1"/>
-    <rect x="198" y="72" width="4" height="6" rx="1" fill="#C59B4B"/>
+  <g id="bodysplash-bottle" filter="url(#bs-shadow)">
+    <!-- Clear/Gold Cap -->
+    <rect x="180" y="65" width="40" height="42" rx="4" fill="url(#bs-gold-cap)"/>
+    <rect x="186" y="55" width="28" height="12" rx="2" fill="url(#bs-gold-cap)"/>
+    <rect x="176" y="107" width="48" height="12" rx="2" fill="url(#bs-gold-cap)"/>
 
-    <!-- Gold Spray Collar -->
-    <rect x="168" y="115" width="64" height="50" rx="3" fill="url(#bs-gold)" stroke="#9A7020" stroke-width="0.8"/>
-    <!-- Gold ring ribs -->
-    <line x1="168" y1="125" x2="232" y2="125" stroke="#FFF7D1" stroke-width="1.5" stroke-opacity="0.8"/>
-    <line x1="168" y1="155" x2="232" y2="155" stroke="#7A5212" stroke-width="1" stroke-opacity="0.6"/>
-
-    <!-- Bottle Body (Cylindrical Glass 100ml) -->
-    <!-- Base Glass Container -->
-    <rect x="145" y="165" width="110" height="270" rx="12" fill="#FFFFFF" fill-opacity="0.25" stroke="#E5DCCE" stroke-width="1.5"/>
-    <!-- Liquid Layer inside -->
-    <rect x="148" y="180" width="104" height="248" rx="8" fill="url(#bs-liquid)"/>
-    
     <!-- Dip Tube -->
-    <line x1="200" y1="165" x2="202" y2="420" stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.75"/>
-    <line x1="201" y1="165" x2="201" y2="420" stroke="#D97A8C" stroke-width="1" stroke-opacity="0.6"/>
+    <line x1="200" y1="115" x2="198" y2="415" stroke="#FFFFFF" stroke-width="1.8" opacity="0.6"/>
 
-    <!-- Label Background (Cream with Floral Frame) -->
-    <rect x="150" y="210" width="100" height="180" rx="4" fill="url(#bs-label)" stroke="#D4AF37" stroke-width="1.2"/>
-    <!-- Inner Gold Filigree Frame -->
-    <rect x="154" y="214" width="92" height="172" rx="2" fill="none" stroke="#E6C875" stroke-width="0.75" stroke-dasharray="3,1"/>
+    <!-- Tall Glass Body -->
+    <rect x="150" y="119" width="100" height="300" rx="14" fill="url(#bs-liquid-rose)"/>
+    <!-- Glass Base -->
+    <rect x="150" y="405" width="100" height="14" rx="6" fill="#581A2C" opacity="0.95"/>
 
-    <!-- Floral Watercolor Ornaments (Roses & Leaves) -->
-    <!-- Top Floral Wreath -->
-    <g transform="translate(200, 228) scale(0.65)">
-      <circle cx="-25" cy="-2" r="7" fill="#F497A9" opacity="0.85"/>
-      <circle cx="-25" cy="-2" r="4" fill="#E26A82" opacity="0.9"/>
-      <circle cx="25" cy="-2" r="7" fill="#F497A9" opacity="0.85"/>
-      <circle cx="25" cy="-2" r="4" fill="#E26A82" opacity="0.9"/>
-      <circle cx="0" cy="-4" r="9" fill="#E8788E" opacity="0.9"/>
-      <circle cx="0" cy="-4" r="5" fill="#C94C64" opacity="0.95"/>
-      <path d="M-12,-8 Q-16,-14 -10,-14 Q-6,-10 -12,-8" fill="#88A878" opacity="0.8"/>
-      <path d="M12,-8 Q16,-14 10,-14 Q6,-10 12,-8" fill="#88A878" opacity="0.8"/>
+    <!-- High-End Luxury Label -->
+    <g id="bs-label">
+      <rect x="158" y="180" width="84" height="188" rx="5" fill="url(#bs-label-bg)" stroke="#D4AF37" stroke-width="1"/>
+      <rect x="161" y="183" width="78" height="182" rx="3" fill="none" stroke="#D4AF37" stroke-width="0.5" stroke-dasharray="2.5,1"/>
+
+      <!-- OFFICIAL MÁXIMO LOGO -->
+      <image href="data:image/png;base64,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" xlink:href="data:image/png;base64,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" x="160" y="188" width="80" height="36" preserveAspectRatio="xMidYMid meet" />
+
+      <!-- Gold Divider -->
+      <line x1="172" y1="230" x2="228" y2="230" stroke="#D4AF37" stroke-width="0.8"/>
+      <circle cx="200" cy="230" r="1.5" fill="#D4AF37"/>
+
+      <!-- Product Title -->
+      <text x="200" y="247" font-family="'Cinzel', 'Playfair Display', serif" font-size="8.5" font-weight="700" fill="#181614" letter-spacing="1.5" text-anchor="middle">BODY SPLASH</text>
+      <text x="200" y="260" font-family="'Cormorant Garamond', serif" font-size="7" font-style="italic" fill="#7C5820" text-anchor="middle">Bruma Desodorante</text>
+
+      <rect x="174" y="272" width="52" height="12" rx="6" fill="#C59B4B" fill-opacity="0.15" stroke="#C59B4B" stroke-width="0.6"/>
+      <text x="200" y="280.5" font-family="'DM Sans', sans-serif" font-size="5" font-weight="700" fill="#7C5820" letter-spacing="1" text-anchor="middle">FRESCOR INTENSO</text>
+
+      <text x="200" y="304" font-family="'DM Sans', sans-serif" font-size="5.5" font-weight="600" fill="#605445" letter-spacing="0.5" text-anchor="middle">FLORAL &amp; AMADEIRADO</text>
+
+      <!-- Volume -->
+      <line x1="178" y1="324" x2="222" y2="324" stroke="#D4AF37" stroke-width="0.5"/>
+      <text x="200" y="342" font-family="'DM Sans', sans-serif" font-size="9" font-weight="700" fill="#181614" letter-spacing="1.5" text-anchor="middle">100 ML</text>
     </g>
 
-    <!-- Brand & Typography on Label -->
-    <text x="200" y="262" font-family="'Cormorant Garamond', 'Alex Brush', cursive, serif" font-size="22" font-style="italic" font-weight="600" fill="#24221F" text-anchor="middle" letter-spacing="1">Máximo</text>
-    <text x="200" y="274" font-family="'DM Sans', sans-serif" font-size="6.5" font-weight="500" fill="#7A6F62" text-anchor="middle" letter-spacing="2">EAU DE PARFUM</text>
-    
-    <line x1="172" y1="284" x2="228" y2="284" stroke="#D4AF37" stroke-width="0.8"/>
-
-    <text x="200" y="306" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="700" fill="#24221F" text-anchor="middle" letter-spacing="3">BODY</text>
-    <text x="200" y="322" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="700" fill="#24221F" text-anchor="middle" letter-spacing="3">SPLASH</text>
-
-    <!-- Bottom Floral Garland -->
-    <g transform="translate(200, 348) scale(0.55)">
-      <circle cx="-20" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
-      <circle cx="20" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
-      <circle cx="0" cy="2" r="8" fill="#E8788E" opacity="0.9"/>
-      <path d="M-10,4 Q-14,8 -8,8 Q-4,6 -10,4" fill="#88A878" opacity="0.8"/>
-      <path d="M10,4 Q14,8 8,8 Q4,6 10,4" fill="#88A878" opacity="0.8"/>
-    </g>
-
-    <text x="200" y="372" font-family="'DM Sans', sans-serif" font-size="8" font-weight="700" fill="#24221F" text-anchor="middle" letter-spacing="1.5">100 ML</text>
-
-    <!-- Glass Reflection Highlight Sheen -->
-    <rect x="148" y="166" width="104" height="268" rx="10" fill="url(#bs-glass)" pointer-events="none"/>
-    <path d="M 152 172 L 160 172 L 156 425 L 150 425 Z" fill="#FFFFFF" fill-opacity="0.35"/>
-    <path d="M 242 172 L 246 172 L 244 425 L 240 425 Z" fill="#FFFFFF" fill-opacity="0.2"/>
+    <!-- Glass Specular Reflection -->
+    <rect x="150" y="119" width="100" height="300" rx="14" fill="url(#bs-glass-sheen)" pointer-events="none"/>
+    <path d="M 155 125 L 160 125 L 157 410 L 152 410 Z" fill="#FFFFFF" fill-opacity="0.45" pointer-events="none"/>
   </g>
 </svg>

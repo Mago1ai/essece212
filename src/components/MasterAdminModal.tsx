@@ -1230,7 +1230,108 @@ export const CATALOG_PRODUCTS: PerfumeItem[] = ${JSON.stringify(perfumes, null, 
                 </div>
               </div>
 
-              <div className="space-y-4 bg-[#1C1A17] border border-white/10 p-6 rounded-xs">
+              <div className="space-y-5 bg-[#1C1A17] border border-white/10 p-6 rounded-xs">
+                {/* LOGO CONFIGURATION SECTION */}
+                <div className="pb-5 border-b border-white/10 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="font-mono-subtle text-[11px] text-[#D4AF37] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                        <ImageIcon className="w-3.5 h-3.5" />
+                        IDENTIDADE VISUAL &amp; LOGO OFICIAL
+                      </span>
+                      <h4 className="font-serif-editorial text-lg text-white font-normal mt-0.5">
+                        Link / URL da Logo do Site
+                      </h4>
+                      <p className="text-xs text-white/60">
+                        Insira o link direto da imagem da logo (PNG, PostImages, ImgBB, etc.). O site e o cabeçalho são atualizados automaticamente em tempo real.
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStoreSettings({
+                          ...storeSettings,
+                          logoUrl: 'https://i.postimg.cc/JHBpWK7K/image.png',
+                        });
+                        showToast('Logo padrão restaurada!');
+                      }}
+                      className="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/15 text-[11px] font-mono-subtle text-[#D4AF37] rounded-xs flex items-center gap-1.5"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Restaurar Link Original</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start pt-2">
+                    <div className="lg:col-span-8 space-y-2">
+                      <label className="block text-[11px] font-mono-subtle text-white/80 uppercase tracking-wider">
+                        URL Direta da Logo (Imagem / PNG) *
+                      </label>
+                      <div className="flex gap-2">
+                        <input
+                          type="url"
+                          value={storeSettings.logoUrl || 'https://i.postimg.cc/JHBpWK7K/image.png'}
+                          onChange={(e) =>
+                            setStoreSettings({ ...storeSettings, logoUrl: e.target.value })
+                          }
+                          placeholder="https://i.postimg.cc/JHBpWK7K/image.png"
+                          className="flex-1 bg-black/60 border border-white/20 text-white text-xs px-3.5 py-2.5 rounded-xs focus:border-[#D4AF37] focus:outline-none font-mono"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (storeSettings.logoUrl) {
+                              saveStoreSettings(storeSettings);
+                              showToast('Logo atualizada e aplicada com sucesso!');
+                            }
+                          }}
+                          className="px-4 py-2.5 bg-[#D4AF37] hover:bg-[#C29D29] text-[#141210] font-bold text-xs uppercase tracking-wider rounded-xs flex items-center gap-1.5 shadow-md shrink-0"
+                        >
+                          <Check className="w-3.5 h-3.5" />
+                          <span>Aplicar Logo</span>
+                        </button>
+                      </div>
+                      <p className="text-[10px] text-white/50">
+                        Link ativo atual: <code className="text-[#D4AF37]">{storeSettings.logoUrl || 'https://i.postimg.cc/JHBpWK7K/image.png'}</code>
+                      </p>
+                    </div>
+
+                    {/* Live Visual Preview on Light & Dark */}
+                    <div className="lg:col-span-4 bg-black/50 border border-white/10 p-3 rounded-xs space-y-2">
+                      <span className="text-[10px] font-mono-subtle text-white/70 uppercase tracking-wider block">
+                        Pré-visualização da Logo:
+                      </span>
+                      <div className="grid grid-cols-2 gap-2">
+                        {/* Light preview */}
+                        <div className="bg-[#F4F0E9] p-2.5 rounded-xs flex flex-col items-center justify-center border border-[#24221F]/10 min-h-[70px]">
+                          <span className="text-[8px] font-mono-subtle text-[#24221F]/50 mb-1">Modo Claro</span>
+                          <img
+                            src={storeSettings.logoUrl || 'https://i.postimg.cc/JHBpWK7K/image.png'}
+                            alt="Logo Claro"
+                            className="max-h-9 w-auto object-contain mix-blend-multiply"
+                            onError={(e) => {
+                              (e.currentTarget as HTMLImageElement).src = '/assets/logo.png';
+                            }}
+                          />
+                        </div>
+                        {/* Dark preview */}
+                        <div className="bg-[#121110] p-2.5 rounded-xs flex flex-col items-center justify-center border border-white/10 min-h-[70px]">
+                          <span className="text-[8px] font-mono-subtle text-white/50 mb-1">Modo Escuro</span>
+                          <img
+                            src={storeSettings.logoUrl || 'https://i.postimg.cc/JHBpWK7K/image.png'}
+                            alt="Logo Escuro"
+                            className="max-h-9 w-auto object-contain mix-blend-screen brightness-125"
+                            onError={(e) => {
+                              (e.currentTarget as HTMLImageElement).src = '/assets/logo-white.png';
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[11px] font-mono-subtle text-white/80 uppercase tracking-wider mb-1">

@@ -188,10 +188,10 @@
 
 /* Safe Area Inset Helpers */
 .pt-safe {
-  padding-top: max(1rem, env(safe-area-inset-top, 0px));
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
 }
 .pb-safe {
-  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
 }
 .pl-safe {
   padding-left: max(1rem, env(safe-area-inset-left, 0px));
@@ -202,6 +202,25 @@
 
 .bottom-safe {
   bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Mobile Menu Button - 44px touch target, safe-area vertical alignment, immediate haptic feedback */
+.header-menu-button {
+  min-width: 44px;
+  min-height: 44px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.header-menu-button:active {
+  opacity: 0.7;
+  transform: scale(0.95);
 }
 
 /* Mobile App Touch feedback */

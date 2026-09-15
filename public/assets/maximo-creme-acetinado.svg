@@ -1,97 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="35 150 265 230" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="35 150 265 230" width="100%" height="100%">
   <defs>
-    <!-- Jar Body Gradient (Porcelain White with Soft Shadows) -->
-    <linearGradient id="jar-body" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#E8E2D8"/>
-      <stop offset="15%" stop-color="#FAF8F5"/>
-      <stop offset="60%" stop-color="#FFFFFF"/>
-      <stop offset="90%" stop-color="#F2EDE4"/>
-      <stop offset="100%" stop-color="#DDD6C8"/>
+    <radialGradient id="ca-contact-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#000000" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ca-lid-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C5820"/>
+      <stop offset="20%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#FBF0B9"/>
+      <stop offset="80%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#5B3E12"/>
     </linearGradient>
-    <!-- Lid Gradient (Glossy White with Subtle Pearl) -->
-    <linearGradient id="jar-lid" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#DFD8CC"/>
-      <stop offset="12%" stop-color="#FDFCFB"/>
-      <stop offset="55%" stop-color="#FFFFFF"/>
-      <stop offset="85%" stop-color="#F5EFE6"/>
-      <stop offset="100%" stop-color="#D5CDBD"/>
+    <linearGradient id="ca-jar-glass" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7A2218"/>
+      <stop offset="25%" stop-color="#B83A2A"/>
+      <stop offset="50%" stop-color="#E05B46"/>
+      <stop offset="75%" stop-color="#B83A2A"/>
+      <stop offset="100%" stop-color="#601810"/>
     </linearGradient>
-    <!-- Gold Metallic Foil Gradient -->
-    <linearGradient id="jar-gold" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#C59B4B"/>
-      <stop offset="25%" stop-color="#FDF1B8"/>
-      <stop offset="50%" stop-color="#D4AF37"/>
-      <stop offset="80%" stop-color="#B88A35"/>
-      <stop offset="100%" stop-color="#E8CF82"/>
+    <linearGradient id="ca-label-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FAF7F2"/>
+      <stop offset="100%" stop-color="#F2ECE1"/>
     </linearGradient>
-    <!-- Label Background Texture -->
-    <linearGradient id="jar-label" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FCFAF6"/>
-      <stop offset="50%" stop-color="#FFFDF9"/>
-      <stop offset="100%" stop-color="#F7F1E6"/>
+    <linearGradient id="ca-glass-sheen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.45"/>
+      <stop offset="15%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+      <stop offset="85%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="95%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.45"/>
     </linearGradient>
-    <filter id="jar-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000000" flood-opacity="0.22"/>
+    <filter id="ca-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
     </filter>
   </defs>
 
-  <g filter="url(#jar-shadow)">
-    <!-- Red Silk Rose decorative accent on the side (from photo) -->
-    <g transform="translate(75, 330) scale(0.75)" opacity="0.95">
-      <circle cx="0" cy="0" r="38" fill="#8B0E20"/>
-      <path d="M-28,-15 C-20,-35 20,-35 28,-15 C35,10 15,35 -5,35 C-25,35 -35,10 -28,-15 Z" fill="#B3132B"/>
-      <path d="M-20,-8 C-12,-25 15,-25 20,-8 C25,10 10,25 -2,25 C-15,25 -25,10 -20,-8 Z" fill="#D62240"/>
-      <circle cx="0" cy="0" r="14" fill="#990F24"/>
-      <circle cx="0" cy="0" r="8" fill="#6E0514"/>
+  <!-- Contact Shadow -->
+  <ellipse cx="167" cy="365" rx="98" ry="12" fill="url(#ca-contact-shadow)" />
+
+  <g id="creme-jar" filter="url(#ca-shadow)">
+    <!-- Brushed Gold Lid -->
+    <rect x="75" y="168" width="185" height="36" rx="6" fill="url(#ca-lid-gold)"/>
+    <rect x="70" y="196" width="195" height="10" rx="2" fill="url(#ca-lid-gold)"/>
+
+    <!-- Heavy Rounded Glass Jar Body -->
+    <rect x="80" y="206" width="175" height="150" rx="20" fill="url(#ca-jar-glass)"/>
+    <!-- Glass Base -->
+    <rect x="84" y="344" width="167" height="12" rx="6" fill="#42120C" opacity="0.95"/>
+
+    <!-- Wide Luxury Front Label -->
+    <g id="ca-label">
+      <rect x="98" y="222" width="139" height="116" rx="6" fill="url(#ca-label-bg)" stroke="#D4AF37" stroke-width="1"/>
+      <rect x="102" y="226" width="131" height="108" rx="4" fill="none" stroke="#D4AF37" stroke-width="0.5" stroke-dasharray="3,1"/>
+
+      <!-- OFFICIAL MÁXIMO LOGO -->
+      <image href="data:image/png;base64,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" xlink:href="data:image/png;base64,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" x="106" y="228" width="123" height="38" preserveAspectRatio="xMidYMid meet" />
+
+      <!-- Gold Divider -->
+      <line x1="125" y1="270" x2="210" y2="270" stroke="#D4AF37" stroke-width="0.8"/>
+      <circle cx="167.5" cy="270" r="1.5" fill="#D4AF37"/>
+
+      <!-- Product Name -->
+      <text x="167.5" y="285" font-family="'Cinzel', 'Playfair Display', serif" font-size="8.5" font-weight="700" fill="#181614" letter-spacing="1.5" text-anchor="middle">CREME ACETINADO</text>
+      <text x="167.5" y="297" font-family="'Cormorant Garamond', serif" font-size="7" font-style="italic" fill="#7C5820" text-anchor="middle">Hidratação Sedosa 48h</text>
+
+      <!-- Weight/Volume -->
+      <text x="167.5" y="320" font-family="'DM Sans', sans-serif" font-size="9" font-weight="700" fill="#181614" letter-spacing="1.5" text-anchor="middle">200 g</text>
     </g>
 
-    <!-- White Cosmetic Jar Lid (200g wide lid) -->
-    <rect x="110" y="160" width="180" height="42" rx="7" fill="url(#jar-lid)" stroke="#D8CFC0" stroke-width="1.2"/>
-    <line x1="110" y1="195" x2="290" y2="195" stroke="#C4B9A6" stroke-width="1.2"/>
-    <path d="M 115 163 L 130 163 L 126 198 L 113 198 Z" fill="#FFFFFF" fill-opacity="0.6"/>
-
-    <!-- Jar Main Body (Wide Cylindrical White Container) -->
-    <rect x="115" y="200" width="170" height="155" rx="10" fill="url(#jar-body)" stroke="#D8CFC0" stroke-width="1.2"/>
-
-    <!-- Label Wrap (Floral Máximo Label) -->
-    <rect x="120" y="220" width="160" height="118" rx="4" fill="url(#jar-label)" stroke="#D4AF37" stroke-width="1"/>
-    
-    <!-- Top & Bottom Floral Watercolor Garland Borders -->
-    <!-- Top Floral Border -->
-    <g transform="translate(200, 230) scale(0.55)">
-      <circle cx="-60" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
-      <circle cx="-30" cy="0" r="7" fill="#E8788E" opacity="0.9"/>
-      <circle cx="0" cy="0" r="8" fill="#F497A9" opacity="0.85"/>
-      <circle cx="30" cy="0" r="7" fill="#E8788E" opacity="0.9"/>
-      <circle cx="60" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
-      <!-- Leaves -->
-      <path d="M-45,-4 Q-48,-10 -40,-8 Z" fill="#88A878"/>
-      <path d="M-15,-4 Q-18,-10 -10,-8 Z" fill="#88A878"/>
-      <path d="M15,-4 Q18,-10 10,-8 Z" fill="#88A878"/>
-      <path d="M45,-4 Q48,-10 40,-8 Z" fill="#88A878"/>
-    </g>
-
-    <!-- Brand Calligraphy "Máximo" -->
-    <text x="200" y="274" font-family="'Cormorant Garamond', 'Alex Brush', cursive, serif" font-size="28" font-style="italic" font-weight="600" fill="#24221F" text-anchor="middle" letter-spacing="1">Máximo</text>
-    
-    <!-- Product Name "Creme Acetinado" -->
-    <text x="200" y="302" font-family="'Cormorant Garamond', 'Alex Brush', cursive, serif" font-size="19" font-style="italic" font-weight="500" fill="#A96227" text-anchor="middle" letter-spacing="0.5">Creme Acetinado</text>
-
-    <!-- Net Weight "200g" -->
-    <text x="200" y="322" font-family="'DM Sans', sans-serif" font-size="9" font-weight="700" fill="#24221F" text-anchor="middle" letter-spacing="1">200g</text>
-
-    <!-- Bottom Floral Border -->
-    <g transform="translate(200, 332) scale(0.55)">
-      <circle cx="-50" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
-      <circle cx="-20" cy="0" r="7" fill="#E8788E" opacity="0.9"/>
-      <circle cx="20" cy="0" r="7" fill="#E8788E" opacity="0.9"/>
-      <circle cx="50" cy="0" r="6" fill="#F497A9" opacity="0.85"/>
-      <path d="M-35,4 Q-38,10 -30,8 Z" fill="#88A878"/>
-      <path d="M35,4 Q38,10 30,8 Z" fill="#88A878"/>
-    </g>
-
-    <!-- Glass/Porcelain Gloss Reflections -->
-    <path d="M 120 205 L 132 205 L 128 350 L 118 350 Z" fill="#FFFFFF" fill-opacity="0.45"/>
-    <path d="M 270 205 L 278 205 L 274 350 L 268 350 Z" fill="#FFFFFF" fill-opacity="0.25"/>
+    <!-- Glass Specular Reflection -->
+    <rect x="80" y="206" width="175" height="150" rx="20" fill="url(#ca-glass-sheen)" pointer-events="none"/>
+    <path d="M 88 215 L 96 215 L 92 345 L 85 345 Z" fill="#FFFFFF" fill-opacity="0.45" pointer-events="none"/>
   </g>
 </svg>
