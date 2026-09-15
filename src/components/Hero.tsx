@@ -20,11 +20,11 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   // Select 5 real iconic perfumes for the hero campaign rotation
   const featuredIds = [
+    'maximo-pour-homme-edp',
+    'maximo-pour-femme-edp',
     'maximo-sabonete-liquido',
     'maximo-body-splash',
     'aventus-creed',
-    'delina-parfums-de-marly',
-    'good-girl-carolina-herrera',
   ];
 
   const featuredPerfumes = perfumes.filter((p) => featuredIds.includes(p.id));
@@ -64,15 +64,6 @@ export const Hero: React.FC<HeroProps> = ({
                 CASA DE ALTA PERFUMARIA
               </span>
               <div className="w-10 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40" />
-            </div>
-
-            <div>
-              <MaximoLogo
-                variant="adaptive"
-                size="hero"
-                id="hero-official-brandmark"
-                className="origin-left transform transition-transform duration-300"
-              />
             </div>
 
             {/* Campaign Central Concept */}
