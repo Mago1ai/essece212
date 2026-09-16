@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <MaximoLogo
               variant={theme === 'dark' ? 'light' : (isScrolled ? 'dark' : 'light')}
-              size={isScrolled ? 'sm' : 'md'}
+              size={isScrolled ? 'md' : 'lg'}
               className="transition-all duration-300"
             />
           </button>
