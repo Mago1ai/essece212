@@ -42,7 +42,7 @@ export const MaximoLogo: React.FC<MaximoLogoProps> = ({
       className={`relative inline-flex flex-col items-center justify-center select-none text-center transition-all duration-300 group ${sizeClasses[size]} ${className}`}
     >
       <img
-        src="/images/LOGO-ESSECE212.png"
+        src="/logo-maximo.png"
         alt="Máximo Eau de Parfum Logo"
         className={`w-full h-auto object-contain ${getVariantClasses()}`}
       />

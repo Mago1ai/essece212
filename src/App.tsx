@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { PERFUMES, BRAND_INFO } from './data/perfumes';
 import { Perfume, OlfactoryFamily, CartItem } from './types';
 import { Header } from './components/Header';
+import { TopBar } from './components/TopBar';
 import { Hero } from './components/Hero';
 import { HouseSection } from './components/HouseSection';
 import { CollectionSection } from './components/CollectionSection';
+import { CollectionIntro } from './components/CollectionIntro';
 import { ManifestoSection } from './components/ManifestoSection';
 import { DiscoverySection } from './components/DiscoverySection';
 import { DiscoverySetBanner } from './components/DiscoverySetBanner';
@@ -20,7 +22,6 @@ import { DiscoverySetModal } from './components/DiscoverySetModal';
 import { InfoModals } from './components/InfoModals';
 
 export default function App() {
-  const [activeFamily, setActiveFamily] = useState<OlfactoryFamily>('Todos');
   const [selectedPerfume, setSelectedPerfume] = useState<Perfume | null>(null);
   const theme = 'light';
 
@@ -130,15 +131,13 @@ export default function App() {
     }
   };
 
-  const handleSelectDiscoveryOption = (family: OlfactoryFamily) => {
-    setActiveFamily(family);
-    handleNavigateSection('colecao');
-  };
-
   const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <div className="min-h-screen bg-[#F4F0E9] dark:bg-[#121110] text-[#24221F] dark:text-[#F5F2EB] font-sans-clean selection:bg-[#A96227]/20 relative transition-colors duration-300">
+      {/* Top Bar Anúncios */}
+      <TopBar />
+
       {/* Editorial Header */}
       <Header
         cartCount={totalCartCount}
@@ -159,25 +158,29 @@ export default function App() {
           onScrollToNext={() => handleNavigateSection('casa')}
         />
 
-        {/* 2. House Section (01 — A CASA) */}
-        <HouseSection onOpenStoryModal={() => setIsStoryOpen(true)} />
+        <CollectionIntro
+          onExplore={() => handleNavigateSection('colecao')}
+        />
 
-        {/* 3. Collection Section (02 — A COLEÇÃO) */}
+        {/* 2. Collection Section (Catálogo Comercial) */}
         <CollectionSection
           perfumes={PERFUMES}
-          activeFamily={activeFamily}
-          onSelectFamily={setActiveFamily}
-          onSelectPerfume={setSelectedPerfume}
+          onSelectPerfume={(perfume) => {
+            setSelectedPerfume(perfume);
+          }}
           favorites={favorites}
           onToggleFavorite={handleToggleFavorite}
           onAddToCart={handleAddToCart}
         />
 
+        {/* 3. House Section (01 — A CASA) */}
+        <HouseSection onOpenStoryModal={() => setIsStoryOpen(true)} />
+
         {/* 4. Manifesto Section (03 — O GESTO) */}
         <ManifestoSection onOpenManifestoModal={() => setIsManifestoOpen(true)} />
 
         {/* 5. Olfactory Discovery Section (04 — DESCOBERTA) */}
-        <DiscoverySection onSelectDiscoveryOption={handleSelectDiscoveryOption} />
+        <DiscoverySection onExplore={() => handleNavigateSection('colecao')} />
 
         {/* 6. Discovery Set Horizontal Banner */}
         <DiscoverySetBanner onOrderDiscoverySet={() => setIsDiscoverySetOpen(true)} />

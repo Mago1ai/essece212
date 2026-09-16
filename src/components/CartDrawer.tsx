@@ -79,7 +79,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 ${itemsList}
 
 💰 *VALOR TOTAL:* R$ ${subtotal.toFixed(2).replace('.', ',')}
-🚚 *Frete:* Cortesia Inclusa para todo o Brasil${nameText}${addressText}
+🚚 *Envio:* Para todo o Brasil${nameText}${addressText}
 
 Por favor, confirmem a disponibilidade dos itens e as orientações para envio.`;
 
@@ -238,11 +238,11 @@ Por favor, confirmem a disponibilidade dos itens e as orientações para envio.`
               <div className="p-3.5 bg-[#E7DDD0] dark:bg-[#1E1C1A] border border-[#A96227]/20 dark:border-[#D4AF37]/20 space-y-1 font-mono-subtle text-xs text-[#24221F]/85 dark:text-[#F5F2EB]/85">
                 <div className="flex items-center gap-2 text-[#A96227] dark:text-[#D4AF37] font-semibold">
                   <Truck className="w-3.5 h-3.5" />
-                  <span>Frete cortesia incluso para todo o Brasil.</span>
+                  <span>Envio para todo o Brasil.</span>
                 </div>
                 <div className="flex items-center gap-2 text-[#24221F]/70 dark:text-[#F5F2EB]/70 text-[11px]">
                   <Sparkles className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37]" />
-                  <span>Acompanha amostra cortesia e embalagem de presente.</span>
+                  <span>Embalagem de presente inclusa.</span>
                 </div>
               </div>
 

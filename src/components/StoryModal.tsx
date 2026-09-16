@@ -71,13 +71,12 @@ export const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose }) => {
             </blockquote>
 
             <p>
-              Cada frasco repousa por um período mínimo de três meses em maceração a frio antes do engarrafamento manual, garantindo que as moléculas se unam de maneira harmônica e desenvolvam sua máxima complexidade sobre a pele.
+              Cada fragrância é produzida com matérias-primas premium e processos minuciosos para garantir alta fixação, projeção e sofisticação sobre a pele.
             </p>
           </div>
 
           <div className="pt-6 border-t border-[#24221F]/10 dark:border-white/10 flex flex-wrap items-center justify-between gap-4 font-mono-subtle text-xs text-[#24221F]/70 dark:text-[#F5F2EB]/70">
             <span>Atelier em {BRAND_INFO.atelierAddress}</span>
-            <span className="text-[#A96227] dark:text-[#D4AF37]">Visitas por agendamento</span>
           </div>
         </div>
       </div>

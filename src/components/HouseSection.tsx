@@ -22,17 +22,14 @@ export const HouseSection: React.FC<HouseSectionProps> = ({ onOpenStoryModal }) 
         </div>
 
         {/* Asymmetric Editorial Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Bold Display Heading */}
-          <div className="lg:col-span-6">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Bold Display Heading & Text */}
+          <div className="xl:col-span-5 flex flex-col justify-between space-y-8">
             <h2 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-light leading-[1.08] tracking-[-0.01em]">
               Uma presença <br />
               <span className="italic font-normal text-[#A96227] dark:text-[#D4AF37]">sem pressa.</span>
             </h2>
-          </div>
 
-          {/* Right Column: Poetic Body Copy & Textual Action */}
-          <div className="lg:col-span-6 lg:pt-4 flex flex-col justify-between space-y-8">
             <p className="font-sans-clean text-lg sm:text-xl md:text-2xl text-[#24221F]/85 dark:text-[#F5F2EB]/85 font-light leading-[1.7] max-w-xl">
               <strong className="font-medium text-[#24221F] dark:text-[#F5F2EB]">Máximo Eau de Parfum</strong> é uma casa dedicada à alta perfumaria e ao cuidado corporal sublime. Unimos formulações ricas, acordes nobres e atendimento exclusivo para quem aprecia distinção e sensorialidade.
             </p>
@@ -47,6 +44,18 @@ export const HouseSection: React.FC<HouseSectionProps> = ({ onOpenStoryModal }) 
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#A96227] dark:text-[#D4AF37]" />
               </button>
             </div>
+          </div>
+
+          {/* Right Column: Editorial Image */}
+          <div className="xl:col-span-7 relative">
+             <div className="aspect-[4/3] w-full overflow-hidden bg-[#EAE3D9] dark:bg-[#121110]">
+               <img 
+                 src="/images/house-couple.jpg" 
+                 alt="Casal elegante representando a sensualidade e presença da Máximo Eau de Parfum"
+                 className="w-full h-full object-cover"
+                 loading="lazy"
+               />
+             </div>
           </div>
         </div>
 

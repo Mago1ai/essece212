@@ -14,14 +14,14 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       id="hero"
-      className="relative w-full min-h-[88vh] md:min-h-[92vh] flex items-center bg-[#1A1816] text-[#F4F0E9] overflow-hidden select-none"
+      className="relative w-full min-h-[70vh] flex items-center bg-[#1A1816] text-[#F4F0E9] overflow-hidden select-none"
     >
       {/* Background Editorial Image - Kit Máximo Real Photo */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/photo_4978966337568837231_y.jpg"
-          alt="Perfume Capilar Máximo em ambiente editorial com pérolas e tecidos de seda"
-          className="w-full h-full object-cover object-[50%_30%] brightness-[0.8] contrast-[1.05]"
+          src="https://images.unsplash.com/photo-1596462502278-27bf85031b26?auto=format&fit=crop&w=1600&q=80"
+          alt="Alta Perfumaria Máximo em ambiente editorial"
+          className="w-full h-full object-cover object-[50%_30%] brightness-[0.7] contrast-[1.05]"
         />
         {/* Subtle Dark Vignette & Left Gradient for Maximum Typographic Legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#141210]/95 via-[#141210]/75 to-black/20 sm:via-[#141210]/55 md:to-transparent" />
@@ -29,7 +29,7 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 sm:py-32 flex flex-col justify-between min-h-[82vh] md:min-h-[88vh]">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-16 flex flex-col justify-center min-h-[70vh]">
         <div className="max-w-xl lg:max-w-2xl mt-12 sm:mt-16">
           {/* Subtle Label */}
           <div className="inline-flex items-center gap-3 mb-6 sm:mb-8">
@@ -40,54 +40,31 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* Editorial Display Heading */}
-          <h1 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[0.01em] leading-[1.08] text-[#F4F0E9] mb-6 sm:mb-8">
+          <h1 className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl font-light tracking-[0.01em] leading-[1.08] text-[#F4F0E9] mb-6">
             A presença que <br />
             <span className="italic font-normal text-[#EAE3D9]">permanece.</span>
           </h1>
 
           {/* Poetic Subtitle */}
-          <p className="font-sans-clean text-base sm:text-lg md:text-xl text-[#F4F0E9]/90 font-light leading-relaxed max-w-lg mb-8 sm:mb-10">
-            Fragrâncias e cosméticos nobres criados para marcar presença com distinção, elegância e intensidade.
+          <p className="font-sans-clean text-base sm:text-lg text-[#F4F0E9]/90 font-light leading-relaxed max-w-lg mb-10">
+            Fragrâncias e cosméticos nobres criados para marcar presença com distinção, elegância e intensidade. Explore nossas coleções.
           </p>
 
-          {/* Primary Action Button */}
-          <div>
+          {/* Primary Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
-              id="hero-cta-btn"
               onClick={onExploreCollection}
-              className="group inline-flex items-center gap-4 px-7 py-3.5 border border-[#F4F0E9]/60 hover:border-[#F4F0E9] bg-[#F4F0E9]/5 hover:bg-[#F4F0E9]/15 backdrop-blur-xs text-[#F4F0E9] text-xs tracking-[0.22em] uppercase transition-all duration-300 active:scale-[0.97] focus:outline-none focus:ring-1 focus:ring-white font-medium"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-[#F4F0E9] text-[#121110] text-xs tracking-[0.2em] uppercase font-semibold transition-all hover:bg-white active:scale-95"
             >
-              <span>CONHEÇA A COLEÇÃO</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 text-[#EAE3D9]" />
+              Conheça a Coleção
+            </button>
+            <button
+              onClick={onScrollToNext}
+              className="inline-flex items-center justify-center px-8 py-3.5 border border-[#F4F0E9]/40 text-[#F4F0E9] text-xs tracking-[0.2em] uppercase font-medium hover:border-white hover:bg-white/5 transition-all active:scale-95"
+            >
+              Nossa História
             </button>
           </div>
-        </div>
-
-        {/* Bottom Editorial Coordinates & Scroll Indicator */}
-        <div className="flex items-end justify-between pt-12 border-t border-white/15 text-white/70">
-          <div className="flex items-center gap-3">
-            <span className="text-xs tracking-[0.2em] text-[#EAE3D9] font-medium">
-              01 / 03
-            </span>
-            <span className="hidden sm:inline-block w-8 h-[1px] bg-white/20" />
-            <span className="hidden sm:inline-block text-[11px] tracking-[0.18em] uppercase text-white/50 font-medium">
-              EDIÇÃO PERMANENTE
-            </span>
-          </div>
-
-          <button
-            id="hero-scroll-down-btn"
-            onClick={onScrollToNext}
-            className="group flex items-center gap-3 text-left focus:outline-none"
-            aria-label="Deslizar para a próxima seção"
-          >
-            <span className="text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[#EAE3D9]/80 group-hover:text-white transition-colors font-medium">
-              DESLIZE PARA DESCOBRIR
-            </span>
-            <div className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
-              <ArrowDown className="w-3.5 h-3.5 text-[#EAE3D9] group-hover:translate-y-0.5 transition-transform" />
-            </div>
-          </button>
         </div>
       </div>
     </section>

@@ -57,13 +57,13 @@ export const Header: React.FC<HeaderProps> = ({
             id="brand-logo-btn"
             onClick={() => handleNavClick('hero')}
             className={`group text-left focus:outline-none transition-all duration-300 py-1 ${
-              isScrolled ? 'w-[95%]' : 'w-full'
+              isScrolled ? 'w-auto' : 'w-full'
             }`}
             aria-label="Máximo Eau de Parfum Home"
           >
             <MaximoLogo
               variant={theme === 'dark' ? 'light' : (isScrolled ? 'dark' : 'light')}
-              size="md"
+              size={isScrolled ? 'sm' : 'md'}
               className="transition-all duration-300"
             />
           </button>
@@ -74,48 +74,36 @@ export const Header: React.FC<HeaderProps> = ({
             className="hidden md:flex items-center space-x-9 lg:space-x-11"
           >
             <button
-              id="nav-link-colecao"
               onClick={() => handleNavClick('colecao')}
               className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
+                isScrolled ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]' : 'hover:text-white'
               }`}
             >
-              A Coleção
+              Fragrâncias
             </button>
             <button
-              id="nav-link-casa"
+              onClick={() => handleNavClick('colecao')}
+              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
+                isScrolled ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]' : 'hover:text-white'
+              }`}
+            >
+              Feminino
+            </button>
+            <button
+              onClick={() => handleNavClick('colecao')}
+              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
+                isScrolled ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]' : 'hover:text-white'
+              }`}
+            >
+              Masculino
+            </button>
+            <button
               onClick={() => handleNavClick('casa')}
               className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
+                isScrolled ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]' : 'hover:text-white'
               }`}
             >
               A Casa
-            </button>
-            <button
-              id="nav-link-descoberta"
-              onClick={() => handleNavClick('descoberta')}
-              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
-            >
-              Descoberta
-            </button>
-            <button
-              id="nav-link-manifesto"
-              onClick={() => handleNavClick('manifesto')}
-              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled
-                  ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]'
-                  : 'hover:text-white'
-              }`}
-            >
-              Manifesto
             </button>
           </nav>
 

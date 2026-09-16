@@ -39,6 +39,16 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="font-mono-subtle text-xs text-[#24221F]/60 dark:text-[#F5F2EB]/60">
               {BRAND_INFO.origin} · Atendimento exclusivo via WhatsApp
             </p>
+
+            <div className="pt-4 flex items-center gap-4 text-[#A96227] dark:text-[#D4AF37]">
+              <a href="https://instagram.com/maximoeaudeparfum" target="_blank" rel="noopener noreferrer" className="hover:text-[#24221F] dark:hover:text-white transition-colors">
+                <span className="font-mono-subtle text-xs tracking-widest uppercase">Instagram</span>
+              </a>
+              <span className="w-1 h-1 bg-current rounded-full" />
+              <a href="#" className="hover:text-[#24221F] dark:hover:text-white transition-colors">
+                <span className="font-mono-subtle text-xs tracking-widest uppercase">TikTok</span>
+              </a>
+            </div>
           </div>
 
           {/* Navigation Links Column */}
@@ -144,6 +154,8 @@ export const Footer: React.FC<FooterProps> = ({
             <span>Alta Perfumaria</span>
             <span>·</span>
             <span>Edições Numeradas</span>
+            <span>·</span>
+            <span>Pagamento Seguro (PIX/Cartão)</span>
           </div>
         </div>
       </div>
