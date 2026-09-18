@@ -356,7 +356,6 @@ export function getStandaloneHtmlContent(): string {
       const [isCartOpen, setIsCartOpen] = useState(false);
       const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
       const [isStoryOpen, setIsStoryOpen] = useState(false);
-      const [isDiscoverySetOpen, setIsDiscoverySetOpen] = useState(false);
       
       const [favorites, setFavorites] = useState(() => {
         try {
@@ -454,13 +453,12 @@ export function getStandaloneHtmlContent(): string {
 
       const sendCartWhatsApp = () => {
         if (cart.length === 0) return;
-        let msg = \`*MÁXIMO EAU DE PARFUM — PEDIDO EXCLUSIVO*\\n\\n\`;
-        msg += \`Olá! Gostaria de confirmar meu pedido com atendimento personalizado:\\n\\n\`;
+        let msg = \`*MÁXIMO EAU DE PARFUM — CONSULTA E PEDIDO*\\n\\n\`;
+        msg += \`Olá! Gostaria de cotar e confirmar meu pedido com atendimento personalizado:\\n\\n\`;
         cart.forEach((item, idx) => {
-          msg += \`\${idx + 1}. *\${item.name}* (\${item.brand})\\n   • Quantidade: \${item.qty}\\n   • Volume: \${item.size}\\n   • Valor Unitário: \${item.price}\\n\\n\`;
+          msg += \`\${idx + 1}. *\${item.name}* (\${item.brand})\\n   • Quantidade: \${item.qty}\\n   • Volume: \${item.size}\\n\\n\`;
         });
-        msg += \`*VALOR TOTAL ESTIMADO: R$ \${cartSubtotal.toFixed(2).replace('.', ',')}*\\n\\n\`;
-        msg += \`Por favor, me informe as opções de pagamento via PIX/Cartão e o prazo de entrega.\`;
+        msg += \`Por favor, me informe os valores atualizados, opções de pagamento e prazo de entrega.\`;
         window.open(getWhatsappUrl(msg), '_blank');
       };
 
@@ -710,8 +708,8 @@ export function getStandaloneHtmlContent(): string {
                       <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.06] space-y-3">
                         <div className="flex items-center justify-between">
                           <div>
-                            <span className="text-xl sm:text-2xl font-serif font-medium text-[#24221F] dark:text-[#F4F0E9]">
-                              {perfume.price}
+                            <span className="text-sm font-serif font-semibold text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider">
+                              Sob Consulta
                             </span>
                             <span className="block text-[10px] uppercase text-[#24221F]/50 dark:text-[#F4F0E9]/50 tracking-wider">
                               {perfume.concentration}
@@ -728,7 +726,7 @@ export function getStandaloneHtmlContent(): string {
 
                         <div className="grid grid-cols-2 gap-2">
                           <a
-                            href={getWhatsappUrl(\`Olá! Gostaria de encomendar o perfume \${perfume.name} (\${perfume.brand}, \${perfume.size}) no valor de \${perfume.price}.\`)}
+                            href={getWhatsappUrl(\`Olá! Tenho interesse no perfume \${perfume.name} da marca \${perfume.brand} (\${perfume.size}) visto no site Máximo Eau de Parfum. Poderiam me informar os valores e disponibilidade?\`)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="py-2.5 px-3 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-white dark:text-black text-[11px] tracking-[0.12em] uppercase font-semibold text-center transition-all flex items-center justify-center gap-1.5 shadow-sm"
@@ -782,8 +780,8 @@ export function getStandaloneHtmlContent(): string {
                         {selectedPerfume.name}
                       </h2>
                       <div className="flex items-baseline gap-3 mt-2">
-                        <span className="text-3xl font-serif font-medium text-[#A96227] dark:text-[#D4AF37]">
-                          {selectedPerfume.price}
+                        <span className="text-2xl font-serif font-semibold text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider">
+                          Sob Consulta
                         </span>
                         <span className="text-xs text-[#24221F]/60 dark:text-[#F4F0E9]/60 uppercase">
                           {selectedPerfume.size} · {selectedPerfume.concentration}
@@ -818,7 +816,7 @@ export function getStandaloneHtmlContent(): string {
                     {/* Modal CTAs */}
                     <div className="space-y-3 pt-6 border-t border-black/10 dark:border-white/10">
                       <a
-                        href={getWhatsappUrl(\`Olá! Gostaria de atendimento exclusivo para o perfume \${selectedPerfume.name} (\${selectedPerfume.brand}, \${selectedPerfume.size}) no valor de \${selectedPerfume.price}.\`)}
+                        href={getWhatsappUrl(\`Olá! Tenho interesse no perfume \${selectedPerfume.name} da marca \${selectedPerfume.brand} (\${selectedPerfume.size}) visto no site Máximo Eau de Parfum. Poderiam me informar os valores e disponibilidade?\`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full py-3.5 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-white dark:text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-lg"
@@ -830,7 +828,7 @@ export function getStandaloneHtmlContent(): string {
                         onClick={() => { addToCart(selectedPerfume); setSelectedPerfume(null); }}
                         className="w-full py-3 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white font-medium text-xs tracking-[0.16em] uppercase text-center"
                       >
-                        ADICIONAR À SACOLA (+ R$ {selectedPerfume.priceNumeric})
+                        ADICIONAR À SACOLA
                       </button>
                     </div>
 
@@ -872,7 +870,7 @@ export function getStandaloneHtmlContent(): string {
                           <img src={item.image} alt={item.name} className="w-14 h-14 object-contain" />
                           <div className="flex-grow">
                             <h4 className="text-sm font-semibold truncate">{item.name}</h4>
-                            <p className="text-xs text-[#A96227] dark:text-[#D4AF37]">{item.price} · {item.size}</p>
+                            <p className="text-xs text-[#A96227] dark:text-[#D4AF37] font-semibold uppercase">{item.size} · Sob Consulta</p>
                             <div className="flex items-center gap-3 mt-2">
                               <button onClick={() => updateCartQty(item.id, -1)} className="w-6 h-6 border rounded flex items-center justify-center text-xs">-</button>
                               <span className="text-xs font-semibold">{item.qty}</span>
@@ -891,9 +889,9 @@ export function getStandaloneHtmlContent(): string {
                   {cart.length > 0 && (
                     <div className="p-6 border-t border-black/10 dark:border-white/10 space-y-4">
                       <div className="flex justify-between items-baseline">
-                        <span className="text-xs uppercase tracking-wider">Subtotal:</span>
-                        <span className="text-2xl font-serif font-semibold text-[#A96227] dark:text-[#D4AF37]">
-                          R$ {cartSubtotal.toFixed(2).replace('.', ',')}
+                        <span className="text-xs uppercase tracking-wider">Itens Selecionados:</span>
+                        <span className="text-lg font-serif font-semibold text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider">
+                          Sob Consulta
                         </span>
                       </div>
                       <button
@@ -942,42 +940,10 @@ export function getStandaloneHtmlContent(): string {
                         <h4 className="font-semibold text-sm">{p.name}</h4>
                         <p className="text-xs text-[#24221F]/60 dark:text-[#F4F0E9]/60">{p.brand} · {p.shortNotes}</p>
                       </div>
-                      <span className="font-serif font-medium text-sm text-[#A96227] dark:text-[#D4AF37]">{p.price}</span>
+                      <span className="font-serif font-medium text-xs text-[#A96227] dark:text-[#D4AF37] uppercase">Sob Consulta</span>
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          )}
-
-          {/* DISCOVERY SET MODAL */}
-          {isDiscoverySetOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-              <div className="bg-[#FAF8F5] dark:bg-[#161513] text-[#24221F] dark:text-[#F4F0E9] w-full max-w-lg border border-black/10 dark:border-white/10 p-8 relative shadow-2xl">
-                <button onClick={() => setIsDiscoverySetOpen(false)} className="absolute top-4 right-4 p-2">
-                  <Icons.Close />
-                </button>
-                <span className="text-xs uppercase tracking-[0.24em] text-[#A96227] dark:text-[#D4AF37] font-semibold">EXPERIÊNCIA OLFATIVA</span>
-                <h3 className="font-serif-editorial text-3xl font-light mt-1">Discovery Set Máximo</h3>
-                <p className="text-sm text-[#24221F]/80 dark:text-[#F4F0E9]/80 mt-3 leading-relaxed">
-                  Receba um estojo luxuoso com 4 flacons de 5ml para experimentar as fragrâncias no conforto da sua pele antes de escolher o frasco principal.
-                </p>
-                <div className="my-6 p-4 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex justify-between items-center">
-                  <div>
-                    <p className="text-xs uppercase tracking-wider font-semibold">Coffret 4 Amostras (5ml)</p>
-                    <p className="text-[11px] text-[#24221F]/60 dark:text-[#F4F0E9]/60">Valor 100% revertido em desconto no frasco grande</p>
-                  </div>
-                  <span className="text-xl font-serif font-bold text-[#A96227] dark:text-[#D4AF37]">R$ 149</span>
-                </div>
-                <a
-                  href={getWhatsappUrl("Olá! Gostaria de pedir o Discovery Set Máximo (4 flacons de 5ml) por R$ 149 com valor revertido em desconto.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-white dark:text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-lg"
-                >
-                  <Icons.Whatsapp className="w-4 h-4" />
-                  <span>PEDIR DISCOVERY SET NO WHATSAPP</span>
-                </a>
               </div>
             </div>
           )}

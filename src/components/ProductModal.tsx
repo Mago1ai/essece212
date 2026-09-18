@@ -55,8 +55,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   const whatsAppLink = createProductWhatsAppLink(
     perfume.name,
     perfume.brand,
-    perfume.size,
-    perfume.price
+    perfume.size
   );
 
   const tactileDescription = getPerfumeTactileSensation(perfume);
@@ -385,11 +384,11 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             <div className="space-y-4 pt-4 border-t border-[#24221F]/10 dark:border-white/10">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <span className="font-mono-subtle text-2xl sm:text-3xl text-[#24221F] dark:text-[#F5F2EB] font-bold tracking-tight">
-                    {perfume.price}
+                  <span className="font-mono-subtle text-xl sm:text-2xl text-[#A96227] dark:text-[#D4AF37] font-bold tracking-tight uppercase">
+                    Sob Consulta
                   </span>
                   <span className="ml-2 font-mono-subtle text-[11px] text-[#24221F]/60 dark:text-[#F5F2EB]/60">
-                    / {perfume.size} · Frete Incluso
+                    / {perfume.size} · Atendimento Exclusivo
                   </span>
                 </div>
                 <button
@@ -440,7 +439,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] shrink-0" />
-                  <span>Amostra cortesia</span>
+                  <span>Lacre de segurança</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#A96227] dark:text-[#D4AF37] shrink-0" />

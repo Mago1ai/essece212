@@ -99,20 +99,20 @@ export const InfoModals: React.FC<InfoModalProps> = ({ type, onClose }) => {
         {type === 'returns' && (
           <div className="space-y-6">
             <span className="font-mono-subtle text-[11px] tracking-[0.24em] text-[#A96227] dark:text-[#D4AF37] uppercase block">
-              POLÍTICA DE EXPERIMENTAÇÃO
+              POLÍTICA DE TROCAS & ENVIOS
             </span>
             <h3 className="font-serif-editorial text-3xl sm:text-4xl text-[#24221F] dark:text-[#F5F2EB]">
-              Garantia do frasco intocado.
+              Garantia de integridade e excelência.
             </h3>
             <div className="space-y-4 font-sans-clean text-sm sm:text-base text-[#24221F]/80 dark:text-[#F5F2EB]/80 font-light leading-relaxed">
               <p>
-                Sabemos que a escolha de um perfume é íntima. Por isso, todo frasco de 50 ml adquirido é acompanhado de uma amostra de 3 ml da mesma fragrância.
+                Garantimos a total procedência, autenticidade e qualidade de todas as nossas fragrâncias. Todos os frascos são novos, originais e expedidos com embalagem protetora e lacre de segurança.
               </p>
               <div className="p-4 bg-[#EAE3D9] dark:bg-[#1E1C1A] border-l-2 border-[#A96227] dark:border-[#D4AF37] font-mono-subtle text-xs text-[#24221F] dark:text-[#F5F2EB]">
-                <strong>Como funciona:</strong> Ao receber sua encomenda, teste primeiro a amostra de 3 ml na sua pele. Se por qualquer razão não for a fragrância ideal, você pode solicitar a troca ou devolução integral do frasco de 50 ml com lacre intacto em até 15 dias, sem qualquer custo de frete.
+                <strong>Trocas e Atendimento:</strong> Caso identifique qualquer avaria no transporte ou deseje solicitar troca com embalagem e lacre intactos, entre em contato em até 7 dias corridos após o recebimento.
               </div>
               <p>
-                Para iniciar uma troca ou devolução, basta entrar em contato pelo nosso WhatsApp ou e-mail com o número do pedido.
+                Nossa equipe de concierge presta atendimento individualizado diretamente pelo WhatsApp para orientar sobre cada etapa com agilidade e cordialidade.
               </p>
             </div>
           </div>

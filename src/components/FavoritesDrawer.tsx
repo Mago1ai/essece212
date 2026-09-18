@@ -87,8 +87,7 @@ export const FavoritesDrawer: React.FC<FavoritesDrawerProps> = ({
                 const whatsAppLink = createProductWhatsAppLink(
                   perfume.name,
                   perfume.brand,
-                  perfume.size,
-                  perfume.price
+                  perfume.size
                 );
 
                 return (
@@ -146,8 +145,8 @@ export const FavoritesDrawer: React.FC<FavoritesDrawerProps> = ({
                         </div>
 
                         <div className="flex items-center justify-between pt-1">
-                          <span className="font-mono-subtle text-sm text-[#24221F] dark:text-[#F5F2EB] font-bold">
-                            {perfume.price}
+                          <span className="font-mono-subtle text-xs text-[#A96227] dark:text-[#D4AF37] font-semibold uppercase tracking-wider">
+                            Sob Consulta
                           </span>
 
                           <button

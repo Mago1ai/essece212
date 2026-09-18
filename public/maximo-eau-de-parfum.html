@@ -1,917 +1,1910 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Máximo Eau de Parfum — Alta Perfumaria & Catálogo Exclusivo</title>
-    <meta name="description" content="Catálogo de alta perfumaria e cosméticos autorais Máximo Eau de Parfum. Fragrâncias nobres, acordes refinados e atendimento exclusivo via WhatsApp.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Parisienne&family=Pinyon+Script&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        amber: {
-                            gold: '#D4AF37',
-                            noble: '#A96227',
-                            warm: '#C97D3E',
-                        },
-                        parfum: {
-                            dark: '#0E0D0C',
-                            card: '#161513',
-                            charcoal: '#24221F',
-                            ivory: '#F5F2EC',
-                            velvet: '#1A1816',
-                        }
-                    },
-                    fontFamily: {
-                        primary: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-                        secondary: ['"DM Sans"', 'system-ui', 'sans-serif'],
-                        signature: ['"Alex Brush"', '"Parisienne"', '"Pinyon Script"', 'cursive'],
-                    }
-                }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Máximo Eau de Parfum — Alta Perfumaria & Catálogo Exclusivo</title>
+  <meta name="description" content="Catálogo exclusivo de alta perfumaria e cosméticos autorais Máximo Eau de Parfum. Fragrâncias nobres, acordes refinados e atendimento personalizado via WhatsApp." />
+  
+  <!-- Google Fonts: Cormorant Garamond (Editorial Luxury Serif) & DM Sans (Modern Body) & Alex Brush (Signature) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Parisienne&family=Pinyon+Script&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            amber: {
+              gold: '#D4AF37',
+              noble: '#A96227',
+              warm: '#C97D3E',
+            },
+            parfum: {
+              dark: '#121110',
+              card: '#161513',
+              charcoal: '#24221F',
+              ivory: '#F4F0E9',
+              velvet: '#1A1816',
             }
-        };
-    </script>
-    <style>
-        :root {
-            --color-text-dark: #24221F;
-            --color-text-light: #FFFFFF;
-            --color-background-light: #F5F2EC;
-            --color-background-dark: #0E0D0C;
-            --color-accent-gold: #D4AF37;
-            --color-accent-amber: #A96227;
-            --font-primary: 'Cormorant Garamond', Georgia, serif;
-            --font-secondary: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --font-signature: 'Alex Brush', 'Parisienne', 'Pinyon Script', cursive;
-            --transition-speed: 0.3s;
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+            signature: ['"Alex Brush"', '"Parisienne"', '"Pinyon Script"', 'cursive'],
+          }
         }
+      }
+    };
+  </script>
 
-        html {
-            scroll-behavior: smooth;
-            font-family: var(--font-secondary);
-        }
+  <!-- React 18 & ReactDOM 18 (UMD) & Babel Standalone -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-        body {
-            font-family: var(--font-secondary);
-            color: var(--color-text-dark);
-            background-color: var(--color-background-light);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-            overflow-x: hidden;
-        }
-
-        html.dark body, body.dark-mode {
-            color: var(--color-text-light);
-            background-color: var(--color-background-dark);
-        }
-
-        h1, h2, h3, h4, h5, h6, .font-serif-editorial {
-            font-family: var(--font-primary);
-            letter-spacing: -0.01em;
-            font-weight: 500;
-        }
-
-        .font-signature {
-            font-family: var(--font-signature);
-        }
-
-        ::selection {
-            background-color: rgba(169, 98, 39, 0.35);
-            color: #FFFFFF;
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #161513;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #3A3530;
-            border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #A96227;
-        }
-
-        .pedestal-disc {
-            transform: scaleY(0.35);
-            border-radius: 50%;
-        }
-    </style>
+  <style>
+    :root {
+      --font-serif: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "DM Sans", system-ui, sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-family: var(--font-sans);
+    }
+    body {
+      overflow-x: hidden;
+      background-color: #121110;
+      color: #F4F0E9;
+    }
+    html:not(.dark) body {
+      background-color: #F4F0E9;
+      color: #24221F;
+    }
+    h1, h2, h3, h4, .font-serif-editorial {
+      font-family: var(--font-serif);
+      letter-spacing: -0.01em;
+    }
+    ::selection {
+      background-color: rgba(169, 98, 39, 0.35);
+      color: #FFFFFF;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #161513;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3A3530;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #A96227;
+    }
+    .text-balance {
+      text-wrap: balance;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+  </style>
 </head>
 <body class="transition-colors duration-300">
-    <div id="root"></div>
+  <div id="root"></div>
 
-    <!-- Script CDN React 18 e Babel Standalone -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- React Application Logic Compiled by Babel -->
+  <script type="text/babel">
+    const { useState, useEffect, useMemo, useRef } = React;
 
-    <script type="text/babel">
-        const { useState, useEffect, useMemo } = React;
+    // --- WHATSAPP CONFIGURATION ---
+    const WHATSAPP_PHONE = '5531975394776';
 
-        const WHATSAPP_PHONE = '5531975394776';
+    function getWhatsappUrl(message) {
+      return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+    }
 
-        function getWhatsappUrl(message) {
-            return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+    // --- EMBEDDED COMPLETE DATASET ---
+    const PERFUMES_DATA = [
+  {
+    "id": "imperiale-masculino",
+    "name": "Imperiale",
+    "brand": "Máximo",
+    "subtitle": "30 ml · Eau de Parfum Masculino",
+    "family": "Amadeirados Frescos",
+    "gender": "Masculino",
+    "category": "Linha Masculina",
+    "inspiradoEm": "212 Men",
+    "accords": [
+      "cítrico",
+      "verde",
+      "fresco especiado",
+      "aromático",
+      "amadeirado"
+    ],
+    "notes": {
+      "top": [
+        "Folhas Verdes",
+        "Toranja",
+        "Especiarias",
+        "Bergamota",
+        "Lavanda"
+      ],
+      "heart": [
+        "Gengibre Fresco",
+        "Pimenta Verde",
+        "Gardênia",
+        "Sálvia Esclareia"
+      ],
+      "base": [
+        "Almíscar Branco",
+        "Sândalo",
+        "Incenso",
+        "Madeira de Guaiaco"
+      ]
+    },
+    "shortNotes": "Folhas Verdes · Gengibre · Sândalo · Almíscar Branco",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "30 ml",
+    "concentration": "Eau de Parfum",
+    "sensoryDescription": "Uma fragrância vibrante e magnética que transmite o pulso urbano e fresco. Estrutura verde-aromática inconfundível com frescor dinâmico e um fundo de madeiras macias.",
+    "atmosphere": "O ar puro de um amanhecer urbano, transmitindo dinamismo e elegância.",
+    "longevity": "7 a 9 horas na pele",
+    "sillage": "Fresco, limpo e contemporâneo",
+    "image": "/images/products/maximo-masculino-30ml-novo.jpg"
+  },
+  {
+    "id": "1-million-masculino",
+    "name": "1 Million",
+    "brand": "Máximo",
+    "subtitle": "30 ml · Eau de Parfum Masculino",
+    "family": "Ambarados",
+    "gender": "Masculino",
+    "category": "Linha Masculina",
+    "inspiradoEm": "1 Million",
+    "accords": [
+      "especiado quente",
+      "canela",
+      "cítrico",
+      "âmbar",
+      "amadeirado",
+      "couro"
+    ],
+    "notes": {
+      "top": [
+        "Mandarina Sanguínea",
+        "Toranja Espumante",
+        "Hortelã"
+      ],
+      "heart": [
+        "Canela Especiada",
+        "Notas Especiadas",
+        "Absoluto de Rosa"
+      ],
+      "base": [
+        "Âmbar Dourado",
+        "Couro Aveludado",
+        "Madeiras Nobres"
+      ]
+    },
+    "shortNotes": "Mandarina Sanguínea · Canela · Âmbar · Couro",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "30 ml",
+    "concentration": "Eau de Parfum",
+    "badge": "CLÁSSICO",
+    "sensoryDescription": "A sedução magnética em forma de notas quentes. Uma abertura cítrica vibrante com um coração especiado de canela, repousando sobre uma base densa de couro nobre e âmbar.",
+    "atmosphere": "O magnetismo e a energia vibrante de uma noite de celebração inesquecível.",
+    "longevity": "8 a 10 horas na pele",
+    "sillage": "Marcante, quente e envolvente",
+    "image": "/images/products/maximo-masculino-30ml-novo.jpg"
+  },
+  {
+    "id": "ventus-bugatti-masculino",
+    "name": "Ventus Bugatti",
+    "brand": "Máximo",
+    "subtitle": "30 ml · Eau de Parfum Masculino",
+    "family": "Amadeirados Frutados",
+    "gender": "Masculino",
+    "category": "Linha Masculina",
+    "inspiradoEm": "Aventus",
+    "accords": [
+      "frutado",
+      "amadeirado",
+      "couro",
+      "cítrico",
+      "defumado",
+      "almiscarado"
+    ],
+    "notes": {
+      "top": [
+        "Abacaxi Real",
+        "Bergamota Siciliana",
+        "Groselha Preta",
+        "Maçã Crocante"
+      ],
+      "heart": [
+        "Bétula Defumada",
+        "Patchouli Puro",
+        "Jasmim Marroquino",
+        "Rosa"
+      ],
+      "base": [
+        "Almíscar",
+        "Musgo de Carvalho",
+        "Âmbar Cinzento",
+        "Baunilha"
+      ]
+    },
+    "shortNotes": "Abacaxi · Bétula Defumada · Âmbar Cinzento · Almíscar",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "30 ml",
+    "concentration": "Eau de Parfum",
+    "badge": "BEST SELLER",
+    "sensoryDescription": "A essência da determinação. Uma abertura suculenta de abacaxi e bergamota que evolui para um coração aristocrático de bétula defumada e âmbar cinzento.",
+    "atmosphere": "A imponência e a presença inconfundível de um homem confiante.",
+    "longevity": "10 a 12 horas na pele",
+    "sillage": "Projeção imponente e rastro inconfundível",
+    "image": "/images/products/maximo-masculino-30ml-novo.jpg"
+  },
+  {
+    "id": "millano-masculino",
+    "name": "Millano",
+    "brand": "Máximo",
+    "subtitle": "30 ml · Eau de Parfum Masculino",
+    "family": "Orientais",
+    "gender": "Masculino",
+    "category": "Linha Masculina",
+    "inspiradoEm": "Althaïr",
+    "accords": [
+      "doce",
+      "baunilha",
+      "especiado quente",
+      "canela",
+      "aromático",
+      "atalcado"
+    ],
+    "notes": {
+      "top": [
+        "Flor de Laranjeira",
+        "Bergamota da Calábria",
+        "Canela do Ceilão",
+        "Cardamomo"
+      ],
+      "heart": [
+        "Baunilha Bourbon de Madagascar",
+        "Elemi Resinoso"
+      ],
+      "base": [
+        "Pralinê Crocante",
+        "Ambroxan",
+        "Almíscar",
+        "Madeira de Guaiaco"
+      ]
+    },
+    "shortNotes": "Baunilha Bourbon · Canela · Pralinê · Flor de Laranjeira",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "30 ml",
+    "concentration": "Eau de Parfum",
+    "badge": "NICHO",
+    "sensoryDescription": "A nobreza da Baunilha Bourbon. Uma fragrância calorosa, opulenta e viciante onde a cremosidade doce é contrastada por especiarias frescas e madeiras ricas.",
+    "atmosphere": "O requinte absoluto e a elegância de uma presença marcante e calorosa.",
+    "longevity": "12 a 14 horas na pele",
+    "sillage": "Aura aveludada, rica e magnética",
+    "image": "/images/products/maximo-masculino-30ml-novo.jpg"
+  },
+  {
+    "id": "vita-bella-feminino",
+    "name": "Vita Bella",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Florais",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "La Vie Est Belle",
+    "accords": [
+      "rosa",
+      "cítrico",
+      "amadeirado",
+      "almiscarado",
+      "atalcado",
+      "âmbar",
+      "íris"
+    ],
+    "notes": {
+      "top": [
+        "Água de Rosas Fresca",
+        "Bergamota",
+        "Cítricos Luminosos"
+      ],
+      "heart": [
+        "Rosa Damascena Absoluta",
+        "Rosa Centifolia",
+        "Íris Pallida"
+      ],
+      "base": [
+        "Almíscar Amadeirado",
+        "Ambroxan",
+        "Musgo",
+        "Sândalo"
+      ]
+    },
+    "shortNotes": "Rosa Damascena · Íris Pallida · Água de Rosas · Ambroxan",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "sensoryDescription": "A escultura botânica da rosa em sua forma mais luminosa. Extrações nobres que desabrocham sobre um coração aveludado de íris, transmitindo pura felicidade e elegância.",
+    "atmosphere": "A luminosidade alegre e radiante de um campo de flores orvalhadas.",
+    "longevity": "8 a 10 horas na pele",
+    "sillage": "Alegre, luminoso e floral nobre",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "seduzione-feminino",
+    "name": "Seduzione",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Florais Orientais",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "Good Girl",
+    "accords": [
+      "doce",
+      "floral branco",
+      "especiado quente",
+      "baunilha",
+      "âmbar",
+      "cacau",
+      "tuberosa"
+    ],
+    "notes": {
+      "top": [
+        "Amêndoa Torrada",
+        "Café Arábica",
+        "Bergamota",
+        "Limão Siciliano"
+      ],
+      "heart": [
+        "Tuberosa Nobre",
+        "Jasmim Sambac",
+        "Flor de Laranjeira",
+        "Rosa Búlgara"
+      ],
+      "base": [
+        "Fava Tonka Torrada",
+        "Cacau Amargo",
+        "Baunilha",
+        "Pralinê",
+        "Sândalo"
+      ]
+    },
+    "shortNotes": "Tuberosa · Fava Tonka · Cacau · Amêndoa",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "badge": "ICÔNICO",
+    "sensoryDescription": "A dualidade fascinante da mulher moderna: a luminosidade hipnótica do jasmim e da tuberosa contrastada com a escuridão tentadora do cacau torrado e da fava tonka.",
+    "atmosphere": "A intensidade sedutora de passos confiantes e uma presença inesquecível.",
+    "longevity": "9 a 11 horas na pele",
+    "sillage": "Sedutor, potente e inesquecível",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "liberte-feminino",
+    "name": "Liberté",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Florais",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "Libre",
+    "accords": [
+      "floral branco",
+      "cítrico",
+      "lavanda",
+      "baunilha",
+      "aromático",
+      "doce",
+      "atalcado"
+    ],
+    "notes": {
+      "top": [
+        "Lavanda Francesa",
+        "Mandarina",
+        "Groselha Preta",
+        "Petitgrain"
+      ],
+      "heart": [
+        "Flor de Laranjeira Marroquina",
+        "Lavanda Diva",
+        "Jasmim Sambac"
+      ],
+      "base": [
+        "Baunilha de Madagascar",
+        "Almíscar",
+        "Cedro da Virgínia",
+        "Âmbar Cinzento"
+      ]
+    },
+    "shortNotes": "Flor de Laranjeira · Lavanda Francesa · Baunilha de Madagascar",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "sensoryDescription": "A fragrância da liberdade audaciosa. Uma tensão elegante entre a sensualidade da flor de laranjeira do Marrocos e a ousadia fresca da lavanda francesa.",
+    "atmosphere": "A elegância marcante de quem dita suas próprias regras com graciosidade.",
+    "longevity": "9 a 11 horas na pele",
+    "sillage": "Radiante, sofisticado e marcante",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "audacia-feminino",
+    "name": "Audácia",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Florais Gourmand",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "Scandal",
+    "accords": [
+      "mel",
+      "doce",
+      "floral branco",
+      "cítrico",
+      "caramelo",
+      "animálico",
+      "cera de abelha"
+    ],
+    "notes": {
+      "top": [
+        "Laranja Sanguínea",
+        "Mandarina Suculenta"
+      ],
+      "heart": [
+        "Mel Dourado",
+        "Gardênia Aveludada",
+        "Flor de Laranjeira",
+        "Jasmim"
+      ],
+      "base": [
+        "Cera de Abelha",
+        "Caramelo Quente",
+        "Patchouli",
+        "Alcaçuz"
+      ]
+    },
+    "shortNotes": "Mel Dourado · Gardênia · Laranja Sanguínea · Caramelo",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "sensoryDescription": "Irreverente e luxuosa. Um mel gourmand irresistível derramado sobre flores brancas opulentas com um toque suculento e vibrante de laranja sanguínea.",
+    "atmosphere": "A audácia e o charme de uma presença magnética que atrai todos os olhares.",
+    "longevity": "10 a 12 horas na pele",
+    "sillage": "Viciante, doce e sedutor",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "encanto-feminino",
+    "name": "Encanto",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Gourmand",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "Angel",
+    "accords": [
+      "doce",
+      "patchouli",
+      "frutado",
+      "especiado quente",
+      "caramelo",
+      "baunilha",
+      "chocolate"
+    ],
+    "notes": {
+      "top": [
+        "Algodão Doce",
+        "Coco",
+        "Cassis",
+        "Melão",
+        "Bergamota"
+      ],
+      "heart": [
+        "Mel Silvestre",
+        "Bagas Vermelhas",
+        "Amora",
+        "Jasmim"
+      ],
+      "base": [
+        "Patchouli Puro",
+        "Chocolate Belga",
+        "Caramelo",
+        "Baunilha",
+        "Fava Tonka"
+      ]
+    },
+    "shortNotes": "Patchouli · Chocolate & Caramelo · Mel Silvestre · Baunilha",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "sensoryDescription": "Uma poção envolvente e celestial. A doçura lúdica do caramelo e chocolate encontra a densidade terrosa e sofisticada do patchouli puro.",
+    "atmosphere": "O encanto de uma memória doce e uma presença inconfundivelmente poderosa.",
+    "longevity": "12 a 16 horas na pele",
+    "sillage": "Ultra potente e inconfundível",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "diva-feminino",
+    "name": "Diva",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Florais",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "Delina",
+    "accords": [
+      "rosa",
+      "floral",
+      "frutado",
+      "fresco",
+      "almiscarado",
+      "aromático",
+      "verde"
+    ],
+    "notes": {
+      "top": [
+        "Lichia Doce",
+        "Ruibarbo Crocante",
+        "Bergamota",
+        "Noz-moscada"
+      ],
+      "heart": [
+        "Rosa Turca Majestosa",
+        "Peônia Rosada",
+        "Almíscar Transparente",
+        "Baunilha"
+      ],
+      "base": [
+        "Cashmeran",
+        "Cedro",
+        "Incenso Nobre",
+        "Vetiver do Haiti"
+      ]
+    },
+    "shortNotes": "Rosa Turca · Lichia · Peônia · Cashmeran",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "badge": "LUXO",
+    "sensoryDescription": "O buquê floral esculpido para a realeza. A rosa turca mais nobre acompanhada pelo toque frutado e suculento da lichia e do ruibarbo crocante.",
+    "atmosphere": "O esplendor luxuoso de jardins em flor e o frescor de uma beleza atemporal.",
+    "longevity": "12 a 14 horas na pele",
+    "sillage": "Projeção estelar e inesquecível",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "fantasy-feminino",
+    "name": "Fantasy",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Gourmand & Frutados",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "Fantasy",
+    "accords": [
+      "doce",
+      "frutado",
+      "chocolate branco",
+      "tropical",
+      "baunilha",
+      "floral"
+    ],
+    "notes": {
+      "top": [
+        "Kiwi Suculento",
+        "Lichia Vermelha",
+        "Marmelo Dourado"
+      ],
+      "heart": [
+        "Chocolate Branco Cremoso",
+        "Cupcake de Baunilha",
+        "Orquídea",
+        "Pétalas de Jasmim"
+      ],
+      "base": [
+        "Raiz de Lírio",
+        "Almíscar Sedoso",
+        "Madeiras Sensuais"
+      ]
+    },
+    "shortNotes": "Chocolate Branco · Kiwi · Cupcake de Baunilha · Lichia",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "badge": "ICÔNICO",
+    "sensoryDescription": "Uma poção mágica e envolvente que desperta a imaginação. A acidez suculenta do kiwi e da lichia encontra um coração irresistível de chocolate branco cremoso e cupcake amanteigado, repousando sobre um fundo sensual de lírio e almíscar.",
+    "atmosphere": "A fantasia açucarada e vibrante de momentos lúdicos, doces e inesquecíveis.",
+    "longevity": "8 a 10 horas na pele",
+    "sillage": "Doce, jovial e altamente sedutor",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "la-bomba-feminino",
+    "name": "La Bomba",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Florais Orientais",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "Flowerbomb",
+    "accords": [
+      "floral",
+      "patchouli",
+      "floral branco",
+      "cítrico",
+      "especiado suave",
+      "baunilha"
+    ],
+    "notes": {
+      "top": [
+        "Chá Verde Fresco",
+        "Bergamota da Calábria",
+        "Osmanthus"
+      ],
+      "heart": [
+        "Orquídea Cattleya",
+        "Jasmim Sambac",
+        "Frésia Nobre",
+        "Rosa Centifólia"
+      ],
+      "base": [
+        "Patchouli Puro",
+        "Almíscar Sedoso",
+        "Baunilha Bourbon",
+        "Âmbar Cristalino"
+      ]
+    },
+    "shortNotes": "Orquídea Cattleya · Patchouli · Jasmim Sambac · Chá Verde",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "badge": "EXPLOSÃO FLORAL",
+    "sensoryDescription": "Uma verdadeira explosão floral que inunda os sentidos com pura feminilidade e opulência. O frescor luminoso do chá verde e bergamota abre alas para um buquê exuberante de orquídeas e jasmim sobre uma base rica e aveludada de patchouli.",
+    "atmosphere": "O glamour arrebatador de uma entrada triunfal onde o rastro floral domina e encanta todo o ambiente.",
+    "longevity": "10 a 12 horas na pele",
+    "sillage": "Opulento, magnético e sofisticado",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "vip-rose-feminino",
+    "name": "VIP Rosé",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Eau de Parfum Feminino",
+    "family": "Florais Frutados",
+    "gender": "Feminino",
+    "category": "Linha Feminina",
+    "inspiradoEm": "212 VIP Rosé",
+    "accords": [
+      "champanhe",
+      "frutado",
+      "floral",
+      "amadeirado",
+      "almiscarado",
+      "atalcado"
+    ],
+    "notes": {
+      "top": [
+        "Champanhe Rosé Espumante",
+        "Frutas Vermelhas Silvestres",
+        "Pimenta Rosa"
+      ],
+      "heart": [
+        "Flor de Pêssego Delicada",
+        "Rosa Sedosa",
+        "Orquídea"
+      ],
+      "base": [
+        "Madeira Queen Wood",
+        "Almíscar Branco Sedoso",
+        "Âmbar Dourado"
+      ]
+    },
+    "shortNotes": "Champanhe Rosé · Flor de Pêssego · Pimenta Rosa · Queen Wood",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Eau de Parfum",
+    "badge": "FESTA & GLAMOUR",
+    "sensoryDescription": "A essência da celebração e sofisticação urbana. A abertura efervescente do champanhe rosé com notas frutadas transmite energia contagiante, enquanto o coração suave de flor de pêssego deságua em um abraço quente de Queen Wood e almíscar.",
+    "atmosphere": "A vibração e a elegância cosmopolita das festas mais exclusivas e brindes memoráveis.",
+    "longevity": "8 a 10 horas na pele",
+    "sillage": "Efervescente, chic e marcante",
+    "image": "/images/products/maximo-feminino-60ml-novo.jpg"
+  },
+  {
+    "id": "amore-perfume-capilar",
+    "name": "Amore",
+    "brand": "Máximo",
+    "subtitle": "60 ml · Perfume Capilar / Hair Mist",
+    "family": "Florais Delicados",
+    "gender": "Feminino",
+    "category": "Body Mist & Capilar",
+    "inspiradoEm": "Amore Perfume Capilar",
+    "accords": [
+      "floral",
+      "fresco",
+      "rosas",
+      "brilho capilar",
+      "antifrizz",
+      "sedoso"
+    ],
+    "notes": {
+      "top": [
+        "Pétalas de Peônia",
+        "Orvalho Matinal",
+        "Bergamota Suave"
+      ],
+      "heart": [
+        "Rosa da Bulgária",
+        "Flor de Cerejeira",
+        "Jasmim Delicado"
+      ],
+      "base": [
+        "Almíscar Branco",
+        "Complexo de Brilho & Antifrizz",
+        "Baunilha Suave"
+      ]
+    },
+    "shortNotes": "Rosa Búlgara · Peônia · Flor de Cerejeira · Complexo de Brilho",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "60 ml",
+    "concentration": "Perfume Capilar",
+    "badge": "BRILHO & PERFUME",
+    "sensoryDescription": "Formulado especialmente para os cabelos, o Perfume Capilar Amore une alta perfumaria ao cuidado capilar diário. Cria uma névoa ultraleve e acetinada que neutraliza odores externos, controla o frizz e doa luminosidade instantânea aos fios sem pesar nem ressecar.",
+    "atmosphere": "O movimento gracioso de cabelos perfumados que deixam um rastro sutil, elegante e apaixonante.",
+    "longevity": "O dia todo nos fios",
+    "sillage": "Névoa aveludada, brilhante e envolvente",
+    "image": "/images/products/amore-perfume-capilar-60ml.jpg",
+    "tactileSensation": "Toque sedoso nos fios, desembaraço instantâneo e brilho acetinado sem resíduos"
+  },
+  {
+    "id": "dorata-bodysplash",
+    "name": "Dorata",
+    "brand": "Máximo",
+    "subtitle": "120 ml · Body Splash Corporal",
+    "family": "Florais Frutados Solares",
+    "gender": "Feminino",
+    "category": "Body Splash (120ml)",
+    "inspiradoEm": "Sol de Janeiro Cheirosa 68",
+    "accords": [
+      "floral",
+      "frutado",
+      "tropical",
+      "doce fresco",
+      "almiscarado",
+      "solar"
+    ],
+    "notes": {
+      "top": [
+        "Pitaya Rosa Exótica",
+        "Lichia Suculenta",
+        "Essência de Bergamota"
+      ],
+      "heart": [
+        "Jasmim Brasileiro",
+        "Hibisco Oceânico",
+        "Brisa Marinha"
+      ],
+      "base": [
+        "Baunilha Transparente",
+        "Almíscar Solar",
+        "Madeiras Claras"
+      ]
+    },
+    "shortNotes": "Pitaya Rosa · Jasmim Brasileiro · Lichia · Almíscar Solar",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "120 ml",
+    "concentration": "Body Splash",
+    "badge": "SOLAR & TROPICAL",
+    "sensoryDescription": "Uma celebração radiante e paradisíaca inspirada na energia contagiante do verão. Notas exuberantes de pitaya rosa e lichia fundem-se ao jasmim brasileiro e à brisa marinha fresca, finalizando com um rastro solar e viciante de baunilha e almíscar.",
+    "atmosphere": "O frescor cintilante de um jardim tropical à beira-mar sob o calor dourado do sol.",
+    "longevity": "6 a 8 horas na pele",
+    "sillage": "Alegre, iluminado e revigorante",
+    "image": "/images/products/maximo-bodysplash-120ml.jpg",
+    "tactileSensation": "Névoa refrescante, hidratação suave e sensação de banho tomado prolongado"
+  },
+  {
+    "id": "vita-bella-bodysplash",
+    "name": "Vita Bella",
+    "brand": "Máximo",
+    "subtitle": "120 ml · Body Splash Corporal",
+    "family": "Florais Gourmand",
+    "gender": "Feminino",
+    "category": "Body Splash (120ml)",
+    "inspiradoEm": "La Vie Est Belle",
+    "accords": [
+      "doce",
+      "baunilha",
+      "frutado",
+      "floral branco",
+      "patchouli suave",
+      "pralinê"
+    ],
+    "notes": {
+      "top": [
+        "Groselha Preta Silvestre",
+        "Pêra Suculenta"
+      ],
+      "heart": [
+        "Íris de Florença",
+        "Jasmim Sambac",
+        "Flor de Laranjeira"
+      ],
+      "base": [
+        "Pralinê Crocante",
+        "Baunilha Bourbon",
+        "Fava Tonka",
+        "Patchouli"
+      ]
+    },
+    "shortNotes": "Íris Nobre · Pralinê · Pêra · Baunilha Bourbon",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "120 ml",
+    "concentration": "Body Splash",
+    "badge": "LUXO DIÁRIO",
+    "sensoryDescription": "O manifesto da felicidade diária em formato de névoa perfumada. A elegância da íris pallida aliada à doçura apetitosa do pralinê e da baunilha, equilibrada por notas frutadas frescas para uma experiência leve, reconfortante e graciosa.",
+    "atmosphere": "O sorriso espontâneo e a elegância atemporal que transformam qualquer rotina em um momento sublime.",
+    "longevity": "6 a 8 horas na pele",
+    "sillage": "Doce, elegante e aveludado",
+    "image": "/images/products/maximo-bodysplash-120ml.jpg",
+    "tactileSensation": "Toque aveludado e frescor doce instantâneo"
+  },
+  {
+    "id": "amore-bodysplash",
+    "name": "Amore",
+    "brand": "Máximo",
+    "subtitle": "120 ml · Body Splash Corporal",
+    "family": "Florais Frutados Românticos",
+    "gender": "Feminino",
+    "category": "Body Splash (120ml)",
+    "inspiradoEm": "Love Spell",
+    "accords": [
+      "frutado",
+      "floral doce",
+      "pêssego",
+      "fresco",
+      "cerejeira",
+      "suculento"
+    ],
+    "notes": {
+      "top": [
+        "Flor de Cerejeira",
+        "Pêssego Aveludado",
+        "Maçã Vermelha"
+      ],
+      "heart": [
+        "Jasmim Noturno",
+        "Lírio-do-Vale",
+        "Pétalas de Lilás"
+      ],
+      "base": [
+        "Almíscar Branco",
+        "Tamarindo Exótico",
+        "Madeiras Leves"
+      ]
+    },
+    "shortNotes": "Flor de Cerejeira · Pêssego · Jasmim · Almíscar Branco",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "120 ml",
+    "concentration": "Body Splash",
+    "badge": "ROMÂNTICO & JOVIAL",
+    "sensoryDescription": "O feitiço de amor e jovialidade que conquista à primeira borrifada. Um coquetel sedutor de flor de cerejeira japonesa e pêssego maduro que desliza sobre a pele com leveza irresistível, perfeito para reaplicar e encantar ao longo de todo o dia.",
+    "atmosphere": "O encanto fresco e apaixonante de uma brisa primaveril carregada de pétalas e frutas suculentas.",
+    "longevity": "5 a 7 horas na pele",
+    "sillage": "Frutado, jovial e expansivo",
+    "image": "/images/products/maximo-bodysplash-120ml.jpg",
+    "tactileSensation": "Sensação refrescante, rápida absorção e pele suavemente desodorizada"
+  },
+  {
+    "id": "passione-bodysplash",
+    "name": "Passione",
+    "brand": "Máximo",
+    "subtitle": "120 ml · Body Splash Corporal",
+    "family": "Florais Frutados Ambarados",
+    "gender": "Feminino",
+    "category": "Body Splash (120ml)",
+    "inspiradoEm": "Glamour / Sí Passione",
+    "accords": [
+      "frutado",
+      "doce",
+      "floral",
+      "especiado suave",
+      "amadeirado",
+      "sensual"
+    ],
+    "notes": {
+      "top": [
+        "Pêra Crocante",
+        "Groselha Preta",
+        "Pimenta Rosa Vibrante",
+        "Toranja"
+      ],
+      "heart": [
+        "Rosa Centifólia",
+        "Abacaxi Doce",
+        "Jasmim Solar",
+        "Heliotrópio"
+      ],
+      "base": [
+        "Baunilha de Madagascar",
+        "Madeira de Cedro",
+        "Âmbar Dourado",
+        "Patchouli"
+      ]
+    },
+    "shortNotes": "Groselha Preta · Rosa Centifólia · Pêra · Baunilha",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "120 ml",
+    "concentration": "Body Splash",
+    "badge": "PAIXÃO & PODER",
+    "sensoryDescription": "Um tributo à feminilidade decidida, apaixonada e audaciosa. A abertura vibrante com pimenta rosa e groselha dá lugar a um coração floral opulento de rosas e jasmim, ancorado em uma base cremosa de baunilha e âmbar.",
+    "atmosphere": "A autoconfiança de uma presença marcante e apaixonante que atrai todos os olhares.",
+    "longevity": "6 a 8 horas na pele",
+    "sillage": "Sensual, vibrante e sofisticado",
+    "image": "/images/products/maximo-bodysplash-120ml.jpg",
+    "tactileSensation": "Toque acetinado e sensação de frescor sensual prolongado"
+  },
+  {
+    "id": "doce-velluto-bodysplash",
+    "name": "Doce Velluto",
+    "brand": "Máximo",
+    "subtitle": "120 ml · Body Splash Corporal",
+    "family": "Âmbar Baunilha Confortável",
+    "gender": "Feminino",
+    "category": "Body Splash (120ml)",
+    "inspiradoEm": "Bare Vanilla",
+    "accords": [
+      "baunilha",
+      "doce",
+      "atalcado",
+      "cashmere",
+      "aconchegante",
+      "almiscarado"
+    ],
+    "notes": {
+      "top": [
+        "Baunilha Batida Cremosa",
+        "Flor de Algodão"
+      ],
+      "heart": [
+        "Orquídea Açucarada",
+        "Marshmallow Quente",
+        "Leite de Coco"
+      ],
+      "base": [
+        "Cashmere Aconchegante",
+        "Almíscar de Pele",
+        "Âmbar Cremoso"
+      ]
+    },
+    "shortNotes": "Baunilha Batida · Cashmere · Marshmallow · Almíscar",
+    "price": "Sob Consulta",
+    "priceNumeric": 0,
+    "size": "120 ml",
+    "concentration": "Body Splash",
+    "badge": "BAUNILHA AVELUDADA",
+    "sensoryDescription": "A expressão definitiva do aconchego gourmand. Uma baunilha pura e batida que envolve o corpo como um suéter de cashmere em um dia frio. Doce na medida exata, viciante e com uma suavidade aveludada incomparável.",
+    "atmosphere": "O conforto acolhedor de um abraço carinhoso, intimista e profundamente viciante.",
+    "longevity": "6 a 8 horas na pele",
+    "sillage": "Cremoso, íntimo e delicioso",
+    "image": "/images/products/maximo-bodysplash-120ml.jpg",
+    "tactileSensation": "Véu macio de hidratação perfumada e toque sedoso"
+  }
+];
+
+    // --- SVG ICONS (Native embedded SVG components) ---
+    const Icons = {
+      Search: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      ),
+      Heart: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill={props.filled ? "currentColor" : "none"} strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      ),
+      Bag: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+      ),
+      Sun: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      ),
+      Moon: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      ),
+      Close: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      ),
+      ArrowRight: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      ),
+      Check: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      ),
+      Whatsapp: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+      ),
+      Droplets: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"></path>
+          <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"></path>
+        </svg>
+      ),
+      Sparkles: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+          <path d="M5 3v4"></path>
+          <path d="M19 17v4"></path>
+          <path d="M3 5h4"></path>
+          <path d="M17 19h4"></path>
+        </svg>
+      ),
+      Shield: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      ),
+      Download: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      ),
+      Trash: (props) => (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        </svg>
+      )
+    };
+
+    // --- MÁXIMO VECTOR LOGO COMPONENT ---
+    function MaximoLogo({ isDark, className = "w-48 sm:w-56 md:w-64" }) {
+      const textColor = isDark ? '#FFFFFF' : '#24221F';
+      return (
+        <div className={`inline-flex flex-col items-center justify-center select-none text-center group ${className}`}>
+          <svg
+            viewBox="0 0 380 135"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-auto transition-all duration-300"
+            style={{ color: textColor }}
+          >
+            <g id="maximo-official-brandmark">
+              <text
+                x="190"
+                y="74"
+                textAnchor="middle"
+                fill="currentColor"
+                style={{
+                  fontFamily: '"Alex Brush", "Parisienne", "Pinyon Script", cursive',
+                  fontSize: '84px',
+                  fontWeight: '400',
+                  letterSpacing: '0.02em',
+                }}
+              >
+                Máximo
+              </text>
+              <path
+                d="M 64 82 C 95 104, 158 112, 236 101 C 278 95, 314 88, 338 80 C 312 84, 266 91, 226 94 C 162 99, 108 95, 68 80 C 63 78, 58 80, 64 82 Z"
+                fill="currentColor"
+              />
+              <path
+                d="M 130 99 C 192 105, 272 97, 330 81 C 286 91, 214 97, 146 94 C 135 93, 127 96, 130 99 Z"
+                fill="currentColor"
+              />
+              <path
+                d="M 42 66 C 33 61, 23 58, 14 62 C 10 64, 7 67, 6 70 C 9 67, 15 64, 23 63 C 31 62, 38 64, 42 66 Z"
+                fill="currentColor"
+              />
+              <path
+                d="M 298 62 C 314 65, 334 66, 354 63 C 360 62, 364 60, 366 57 C 362 59, 354 61, 342 61 C 324 61, 308 59, 298 62 Z"
+                fill="currentColor"
+              />
+              <path
+                d="M 112 18 L 126 10 L 128 12 L 115 22 Z"
+                fill="currentColor"
+              />
+              <g id="subtitle-eau-de-parfum" transform="translate(0, 10)">
+                <text
+                  x="190"
+                  y="116"
+                  textAnchor="middle"
+                  fill="currentColor"
+                  style={{
+                    fontFamily: '"DM Sans", system-ui, sans-serif',
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    letterSpacing: '0.38em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  EAU DE PARFUM
+                </text>
+              </g>
+            </g>
+          </svg>
+        </div>
+      );
+    }
+
+    // --- BOTTLE STUDIO PEDESTAL COMPONENT ---
+    function StudioBottleImage({ src, alt, className = "" }) {
+      const [tilt, setTilt] = useState({ x: 0, y: 0 });
+      const [isHovered, setIsHovered] = useState(false);
+
+      const handleMouseMove = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        setTilt({ x: x * 10, y: y * 10 });
+      };
+
+      return (
+        <div
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => { setIsHovered(false); setTilt({ x: 0, y: 0 }); }}
+          className={`relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-b from-[#F2ECE2]/40 via-[#EAE3D7]/20 to-transparent dark:from-[#1A1816]/60 dark:via-[#141210]/30 dark:to-transparent flex items-center justify-center select-none rounded-t-xs ${className}`}
+          style={{ perspective: '900px' }}
+        >
+          {/* Subtle Radial Spotlight */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(169,98,39,0.08),transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_40%,rgba(201,125,62,0.14),transparent_75%)] pointer-events-none" />
+
+          {/* 3D Minimalist Circular Pedestal Platform */}
+          <div
+            className="absolute bottom-5 left-1/2 -translate-x-1/2 w-4/5 max-w-[210px] h-8 pointer-events-none z-0 transition-transform duration-300"
+            style={{
+              transform: `translateX(calc(-50% + ${tilt.x * 1.2}px)) scale(${isHovered ? 1.03 : 1})`,
+            }}
+          >
+            <div className="relative w-full h-full">
+              <div className="absolute inset-0 rounded-[100%] bg-gradient-to-b from-[#E8DFD1]/80 via-[#DDD2C1]/60 to-[#CEC2AF]/40 dark:from-[#24211E] dark:via-[#1A1816] dark:to-[#121110] border border-black/5 dark:border-white/10 shadow-[0_6px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.5)] transform -scale-y-75" />
+              <div className="absolute top-[2px] left-[8%] right-[8%] h-[65%] rounded-[100%] border-t border-white/60 dark:border-[#D4AF37]/30 pointer-events-none" />
+            </div>
+          </div>
+
+          {/* Realistic Diffuse Contact Shadow */}
+          <div
+            style={{
+              transform: `translateX(calc(-50% + ${tilt.x * 1.6}px)) scale(${isHovered ? 1.08 : 1})`,
+            }}
+            className="absolute bottom-6 left-1/2 w-3/5 max-w-[170px] h-3 bg-black/20 dark:bg-black/75 rounded-full blur-[6px] transition-all duration-300 pointer-events-none z-0"
+          />
+
+          {/* Main High Res Perfume Bottle */}
+          <img
+            src={src}
+            alt={alt}
+            className="relative z-10 max-h-[78%] max-w-[76%] object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.25)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.7)] transition-transform duration-300"
+            style={{
+              transform: `rotateY(${tilt.x}deg) rotateX(${-tilt.y}deg) scale(${isHovered ? 1.05 : 1})`,
+            }}
+            loading="lazy"
+          />
+        </div>
+      );
+    }
+
+    // --- MAIN REACT APPLICATION COMPONENT ---
+    function App() {
+      const [isDark, setIsDark] = useState(true);
+      const [activeFamily, setActiveFamily] = useState('Todos');
+      const [selectedGender, setSelectedGender] = useState('Todos');
+      const [selectedPerfume, setSelectedPerfume] = useState(null);
+      const [searchQuery, setSearchQuery] = useState('');
+      const [isSearchOpen, setIsSearchOpen] = useState(false);
+      const [isCartOpen, setIsCartOpen] = useState(false);
+      const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
+      const [isStoryOpen, setIsStoryOpen] = useState(false);
+      
+      const [favorites, setFavorites] = useState(() => {
+        try {
+          const saved = localStorage.getItem('maximo_favorites');
+          return saved ? JSON.parse(saved) : ['maximo-body-splash', 'maximo-creme-acetinado'];
+        } catch {
+          return ['maximo-body-splash'];
         }
+      });
 
-        // --- 22 PRODUTOS DO CATÁLOGO OFICIAL MÁXIMO EAU DE PARFUM & IMPORTADOS ---
-        const PERFUMES_DATA = [
-            {
-                id: 'maximo-body-splash',
-                name: 'Body Splash Máximo',
-                brand: 'Máximo',
-                family: 'Linha Máximo',
-                gender: 'Feminino',
-                shortNotes: 'Rosa Damascena · Pera Francesa · Baunilha Acetinada',
-                price: 'R$ 89',
-                priceNumeric: 89,
-                size: '100 ml',
-                concentration: 'Body Splash Perfumado',
-                badge: 'AUTORAL MÁXIMO',
-                sensoryDescription: 'Uma névoa perfumada acetinada e envolvente. Desenvolvida para envelopar o corpo com o frescor de pétalas nobres e o conforto do almíscar puro.',
-                notes: {
-                    top: ['Pera Francesa', 'Pétalas de Peônia Rosa', 'Toque de Bergamota'],
-                    heart: ['Rosa Damascena Nobre', 'Jasmim Branco', 'Flor de Cerejeira'],
-                    base: ['Baunilha Acetinada', 'Almíscar Sedoso', 'Âmbar Dourado']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10278.png'
-            },
-            {
-                id: 'maximo-creme-acetinado',
-                name: 'Creme Acetinado Corporal Máximo',
-                brand: 'Máximo',
-                family: 'Linha Máximo',
-                gender: 'Feminino',
-                shortNotes: 'Manteiga de Karité · Rosa Centifolia · Baunilha Cremosa',
-                price: 'R$ 79',
-                priceNumeric: 79,
-                size: '200 g',
-                concentration: 'Creme Hidratante Perfumado',
-                badge: 'DESTAQUE',
-                sensoryDescription: 'Fórmula rica em emolientes nobres que hidrata profundamente sem pesar, com toque aveludado acetinado e perfumação prolongada.',
-                notes: {
-                    top: ['Néroli Suave', 'Flor de Algodão'],
-                    heart: ['Manteiga de Karité Pura', 'Extrato de Rosa Centifolia'],
-                    base: ['Baunilha Cremosa', 'Óleo de Amêndoas Doces', 'Vitamina E']
-                },
-                image: 'https://pngimg.com/d/cosmetics_PNG8054.png'
-            },
-            {
-                id: 'maximo-perfume-capilar',
-                name: 'Perfume Capilar Máximo',
-                brand: 'Máximo',
-                family: 'Linha Máximo',
-                gender: 'Feminino',
-                shortNotes: 'Flor de Cerejeira · Óleo de Argan · Gotas de Orvalho',
-                price: 'R$ 69',
-                priceNumeric: 69,
-                size: '60 ml',
-                concentration: 'Hair Mist Protetor',
-                badge: 'LANÇAMENTO',
-                sensoryDescription: 'Criado para conferir brilho tridimensional, maciez e proteção antifrizz aos fios enquanto neutraliza odores externos.',
-                notes: {
-                    top: ['Gotas de Orvalho', 'Maçã Verde'],
-                    heart: ['Flor de Cerejeira', 'Jasmim Transparente', 'Óleo de Argan Nobre'],
-                    base: ['Almíscar Branco', 'Silicone Nobre Volátil']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10283.png'
-            },
-            {
-                id: 'maximo-sabonete-liquido',
-                name: 'Sabonete Líquido Perfumado Máximo',
-                brand: 'Máximo',
-                family: 'Linha Máximo',
-                gender: 'Feminino',
-                shortNotes: 'Extrato de Camélia · Aloe Vera · Flor de Laranjeira',
-                price: 'R$ 59',
-                priceNumeric: 59,
-                size: '190 ml',
-                concentration: 'Gel de Banho Aveludado',
-                badge: 'LINHA BANHO',
-                sensoryDescription: 'Espuma rica e cremosa com pH balanceado que limpa suavemente preservando a barreira natural da pele.',
-                notes: {
-                    top: ['Flor de Laranjeira', 'Gota de Bergamota'],
-                    heart: ['Extrato de Camélia Nobre', 'Glicerina Vegetal Pura'],
-                    base: ['Aloe Vera Hidratante', 'Madeiras Transparentes']
-                },
-                image: 'https://pngimg.com/d/cosmetics_PNG8052.png'
-            },
-            {
-                id: 'maximo-kit-ritual',
-                name: 'Kit Ritual Máximo Completo',
-                brand: 'Máximo',
-                family: 'Linha Máximo',
-                gender: 'Feminino',
-                shortNotes: 'Body Splash + Creme Acetinado + Perfume Capilar + Sabonete',
-                price: 'R$ 269',
-                priceNumeric: 269,
-                size: 'Coffret 4 Itens',
-                concentration: 'Ritual Completo de Autocuidado',
-                badge: 'COFFRET LUXO',
-                sensoryDescription: 'A experiência completa de sobreposição olfativa (layering) para uma pele sedosa e um rastro sofisticado o dia todo.',
-                notes: {
-                    top: ['Pera Francesa', 'Néroli', 'Flores Brancas'],
-                    heart: ['Rosa Damascena', 'Flor de Cerejeira', 'Karité'],
-                    base: ['Baunilha Cremosa', 'Almíscar Sedoso', 'Âmbar Nobre']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10278.png'
-            },
-            {
-                id: 'baccarat-rouge-540',
-                name: 'Baccarat Rouge 540',
-                brand: 'Maison Francis Kurkdjian',
-                family: 'Oriental Especiado',
-                gender: 'Compartilhável',
-                shortNotes: 'Açafrão · Jasmim Grandiflorum · Cedro · Âmbar Gris',
-                price: 'R$ 2.490',
-                priceNumeric: 2490,
-                size: '70 ml',
-                concentration: 'Eau de Parfum',
-                badge: 'ÍCONE GLOBAL',
-                sensoryDescription: 'Assinatura luminosa e densa que acaricia a pele como um sopro floral ambarado e amadeirado de alta fixação.',
-                notes: {
-                    top: ['Açafrão Nobre', 'Jasmim Grandiflorum do Egito'],
-                    heart: ['Madeira de Cedro da Virgínia', 'Âmbar Mineral'],
-                    base: ['Âmbar Gris Cristalino', 'Acorde de Resina de Abeto']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10278.png'
-            },
-            {
-                id: 'aventus-creed',
-                name: 'Aventus',
-                brand: 'Creed',
-                family: 'Amadeirado Nobre',
-                gender: 'Masculino',
-                shortNotes: 'Abacaxi Francês · Bétula Defumada · Almíscar · Musgo de Carvalho',
-                price: 'R$ 2.890',
-                priceNumeric: 2890,
-                size: '100 ml',
-                concentration: 'Eau de Parfum',
-                badge: 'REALEZA OLFATIVA',
-                sensoryDescription: 'Inspirado na vida dramática de um imperador histórico, celebrando força, poder e sucesso.',
-                notes: {
-                    top: ['Abacaxi Real', 'Bergamota Italiana', 'Groselha Preta', 'Maçã'],
-                    heart: ['Bétula Seca', 'Patchouli Nobre', 'Jasmim Marroquino', 'Rosa'],
-                    base: ['Musgo de Carvalho', 'Almíscar', 'Âmbar Cinzento', 'Baunilha']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10283.png'
-            },
-            {
-                id: 'bleu-de-chanel',
-                name: 'Bleu de Chanel',
-                brand: 'Chanel',
-                family: 'Amadeirado Nobre',
-                gender: 'Masculino',
-                shortNotes: 'Grapefruit · Incenso · Cedro · Sândalo da Nova Caledônia',
-                price: 'R$ 1.190',
-                priceNumeric: 1190,
-                size: '100 ml',
-                concentration: 'Eau de Parfum',
-                badge: 'BEST-SELLER',
-                sensoryDescription: 'Um tributo à liberdade masculina em uma composição aromática amadeirada de elegância magnética.',
-                notes: {
-                    top: ['Grapefruit Rosa', 'Limão Siciliano', 'Hortelã', 'Pimenta Rosa'],
-                    heart: ['Gengibre Fresco', 'Noz-moscada', 'Jasmim Puro', 'Iso E Super'],
-                    base: ['Incenso', 'Vetiver', 'Cedro', 'Sândalo da Nova Caledônia']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10283.png'
-            },
-            {
-                id: 'delina-parfums-de-marly',
-                name: 'Delina Exclusif',
-                brand: 'Parfums de Marly',
-                family: 'Floral Nobre',
-                gender: 'Feminino',
-                shortNotes: 'Rosa Turca · Lichia · Ruibarbo · Baunilha · Incenso',
-                price: 'R$ 2.650',
-                priceNumeric: 2650,
-                size: '75 ml',
-                concentration: 'Parfum',
-                badge: 'ALTA CORTE',
-                sensoryDescription: 'Um buquê floral esculpido em torno da rosa turca com nuances de lichia suculenta e incenso aveludado.',
-                notes: {
-                    top: ['Lichia Doce', 'Ruibarbo', 'Bergamota', 'Noz-moscada'],
-                    heart: ['Rosa Turca Nobre', 'Peônia', 'Pétalia', 'Baunilha'],
-                    base: ['Caxemira', 'Cedro', 'Incenso', 'Vetiver Haitiano']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10278.png'
-            },
-            {
-                id: 'santal-33-le-labo',
-                name: 'Santal 33',
-                brand: 'Le Labo',
-                family: 'Amadeirado Nobre',
-                gender: 'Compartilhável',
-                shortNotes: 'Sândalo Australiano · Papiro · Cardamomo · Íris · Violeta',
-                price: 'R$ 2.190',
-                priceNumeric: 2190,
-                size: '100 ml',
-                concentration: 'Eau de Parfum',
-                badge: 'NICHO CULTO',
-                sensoryDescription: 'A lendária sensualidade do sândalo e couro combinada com facetas aromáticas de cardamomo e papiro.',
-                notes: {
-                    top: ['Cardamomo', 'Violeta', 'Íris'],
-                    heart: ['Papiro', 'Ambrox', 'Cedro'],
-                    base: ['Sândalo Australiano', 'Couro Macio']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10283.png'
-            },
-            {
-                id: 'sauvage-elixir-dior',
-                name: 'Sauvage Elixir',
-                brand: 'Dior',
-                family: 'Oriental Especiado',
-                gender: 'Masculino',
-                shortNotes: 'Lavanda de Nyons · Alcaçuz · Noz-Moscada · Canela · Madeiras Âmbar',
-                price: 'R$ 1.350',
-                priceNumeric: 1350,
-                size: '60 ml',
-                concentration: 'Elixir Parfum Concentrado',
-                badge: 'POTÊNCIA MÁXIMA',
-                sensoryDescription: 'Uma concentração extraordinária que reinventa a frescura icônica com um coração de especiarias nobres.',
-                notes: {
-                    top: ['Noz-moscada', 'Canela', 'Cardamomo', 'Grapefruit'],
-                    heart: ['Lavanda de Nyons A.O.P.', 'Cumarina'],
-                    base: ['Alcaçuz', 'Sândalo', 'Âmbar', 'Patchouli']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10283.png'
-            },
-            {
-                id: 'oud-wood-tom-ford',
-                name: 'Oud Wood',
-                brand: 'Tom Ford',
-                family: 'Amadeirado Nobre',
-                gender: 'Compartilhável',
-                shortNotes: 'Madeira de Oud · Jacarandá · Cardamomo · Sândalo · Fava Tonka',
-                price: 'R$ 2.290',
-                priceNumeric: 2290,
-                size: '50 ml',
-                concentration: 'Eau de Parfum Private Blend',
-                badge: 'PRIVATE BLEND',
-                sensoryDescription: 'Um dos ingredientes mais raros e preciosos da perfumaria envelopado pelo calor do jacarandá e fava tonka.',
-                notes: {
-                    top: ['Cardamomo', 'Pimenta de Sichuan', 'Jacarandá'],
-                    heart: ['Madeira de Oud Nobre', 'Sândalo', 'Vetiver'],
-                    base: ['Fava Tonka', 'Baunilha', 'Âmbar Dourado']
-                },
-                image: 'https://pngimg.com/d/perfume_PNG10283.png'
-            }
-        ];
+      const [cart, setCart] = useState(() => {
+        try {
+          const saved = localStorage.getItem('maximo_cart');
+          return saved ? JSON.parse(saved) : [];
+        } catch {
+          return [];
+        }
+      });
 
-        // --- COMPONENTE VETORIAL DO LOGO MÁXIMO EAU DE PARFUM ---
-        function MaximoLogo({ isDark, className = "w-48 sm:w-56" }) {
-            const textColor = isDark ? '#FFFFFF' : '#24221F';
-            return (
-                <div className={`inline-flex flex-col items-center justify-center select-none text-center ${className}`}>
-                    <svg viewBox="0 0 380 135" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" style={{ color: textColor }}>
-                        <g id="maximo-brandmark">
-                            <text x="190" y="74" textAnchor="middle" fill="currentColor" style={{ fontFamily: '"Alex Brush", "Parisienne", cursive', fontSize: '84px' }}>
-                                Máximo
-                            </text>
-                            <path d="M 64 82 C 95 104, 158 112, 236 101 C 278 95, 314 88, 338 80 C 312 84, 266 91, 226 94 C 162 99, 108 95, 68 80 C 63 78, 58 80, 64 82 Z" fill="currentColor" />
-                            <path d="M 130 99 C 192 105, 272 97, 330 81 C 286 91, 214 97, 146 94 C 135 93, 127 96, 130 99 Z" fill="currentColor" />
-                            <path d="M 112 18 L 126 10 L 128 12 L 115 22 Z" fill="currentColor" />
-                            <g transform="translate(0, 10)">
-                                <text x="190" y="116" textAnchor="middle" fill="currentColor" style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '11px', fontWeight: '600', letterSpacing: '0.38em', textTransform: 'uppercase' }}>
-                                    EAU DE PARFUM
-                                </text>
-                            </g>
-                        </g>
-                    </svg>
+      useEffect(() => {
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }, [isDark]);
+
+      useEffect(() => {
+        try {
+          localStorage.setItem('maximo_favorites', JSON.stringify(favorites));
+        } catch (e) {}
+      }, [favorites]);
+
+      useEffect(() => {
+        try {
+          localStorage.setItem('maximo_cart', JSON.stringify(cart));
+        } catch (e) {}
+      }, [cart]);
+
+      const toggleFavorite = (id) => {
+        setFavorites(prev => prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]);
+      };
+
+      const addToCart = (perfume) => {
+        setCart(prev => {
+          const existing = prev.find(item => item.id === perfume.id);
+          if (existing) {
+            return prev.map(item => item.id === perfume.id ? { ...item, qty: item.qty + 1 } : item);
+          }
+          return [...prev, { ...perfume, qty: 1 }];
+        });
+        setIsCartOpen(true);
+      };
+
+      const updateCartQty = (id, delta) => {
+        setCart(prev => prev.map(item => {
+          if (item.id === id) {
+            const newQty = item.qty + delta;
+            return newQty > 0 ? { ...item, qty: newQty } : null;
+          }
+          return item;
+        }).filter(Boolean));
+      };
+
+      const removeCartItem = (id) => {
+        setCart(prev => prev.filter(item => item.id !== id));
+      };
+
+      const totalCartCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const cartSubtotal = cart.reduce((sum, item) => sum + (item.priceNumeric * item.qty), 0);
+
+      // Filtering products
+      const filteredPerfumes = useMemo(() => {
+        return PERFUMES_DATA.filter(p => {
+          const matchesFamily = activeFamily === 'Todos' || p.family === activeFamily || (activeFamily === 'Linha Máximo' && (p.brand === 'Máximo' || p.category === 'Linha Máximo'));
+          const matchesGender = selectedGender === 'Todos' || p.gender === selectedGender || p.gender === 'Compartilhável';
+          return matchesFamily && matchesGender;
+        });
+      }, [activeFamily, selectedGender]);
+
+      // Search results
+      const searchResults = useMemo(() => {
+        if (!searchQuery.trim()) return [];
+        const q = searchQuery.toLowerCase();
+        return PERFUMES_DATA.filter(p => 
+          p.name.toLowerCase().includes(q) ||
+          p.brand.toLowerCase().includes(q) ||
+          p.family.toLowerCase().includes(q) ||
+          p.shortNotes.toLowerCase().includes(q) ||
+          p.accords.some(a => a.toLowerCase().includes(q))
+        );
+      }, [searchQuery]);
+
+      const families = ['Todos', 'Linha Máximo', 'Amadeirado Nobre', 'Floral Nobre', 'Oriental Especiado', 'Cítrico Aromático', 'Gourmand Fascinante'];
+
+      const sendCartWhatsApp = () => {
+        if (cart.length === 0) return;
+        let msg = `*MÁXIMO EAU DE PARFUM — CONSULTA E PEDIDO*\n\n`;
+        msg += `Olá! Gostaria de cotar e confirmar meu pedido com atendimento personalizado:\n\n`;
+        cart.forEach((item, idx) => {
+          msg += `${idx + 1}. *${item.name}* (${item.brand})\n   • Quantidade: ${item.qty}\n   • Volume: ${item.size}\n\n`;
+        });
+        msg += `Por favor, me informe os valores atualizados, opções de pagamento e prazo de entrega.`;
+        window.open(getWhatsappUrl(msg), '_blank');
+      };
+
+      return (
+        <div className="min-h-screen bg-[#F4F0E9] dark:bg-[#121110] text-[#24221F] dark:text-[#F4F0E9] transition-colors duration-300">
+          
+          {/* TOP ANNOUNCEMENT BAR */}
+          <div className="bg-[#1A1816] text-[#EAE3D9] text-[11px] uppercase tracking-[0.24em] py-2 px-4 text-center border-b border-white/5 font-medium flex items-center justify-center gap-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
+            <span>MÁXIMO EAU DE PARFUM · ATENDIMENTO EXCLUSIVO VIA WHATSAPP (31) 97539-4776</span>
+          </div>
+
+          {/* HEADER NAV */}
+          <header className="sticky top-0 z-40 bg-[#F4F0E9]/95 dark:bg-[#121110]/95 backdrop-blur-md border-b border-black/5 dark:border-white/10 px-4 sm:px-8 py-3.5 transition-colors">
+            <div className="max-w-7xl mx-auto flex items-center justify-between">
+              
+              {/* Left Nav Actions */}
+              <div className="flex items-center gap-6">
+                <button
+                  onClick={() => setIsStoryOpen(true)}
+                  className="text-xs uppercase tracking-[0.2em] font-medium text-[#24221F]/80 dark:text-[#F4F0E9]/80 hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors hidden md:block"
+                >
+                  A CASA
+                </button>
+                <a
+                  href="#catalogo"
+                  className="text-xs uppercase tracking-[0.2em] font-medium text-[#24221F]/80 dark:text-[#F4F0E9]/80 hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
+                >
+                  CATÁLOGO
+                </a>
+              </div>
+
+              {/* Center Vector Logo */}
+              <a href="#" className="flex items-center justify-center py-1">
+                <MaximoLogo isDark={isDark} className="w-44 sm:w-56" />
+              </a>
+
+              {/* Right User Controls */}
+              <div className="flex items-center gap-3 sm:gap-4">
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                  aria-label="Buscar fragrâncias"
+                >
+                  <Icons.Search />
+                </button>
+
+                <button
+                  onClick={() => setIsFavoritesOpen(true)}
+                  className="relative p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                  aria-label="Ver favoritos"
+                >
+                  <Icons.Heart />
+                  {favorites.length > 0 && (
+                    <span className="absolute top-1 right-1 w-4 h-4 bg-[#A96227] dark:bg-[#D4AF37] text-white dark:text-black rounded-full text-[9px] font-bold flex items-center justify-center">
+                      {favorites.length}
+                    </span>
+                  )}
+                </button>
+
+                <button
+                  onClick={() => setIsCartOpen(true)}
+                  className="relative p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                  aria-label="Ver sacola"
+                >
+                  <Icons.Bag />
+                  {totalCartCount > 0 && (
+                    <span className="absolute top-1 right-1 w-4 h-4 bg-[#A96227] dark:bg-[#D4AF37] text-white dark:text-black rounded-full text-[9px] font-bold flex items-center justify-center">
+                      {totalCartCount}
+                    </span>
+                  )}
+                </button>
+
+                <button
+                  onClick={() => setIsDark(!isDark)}
+                  className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-[#A96227] dark:text-[#D4AF37]"
+                  aria-label="Alternar tema"
+                >
+                  {isDark ? <Icons.Sun /> : <Icons.Moon />}
+                </button>
+              </div>
+            </div>
+          </header>
+
+          {/* HERO SECTION */}
+          <section className="relative min-h-[82vh] flex items-center justify-center bg-[#1A1816] text-[#F4F0E9] px-6 py-20 overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(169,98,39,0.22),transparent_70%)] pointer-events-none" />
+            <div className="max-w-4xl mx-auto text-center relative z-10 space-y-6">
+              <div className="inline-flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#D4AF37]"></span>
+                <span className="text-xs sm:text-[13px] tracking-[0.28em] text-[#D4AF37] uppercase font-semibold">
+                  MÁXIMO EAU DE PARFUM · ALTA PERFUMARIA
+                </span>
+                <span className="w-8 h-[1px] bg-[#D4AF37]"></span>
+              </div>
+              <h1 className="font-serif-editorial text-4xl sm:text-6xl md:text-7xl font-light leading-[1.08] tracking-tight">
+                A presença que <br />
+                <span className="italic font-normal text-[#EAE3D9]">permanece.</span>
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-[#F4F0E9]/85 max-w-xl mx-auto font-light leading-relaxed">
+                Fragrâncias e cosméticos nobres criados para marcar presença com distinção, elegância e intensidade.
+              </p>
+              <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="#catalogo"
+                  className="px-8 py-3.5 bg-[#D4AF37] hover:bg-[#C29D29] text-[#121110] font-semibold text-xs tracking-[0.2em] uppercase transition-all shadow-lg active:scale-95 flex items-center gap-2"
+                >
+                  <span>CONHEÇA A COLEÇÃO</span>
+                  <Icons.ArrowRight className="w-4 h-4" />
+                </a>
+                <button
+                  onClick={() => setIsDiscoverySetOpen(true)}
+                  className="px-8 py-3.5 border border-white/30 hover:border-white bg-white/5 hover:bg-white/10 text-white font-medium text-xs tracking-[0.2em] uppercase transition-all"
+                >
+                  DISCOVERY SET (4 FLACONS)
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* CATALOG SECTION */}
+          <section id="catalogo" className="max-w-7xl mx-auto px-4 sm:px-8 py-16 sm:py-24">
+            
+            {/* Catalog Header */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-xs tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
+                    02 — O CATÁLOGO EXCLUSIVO
+                  </span>
+                  <div className="w-12 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40"></div>
                 </div>
-            );
-        }
+                <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] dark:text-[#F4F0E9] font-light">
+                  A Coleção <span className="italic">Completa</span>
+                </h2>
+              </div>
+              <div className="text-xs text-[#24221F]/70 dark:text-[#F4F0E9]/70 space-y-1 border-l-2 border-[#A96227]/40 pl-4 max-w-sm">
+                <p className="font-semibold text-[11px] uppercase tracking-wider text-[#24221F] dark:text-[#F4F0E9]">
+                  Máximo Eau de Parfum & Importados
+                </p>
+                <p>Consultoria olfativa, pedidos diretos e curadoria sob medida.</p>
+              </div>
+            </div>
 
-        // --- PEDESTAL EDITORIAL EM 3D COM SOMBRA DE CONTATO ---
-        function StudioBottleImage({ src, alt }) {
-            return (
-                <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-b from-[#F2ECE2]/40 via-[#EAE3D7]/20 to-transparent dark:from-[#1A1816]/60 dark:via-[#141210]/30 dark:to-transparent flex items-center justify-center rounded-t-xs">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(169,98,39,0.08),transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_40%,rgba(201,125,62,0.14),transparent_75%)] pointer-events-none" />
-                    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-4/5 max-w-[210px] h-8 pointer-events-none z-0">
-                        <div className="relative w-full h-full">
-                            <div className="absolute inset-0 rounded-[100%] bg-gradient-to-b from-[#E8DFD1]/80 via-[#DDD2C1]/60 to-[#CEC2AF]/40 dark:from-[#24211E] dark:via-[#1A1816] dark:to-[#121110] border border-black/5 dark:border-white/10 shadow-md transform -scale-y-75" />
-                            <div className="absolute top-[2px] left-[8%] right-[8%] h-[65%] rounded-[100%] border-t border-white/60 dark:border-[#D4AF37]/30" />
-                        </div>
-                    </div>
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-3/5 max-w-[170px] h-3 bg-black/20 dark:bg-black/75 rounded-full blur-[6px] pointer-events-none z-0" />
-                    <img src={src} alt={alt} className="relative z-10 max-h-[78%] max-w-[76%] object-contain filter drop-shadow-xl transition-transform duration-300 hover:scale-105" loading="lazy" />
-                </div>
-            );
-        }
+            {/* Olfactory Family Filter Buttons */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
+              {families.map(f => (
+                <button
+                  key={f}
+                  onClick={() => setActiveFamily(f)}
+                  className={`px-4 py-2 text-xs tracking-[0.16em] uppercase whitespace-nowrap transition-all border ${
+                    activeFamily === f
+                      ? 'bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-[#121110] border-transparent font-semibold shadow-sm'
+                      : 'bg-transparent text-[#24221F]/70 dark:text-[#F4F0E9]/70 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white'
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
 
-        // --- APLICAÇÃO PRINCIPAL REACT ---
-        function App() {
-            const [isDark, setIsDark] = useState(true);
-            const [activeFamily, setActiveFamily] = useState('Todos');
-            const [selectedGender, setSelectedGender] = useState('Todos');
-            const [selectedPerfume, setSelectedPerfume] = useState(null);
-            const [isCartOpen, setIsCartOpen] = useState(false);
-            const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
-            const [isSearchOpen, setIsSearchOpen] = useState(false);
-            const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(false);
-            const [searchQuery, setSearchQuery] = useState('');
-            const [downloaded, setDownloaded] = useState(false);
+            {/* Sub Filter: Gender */}
+            <div className="flex items-center justify-between pb-6 mb-10 border-b border-black/5 dark:border-white/10 text-xs">
+              <div className="flex items-center gap-2">
+                <span className="text-[#24221F]/60 dark:text-[#F4F0E9]/60 uppercase tracking-wider font-medium mr-2">
+                  Público:
+                </span>
+                {['Todos', 'Feminino', 'Masculino'].map(g => (
+                  <button
+                    key={g}
+                    onClick={() => setSelectedGender(g)}
+                    className={`px-3 py-1 rounded-xs uppercase tracking-wider font-medium text-[11px] transition-colors ${
+                      selectedGender === g
+                        ? 'bg-[#A96227] dark:bg-[#D4AF37] text-white dark:text-black font-semibold'
+                        : 'bg-black/5 dark:bg-white/5 text-[#24221F]/70 dark:text-[#F4F0E9]/70'
+                    }`}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+              <span className="text-[#24221F]/60 dark:text-[#F4F0E9]/60 uppercase tracking-wider">
+                Mostrando {filteredPerfumes.length} produtos
+              </span>
+            </div>
 
-            const [favorites, setFavorites] = useState(() => {
-                try {
-                    const saved = localStorage.getItem('maximo_favorites');
-                    return saved ? JSON.parse(saved) : ['maximo-body-splash', 'maximo-creme-acetinado'];
-                } catch {
-                    return ['maximo-body-splash'];
-                }
-            });
+            {/* Products Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+              {filteredPerfumes.map(perfume => {
+                const isFav = favorites.includes(perfume.id);
+                return (
+                  <article
+                    key={perfume.id}
+                    className="group flex flex-col bg-[#FAF8F5] dark:bg-[#161513] border border-black/[0.06] dark:border-white/[0.06] hover:border-[#A96227]/40 dark:hover:border-[#D4AF37]/40 transition-all duration-300 hover:shadow-xl"
+                  >
+                    {/* Bottle Pedestal Box */}
+                    <div className="relative cursor-pointer" onClick={() => setSelectedPerfume(perfume)}>
+                      <StudioBottleImage src={perfume.image} alt={perfume.name} />
 
-            const [cart, setCart] = useState(() => {
-                try {
-                    const saved = localStorage.getItem('maximo_cart');
-                    return saved ? JSON.parse(saved) : [];
-                } catch {
-                    return [];
-                }
-            });
+                      {/* Brand & Badge Tags */}
+                      <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-20">
+                        <span className="bg-[#24221F]/90 dark:bg-[#201E1B]/95 text-white dark:text-[#D4AF37] text-[9px] tracking-[0.2em] px-2.5 py-1 uppercase font-semibold">
+                          {perfume.brand}
+                        </span>
+                        {perfume.badge && (
+                          <span className="bg-[#A96227] dark:bg-[#C97D3E] text-white text-[8px] tracking-[0.16em] px-2 py-0.5 uppercase font-medium">
+                            {perfume.badge}
+                          </span>
+                        )}
+                      </div>
 
-            useEffect(() => {
-                if (isDark) {
-                    document.documentElement.classList.add('dark');
-                    document.body.classList.add('dark-mode');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    document.body.classList.remove('dark-mode');
-                }
-            }, [isDark]);
-
-            useEffect(() => {
-                try {
-                    localStorage.setItem('maximo_favorites', JSON.stringify(favorites));
-                } catch(e) {}
-            }, [favorites]);
-
-            useEffect(() => {
-                try {
-                    localStorage.setItem('maximo_cart', JSON.stringify(cart));
-                } catch(e) {}
-            }, [cart]);
-
-            const toggleFavorite = (id) => {
-                setFavorites(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
-            };
-
-            const addToCart = (perfume) => {
-                setCart(prev => {
-                    const existing = prev.find(i => i.id === perfume.id);
-                    if (existing) {
-                        return prev.map(i => i.id === perfume.id ? { ...i, qty: i.qty + 1 } : i);
-                    }
-                    return [...prev, { ...perfume, qty: 1 }];
-                });
-                setIsCartOpen(true);
-            };
-
-            const updateCartQty = (id, delta) => {
-                setCart(prev => prev.map(i => {
-                    if (i.id === id) {
-                        const newQty = i.qty + delta;
-                        return newQty > 0 ? { ...i, qty: newQty } : null;
-                    }
-                    return i;
-                }).filter(Boolean));
-            };
-
-            const removeCartItem = (id) => {
-                setCart(prev => prev.filter(i => i.id !== id));
-            };
-
-            const totalCartCount = cart.reduce((sum, i) => sum + i.qty, 0);
-            const cartSubtotal = cart.reduce((sum, i) => sum + (i.priceNumeric * i.qty), 0);
-
-            const filteredPerfumes = useMemo(() => {
-                return PERFUMES_DATA.filter(p => {
-                    const matchesFamily = activeFamily === 'Todos' || p.family === activeFamily || (activeFamily === 'Linha Máximo' && (p.brand === 'Máximo'));
-                    const matchesGender = selectedGender === 'Todos' || p.gender === selectedGender || p.gender === 'Compartilhável';
-                    return matchesFamily && matchesGender;
-                });
-            }, [activeFamily, selectedGender]);
-
-            const searchResults = useMemo(() => {
-                if (!searchQuery.trim()) return [];
-                const q = searchQuery.toLowerCase();
-                return PERFUMES_DATA.filter(p =>
-                    p.name.toLowerCase().includes(q) ||
-                    p.brand.toLowerCase().includes(q) ||
-                    p.family.toLowerCase().includes(q) ||
-                    p.shortNotes.toLowerCase().includes(q)
-                );
-            }, [searchQuery]);
-
-            const sendWhatsAppOrder = () => {
-                if (cart.length === 0) return;
-                let msg = `*MÁXIMO EAU DE PARFUM — PEDIDO EXCLUSIVO*\n\n`;
-                msg += `Olá! Gostaria de confirmar meu pedido com atendimento personalizado:\n\n`;
-                cart.forEach((item, idx) => {
-                    msg += `${idx + 1}. *${item.name}* (${item.brand})\n   • Quantidade: ${item.qty}\n   • Volume: ${item.size}\n   • Valor: ${item.price}\n\n`;
-                });
-                msg += `*VALOR TOTAL ESTIMADO: R$ ${cartSubtotal.toFixed(2).replace('.', ',')}*\n\n`;
-                msg += `Por favor, me informe a chave PIX ou opções de pagamento e prazo de entrega.`;
-                window.open(getWhatsappUrl(msg), '_blank');
-            };
-
-            const handleDownloadSelf = () => {
-                const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'maximo-eau-de-parfum.html';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                setDownloaded(true);
-                setTimeout(() => setDownloaded(false), 3000);
-            };
-
-            const families = ['Todos', 'Linha Máximo', 'Amadeirado Nobre', 'Floral Nobre', 'Oriental Especiado'];
-
-            return (
-                <div className="min-h-screen">
-                    
-                    {/* Top Announcement Bar */}
-                    <div className="bg-[#161513] text-[#EAE3D9] text-[11px] uppercase tracking-[0.24em] py-2 px-4 text-center border-b border-white/5 font-medium flex items-center justify-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
-                        <span>MÁXIMO EAU DE PARFUM · ATENDIMENTO EXCLUSIVO VIA WHATSAPP (31) 97539-4776</span>
+                      {/* Favorite Button */}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); toggleFavorite(perfume.id); }}
+                        className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-xs text-[#24221F] dark:text-white hover:scale-110 transition-transform shadow-sm"
+                        aria-label="Favoritar"
+                      >
+                        <Icons.Heart filled={isFav} className={isFav ? "text-red-500 fill-red-500" : ""} />
+                      </button>
                     </div>
 
-                    {/* Header Principal */}
-                    <header className="sticky top-0 z-40 bg-[#F5F2EC]/95 dark:bg-[#0E0D0C]/95 backdrop-blur-md border-b border-black/5 dark:border-white/10 px-6 py-4 flex items-center justify-between transition-colors">
-                        <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-[0.2em] font-medium text-[#24221F]/80 dark:text-[#FFFFFF]/80">
-                            <a href="#a-casa" className="hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors">01 — A CASA</a>
-                            <a href="#catalogo" className="hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors">02 — O CATÁLOGO</a>
-                            <a href="#o-gesto" className="hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors">03 — O GESTO</a>
-                        </nav>
+                    {/* Tactile Ribbon */}
+                    <div className="px-5 py-2 bg-[#F0EBE2]/60 dark:bg-[#1A1816] border-b border-black/[0.04] dark:border-white/[0.04] flex items-center gap-2 text-[#A96227] dark:text-[#D4AF37] text-[10px] font-medium">
+                      <Icons.Droplets className="w-3.5 h-3.5 shrink-0" />
+                      <span className="truncate">{perfume.shortNotes}</span>
+                    </div>
 
-                        <a href="#" className="flex items-center justify-center">
-                            <MaximoLogo isDark={isDark} className="w-44 sm:w-56" />
-                        </a>
-
-                        <div className="flex items-center gap-3">
-                            <button onClick={() => setIsSearchOpen(true)} className="p-2 text-xs uppercase tracking-wider font-semibold hover:text-[#A96227] dark:hover:text-[#D4AF37]">
-                                BUSCA
-                            </button>
-                            <button onClick={() => setIsFavoritesOpen(true)} className="p-2 text-xs uppercase tracking-wider font-semibold hover:text-[#A96227] dark:hover:text-[#D4AF37]">
-                                FAVORITOS ({favorites.length})
-                            </button>
-                            <button onClick={() => setIsCartOpen(true)} className="px-3.5 py-1.5 bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-black text-xs uppercase tracking-wider font-semibold shadow-xs">
-                                SACOLA ({totalCartCount})
-                            </button>
-                            <button onClick={() => setIsDark(!isDark)} className="p-2 text-xs uppercase tracking-wider font-semibold text-[#A96227] dark:text-[#D4AF37]">
-                                {isDark ? '☀️ CLARO' : '🌙 ESCURO'}
-                            </button>
+                    {/* Info Body */}
+                    <div className="p-5 sm:p-6 flex flex-col flex-grow justify-between space-y-4">
+                      <div>
+                        <div className="flex items-center justify-between text-[11px] tracking-[0.18em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold mb-1">
+                          <span>{perfume.family}</span>
+                          <span className="text-[#24221F]/60 dark:text-[#F4F0E9]/60 font-medium">{perfume.size}</span>
                         </div>
-                    </header>
-
-                    {/* Section Hero */}
-                    <section id="hero" className="relative min-h-[85vh] flex items-center justify-center bg-[#0E0D0C] text-[#FFFFFF] px-6 py-20 text-center overflow-hidden">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(169,98,39,0.2),transparent_70%)] pointer-events-none" />
-                        <div className="max-w-4xl mx-auto space-y-6 relative z-10">
-                            <div className="inline-flex items-center gap-3">
-                                <span className="w-8 h-[1px] bg-[#D4AF37]"></span>
-                                <span className="text-xs tracking-[0.28em] text-[#D4AF37] uppercase font-semibold">
-                                    MÁXIMO EAU DE PARFUM · ALTA PERFUMARIA
-                                </span>
-                                <span className="w-8 h-[1px] bg-[#D4AF37]"></span>
-                            </div>
-                            <h1 className="font-serif-editorial text-4xl sm:text-6xl md:text-7xl font-light leading-[1.08]">
-                                A presença que <br />
-                                <span className="italic font-normal text-[#EAE3D9]">permanece.</span>
-                            </h1>
-                            <p className="text-base sm:text-lg text-white/85 max-w-xl mx-auto font-light leading-relaxed">
-                                Fragrâncias e cosméticos nobres criados para marcar presença com distinção, elegância e intensidade.
-                            </p>
-                            <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-                                <a href="#catalogo" className="px-8 py-3.5 bg-[#D4AF37] hover:bg-[#C29D29] text-[#0E0D0C] font-semibold text-xs tracking-[0.2em] uppercase transition-all shadow-lg">
-                                    CONHEÇA A COLEÇÃO
-                                </a>
-                                <button onClick={() => setIsDiscoveryOpen(true)} className="px-8 py-3.5 border border-white/30 hover:border-white bg-white/5 text-white font-medium text-xs tracking-[0.2em] uppercase transition-all">
-                                    DISCOVERY SET (4 FLACONS)
-                                </button>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 01 - A Casa */}
-                    <section id="a-casa" className="py-20 px-6 sm:px-12 max-w-7xl mx-auto border-b border-black/5 dark:border-white/10">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                            <div className="space-y-6">
-                                <span className="text-xs tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">01 — A CASA & O ATELIÊ</span>
-                                <h2 className="font-serif-editorial text-3xl sm:text-5xl font-light leading-tight">
-                                    Nobreza em cada gota, <br /><span className="italic">atemporalidade em cada rastro.</span>
-                                </h2>
-                                <p className="text-sm leading-relaxed opacity-85">
-                                    A <strong>Máximo Eau de Parfum</strong> nasce da fusão entre a nobre tradição da perfumaria fina e o toque sensorial da cosmética acetinada contemporânea. Cada criação é desenvolvida com concentrações elevadas de óleos essenciais autênticos, proporcionando fixação extraordinária e uma evolução olfativa rica na pele.
-                                </p>
-                            </div>
-                            <div className="p-8 bg-[#FAF8F5] dark:bg-[#161513] border border-black/10 dark:border-white/10 space-y-4">
-                                <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#A96227] dark:text-[#D4AF37]">NOSSA GARANTIA</h3>
-                                <ul className="space-y-3 text-xs opacity-85">
-                                    <li>✓ 100% Fragrâncias Originais e Frascos Selados</li>
-                                    <li>✓ Concentração Eau de Parfum e Óleos Nobres</li>
-                                    <li>✓ Atendimento Direto e Consultoria Olfativa via WhatsApp</li>
-                                    <li>✓ Envio Seguro para todo o Território Nacional</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 02 - O Catálogo */}
-                    <section id="catalogo" className="py-20 px-6 sm:px-12 max-w-7xl mx-auto">
-                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-                            <div>
-                                <span className="text-xs tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">02 — O CATÁLOGO EXCLUSIVO</span>
-                                <h2 className="font-serif-editorial text-3xl sm:text-5xl font-light mt-1">A Coleção <span className="italic">Completa</span></h2>
-                            </div>
-                            <div className="text-xs opacity-75 border-l-2 border-[#A96227]/40 pl-4 max-w-sm">
-                                <p className="font-semibold uppercase tracking-wider">Máximo Eau de Parfum & Importados</p>
-                                <p>Consultoria olfativa, pedidos diretos e curadoria sob medida.</p>
-                            </div>
-                        </div>
-
-                        {/* Filtro de Famílias */}
-                        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8">
-                            {families.map(f => (
-                                <button
-                                    key={f}
-                                    onClick={() => setActiveFamily(f)}
-                                    className={`px-4 py-2 text-xs tracking-[0.16em] uppercase whitespace-nowrap transition-all border ${
-                                        activeFamily === f
-                                            ? 'bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-black font-semibold border-transparent shadow-xs'
-                                            : 'border-black/10 dark:border-white/10 opacity-70 hover:opacity-100'
-                                    }`}
-                                >
-                                    {f}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Grade de Produtos */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                            {filteredPerfumes.map(perfume => {
-                                const isFav = favorites.includes(perfume.id);
-                                return (
-                                    <div key={perfume.id} className="bg-[#FAF8F5] dark:bg-[#161513] border border-black/10 dark:border-white/10 flex flex-col justify-between group hover:border-[#A96227]/40 dark:hover:border-[#D4AF37]/40 transition-all duration-300">
-                                        <div className="relative cursor-pointer" onClick={() => setSelectedPerfume(perfume)}>
-                                            <StudioBottleImage src={perfume.image} alt={perfume.name} />
-                                            <span className="absolute top-4 left-4 bg-black/80 text-white text-[9px] uppercase tracking-wider px-2.5 py-1 font-semibold">
-                                                {perfume.brand}
-                                            </span>
-                                            <button
-                                                onClick={(e) => { e.stopPropagation(); toggleFavorite(perfume.id); }}
-                                                className="absolute top-4 right-4 p-2 rounded-full bg-white/80 dark:bg-black/80 text-xs font-bold hover:scale-110 transition-transform"
-                                            >
-                                                {isFav ? '❤️' : '🤍'}
-                                            </button>
-                                        </div>
-
-                                        <div className="px-5 py-2 bg-[#F0EBE2]/60 dark:bg-[#1A1816] text-[10px] text-[#A96227] dark:text-[#D4AF37] font-medium border-b border-black/5 dark:border-white/5 truncate">
-                                            {perfume.shortNotes}
-                                        </div>
-
-                                        <div className="p-5 flex flex-col flex-grow justify-between space-y-4">
-                                            <div>
-                                                <div className="flex justify-between text-[10px] uppercase tracking-wider text-[#A96227] dark:text-[#D4AF37] font-semibold">
-                                                    <span>{perfume.family}</span>
-                                                    <span className="opacity-60">{perfume.size}</span>
-                                                </div>
-                                                <h3 onClick={() => setSelectedPerfume(perfume)} className="font-serif-editorial text-2xl font-normal mt-1 cursor-pointer group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37]">
-                                                    {perfume.name}
-                                                </h3>
-                                                <p className="text-xs opacity-75 mt-2 line-clamp-2 leading-relaxed">
-                                                    {perfume.sensoryDescription}
-                                                </p>
-                                            </div>
-
-                                            <div className="pt-4 border-t border-black/10 dark:border-white/10 space-y-3">
-                                                <div className="flex justify-between items-baseline">
-                                                    <span className="text-2xl font-serif font-semibold text-[#A96227] dark:text-[#D4AF37]">
-                                                        {perfume.price}
-                                                    </span>
-                                                    <button onClick={() => setSelectedPerfume(perfume)} className="text-xs uppercase tracking-wider font-semibold opacity-80 hover:opacity-100">
-                                                        DETALHES →
-                                                    </button>
-                                                </div>
-                                                <div className="grid grid-cols-2 gap-2">
-                                                    <a
-                                                        href={getWhatsappUrl(`Olá! Gostaria de pedir o perfume ${perfume.name} (${perfume.brand}, ${perfume.size}) por ${perfume.price}.`)}
-                                                        target="_blank"
-                                                        className="py-2.5 bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-black text-[11px] font-semibold uppercase tracking-wider text-center"
-                                                    >
-                                                        WHATSAPP
-                                                    </a>
-                                                    <button
-                                                        onClick={() => addToCart(perfume)}
-                                                        className="py-2.5 border border-black/20 dark:border-white/20 text-[11px] font-medium uppercase tracking-wider"
-                                                    >
-                                                        + SACOLA
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </section>
-
-                    {/* Section 03 - O Gesto */}
-                    <section id="o-gesto" className="py-20 px-6 sm:px-12 max-w-7xl mx-auto border-t border-black/5 dark:border-white/10">
-                        <div className="text-center max-w-2xl mx-auto space-y-4">
-                            <span className="text-xs tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">03 — O GESTO & O RITUAL</span>
-                            <h2 className="font-serif-editorial text-3xl sm:text-5xl font-light">Como Vestir a Fragrância</h2>
-                            <p className="text-sm opacity-85 leading-relaxed">
-                                Aplique nos pontos de maior pulsação térmica — pulsos, base do pescoço e atrás das orelhas. Para um rastro prolongado e aveludado, combine o Creme Acetinado com o Body Splash e Perfume Capilar.
-                            </p>
-                        </div>
-                    </section>
-
-                    {/* Modal Detalhes do Produto */}
-                    {selectedPerfume && (
-                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setSelectedPerfume(null)}>
-                            <div className="bg-[#FAF8F5] dark:bg-[#161513] text-[#24221F] dark:text-[#FFFFFF] max-w-3xl w-full p-8 border border-black/10 dark:border-white/10 relative shadow-2xl" onClick={e => e.stopPropagation()}>
-                                <button onClick={() => setSelectedPerfume(null)} className="absolute top-4 right-4 text-lg font-bold">✕</button>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                                    <StudioBottleImage src={selectedPerfume.image} alt={selectedPerfume.name} />
-                                    <div className="space-y-4">
-                                        <span className="text-xs uppercase tracking-widest text-[#A96227] dark:text-[#D4AF37] font-semibold">{selectedPerfume.brand} · {selectedPerfume.family}</span>
-                                        <h3 className="font-serif-editorial text-3xl">{selectedPerfume.name}</h3>
-                                        <p className="text-2xl font-serif text-[#A96227] dark:text-[#D4AF37] font-semibold">{selectedPerfume.price} <span className="text-xs opacity-70">({selectedPerfume.size})</span></p>
-                                        <p className="text-xs opacity-85 leading-relaxed">{selectedPerfume.sensoryDescription}</p>
-                                        <div className="p-3 bg-black/5 dark:bg-white/5 text-xs space-y-1">
-                                            <p><strong>Topo:</strong> {selectedPerfume.notes.top.join(', ')}</p>
-                                            <p><strong>Coração:</strong> {selectedPerfume.notes.heart.join(', ')}</p>
-                                            <p><strong>Fundo:</strong> {selectedPerfume.notes.base.join(', ')}</p>
-                                        </div>
-                                        <div className="pt-2 flex flex-col gap-2">
-                                            <a
-                                                href={getWhatsappUrl(`Olá! Tenho interesse no perfume ${selectedPerfume.name} (${selectedPerfume.brand}, ${selectedPerfume.size}) no valor de ${selectedPerfume.price}.`)}
-                                                target="_blank"
-                                                className="w-full py-3 bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-black text-xs uppercase font-semibold text-center tracking-wider"
-                                            >
-                                                COMPRAR NO WHATSAPP (31) 97539-4776
-                                            </a>
-                                            <button
-                                                onClick={() => { addToCart(selectedPerfume); setSelectedPerfume(null); }}
-                                                className="w-full py-3 border border-black/20 dark:border-white/20 text-xs uppercase font-medium tracking-wider"
-                                            >
-                                                ADICIONAR À SACOLA
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Drawer Sacola */}
-                    {isCartOpen && (
-                        <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-xs" onClick={() => setIsCartOpen(false)}>
-                            <div className="w-full max-w-md bg-[#FAF8F5] dark:bg-[#161513] p-6 flex flex-col justify-between shadow-2xl" onClick={e => e.stopPropagation()}>
-                                <div>
-                                    <div className="flex justify-between items-center pb-4 border-b border-black/10 dark:border-white/10">
-                                        <h3 className="font-serif-editorial text-2xl font-normal">Sua Sacola ({totalCartCount})</h3>
-                                        <button onClick={() => setIsCartOpen(false)} className="text-sm font-bold">✕ FECHAR</button>
-                                    </div>
-                                    <div className="mt-4 space-y-3 max-h-[60vh] overflow-y-auto">
-                                        {cart.length === 0 ? (
-                                            <p className="text-center py-10 text-xs opacity-60">Sua sacola está vazia.</p>
-                                        ) : cart.map(item => (
-                                            <div key={item.id} className="flex justify-between items-center p-3 bg-black/5 dark:bg-white/5 border border-black/5">
-                                                <div>
-                                                    <h4 className="text-sm font-semibold truncate">{item.name}</h4>
-                                                    <p className="text-xs text-[#A96227] dark:text-[#D4AF37]">{item.price} · {item.size}</p>
-                                                    <div className="flex items-center gap-2 mt-2">
-                                                        <button onClick={() => updateCartQty(item.id, -1)} className="w-5 h-5 border flex items-center justify-center text-xs">-</button>
-                                                        <span className="text-xs font-semibold">{item.qty}</span>
-                                                        <button onClick={() => updateCartQty(item.id, 1)} className="w-5 h-5 border flex items-center justify-center text-xs">+</button>
-                                                    </div>
-                                                </div>
-                                                <button onClick={() => removeCartItem(item.id)} className="text-red-500 text-xs font-semibold">REMOVER</button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {cart.length > 0 && (
-                                    <div className="pt-4 border-t border-black/10 dark:border-white/10 space-y-4">
-                                        <div className="flex justify-between text-xl font-serif font-bold">
-                                            <span>Subtotal:</span>
-                                            <span className="text-[#A96227] dark:text-[#D4AF37]">R$ {cartSubtotal.toFixed(2).replace('.', ',')}</span>
-                                        </div>
-                                        <button
-                                            onClick={sendWhatsAppOrder}
-                                            className="w-full py-3.5 bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-black font-semibold uppercase tracking-wider text-xs shadow-lg"
-                                        >
-                                            FINALIZAR PEDIDO NO WHATSAPP
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Drawer Favoritos */}
-                    {isFavoritesOpen && (
-                        <div className="fixed inset-0 z-50 flex justify-end bg-black/60" onClick={() => setIsFavoritesOpen(false)}>
-                            <div className="w-full max-w-md bg-[#FAF8F5] dark:bg-[#161513] p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
-                                <div className="flex justify-between items-center pb-4 border-b border-black/10 dark:border-white/10">
-                                    <h3 className="font-serif-editorial text-2xl font-normal">Seus Favoritos ({favorites.length})</h3>
-                                    <button onClick={() => setIsFavoritesOpen(false)} className="text-sm font-bold">✕ FECHAR</button>
-                                </div>
-                                <div className="mt-4 space-y-3">
-                                    {favorites.map(id => {
-                                        const p = PERFUMES_DATA.find(x => x.id === id);
-                                        if (!p) return null;
-                                        return (
-                                            <div key={p.id} className="flex justify-between items-center p-3 bg-black/5 dark:bg-white/5">
-                                                <div>
-                                                    <h4 className="text-sm font-semibold">{p.name}</h4>
-                                                    <p className="text-xs text-[#A96227] dark:text-[#D4AF37]">{p.price}</p>
-                                                </div>
-                                                <button onClick={() => addToCart(p)} className="text-xs uppercase font-semibold underline">Mover p/ Sacola</button>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Modal Busca */}
-                    {isSearchOpen && (
-                        <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-black/80 backdrop-blur-sm" onClick={() => setIsSearchOpen(false)}>
-                            <div className="bg-[#FAF8F5] dark:bg-[#161513] max-w-xl w-full p-6 border border-black/10 dark:border-white/10 shadow-2xl" onClick={e => e.stopPropagation()}>
-                                <div className="flex justify-between items-center mb-4">
-                                    <h3 className="font-serif-editorial text-2xl">Buscar Fragrância</h3>
-                                    <button onClick={() => setIsSearchOpen(false)}>✕</button>
-                                </div>
-                                <input
-                                    type="text"
-                                    placeholder="Digite nome, nota ou marca..."
-                                    value={searchQuery}
-                                    onChange={e => setSearchQuery(e.target.value)}
-                                    className="w-full p-3 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-sm focus:outline-none"
-                                    autoFocus
-                                />
-                                <div className="mt-4 max-h-60 overflow-y-auto space-y-2">
-                                    {searchResults.map(p => (
-                                        <div key={p.id} onClick={() => { setSelectedPerfume(p); setIsSearchOpen(false); }} className="p-2.5 bg-black/5 dark:bg-white/5 hover:bg-[#A96227]/20 cursor-pointer flex justify-between items-center text-xs">
-                                            <div>
-                                                <p className="font-semibold">{p.name}</p>
-                                                <p className="opacity-70">{p.shortNotes}</p>
-                                            </div>
-                                            <span className="font-serif font-bold text-[#A96227] dark:text-[#D4AF37]">{p.price}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Botão Flutuante de Download HTML */}
-                    <div className="fixed bottom-6 right-6 z-40">
-                        <button
-                            onClick={handleDownloadSelf}
-                            className={`px-5 py-3 rounded-full text-xs font-semibold tracking-wider uppercase shadow-2xl border transition-all ${
-                                downloaded ? 'bg-emerald-600 text-white border-emerald-400' : 'bg-[#24221F] dark:bg-[#D4AF37] text-white dark:text-black border-white/20'
-                            }`}
+                        <h3
+                          onClick={() => setSelectedPerfume(perfume)}
+                          className="font-serif-editorial text-2xl text-[#24221F] dark:text-[#F4F0E9] font-normal cursor-pointer group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37] transition-colors leading-snug"
                         >
-                            {downloaded ? '✓ ARQUIVO HTML BAIXADO!' : '⬇ BAIXAR CÓDIGO HTML COMPLETO (.HTML)'}
-                        </button>
+                          {perfume.name}
+                        </h3>
+                        <p className="text-xs text-[#24221F]/70 dark:text-[#F4F0E9]/70 line-clamp-2 mt-2 leading-relaxed">
+                          {perfume.sensoryDescription}
+                        </p>
+                      </div>
+
+                      {/* Price & Actions */}
+                      <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.06] space-y-3">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <span className="text-sm font-serif font-semibold text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider">
+                              Sob Consulta
+                            </span>
+                            <span className="block text-[10px] uppercase text-[#24221F]/50 dark:text-[#F4F0E9]/50 tracking-wider">
+                              {perfume.concentration}
+                            </span>
+                          </div>
+                          <button
+                            onClick={() => setSelectedPerfume(perfume)}
+                            className="text-xs tracking-[0.16em] uppercase font-medium text-[#24221F] dark:text-[#F4F0E9] hover:text-[#A96227] dark:hover:text-[#D4AF37] flex items-center gap-1 transition-colors"
+                          >
+                            <span>DETALHES</span>
+                            <Icons.ArrowRight className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-2">
+                          <a
+                            href={getWhatsappUrl(`Olá! Tenho interesse no perfume ${perfume.name} da marca ${perfume.brand} (${perfume.size}) visto no site Máximo Eau de Parfum. Poderiam me informar os valores e disponibilidade?`)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="py-2.5 px-3 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-white dark:text-black text-[11px] tracking-[0.12em] uppercase font-semibold text-center transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                          >
+                            <Icons.Whatsapp className="w-3.5 h-3.5" />
+                            <span>WHATSAPP</span>
+                          </a>
+                          <button
+                            onClick={() => addToCart(perfume)}
+                            className="py-2.5 px-3 border border-black/15 dark:border-white/15 hover:border-black dark:hover:border-white text-[11px] tracking-[0.12em] uppercase font-medium text-center transition-colors"
+                          >
+                            + SACOLA
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* PRODUCT DETAIL MODAL */}
+          {selectedPerfume && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+              <div className="bg-[#FAF8F5] dark:bg-[#161513] text-[#24221F] dark:text-[#F4F0E9] w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-black/10 dark:border-white/10 shadow-2xl relative">
+                
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedPerfume(null)}
+                  className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/10 dark:bg-white/10 hover:scale-110 transition-transform"
+                >
+                  <Icons.Close />
+                </button>
+
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  {/* Left: Product Media with Pedestal */}
+                  <div className="p-8 flex items-center justify-center bg-gradient-to-b from-[#F2ECE2]/50 via-transparent to-transparent dark:from-[#1A1816]/50">
+                    <StudioBottleImage src={selectedPerfume.image} alt={selectedPerfume.name} />
+                  </div>
+
+                  {/* Right: Technical Sheet & Pyramid */}
+                  <div className="p-8 space-y-6 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 text-xs tracking-[0.2em] text-[#A96227] dark:text-[#D4AF37] uppercase font-semibold">
+                        <span>{selectedPerfume.brand}</span>
+                        <span>·</span>
+                        <span>{selectedPerfume.family}</span>
+                      </div>
+                      <h2 className="font-serif-editorial text-3xl sm:text-4xl font-normal mt-1 text-[#24221F] dark:text-[#F4F0E9]">
+                        {selectedPerfume.name}
+                      </h2>
+                      <div className="flex items-baseline gap-3 mt-2">
+                        <span className="text-2xl font-serif font-semibold text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider">
+                          Sob Consulta
+                        </span>
+                        <span className="text-xs text-[#24221F]/60 dark:text-[#F4F0E9]/60 uppercase">
+                          {selectedPerfume.size} · {selectedPerfume.concentration}
+                        </span>
+                      </div>
+                      <p className="text-sm text-[#24221F]/80 dark:text-[#F4F0E9]/80 mt-4 leading-relaxed">
+                        {selectedPerfume.sensoryDescription}
+                      </p>
+
+                      {/* Olfactory Pyramid */}
+                      <div className="mt-6 pt-6 border-t border-black/10 dark:border-white/10 space-y-3">
+                        <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#A96227] dark:text-[#D4AF37]">
+                          PIRÂMIDE OLFATIVA OFICIAL
+                        </h4>
+                        <div className="space-y-2 text-xs">
+                          <div className="flex gap-2">
+                            <span className="font-semibold w-16 text-[#24221F]/60 dark:text-[#F4F0E9]/60">TOPO:</span>
+                            <span>{selectedPerfume.notes.top.join(', ')}</span>
+                          </div>
+                          <div className="flex gap-2">
+                            <span className="font-semibold w-16 text-[#24221F]/60 dark:text-[#F4F0E9]/60">CORAÇÃO:</span>
+                            <span>{selectedPerfume.notes.heart.join(', ')}</span>
+                          </div>
+                          <div className="flex gap-2">
+                            <span className="font-semibold w-16 text-[#24221F]/60 dark:text-[#F4F0E9]/60">FUNDO:</span>
+                            <span>{selectedPerfume.notes.base.join(', ')}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Footer */}
-                    <footer className="bg-[#161513] text-[#FFFFFF] py-16 px-6 sm:px-12 border-t border-white/10 mt-20">
-                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-xs opacity-75">
-                            <MaximoLogo isDark={true} className="w-48" />
-                            <p>© 2026 Máximo Eau de Parfum. Todos os direitos reservados.</p>
-                            <p>WhatsApp Oficial: (31) 97539-4776</p>
+                    {/* Modal CTAs */}
+                    <div className="space-y-3 pt-6 border-t border-black/10 dark:border-white/10">
+                      <a
+                        href={getWhatsappUrl(`Olá! Tenho interesse no perfume ${selectedPerfume.name} da marca ${selectedPerfume.brand} (${selectedPerfume.size}) visto no site Máximo Eau de Parfum. Poderiam me informar os valores e disponibilidade?`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3.5 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-white dark:text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-lg"
+                      >
+                        <Icons.Whatsapp className="w-4 h-4" />
+                        <span>COMPRAR VIA WHATSAPP (31) 97539-4776</span>
+                      </a>
+                      <button
+                        onClick={() => { addToCart(selectedPerfume); setSelectedPerfume(null); }}
+                        className="w-full py-3 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white font-medium text-xs tracking-[0.16em] uppercase text-center"
+                      >
+                        ADICIONAR À SACOLA
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* CART DRAWER */}
+          {isCartOpen && (
+            <div className="fixed inset-0 z-50 overflow-hidden">
+              <div className="absolute inset-0 bg-black/60 backdrop-blur-xs" onClick={() => setIsCartOpen(false)} />
+              <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
+                <div className="w-screen max-w-md bg-[#FAF8F5] dark:bg-[#161513] text-[#24221F] dark:text-[#F4F0E9] shadow-2xl flex flex-col justify-between border-l border-black/10 dark:border-white/10">
+                  
+                  {/* Cart Header */}
+                  <div className="p-6 border-b border-black/10 dark:border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Icons.Bag />
+                      <h3 className="font-serif-editorial text-2xl font-normal">Sua Sacola</h3>
+                      <span className="text-xs text-[#A96227] dark:text-[#D4AF37] font-semibold">({totalCartCount})</span>
+                    </div>
+                    <button onClick={() => setIsCartOpen(false)} className="p-1 hover:scale-110">
+                      <Icons.Close />
+                    </button>
+                  </div>
+
+                  {/* Cart List */}
+                  <div className="p-6 overflow-y-auto flex-grow space-y-4">
+                    {cart.length === 0 ? (
+                      <div className="text-center py-16 space-y-4 text-[#24221F]/60 dark:text-[#F4F0E9]/60">
+                        <Icons.Bag className="w-12 h-12 mx-auto stroke-1" />
+                        <p className="text-sm">Sua sacola está vazia.</p>
+                      </div>
+                    ) : (
+                      cart.map(item => (
+                        <div key={item.id} className="flex gap-4 p-3 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 items-center">
+                          <img src={item.image} alt={item.name} className="w-14 h-14 object-contain" />
+                          <div className="flex-grow">
+                            <h4 className="text-sm font-semibold truncate">{item.name}</h4>
+                            <p className="text-xs text-[#A96227] dark:text-[#D4AF37] font-semibold uppercase">{item.size} · Sob Consulta</p>
+                            <div className="flex items-center gap-3 mt-2">
+                              <button onClick={() => updateCartQty(item.id, -1)} className="w-6 h-6 border rounded flex items-center justify-center text-xs">-</button>
+                              <span className="text-xs font-semibold">{item.qty}</span>
+                              <button onClick={() => updateCartQty(item.id, 1)} className="w-6 h-6 border rounded flex items-center justify-center text-xs">+</button>
+                            </div>
+                          </div>
+                          <button onClick={() => removeCartItem(item.id)} className="p-2 text-red-500 hover:scale-110">
+                            <Icons.Trash className="w-4 h-4" />
+                          </button>
                         </div>
-                    </footer>
+                      ))
+                    )}
+                  </div>
+
+                  {/* Cart Footer */}
+                  {cart.length > 0 && (
+                    <div className="p-6 border-t border-black/10 dark:border-white/10 space-y-4">
+                      <div className="flex justify-between items-baseline">
+                        <span className="text-xs uppercase tracking-wider">Itens Selecionados:</span>
+                        <span className="text-lg font-serif font-semibold text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider">
+                          Sob Consulta
+                        </span>
+                      </div>
+                      <button
+                        onClick={sendCartWhatsApp}
+                        className="w-full py-3.5 bg-[#24221F] hover:bg-[#A96227] dark:bg-[#D4AF37] dark:hover:bg-[#C29D29] text-white dark:text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-lg"
+                      >
+                        <Icons.Whatsapp className="w-4 h-4" />
+                        <span>FECHAR PEDIDO NO WHATSAPP</span>
+                      </button>
+                    </div>
+                  )}
 
                 </div>
-            );
-        }
+              </div>
+            </div>
+          )}
 
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-    </script>
+          {/* SEARCH OVERLAY */}
+          {isSearchOpen && (
+            <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+              <div className="bg-[#FAF8F5] dark:bg-[#161513] text-[#24221F] dark:text-[#F4F0E9] w-full max-w-2xl border border-black/10 dark:border-white/10 shadow-2xl p-6 relative">
+                <button onClick={() => setIsSearchOpen(false)} className="absolute top-4 right-4 p-2">
+                  <Icons.Close />
+                </button>
+                <h3 className="font-serif-editorial text-2xl mb-4">Busca de Fragrâncias & Notas</h3>
+                <input
+                  type="text"
+                  placeholder="Ex: Rosa Damascena, Baunilha, Máximo, Baccarat, Amadeirado..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full p-3.5 bg-black/5 dark:bg-white/5 border border-black/15 dark:border-white/15 focus:outline-none focus:border-[#A96227] dark:focus:border-[#D4AF37] text-sm"
+                  autoFocus
+                />
+
+                <div className="mt-6 max-h-80 overflow-y-auto space-y-3">
+                  {searchQuery && searchResults.length === 0 && (
+                    <p className="text-sm text-center py-6 text-[#24221F]/60 dark:text-[#F4F0E9]/60">Nenhum perfume encontrado com esse termo.</p>
+                  )}
+                  {searchResults.map(p => (
+                    <div
+                      key={p.id}
+                      onClick={() => { setSelectedPerfume(p); setIsSearchOpen(false); }}
+                      className="p-3 bg-black/5 dark:bg-white/5 hover:bg-[#A96227]/15 dark:hover:bg-[#D4AF37]/15 cursor-pointer flex items-center justify-between"
+                    >
+                      <div>
+                        <h4 className="font-semibold text-sm">{p.name}</h4>
+                        <p className="text-xs text-[#24221F]/60 dark:text-[#F4F0E9]/60">{p.brand} · {p.shortNotes}</p>
+                      </div>
+                      <span className="font-serif font-medium text-xs text-[#A96227] dark:text-[#D4AF37] uppercase">Sob Consulta</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* HOUSE STORY MODAL */}
+          {isStoryOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+              <div className="bg-[#FAF8F5] dark:bg-[#161513] text-[#24221F] dark:text-[#F4F0E9] w-full max-w-2xl max-h-[85vh] overflow-y-auto border border-black/10 dark:border-white/10 p-8 relative shadow-2xl space-y-4">
+                <button onClick={() => setIsStoryOpen(false)} className="absolute top-4 right-4 p-2">
+                  <Icons.Close />
+                </button>
+                <span className="text-xs uppercase tracking-[0.24em] text-[#A96227] dark:text-[#D4AF37] font-semibold">A CASA</span>
+                <h3 className="font-serif-editorial text-3xl font-light">Máximo Eau de Parfum</h3>
+                <p className="text-sm text-[#24221F]/85 dark:text-[#F4F0E9]/85 leading-relaxed">
+                  A <strong>Máximo Eau de Parfum</strong> nasceu da união entre a alta perfumaria clássica e o requinte da cosmética acetinada contemporânea. Cada frasco é trabalhado como uma joia escultórica, abrigando concentrações elevadas de óleos essenciais nobres.
+                </p>
+                <p className="text-sm text-[#24221F]/85 dark:text-[#F4F0E9]/85 leading-relaxed">
+                  Nosso compromisso é entregar fragrâncias com sillage inesquecível, fixação impecável e um atendimento personalizado direto do ateliê para a sua coleção.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* FOOTER */}
+          <footer className="bg-[#161513] text-[#F4F0E9] border-t border-white/10 py-16 px-4 sm:px-8 mt-20">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+              <div className="md:col-span-2 space-y-4">
+                <MaximoLogo isDark={true} className="w-48" />
+                <p className="text-xs text-white/70 max-w-sm leading-relaxed">
+                  Alta perfumaria autoral e fragrâncias importadas nobres. Elegância, presença marcante e consultoria personalizada.
+                </p>
+              </div>
+              <div className="space-y-3 text-xs">
+                <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#D4AF37]">CONTATO & ATENDIMENTO</h4>
+                <p className="text-white/80">WhatsApp Oficial: (31) 97539-4776</p>
+                <p className="text-white/80">Atendimento de Segunda a Sábado</p>
+                <p className="text-white/80">Envio para todo o Brasil</p>
+              </div>
+              <div className="space-y-3 text-xs">
+                <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#D4AF37]">GARANTIA & PADRÃO</h4>
+                <p className="text-white/80">✓ 100% Fragrâncias Originais</p>
+                <p className="text-white/80">✓ Concentração Eau de Parfum</p>
+                <p className="text-white/80">✓ Embalagens com Lacre Nobre</p>
+              </div>
+            </div>
+            <div className="max-w-7xl mx-auto pt-10 mt-10 border-t border-white/10 text-center text-xs text-white/40">
+              © 2026 Máximo Eau de Parfum. Todos os direitos reservados.
+            </div>
+          </footer>
+
+        </div>
+      );
+    }
+
+    // Render React 18 App
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
 </html>

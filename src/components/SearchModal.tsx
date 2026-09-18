@@ -162,7 +162,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                           {perfume.name}
                         </h4>
                         <p className="font-mono-subtle text-[10px] opacity-70">
-                          {perfume.size} · {perfume.price}
+                          {perfume.size} · {perfume.concentration}
                         </p>
                       </div>
                     </div>

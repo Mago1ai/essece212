@@ -17,11 +17,22 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
   onToggleFavorite,
   onAddToCart,
 }) => {
-  const [activeTab, setActiveTab] = useState<'masculina' | 'feminina'>('masculina');
+  const [activeTab, setActiveTab] = useState<'feminina' | 'masculina' | 'bodysplash' | 'capilar' | 'todos'>('feminina');
 
   const filteredPerfumes = useMemo(() => {
-    const targetCategory = activeTab === 'masculina' ? 'Linha Masculina' : 'Linha Feminina';
-    return perfumes.filter(p => p.category === targetCategory);
+    if (activeTab === 'feminina') {
+      return perfumes.filter(p => p.category === 'Linha Feminina');
+    }
+    if (activeTab === 'masculina') {
+      return perfumes.filter(p => p.category === 'Linha Masculina');
+    }
+    if (activeTab === 'bodysplash') {
+      return perfumes.filter(p => p.category === 'Body Splash (120ml)' || p.concentration?.toLowerCase().includes('splash'));
+    }
+    if (activeTab === 'capilar') {
+      return perfumes.filter(p => p.category === 'Body Mist & Capilar' || p.concentration?.toLowerCase().includes('capilar'));
+    }
+    return perfumes;
   }, [perfumes, activeTab]);
 
   return (
@@ -35,10 +46,23 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
             Catálogo
           </h2>
 
-          <div className="flex items-center justify-center border-b border-[#24221F]/20 dark:border-white/20">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 border-b border-[#24221F]/20 dark:border-white/20 pb-1">
+            <button
+              onClick={() => setActiveTab('feminina')}
+              className={`px-5 sm:px-8 py-3.5 font-mono-subtle text-xs sm:text-[13px] tracking-[0.2em] uppercase transition-all relative ${
+                activeTab === 'feminina'
+                  ? 'text-[#A96227] dark:text-[#D4AF37] font-semibold'
+                  : 'text-[#24221F]/60 dark:text-[#F5F2EB]/60 hover:text-[#24221F] dark:hover:text-[#F5F2EB]'
+              }`}
+            >
+              Coleção Feminina
+              {activeTab === 'feminina' && (
+                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#A96227] dark:bg-[#D4AF37]"></span>
+              )}
+            </button>
             <button
               onClick={() => setActiveTab('masculina')}
-              className={`px-8 py-4 font-mono-subtle text-xs sm:text-[13px] tracking-[0.2em] uppercase transition-all relative ${
+              className={`px-5 sm:px-8 py-3.5 font-mono-subtle text-xs sm:text-[13px] tracking-[0.2em] uppercase transition-all relative ${
                 activeTab === 'masculina'
                   ? 'text-[#A96227] dark:text-[#D4AF37] font-semibold'
                   : 'text-[#24221F]/60 dark:text-[#F5F2EB]/60 hover:text-[#24221F] dark:hover:text-[#F5F2EB]'
@@ -50,15 +74,41 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({
               )}
             </button>
             <button
-              onClick={() => setActiveTab('feminina')}
-              className={`px-8 py-4 font-mono-subtle text-xs sm:text-[13px] tracking-[0.2em] uppercase transition-all relative ${
-                activeTab === 'feminina'
+              onClick={() => setActiveTab('bodysplash')}
+              className={`px-5 sm:px-8 py-3.5 font-mono-subtle text-xs sm:text-[13px] tracking-[0.2em] uppercase transition-all relative ${
+                activeTab === 'bodysplash'
                   ? 'text-[#A96227] dark:text-[#D4AF37] font-semibold'
                   : 'text-[#24221F]/60 dark:text-[#F5F2EB]/60 hover:text-[#24221F] dark:hover:text-[#F5F2EB]'
               }`}
             >
-              Coleção Feminina
-              {activeTab === 'feminina' && (
+              Body Splash (120ml)
+              {activeTab === 'bodysplash' && (
+                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#A96227] dark:bg-[#D4AF37]"></span>
+              )}
+            </button>
+            <button
+              onClick={() => setActiveTab('capilar')}
+              className={`px-5 sm:px-8 py-3.5 font-mono-subtle text-xs sm:text-[13px] tracking-[0.2em] uppercase transition-all relative ${
+                activeTab === 'capilar'
+                  ? 'text-[#A96227] dark:text-[#D4AF37] font-semibold'
+                  : 'text-[#24221F]/60 dark:text-[#F5F2EB]/60 hover:text-[#24221F] dark:hover:text-[#F5F2EB]'
+              }`}
+            >
+              Perfume Capilar (60ml)
+              {activeTab === 'capilar' && (
+                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#A96227] dark:bg-[#D4AF37]"></span>
+              )}
+            </button>
+            <button
+              onClick={() => setActiveTab('todos')}
+              className={`px-5 sm:px-8 py-3.5 font-mono-subtle text-xs sm:text-[13px] tracking-[0.2em] uppercase transition-all relative ${
+                activeTab === 'todos'
+                  ? 'text-[#A96227] dark:text-[#D4AF37] font-semibold'
+                  : 'text-[#24221F]/60 dark:text-[#F5F2EB]/60 hover:text-[#24221F] dark:hover:text-[#F5F2EB]'
+              }`}
+            >
+              Ver Todos
+              {activeTab === 'todos' && (
                 <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#A96227] dark:bg-[#D4AF37]"></span>
               )}
             </button>

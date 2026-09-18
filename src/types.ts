@@ -1,12 +1,20 @@
 export type OlfactoryFamily =
   | 'Todos'
   | 'Linha Máximo'
+  | 'Linha Masculina'
+  | 'Linha Feminina'
   | 'Florais'
+  | 'Florais Orientais'
+  | 'Florais Gourmand'
   | 'Amadeirados'
+  | 'Amadeirados Frescos'
+  | 'Amadeirados Frutados'
   | 'Ambarados'
   | 'Orientais'
   | 'Frescos'
-  | 'Gourmand & Frutados';
+  | 'Gourmand'
+  | 'Gourmand & Frutados'
+  | string;
 
 export interface PerfumeNotes {
   top: string[];
@@ -19,9 +27,9 @@ export interface Perfume {
   name: string;
   brand: string;
   subtitle: string;
-  family: 'Linha Máximo' | 'Florais' | 'Amadeirados' | 'Ambarados' | 'Orientais' | 'Frescos' | 'Gourmand & Frutados';
+  family: string;
   gender?: 'Feminino' | 'Masculino' | 'Unissex';
-  category?: 'Perfumes' | 'Linha Máximo' | 'Body Mist & Capilar';
+  category?: 'Linha Masculina' | 'Linha Feminina' | 'Perfumes' | 'Linha Máximo' | 'Body Mist & Capilar' | string;
   notes: PerfumeNotes;
   accords?: string[];
   shortNotes: string;

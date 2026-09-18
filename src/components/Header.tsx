@@ -82,20 +82,12 @@ export const Header: React.FC<HeaderProps> = ({
               Fragrâncias
             </button>
             <button
-              onClick={() => handleNavClick('colecao')}
+              onClick={() => handleNavClick('linha-produtos')}
               className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
                 isScrolled ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]' : 'hover:text-white'
               }`}
             >
-              Feminino
-            </button>
-            <button
-              onClick={() => handleNavClick('colecao')}
-              className={`text-[11px] lg:text-[12px] tracking-[0.22em] uppercase font-medium transition-colors duration-200 py-1 border-b border-transparent hover:border-current ${
-                isScrolled ? 'hover:text-[#A96227] dark:hover:text-[#D4AF37]' : 'hover:text-white'
-              }`}
-            >
-              Masculino
+              Linha de Produtos
             </button>
             <button
               onClick={() => handleNavClick('casa')}
@@ -220,28 +212,28 @@ export const Header: React.FC<HeaderProps> = ({
                 01 — A Coleção
               </button>
               <button
+                onClick={() => handleNavClick('linha-produtos')}
+                className="text-left font-serif-editorial text-3xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
+              >
+                02 — Linha de Produtos
+              </button>
+              <button
                 onClick={() => handleNavClick('casa')}
                 className="text-left font-serif-editorial text-3xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
               >
-                02 — A Casa
+                03 — A Casa
               </button>
               <button
                 onClick={() => handleNavClick('descoberta')}
                 className="text-left font-serif-editorial text-3xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
               >
-                03 — Descoberta Olfativa
+                04 — Descoberta Olfativa
               </button>
               <button
                 onClick={() => handleNavClick('manifesto')}
                 className="text-left font-serif-editorial text-3xl text-[#24221F] dark:text-[#F5F2EB] hover:text-[#A96227] dark:hover:text-[#D4AF37] transition-colors"
               >
-                04 — O Manifesto
-              </button>
-              <button
-                onClick={() => handleNavClick('discovery-set')}
-                className="text-left font-serif-editorial text-3xl text-[#A96227] dark:text-[#D4AF37] transition-colors"
-              >
-                05 — Discovery Set
+                05 — O Manifesto
               </button>
             </nav>
           </div>

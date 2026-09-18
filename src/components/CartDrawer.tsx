@@ -61,27 +61,26 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     const itemsList = cartItems
       .map(
         (item, index) =>
-          `${index + 1}. *${item.perfume.name}* (${item.perfume.brand} · ${item.size || item.perfume.size})\n   - Quantidade: ${item.quantity} un\n   - Valor Unitário: ${item.perfume.price}\n   - Subtotal: R$ ${(item.perfume.priceNumeric * item.quantity).toFixed(2).replace('.', ',')}`
+          `${index + 1}. *${item.perfume.name}* (${item.perfume.brand} · ${item.size || item.perfume.size})\n   - Quantidade: ${item.quantity} un`
       )
       .join('\n\n');
 
     const addressText = customerAddress.trim()
-      ? `\n📍 *Endereço de Entrega:* ${customerAddress.trim()}`
-      : '\n📍 *Endereço de Entrega:* (Combinar no chat)';
+      ? `\n*Endereço de Entrega:* ${customerAddress.trim()}`
+      : '\n*Endereço de Entrega:* (Combinar no atendimento)';
 
     const nameText = customerName.trim()
-      ? `\n👤 *Nome do Cliente:* ${customerName.trim()}`
+      ? `\n*Nome do Cliente:* ${customerName.trim()}`
       : '';
 
-    const message = `Olá! Gostaria de finalizar meu pedido na *Máximo Eau de Parfum*:
+    const message = `Olá! Gostaria de consultar valores e finalizar meu pedido na *Máximo Eau de Parfum*:
 
-📦 *ITENS DA SACOLA:*
+*ITENS DA SACOLA:*
 ${itemsList}
 
-💰 *VALOR TOTAL:* R$ ${subtotal.toFixed(2).replace('.', ',')}
-🚚 *Envio:* Para todo o Brasil${nameText}${addressText}
+*Envio:* Para todo o Brasil${nameText}${addressText}
 
-Por favor, confirmem a disponibilidade dos itens e as orientações para envio.`;
+Por favor, confirmem os valores, a disponibilidade dos itens e as orientações para envio.`;
 
     window.open(createWhatsAppLink(message, BRAND_INFO.phoneWhatsApp), '_blank', 'noopener,noreferrer');
   };
@@ -90,15 +89,13 @@ Por favor, confirmem a disponibilidade dos itens e as orientações para envio.`
     const itemsList = cartItems
       .map(
         (item) =>
-          `· ${item.quantity}x ${item.perfume.name} (${item.size}) - ${item.perfume.price}`
+          `· ${item.quantity}x ${item.perfume.name} (${item.size})`
       )
       .join('\n');
 
-    const message = `Olá! Realizei o pagamento PIX no valor de R$ ${subtotal
-      .toFixed(2)
-      .replace('.', ',')} para o pedido:\n\n${itemsList}\n\n${customerName ? `Nome: ${customerName}\n` : ''}${
+    const message = `Olá! Gostaria de cotar e solicitar o pagamento PIX para os seguintes itens da Máximo Eau de Parfum:\n\n${itemsList}\n\n${customerName ? `Nome: ${customerName}\n` : ''}${
       customerAddress ? `Endereço: ${customerAddress}\n` : ''
-    }Envio o comprovante a seguir.`;
+    }Poderiam me informar o valor total e orientações?`;
 
     window.open(createWhatsAppLink(message, BRAND_INFO.phoneWhatsApp), '_blank', 'noopener,noreferrer');
   };
@@ -222,11 +219,8 @@ Por favor, confirmem a disponibilidade dos itens e as orientações para envio.`
                           </button>
                         </div>
 
-                        <span className="font-mono-subtle text-sm text-[#24221F] dark:text-[#F5F2EB] font-bold">
-                          R${' '}
-                          {(item.perfume.priceNumeric * item.quantity)
-                            .toFixed(2)
-                            .replace('.', ',')}
+                        <span className="font-mono-subtle text-xs text-[#A96227] dark:text-[#D4AF37] font-semibold uppercase tracking-wider">
+                          Sob Consulta
                         </span>
                       </div>
                     </div>
@@ -289,10 +283,10 @@ Por favor, confirmem a disponibilidade dos itens e as orientações para envio.`
             {/* Subtotal Display */}
             <div className="flex items-baseline justify-between">
               <span className="font-mono-subtle text-xs tracking-[0.2em] text-[#24221F]/70 dark:text-[#F5F2EB]/70 uppercase">
-                Subtotal da Sacola
+                Itens na Sacola
               </span>
-              <span className="font-mono-subtle text-2xl text-[#24221F] dark:text-[#F5F2EB] font-bold">
-                R$ {subtotal.toFixed(2).replace('.', ',')}
+              <span className="font-mono-subtle text-lg text-[#A96227] dark:text-[#D4AF37] font-bold uppercase tracking-wider">
+                Sob Consulta
               </span>
             </div>
 
@@ -380,9 +374,9 @@ Por favor, confirmem a disponibilidade dos itens e as orientações para envio.`
                 </div>
 
                 <div className="pt-2 border-t border-[#24221F]/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono-subtle">
-                  <span className="text-[#24221F]/70 dark:text-[#F5F2EB]/70">Valor exato:</span>
-                  <span className="font-bold text-[#24221F] dark:text-[#D4AF37]">
-                    R$ {subtotal.toFixed(2).replace('.', ',')}
+                  <span className="text-[#24221F]/70 dark:text-[#F5F2EB]/70">Valor total:</span>
+                  <span className="font-bold text-[#A96227] dark:text-[#D4AF37] uppercase tracking-wider">
+                    Sob Consulta
                   </span>
                 </div>
 

@@ -7,9 +7,9 @@ import { Hero } from './components/Hero';
 import { HouseSection } from './components/HouseSection';
 import { CollectionSection } from './components/CollectionSection';
 import { CollectionIntro } from './components/CollectionIntro';
+import { ProductLineSection } from './components/ProductLineSection';
 import { ManifestoSection } from './components/ManifestoSection';
 import { DiscoverySection } from './components/DiscoverySection';
-import { DiscoverySetBanner } from './components/DiscoverySetBanner';
 import { NewsletterSection } from './components/NewsletterSection';
 import { Footer } from './components/Footer';
 import { ProductModal } from './components/ProductModal';
@@ -18,7 +18,6 @@ import { FavoritesDrawer } from './components/FavoritesDrawer';
 import { SearchModal } from './components/SearchModal';
 import { StoryModal } from './components/StoryModal';
 import { ManifestoModal } from './components/ManifestoModal';
-import { DiscoverySetModal } from './components/DiscoverySetModal';
 import { InfoModals } from './components/InfoModals';
 
 export default function App() {
@@ -48,7 +47,6 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [isManifestoOpen, setIsManifestoOpen] = useState(false);
-  const [isDiscoverySetOpen, setIsDiscoverySetOpen] = useState(false);
   const [infoModalType, setInfoModalType] = useState<'contact' | 'returns' | 'privacy' | null>(null);
 
   // Sync theme
@@ -121,10 +119,6 @@ export default function App() {
   };
 
   const handleNavigateSection = (sectionId: string) => {
-    if (sectionId === 'discovery-set') {
-      setIsDiscoverySetOpen(true);
-      return;
-    }
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -173,6 +167,9 @@ export default function App() {
           onAddToCart={handleAddToCart}
         />
 
+        {/* MÁXIMO — LINHA DE PRODUTOS */}
+        <ProductLineSection />
+
         {/* 3. House Section (01 — A CASA) */}
         <HouseSection onOpenStoryModal={() => setIsStoryOpen(true)} />
 
@@ -182,10 +179,7 @@ export default function App() {
         {/* 5. Olfactory Discovery Section (04 — DESCOBERTA) */}
         <DiscoverySection onExplore={() => handleNavigateSection('colecao')} />
 
-        {/* 6. Discovery Set Horizontal Banner */}
-        <DiscoverySetBanner onOrderDiscoverySet={() => setIsDiscoverySetOpen(true)} />
-
-        {/* 7. Newsletter Section */}
+        {/* 6. Newsletter Section */}
         <NewsletterSection />
       </main>
 
@@ -240,13 +234,6 @@ export default function App() {
 
       {/* Manifesto Modal */}
       <ManifestoModal isOpen={isManifestoOpen} onClose={() => setIsManifestoOpen(false)} />
-
-      {/* Discovery Set Modal */}
-      <DiscoverySetModal
-        isOpen={isDiscoverySetOpen}
-        onClose={() => setIsDiscoverySetOpen(false)}
-        onAddToCart={(item) => handleAddToCart(item as unknown as Perfume)}
-      />
 
       {/* Contact, Privacy & Returns Modals */}
       <InfoModals type={infoModalType} onClose={() => setInfoModalType(null)} />
