@@ -50,75 +50,79 @@ export const ProductLineSection: React.FC = () => {
   return (
     <section
       id="linha-produtos"
-      className="relative w-full bg-[#F4F0E9] dark:bg-[#161513] text-[#24221F] dark:text-[#F5F2EB] py-16 sm:py-24 border-b border-[#24221F]/8 dark:border-white/10 transition-colors duration-500"
+      className="relative w-full bg-[#F4F0E9] dark:bg-[#161513] text-[#24221F] dark:text-[#F5F2EB] py-20 sm:py-28 lg:py-32 border-b border-[#24221F]/8 dark:border-white/10 transition-colors duration-500"
     >
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header da Seção */}
-        <div className="flex flex-col items-center justify-center text-center mb-12 sm:mb-16">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Header Editorial da Seção */}
+        <div className="flex flex-col items-center justify-center text-center mb-16 sm:mb-20">
           <div className="flex items-center gap-3 mb-4">
-            <span className="font-mono-subtle text-xs sm:text-[13px] tracking-[0.28em] text-[#A96227] dark:text-[#D4AF37] uppercase">
+            <div className="w-8 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40" />
+            <span className="font-mono-subtle text-[10px] sm:text-[11px] tracking-[0.28em] text-[#A96227] dark:text-[#D4AF37] uppercase">
               Catálogo Oficial
             </span>
-            <div className="w-12 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40" />
+            <div className="w-8 h-[1px] bg-[#A96227]/40 dark:bg-[#D4AF37]/40" />
           </div>
 
-          <h2 className="font-serif-editorial text-3xl sm:text-4xl md:text-5xl font-light leading-tight tracking-[-0.01em] uppercase">
-            MÁXIMO — LINHA DE PRODUTOS
+          <h2 className="font-serif-editorial text-3xl sm:text-4xl md:text-5xl font-light leading-tight tracking-[-0.01em] uppercase mb-4">
+            Máximo — Linha de Produtos
           </h2>
+
+          <p className="font-sans-clean text-base sm:text-lg text-[#24221F]/70 dark:text-[#F5F2EB]/70 font-light max-w-xl mx-auto leading-relaxed">
+            Uma arquitetura de fragrâncias e cuidados corporais desenvolvida com matérias-primas nobres e volumetrias pensadas para cada ritual.
+          </p>
         </div>
 
-        {/* Grid de Grupos de Produtos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {/* Lista Editorial com Divisores Horizontais e Amplo Espaçamento */}
+        <div className="border-t border-[#24221F]/15 dark:border-white/15">
           {PRODUCT_LINE_ITEMS.map((item) => {
             const whatsappUrl = createWhatsAppLink(item.whatsappMessage);
 
             return (
               <div
                 key={item.id}
-                className="group relative flex flex-col h-full bg-[#FDFBF7] dark:bg-[#1A1816] border border-[#24221F]/8 dark:border-white/10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+                className="group relative border-b border-[#24221F]/10 dark:border-white/10 py-8 sm:py-10 md:py-12 transition-colors duration-300 hover:bg-[#24221F]/[0.015] dark:hover:bg-white/[0.015]"
               >
-                {/* Imagem do Produto */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-[#F4F0E9] dark:bg-[#141210]">
-                  {/* Badge de Especificação */}
-                  <div className="absolute top-4 left-4 z-20 bg-[#121110] text-[#EAE3D9] dark:bg-[#EAE3D9] dark:text-[#121110] text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 font-mono-subtle shadow-xs">
-                    <span>{item.sizes.join(' · ')}</span>
-                  </div>
-
-                  <img
-                    src={item.image}
-                    alt={item.category}
-                    className="absolute inset-0 w-full h-full object-contain p-6 mix-blend-multiply dark:mix-blend-normal transition-all duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Informações do Grupo */}
-                <div className="flex flex-col flex-grow p-6 text-center">
-                  <span className="font-mono-subtle text-[10px] tracking-[0.26em] text-[#A96227] dark:text-[#D4AF37] uppercase mb-2">
-                    {item.number}
-                  </span>
-
-                  <h3 className="font-serif-editorial text-lg sm:text-xl font-light tracking-wide text-[#24221F] dark:text-[#F5F2EB] mb-2">
-                    {item.category}
-                  </h3>
-
-                  {/* Apresentação dos Tamanhos */}
-                  <div className="flex items-center justify-center gap-2 mb-6">
-                    <span className="font-mono-subtle text-xs sm:text-[13px] tracking-[0.2em] text-[#A96227] dark:text-[#D4AF37] font-semibold uppercase">
-                      {item.sizes.join(' · ')}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8">
+                  {/* Bloco de Informações e Imagem */}
+                  <div className="flex items-center gap-6 sm:gap-8 md:gap-10 flex-grow">
+                    {/* Numeração Editorial */}
+                    <span className="font-mono-subtle text-xs sm:text-sm tracking-[0.28em] text-[#A96227] dark:text-[#D4AF37] font-medium w-8 sm:w-10 shrink-0">
+                      {item.number}
                     </span>
+
+                    {/* Pré-visualização do Frasco */}
+                    <div className="relative w-20 h-24 sm:w-24 sm:h-28 md:w-28 md:h-32 bg-[#EAE3D9]/50 dark:bg-[#121110] border border-[#24221F]/8 dark:border-white/10 shrink-0 overflow-hidden flex items-center justify-center">
+                      <img
+                        src={item.image}
+                        alt={item.category}
+                        className="w-full h-full object-contain p-2 sm:p-3 mix-blend-multiply dark:mix-blend-normal transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* Categoria e Volumetria */}
+                    <div className="flex flex-col justify-center">
+                      <h3 className="font-serif-editorial text-2xl sm:text-3xl md:text-4xl font-light tracking-wide text-[#24221F] dark:text-[#F5F2EB] group-hover:text-[#A96227] dark:group-hover:text-[#D4AF37] transition-colors leading-tight">
+                        {item.category}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-2 sm:mt-2.5">
+                        <span className="font-mono-subtle text-xs sm:text-[13px] tracking-[0.24em] text-[#A96227] dark:text-[#D4AF37] font-medium uppercase">
+                          {item.sizes.join(' · ')}
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Botão de Ação / Atendimento */}
-                  <div className="mt-auto pt-2">
+                  {/* Ação / Atendimento WhatsApp */}
+                  <div className="flex items-center justify-start md:justify-end pl-14 sm:pl-16 md:pl-0 shrink-0">
                     <a
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center gap-2 bg-[#121110] dark:bg-[#F4F0E9] text-[#F4F0E9] dark:text-[#121110] py-3 text-[11px] tracking-[0.2em] uppercase font-medium hover:bg-[#A96227] dark:hover:bg-[#D4AF37] hover:text-white dark:hover:text-[#121110] transition-colors"
+                      className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 border border-[#24221F]/20 dark:border-white/20 text-[#24221F] dark:text-[#F5F2EB] group-hover:border-[#24221F] dark:group-hover:border-[#F4F0E9] group-hover:bg-[#24221F] group-hover:text-[#F4F0E9] dark:group-hover:bg-[#F4F0E9] dark:group-hover:text-[#121110] text-[11px] font-mono-subtle tracking-[0.2em] uppercase font-medium transition-all duration-300 active:scale-98"
                     >
-                      <MessageCircle className="w-4 h-4" />
-                      Atendimento
+                      <MessageCircle className="w-3.5 h-3.5 opacity-80" />
+                      <span>Atendimento</span>
                     </a>
                   </div>
                 </div>
